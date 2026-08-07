@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pwfarm — automações e painéis de Perfect World</title>
+<style>
+  :root {
+    --bg: #08080a; --surface: #14141a; --linha: #2b1218; --borda: #7d1128;
+    --vermelho: #d31b3c; --vermelho-claro: #ff3555; --vermelho-fundo: #1d0810;
+    --texto: #ddd2d4; --texto-fraco: #8e7f83; --texto-apagado: #5d5257;
+    --mono: "Cascadia Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, #1a0710 0%, transparent 70%), var(--bg);
+    color: var(--texto);
+    font: 15px/1.6 "Segoe UI", Roboto, system-ui, sans-serif;
+    display: flex; align-items: center; justify-content: center; padding: 40px 20px;
+  }
+  .caixa { width: 100%; max-width: 680px; }
+  h1 {
+    font-size: 26px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--vermelho); margin: 0 0 6px; font-weight: 600;
+    text-shadow: 0 0 24px rgba(211, 27, 60, 0.45);
+  }
+  .sub { color: var(--texto-apagado); font-size: 12.5px; letter-spacing: 1px; margin-bottom: 34px; }
+  a.cartao {
+    display: block; padding: 18px 20px; margin-bottom: 12px;
+    background: var(--surface); border: 1px solid var(--linha);
+    border-left: 2px solid var(--borda); border-radius: 4px;
+    text-decoration: none; color: inherit; transition: 0.15s;
+  }
+  a.cartao:hover {
+    background: #1b1b22; border-color: #3d1a22; border-left-color: var(--vermelho);
+    box-shadow: 0 0 22px rgba(211, 27, 60, 0.14);
+  }
+  .cartao .nome { color: var(--vermelho-claro); font-weight: 600; font-size: 16px; margin-bottom: 3px; }
+  .cartao .desc { color: var(--texto-fraco); font-size: 13.5px; }
+  .cartao .tag {
+    display: inline-block; margin-left: 8px; padding: 2px 7px; border-radius: 2px;
+    border: 1px solid var(--borda); background: var(--vermelho-fundo);
+    color: var(--vermelho-claro); font: 600 9.5px/1.5 var(--mono);
+    letter-spacing: 0.8px; text-transform: uppercase; vertical-align: 2px;
+  }
+  .local {
+    padding: 18px 20px; margin-bottom: 12px;
+    background: rgba(20, 20, 26, 0.4); border: 1px dashed var(--linha); border-radius: 4px;
+  }
+  .local .nome { color: var(--texto-fraco); font-weight: 600; font-size: 15px; }
+  .local .desc { color: var(--texto-apagado); font-size: 13px; }
+  footer { margin-top: 30px; color: var(--texto-apagado); font-size: 12px; }
+  footer a { color: var(--texto-fraco); }
+</style>
+</head>
+<body>
+<div class="caixa">
+
+  <h1>pwfarm</h1>
+  <div class="sub">Automações e painéis para Perfect World &middot; The PW Clássico</div>
+
+  <a class="cartao" href="pwmarket/">
+    <div class="nome">pwmarket <span class="tag">painel</span></div>
+    <div class="desc">
+      Preços de mercado em medas e planejamento de crafting do Palácio do
+      Crepúsculo. Busque receitas por item, forja ou ingrediente, favorite as
+      suas e veja quanto falta comprar.
+    </div>
+  </a>
+
+  <div class="local">
+    <div class="nome">autoclicker &middot; keypress_macro &middot; launcher</div>
+    <div class="desc">
+      Automações de teclado e mouse que rodam localmente. Não são páginas web —
+      veja o código e as instruções no repositório.
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://github.com/scabini/pwfarm">github.com/scabini/pwfarm</a>
+    &middot; dados dos itens:
+    <a href="https://www.pwdatabase.com/br/" target="_blank" rel="noopener">pwdatabase</a>
+  </footer>
+
+</div>
+</body>
+</html>
