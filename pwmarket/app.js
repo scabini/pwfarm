@@ -1,0 +1,965 @@
+/* pwmarket — registro de preços, busca de receitas e planejamento de crafting.
+ *
+ * Catálogo (itens, receitas, ícones) vem de data/catalog.js, gerado pelo
+ * importar.py a partir do pwdatabase.
+ *
+ * Há dois tipos de dado, guardados separado de propósito:
+ *
+ *   PREÇOS      são do dono do painel. Publicados em data/precos.js e
+ *               somente leitura para quem visita.
+ *   FAVORITOS   e a coluna "Tenho" são de quem está olhando a página. Ficam
+ *   + TENHO     no localStorage de cada um e podem ser mexidos SEMPRE, mesmo
+ *               em modo consulta — senão um amigo não conseguiria planejar o
+ *               craft dele. O dono publica uma lista inicial de sugestões.
+ */
+
+'use strict';
+
+const CATALOGO = (window.PW_CATALOGO && window.PW_CATALOGO.itens) || {};
+const CHAVE_DADOS = 'pwmarket.dados.v1';
+const CHAVE_LOCAL = 'pwmarket.local.v1';
+
+const params = new URLSearchParams(location.search);
+const publicado = /github\.io$/.test(location.hostname);
+const CONSULTA = params.has('consulta') || (publicado && !params.has('editar'));
+
+// ordem das seções na aba Receitas; o resto entra em "Outros"
+const SECOES = ['Armas', 'Armaduras', 'Acessórios', 'Materiais'];
+
+let DADOS = { obs: {} };          // do dono
+let LOCAL = { favoritos: [] };    // de quem visita
+const expandidos = new Set();
+
+// Quando a página é servida pelo servidor.py, os preços vão direto para
+// data/precos.js e o botão Exportar deixa de ser necessário. Em file:// isso
+// não existe: navegador nenhum escreve no disco a partir de uma página local.
+let SERVIDOR = null;              // {arquivo} quando disponível
+let salvamentoPendente = null;
+
+/* ------------------------------------------------------------- utilidades */
+
+const $ = (s, raiz = document) => raiz.querySelector(s);
+const $$ = (s, raiz = document) => [...raiz.querySelectorAll(s)];
+
+const esc = (s) =>
+  String(s ?? '').replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const uid = () => Math.random().toString(36).slice(2, 10);
+const hoje = () => new Date().toISOString().slice(0, 10);
+
+/** '1.5kk' -> 1500000 · '500k' -> 500000 · '1.500' -> 1500 · '75' -> 75 */
+function parseMedas(entrada) {
+  const s = String(entrada ?? '').trim().toLowerCase().replace(/\s+/g, '');
+  if (!s) return null;
+  const m = s.match(/^([\d.,]+)(kk|k|m|mi)?$/);
+  if (!m) return null;
+
+  let [, num, sufixo] = m;
+  if (sufixo) {
+    num = num.replace(/,/g, '.');
+    const partes = num.split('.');
+    if (partes.length > 2) num = partes.slice(0, -1).join('') + '.' + partes.at(-1);
+    const v = parseFloat(num);
+    if (!isFinite(v)) return null;
+    return Math.round(v * (sufixo === 'k' ? 1e3 : 1e6));
+  }
+  const v = parseFloat(num.replace(/\./g, '').replace(',', '.'));
+  return isFinite(v) ? Math.round(v) : null;
+}
+
+/** 1500000 -> '1,5kk' · 500000 -> '500k' · 1500 -> '1.500' */
+function fmtMedas(v) {
+  if (v == null || !isFinite(v)) return '—';
+  if (v < 0) return '-' + fmtMedas(-v);
+  const curto = (n, div, suf) => {
+    const x = n / div;
+    const s = (x % 1 === 0 ? String(x) : x.toFixed(x < 10 ? 2 : 1))
+      .replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '');
+    return s.replace('.', ',') + suf;
+  };
+  if (v >= 1e6) return curto(v, 1e6, 'kk');
+  if (v >= 1e4) return curto(v, 1e3, 'k');
+  return v.toLocaleString('pt-BR');
+}
+
+const fmtCheio = (v) => (v == null || !isFinite(v) ? '—' : Math.round(v).toLocaleString('pt-BR') + ' medas');
+const fmtData = (d) => (d ? d.slice(8, 10) + '/' + d.slice(5, 7) : '—');
+
+const item = (id) => CATALOGO[String(id)];
+const iconeDe = (id) => `data/icons/${id}.png`;
+const ICONE_FALHA = "this.style.visibility='hidden'";
+
+function nomeHTML(it) {
+  if (!it) return '<span class="item-nome">item desconhecido</span>';
+  return `<span class="item-nome r${it.raridade ?? 0}">${esc(it.nome)}</span>`;
+}
+
+/** Materiais craftáveis caem em "Itens Básicos" no pwdatabase; renomeia. */
+function secaoDe(it) {
+  const t = it?.tipo || '';
+  if (SECOES.includes(t)) return t;
+  if (t === 'Itens Básicos' || t === 'Materiais') return 'Materiais';
+  return 'Outros';
+}
+
+/* ------------------------------------------------------------ persistência */
+
+function carregar() {
+  const base = window.PW_PRECOS || {};
+
+  // preços: publicado, sobreposto pelo local quando o dono está editando
+  DADOS = { obs: base.obs || {} };
+  try {
+    const bruto = localStorage.getItem(CHAVE_DADOS);
+    if (bruto) {
+      const d = JSON.parse(bruto);
+      if (d.obs) DADOS.obs = d.obs;
+    }
+  } catch (e) {
+    console.warn('não consegui ler os preços locais:', e);
+  }
+
+  // favoritos: os do visitante; sem nada salvo, começa com os sugeridos
+  let salvo = null;
+  try {
+    salvo = JSON.parse(localStorage.getItem(CHAVE_LOCAL) || 'null');
+  } catch (e) {
+    console.warn('não consegui ler os favoritos locais:', e);
+  }
+  if (salvo && Array.isArray(salvo.favoritos)) {
+    LOCAL = { favoritos: salvo.favoritos };
+  } else {
+    LOCAL = { favoritos: sugeridos() };
+  }
+}
+
+/** Favoritos que o dono publicou (o campo antigo se chamava "projetos"). */
+function sugeridos() {
+  const base = window.PW_PRECOS || {};
+  return (base.projetos || base.favoritos || []).map((p) => ({
+    chave: `${p.itemId}:${p.receitaId}`,
+    itemId: String(p.itemId),
+    receitaId: String(p.receitaId),
+    qtd: Math.max(1, p.qtd || 1),
+    tenho: { ...(p.tenho || {}) },
+  }));
+}
+
+function salvarDados() {
+  if (CONSULTA) return;  // preços são do dono
+  try {
+    localStorage.setItem(CHAVE_DADOS, JSON.stringify({ obs: DADOS.obs }));
+  } catch (e) {
+    alert('Não consegui salvar no navegador: ' + e.message);
+  }
+  if (SERVIDOR) agendarEnvio();
+}
+
+/* ---------------------------------------------------- gravação no disco */
+
+async function detectarServidor() {
+  // file:// nunca tem servidor; no GitHub Pages a API não existe e o pedido só
+  // viraria um 404 no console de quem abre a página
+  if (CONSULTA || !/^https?:$/.test(location.protocol)) return null;
+  try {
+    const r = await fetch('api/status', { cache: 'no-store' });
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d && d.ok ? d : null;
+  } catch {
+    return null;  // servido por outro http qualquer, sem a nossa API
+  }
+}
+
+/** Junta gravações próximas: registrar 3 preços seguidos escreve uma vez. */
+function agendarEnvio() {
+  clearTimeout(salvamentoPendente);
+  salvamentoPendente = setTimeout(enviarAoServidor, 600);
+}
+
+async function enviarAoServidor() {
+  if (!SERVIDOR || CONSULTA) return;
+  marcarSalvamento('salvando…');
+  try {
+    const r = await fetch('api/salvar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ obs: DADOS.obs, projetos: LOCAL.favoritos }),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok || !d.ok) throw new Error(d.erro || `HTTP ${r.status}`);
+    marcarSalvamento(`salvo em ${SERVIDOR.arquivo}`, 'ok');
+  } catch (e) {
+    // sem alert: o dado continua no localStorage, dá para exportar na mão
+    marcarSalvamento(`falha ao gravar: ${e.message}`, 'erro');
+    console.error('gravação no disco falhou:', e);
+  }
+}
+
+function marcarSalvamento(texto, estado = '') {
+  const el = $('#estadoSalvo');
+  if (!el) return;
+  el.textContent = texto;
+  el.className = 'estado-salvo ' + estado;
+}
+
+/** Favoritos salvam sempre — são de quem está usando a página. */
+function salvarLocal() {
+  try {
+    localStorage.setItem(CHAVE_LOCAL, JSON.stringify(LOCAL));
+  } catch (e) {
+    console.warn('não consegui salvar os favoritos:', e);
+  }
+  // com o servidor no ar e sendo o dono, os favoritos viram os sugeridos
+  if (SERVIDOR && !CONSULTA) agendarEnvio();
+}
+
+/* ------------------------------------------------------------ estatísticas */
+
+/** Referência é a mediana: uma loja com preço absurdo não distorce o valor. */
+function stats(id) {
+  const lista = DADOS.obs[String(id)];
+  if (!lista || !lista.length) return null;
+
+  const unit = lista.map((o) => o.v / (o.q || 1)).sort((a, b) => a - b);
+  const n = unit.length;
+  const mediana = n % 2 ? unit[(n - 1) / 2] : (unit[n / 2 - 1] + unit[n / 2]) / 2;
+  const porData = [...lista].sort((a, b) => String(a.d).localeCompare(String(b.d)));
+
+  return {
+    n,
+    min: unit[0],
+    max: unit[n - 1],
+    ref: Math.round(mediana),
+    ultima: porData[porData.length - 1],
+    dataUltima: porData[porData.length - 1].d || '',
+  };
+}
+
+function avaliar(unit, ref) {
+  if (!ref) return null;
+  const dif = (unit - ref) / ref;
+  if (dif <= -0.15) return { classe: 'barato', txt: 'barato', dif };
+  if (dif >= 0.15) return { classe: 'caro', txt: 'caro', dif };
+  return { classe: 'normal', txt: 'na média', dif };
+}
+
+const pctTxt = (dif) => (dif > 0 ? '+' : '') + Math.round(dif * 100) + '%';
+
+/* ---------------------------------------------------------------- receitas */
+
+/** Achata o catálogo em uma lista de receitas, uma entrada por receita. */
+function todasReceitas() {
+  const saida = [];
+  for (const it of Object.values(CATALOGO)) {
+    for (const r of it.receitas || []) {
+      if (!r.ingredientes || !r.ingredientes.length) continue;
+      saida.push({
+        chave: `${it.id}:${r.id}`,
+        it,
+        r,
+        secao: secaoDe(it),
+        // texto único para a busca: item, receita, forja e ingredientes
+        busca: [
+          it.nome, it.tipo, it.subtipo, r.nome, r.npc, r.local,
+          ...r.ingredientes.map((g) => g.nome),
+        ].join(' ').toLowerCase(),
+      });
+    }
+  }
+  return saida;
+}
+
+/** Custo de uma receita a preço de referência, ignorando estoque. */
+function custoReceita(r, qtd = 1) {
+  let total = 0;
+  let semPreco = 0;
+  for (const g of r.ingredientes) {
+    const s = stats(g.id);
+    if (s?.ref != null) total += s.ref * g.qtd * qtd;
+    else semPreco++;
+  }
+  return { total, semPreco, completo: semPreco === 0 };
+}
+
+const ehFavorito = (chave) => LOCAL.favoritos.some((f) => f.chave === chave);
+
+function alternarFavorito(chave) {
+  const i = LOCAL.favoritos.findIndex((f) => f.chave === chave);
+  if (i >= 0) {
+    LOCAL.favoritos.splice(i, 1);
+  } else {
+    const [itemId, receitaId] = chave.split(':');
+    LOCAL.favoritos.push({ chave, itemId, receitaId, qtd: 1, tenho: {} });
+  }
+  salvarLocal();
+}
+
+/* ================================================================ PREÇOS */
+
+function renderPrecos() {
+  const alvo = $('#conteudoPrecos');
+  const termo = $('#filtroPrecos').value.trim().toLowerCase();
+  const ordem = $('#ordemPrecos').value;
+
+  let ids = Object.keys(DADOS.obs).filter((id) => (DADOS.obs[id] || []).length);
+
+  if (!ids.length) {
+    alvo.innerHTML = `<div class="vazio"><strong>Nenhum preço registrado ainda</strong>
+      ${CONSULTA ? 'O dono do painel ainda não publicou preços.' :
+        'Use <em>+ Registrar preço</em> para anotar o que você viu nas lojas e no chat.'}
+      <div style="margin-top:14px">Catálogo local: ${Object.keys(CATALOGO).length} itens.
+      Para trazer mais: <code>py importar.py --nome "…"</code></div></div>`;
+    return;
+  }
+
+  if (termo) {
+    ids = ids.filter((id) => {
+      const it = item(id);
+      return it && [it.nome, it.tipo, it.subtipo].join(' ').toLowerCase().includes(termo);
+    });
+  }
+
+  const st = {};
+  ids.forEach((id) => (st[id] = stats(id)));
+
+  const nomeDe = (id) => (item(id)?.nome || '').toLowerCase();
+  ids.sort((a, b) => {
+    switch (ordem) {
+      case 'ref-desc': return (st[b].ref || 0) - (st[a].ref || 0);
+      case 'ref-asc': return (st[a].ref || 0) - (st[b].ref || 0);
+      case 'recente': return String(st[b].dataUltima).localeCompare(String(st[a].dataUltima));
+      case 'obs': return st[b].n - st[a].n;
+      default: return nomeDe(a).localeCompare(nomeDe(b), 'pt-BR');
+    }
+  });
+
+  if (!ids.length) {
+    alvo.innerHTML = `<div class="vazio"><strong>Nada com esse filtro</strong>
+      Nenhum item registrado casa com “${esc(termo)}”.</div>`;
+    return;
+  }
+
+  const linhas = ids.map((id) => {
+    const it = item(id);
+    const s = st[id];
+    const obs = [...DADOS.obs[id]].sort((a, b) => String(b.d).localeCompare(String(a.d)));
+    const aberto = expandidos.has(id);
+
+    const historico = obs.map((o) => {
+      const unit = o.v / (o.q || 1);
+      const av = avaliar(unit, s.ref);
+      return `<div class="obs">
+        <span class="data">${fmtData(o.d)}</span>
+        <span class="medas" title="${fmtCheio(unit)} por unidade">${fmtMedas(unit)}</span>
+        ${o.q > 1 ? `<span class="faixa">(${o.q}× por ${fmtMedas(o.v)})</span>` : ''}
+        <span class="faixa">${o.t === 'compra' ? 'WTB' : 'venda'}</span>
+        ${av && s.n > 1 ? `<span class="pastilha ${av.classe}">${pctTxt(av.dif)}</span>` : ''}
+        <span class="nota">${esc(o.n || '')}</span>
+        ${CONSULTA ? '' : `<button class="mini perigo so-edicao" data-del-obs="${id}" data-obs-id="${esc(o.id)}">remover</button>`}
+      </div>`;
+    }).join('');
+
+    return `<tr data-id="${id}">
+      <td>
+        <div class="item-cel">
+          <img class="icone" src="${iconeDe(id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+          <div>
+            ${nomeHTML(it)}
+            <div class="item-sub">${esc(it?.subtipo || it?.tipo || '—')}</div>
+          </div>
+        </div>
+      </td>
+      <td class="num"><span class="medas ref" title="${fmtCheio(s.ref)}">${fmtMedas(s.ref)}</span></td>
+      <td class="num"><span class="faixa" title="mínimo e máximo observados">${fmtMedas(s.min)} – ${fmtMedas(s.max)}</span></td>
+      <td class="meio"><span class="contagem" title="observações registradas">${s.n}</span></td>
+      <td class="num"><span class="faixa">${fmtData(s.dataUltima)}</span></td>
+      <td class="acoes">
+        <button class="mini" data-expandir="${id}">${aberto ? 'fechar' : `histórico (${s.n})`}</button>
+        ${CONSULTA ? '' : `<button class="mini so-edicao" data-add-obs="${id}">+ obs</button>`}
+      </td>
+    </tr>
+    <tr class="historico ${aberto ? '' : 'oculto'}" data-hist="${id}">
+      <td colspan="6"><div class="obs-lista">${historico}</div></td>
+    </tr>`;
+  }).join('');
+
+  alvo.innerHTML = `<div class="tabela-wrap"><table>
+    <thead><tr>
+      <th>Item</th><th class="num">Preço ref.</th><th class="num">Faixa</th>
+      <th class="meio">Obs.</th><th class="num">Última</th><th></th>
+    </tr></thead>
+    <tbody>${linhas}</tbody>
+  </table></div>`;
+}
+
+/* ============================================================== RECEITAS */
+
+function renderReceitas() {
+  const alvo = $('#conteudoReceitas');
+  const termo = $('#filtroReceitas').value.trim().toLowerCase();
+  const secao = $('#secaoReceitas').value;
+  const ordem = $('#ordemReceitas').value;
+
+  let lista = todasReceitas();
+  if (secao) lista = lista.filter((x) => x.secao === secao);
+  if (termo) {
+    // cada palavra tem que aparecer em algum campo — busca AND
+    const palavras = termo.split(/\s+/);
+    lista = lista.filter((x) => palavras.every((p) => x.busca.includes(p)));
+  }
+
+  if (!lista.length) {
+    alvo.innerHTML = `<div class="vazio"><strong>Nenhuma receita encontrada</strong>
+      ${termo || secao ? 'Tente outro termo ou seção.'
+        : `O catálogo tem ${Object.keys(CATALOGO).length} itens, nenhum com receita.`}</div>`;
+    return;
+  }
+
+  const custos = new Map(lista.map((x) => [x.chave, custoReceita(x.r)]));
+  lista.sort((a, b) => {
+    switch (ordem) {
+      case 'nivel':
+        return (a.it.nivel_req || 0) - (b.it.nivel_req || 0)
+          || a.it.nome.localeCompare(b.it.nome, 'pt-BR');
+      case 'custo-asc': return custos.get(a.chave).total - custos.get(b.chave).total;
+      case 'custo-desc': return custos.get(b.chave).total - custos.get(a.chave).total;
+      default: return a.it.nome.localeCompare(b.it.nome, 'pt-BR');
+    }
+  });
+
+  // agrupa mantendo a ordem de SECOES
+  const grupos = new Map();
+  for (const x of lista) {
+    if (!grupos.has(x.secao)) grupos.set(x.secao, []);
+    grupos.get(x.secao).push(x);
+  }
+  const ordemSecao = [...SECOES, 'Outros'].filter((s) => grupos.has(s));
+
+  alvo.innerHTML = ordemSecao.map((s) => `
+    <div class="secao">${esc(s)} <span class="qtd">${grupos.get(s).length}</span></div>
+    <div class="grade-receitas">${grupos.get(s).map(cardReceita).join('')}</div>
+  `).join('');
+}
+
+function cardReceita(x) {
+  const { it, r, chave } = x;
+  const c = custoReceita(r);
+  const fav = ehFavorito(chave);
+
+  const chips = r.ingredientes.map((g) => {
+    const s = stats(g.id);
+    const semPreco = s?.ref == null;
+    const nome = item(g.id)?.nome || g.nome;
+    const preco = semPreco ? 'sem preço registrado'
+      : `${fmtMedas(s.ref)} un · subtotal ${fmtMedas(s.ref * g.qtd)}`;
+    return `<span class="ing-chip${semPreco ? ' sem-preco' : ''}" title="${esc(nome)} — ${g.qtd}× · ${preco}">
+      <img src="${iconeDe(g.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">${g.qtd}</span>`;
+  }).join('');
+
+  const custo = c.total === 0 && !c.completo
+    ? '<span class="custo-chip vazio">sem preços</span>'
+    : `<span class="custo-chip${c.completo ? '' : ' parcial'}"
+         title="${c.completo ? fmtCheio(c.total)
+           : `${fmtCheio(c.total)} — parcial, ${c.semPreco} ingrediente(s) sem preço`}">
+         ${fmtMedas(c.total)}${c.completo ? '' : '+'}</span>`;
+
+  const prob = r.prob != null && r.prob < 100
+    ? `<span class="pastilha caro" title="chance por tentativa">${r.prob}%</span>` : '';
+
+  return `<div class="receita${fav ? ' favorita' : ''}">
+    <img class="icone" src="${iconeDe(it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+    <div class="corpo">
+      <div class="topo">
+        <div class="titulo">${nomeHTML(it)}</div>
+        ${it.nivel_req ? `<span class="lv">lv ${it.nivel_req}</span>` : ''}
+        <button class="estrela${fav ? ' on' : ''}" data-fav="${esc(chave)}"
+                title="${fav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${fav ? '★' : '☆'}</button>
+      </div>
+      <div class="rec" title="${esc(r.nome)}">${esc(r.nome)} ${prob}</div>
+      <div class="forja">${esc(r.npc || '—')}${r.local ? ' · ' + esc(r.local) : ''}</div>
+      <div class="pe">
+        <div class="ingredientes">${chips}</div>
+        ${custo}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ============================================================= FAVORITOS */
+
+/** Resolve um favorito em linhas de ingrediente + totais. */
+function calcular(fav) {
+  const it = item(fav.itemId);
+  const receita = (it?.receitas || []).find((r) => String(r.id) === String(fav.receitaId))
+    || (it?.receitas || [])[0];
+  if (!receita) return null;
+
+  const qtd = Math.max(1, fav.qtd || 1);
+  let total = 0;
+  const semPreco = [];
+
+  const linhas = receita.ingredientes.map((ing) => {
+    const precisa = ing.qtd * qtd;
+    const tenho = Math.max(0, Number(fav.tenho?.[ing.id]) || 0);
+    const falta = Math.max(0, precisa - tenho);
+    const s = stats(ing.id);
+    const unit = s?.ref ?? null;
+    const sub = unit != null ? falta * unit : null;
+
+    if (sub != null) total += sub;
+    else if (falta > 0) semPreco.push(ing);
+
+    return { ing, precisa, tenho, falta, unit, sub, temReceita: !!item(ing.id)?.receitas?.length };
+  });
+
+  return { it, receita, qtd, linhas, total, semPreco };
+}
+
+function renderFav() {
+  const alvo = $('#conteudoFav');
+  const termo = $('#filtroFav').value.trim().toLowerCase();
+
+  atualizarBadge();
+
+  if (!LOCAL.favoritos.length) {
+    alvo.innerHTML = `<div class="vazio"><strong>Nenhum favorito</strong>
+      Vá em <em>Receitas</em>, procure o que quer produzir e clique na estrela ☆.
+      <div style="margin-top:12px">Aqui você informa o que já tem e vê quanto falta comprar.</div></div>`;
+    return;
+  }
+
+  const lista = LOCAL.favoritos.filter((f) => {
+    if (!termo) return true;
+    const it = item(f.itemId);
+    return [it?.nome, it?.tipo, it?.subtipo].join(' ').toLowerCase().includes(termo);
+  });
+
+  if (!lista.length) {
+    alvo.innerHTML = `<div class="vazio"><strong>Nada com esse filtro</strong></div>`;
+    return;
+  }
+
+  alvo.innerHTML = lista.map((fav) => {
+    const c = calcular(fav);
+    if (!c) {
+      return `<div class="projeto"><div class="projeto-topo">
+        <div><div class="projeto-titulo">Favorito inválido</div>
+        <div class="projeto-meta">O item ${esc(fav.itemId)} não está mais no catálogo.</div></div>
+        <div class="direita">
+          <button class="mini perigo" data-del-fav="${esc(fav.chave)}">remover</button>
+        </div></div></div>`;
+    }
+
+    const linhas = c.linhas.map((l) => `
+      <tr class="${l.falta === 0 ? 'completo' : ''}">
+        <td>
+          <div class="item-cel">
+            <img class="icone pequeno" src="${iconeDe(l.ing.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+            <div>
+              ${nomeHTML(item(l.ing.id) || { nome: l.ing.nome, raridade: l.ing.raridade })}
+              ${l.temReceita ? '<div class="item-sub">craftável</div>' : ''}
+            </div>
+          </div>
+        </td>
+        <td class="num"><span class="medas fraco">${l.precisa}</span></td>
+        <td class="meio">
+          <input class="qtd-input" type="number" min="0" step="1" value="${l.tenho}"
+                 data-tenho="${esc(fav.chave)}" data-ing="${l.ing.id}"></td>
+        <td class="num"><span class="medas">${l.falta || '—'}</span></td>
+        <td class="num">${l.unit != null
+          ? `<span class="medas fraco" title="${fmtCheio(l.unit)}">${fmtMedas(l.unit)}</span>`
+          : '<span class="pastilha normal">sem preço</span>'}</td>
+        <td class="num">${l.sub != null
+          ? `<span class="medas" title="${fmtCheio(l.sub)}">${l.falta ? fmtMedas(l.sub) : '—'}</span>`
+          : '<span class="medas fraco">?</span>'}</td>
+      </tr>`).join('');
+
+    const prob = c.receita.prob != null && c.receita.prob < 100
+      ? `<span class="pastilha caro" title="chance de sucesso por tentativa">${c.receita.prob}%</span>` : '';
+
+    // O total só cobre o que tem preço. Dizer isso é obrigatório: um total
+    // parcial apresentado como final levaria a decisão errada.
+    const aviso = c.semPreco.length
+      ? `<div class="aviso-preco">Total parcial: ${c.semPreco.length} ingrediente(s) sem preço registrado —
+         ${c.semPreco.map((i) => esc(item(i.id)?.nome || i.nome)).join(', ')}.
+         Registre o preço deles para o custo ficar completo.</div>` : '';
+
+    return `<div class="projeto">
+      <div class="projeto-topo">
+        <img class="icone" src="${iconeDe(fav.itemId)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+        <div>
+          <div class="projeto-titulo">${nomeHTML(c.it)} <span class="medas fraco">×${c.qtd}</span></div>
+          <div class="projeto-meta">${esc(c.receita.nome)}${c.receita.npc ? ' · ' + esc(c.receita.npc) : ''}${c.receita.local ? ' · ' + esc(c.receita.local) : ''}</div>
+        </div>
+        <div class="direita">
+          ${prob}
+          <input class="qtd-input" type="number" min="1" step="1" value="${c.qtd}"
+                 data-qtd-fav="${esc(fav.chave)}" title="unidades a produzir">
+          <button class="mini perigo" data-del-fav="${esc(fav.chave)}">remover</button>
+        </div>
+      </div>
+      <div class="tabela-wrap"><table>
+        <thead><tr>
+          <th>Ingrediente</th><th class="num">Precisa</th><th class="meio">Tenho</th>
+          <th class="num">Falta</th><th class="num">Preço un.</th><th class="num">Subtotal</th>
+        </tr></thead>
+        <tbody>${linhas}</tbody>
+      </table></div>
+      ${aviso}
+      <div class="total">
+        <span class="rotulo">Falta comprar</span>
+        <span class="valor" title="${fmtCheio(c.total)}">${fmtMedas(c.total)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function atualizarBadge() {
+  const b = $('#badgeFav');
+  b.textContent = LOCAL.favoritos.length || '';
+  b.classList.toggle('tem', LOCAL.favoritos.length > 0);
+}
+
+/* ============================================== busca de item no modal */
+
+function buscarCatalogo(termo) {
+  const t = termo.trim().toLowerCase();
+  let lista = Object.values(CATALOGO);
+  if (t) lista = lista.filter((i) => [i.nome, i.tipo, i.subtipo].join(' ').toLowerCase().includes(t));
+  return lista.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).slice(0, 60);
+}
+
+function renderResultados(caixa, lista, aoEscolher) {
+  caixa.hidden = false;
+  if (!lista.length) {
+    caixa.innerHTML = `<div class="resultado"><div class="info">
+      <div class="sub">Nada no catálogo local. Importe com
+      <code>py importar.py --nome "…"</code></div></div></div>`;
+    return;
+  }
+  caixa.innerHTML = lista.map((i) => `
+    <div class="resultado" data-escolher="${i.id}">
+      <img class="icone pequeno" src="${iconeDe(i.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+      <div class="info">
+        ${nomeHTML(i)}
+        <div class="sub">${esc(i.subtipo || i.tipo || '—')}${i.receitas?.length ? ` · ${i.receitas.length} receita(s)` : ''}</div>
+      </div>
+    </div>`).join('');
+
+  $$('[data-escolher]', caixa).forEach((el) =>
+    el.addEventListener('click', () => aoEscolher(el.dataset.escolher)));
+}
+
+/* ------------------------------------------------------- modal de preço */
+
+let itemEscolhido = null;
+
+function abrirModalPreco(idPre = null) {
+  itemEscolhido = null;
+  $('#buscaItem').value = '';
+  $('#valorObs').value = '';
+  $('#qtdObs').value = '1';
+  $('#notaObs').value = '';
+  $('#dataObs').value = hoje();
+  $('#tipoObs').value = 'venda';
+  $('#resultadosItem').hidden = true;
+  $('#avaliacaoPreco').classList.add('oculto');
+
+  if (idPre && item(idPre)) escolherItem(idPre);
+  else mostrarBuscaItem();
+
+  $('#modalPreco').classList.remove('oculto');
+  (idPre ? $('#valorObs') : $('#buscaItem')).focus();
+}
+
+function mostrarBuscaItem() {
+  $('#blocoBuscaItem').hidden = false;
+  $('#blocoItemEscolhido').hidden = true;
+}
+
+function escolherItem(id) {
+  const it = item(id);
+  if (!it) return;
+  itemEscolhido = String(id);
+  $('#blocoBuscaItem').hidden = true;
+  $('#blocoItemEscolhido').hidden = false;
+  $('#escolhidoIcone').src = iconeDe(id);
+  $('#escolhidoNome').className = 'item-nome r' + (it.raridade ?? 0);
+  $('#escolhidoNome').textContent = it.nome;
+  const s = stats(id);
+  $('#escolhidoSub').textContent = (it.subtipo || it.tipo || '')
+    + (s ? ` · ref. ${fmtMedas(s.ref)} (${s.n} obs.)` : ' · sem preço ainda');
+  atualizarAvaliacao();
+  $('#valorObs').focus();
+}
+
+/** Mostra na hora se o valor digitado está barato ou caro contra a mediana. */
+function atualizarAvaliacao() {
+  const caixa = $('#avaliacaoPreco');
+  const v = parseMedas($('#valorObs').value);
+  const q = Math.max(1, parseInt($('#qtdObs').value, 10) || 1);
+  const s = itemEscolhido ? stats(itemEscolhido) : null;
+
+  if (v == null || !itemEscolhido) { caixa.classList.add('oculto'); return; }
+
+  const unit = v / q;
+  caixa.classList.remove('oculto');
+  if (!s) {
+    caixa.innerHTML = `<span class="pastilha normal">1ª obs.</span>
+      <span class="texto">Unitário <span class="medas">${fmtMedas(unit)}</span>
+      (${fmtCheio(unit)}). Sem histórico para comparar ainda.</span>`;
+    return;
+  }
+  const av = avaliar(unit, s.ref);
+  caixa.innerHTML = `<span class="pastilha ${av.classe}">${av.txt} ${pctTxt(av.dif)}</span>
+    <span class="texto">Unitário <span class="medas">${fmtMedas(unit)}</span>
+    contra referência <span class="medas">${fmtMedas(s.ref)}</span>
+    (faixa ${fmtMedas(s.min)}–${fmtMedas(s.max)}, ${s.n} obs.)</span>`;
+}
+
+function salvarObs() {
+  if (!itemEscolhido) return alert('Escolha um item primeiro.');
+  const v = parseMedas($('#valorObs').value);
+  if (v == null || v <= 0) return alert('Valor inválido. Use 1.5kk, 500k ou 750.');
+  const q = Math.max(1, parseInt($('#qtdObs').value, 10) || 1);
+
+  (DADOS.obs[itemEscolhido] ||= []).push({
+    id: uid(), v, q,
+    d: $('#dataObs').value || hoje(),
+    t: $('#tipoObs').value,
+    n: $('#notaObs').value.trim(),
+  });
+
+  salvarDados();
+  fecharModais();
+  renderTudo();
+}
+
+function fecharModais() {
+  $('#modalPreco').classList.add('oculto');
+}
+
+/* ------------------------------------------------------ exportar/importar */
+
+function exportar() {
+  // Sai como .js (e não .json) para poder ir direto em data/precos.js e
+  // continuar funcionando via file://, igual ao catálogo. Os favoritos vão
+  // como sugestão inicial para quem abrir a página publicada.
+  const corpo = JSON.stringify({ obs: DADOS.obs, projetos: LOCAL.favoritos }, null, 1);
+  const texto = '// pwmarket — preços e favoritos sugeridos. Gerado pelo botão Exportar.\n'
+    + `window.PW_PRECOS = ${corpo};\n`;
+  const url = URL.createObjectURL(new Blob([texto], { type: 'text/javascript' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'precos.js';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importar(arquivo) {
+  const leitor = new FileReader();
+  leitor.onload = () => {
+    try {
+      const t = String(leitor.result).trim();
+      const cru = t.startsWith('{') ? t : t.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/)?.[1];
+      if (!cru) throw new Error('não reconheci o formato do arquivo');
+      const d = JSON.parse(cru);
+      const nObs = Object.keys(d.obs || {}).length;
+      const favs = d.projetos || d.favoritos || [];
+      if (!confirm(`Substituir os dados atuais por ${nObs} item(ns) com preço e `
+        + `${favs.length} favorito(s)?`)) return;
+      DADOS = { obs: d.obs || {} };
+      LOCAL = {
+        favoritos: favs.map((p) => ({
+          chave: `${p.itemId}:${p.receitaId}`,
+          itemId: String(p.itemId), receitaId: String(p.receitaId),
+          qtd: Math.max(1, p.qtd || 1), tenho: { ...(p.tenho || {}) },
+        })),
+      };
+      salvarDados();
+      salvarLocal();
+      renderTudo();
+    } catch (e) {
+      alert('Falha ao importar: ' + e.message);
+    }
+  };
+  leitor.readAsText(arquivo);
+}
+
+/* -------------------------------------------------------------- navegação */
+
+function irPara(nome) {
+  $$('nav button').forEach((b) => b.classList.toggle('ativo', b.dataset.painel === nome));
+  $$('.painel').forEach((p) => p.classList.toggle('ativo', p.id === 'painel-' + nome));
+}
+
+function atualizarRodape() {
+  const nItens = Object.keys(CATALOGO).length;
+  const nPrecos = Object.keys(DADOS.obs).filter((k) => DADOS.obs[k]?.length).length;
+  const nObs = Object.values(DADOS.obs).reduce((s, l) => s + (l?.length || 0), 0);
+  const nRec = todasReceitas().length;
+  $('#rodapeCatalogo').textContent =
+    `${nItens} itens · ${nRec} receitas · ${nPrecos} com preço · ${nObs} observações`;
+}
+
+function preencherSecoes() {
+  const grupos = new Map();
+  for (const x of todasReceitas()) grupos.set(x.secao, (grupos.get(x.secao) || 0) + 1);
+  const sel = $('#secaoReceitas');
+  for (const s of [...SECOES, 'Outros']) {
+    if (!grupos.has(s)) continue;
+    const o = document.createElement('option');
+    o.value = s;
+    o.textContent = `${s} (${grupos.get(s)})`;
+    sel.appendChild(o);
+  }
+}
+
+function renderTudo() {
+  renderPrecos();
+  renderReceitas();
+  renderFav();
+  atualizarRodape();
+}
+
+/* ------------------------------------------------------------------ eventos */
+
+function ligar() {
+  if (CONSULTA) {
+    document.body.classList.add('consulta');
+    if (publicado) $('#faixaConsulta').classList.remove('oculto');
+  }
+
+  $$('nav button').forEach((b) => b.addEventListener('click', () => irPara(b.dataset.painel)));
+
+  $('#filtroPrecos').addEventListener('input', renderPrecos);
+  $('#ordemPrecos').addEventListener('change', renderPrecos);
+  $('#btnRegistrar').addEventListener('click', () => abrirModalPreco());
+
+  $('#filtroReceitas').addEventListener('input', renderReceitas);
+  $('#secaoReceitas').addEventListener('change', renderReceitas);
+  $('#ordemReceitas').addEventListener('change', renderReceitas);
+
+  $('#filtroFav').addEventListener('input', renderFav);
+  $('#btnSugeridos').addEventListener('click', () => {
+    const s = sugeridos();
+    if (!s.length) return alert('Este painel não traz favoritos sugeridos.');
+    if (!confirm(`Substituir seus ${LOCAL.favoritos.length} favorito(s) pelos `
+      + `${s.length} sugeridos? A coluna Tenho volta a zero.`)) return;
+    LOCAL.favoritos = s;
+    salvarLocal();
+    renderReceitas();
+    renderFav();
+  });
+  $('#btnLimparFav').addEventListener('click', () => {
+    if (!LOCAL.favoritos.length) return;
+    if (!confirm(`Remover todos os ${LOCAL.favoritos.length} favoritos?`)) return;
+    LOCAL.favoritos = [];
+    salvarLocal();
+    renderReceitas();
+    renderFav();
+  });
+
+  // modal
+  $('#buscaItem').addEventListener('input', (e) =>
+    renderResultados($('#resultadosItem'), buscarCatalogo(e.target.value), escolherItem));
+  $('#buscaItem').addEventListener('focus', (e) =>
+    renderResultados($('#resultadosItem'), buscarCatalogo(e.target.value), escolherItem));
+  $('#btnTrocarItem').addEventListener('click', () => {
+    itemEscolhido = null;
+    mostrarBuscaItem();
+    $('#avaliacaoPreco').classList.add('oculto');
+    $('#buscaItem').focus();
+  });
+  $('#valorObs').addEventListener('input', atualizarAvaliacao);
+  $('#qtdObs').addEventListener('input', atualizarAvaliacao);
+  $('#btnSalvarObs').addEventListener('click', salvarObs);
+  $('#valorObs').addEventListener('keydown', (e) => { if (e.key === 'Enter') salvarObs(); });
+  $('#notaObs').addEventListener('keydown', (e) => { if (e.key === 'Enter') salvarObs(); });
+
+  $$('[data-fechar]').forEach((b) => b.addEventListener('click', fecharModais));
+  $$('.modal-fundo').forEach((f) =>
+    f.addEventListener('click', (e) => { if (e.target === f) fecharModais(); }));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharModais(); });
+
+  $('#btnGravar').addEventListener('click', (e) => { e.preventDefault(); enviarAoServidor(); });
+  $('#btnExportar').addEventListener('click', (e) => { e.preventDefault(); exportar(); });
+  $('#btnImportar').addEventListener('click', (e) => { e.preventDefault(); $('#arquivoImportar').click(); });
+  $('#arquivoImportar').addEventListener('change', (e) => {
+    if (e.target.files[0]) importar(e.target.files[0]);
+    e.target.value = '';
+  });
+
+  // Delegação: as listas são reconstruídas a cada render.
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+
+    if (b.dataset.fav) {
+      alternarFavorito(b.dataset.fav);
+      renderReceitas();
+      renderFav();
+    } else if (b.dataset.delFav) {
+      alternarFavorito(b.dataset.delFav);
+      renderReceitas();
+      renderFav();
+    } else if (b.dataset.expandir) {
+      const id = b.dataset.expandir;
+      expandidos.has(id) ? expandidos.delete(id) : expandidos.add(id);
+      renderPrecos();
+    } else if (b.dataset.addObs) {
+      abrirModalPreco(b.dataset.addObs);
+    } else if (b.dataset.delObs) {
+      const id = b.dataset.delObs;
+      DADOS.obs[id] = (DADOS.obs[id] || []).filter((o) => o.id !== b.dataset.obsId);
+      if (!DADOS.obs[id].length) { delete DADOS.obs[id]; expandidos.delete(id); }
+      salvarDados();
+      renderTudo();
+    }
+  });
+
+  document.addEventListener('change', (e) => {
+    const el = e.target;
+    if (el.dataset.tenho) {
+      const f = LOCAL.favoritos.find((x) => x.chave === el.dataset.tenho);
+      if (f) {
+        (f.tenho ||= {})[el.dataset.ing] = Math.max(0, parseInt(el.value, 10) || 0);
+        salvarLocal();
+        renderFav();
+      }
+    } else if (el.dataset.qtdFav) {
+      const f = LOCAL.favoritos.find((x) => x.chave === el.dataset.qtdFav);
+      if (f) {
+        f.qtd = Math.max(1, parseInt(el.value, 10) || 1);
+        salvarLocal();
+        renderFav();
+      }
+    }
+  });
+}
+
+/* ---------------------------------------------------------------- início */
+
+if (!window.PW_CATALOGO) {
+  document.querySelector('main').innerHTML = `<div class="vazio">
+    <strong>Catálogo não carregado</strong>
+    Não encontrei <code>data/catalog.js</code>. Rode o importador primeiro:
+    <div style="margin-top:12px"><code>py importar.py --nome "Pedra da Luz"</code></div></div>`;
+} else {
+  carregar();
+  preencherSecoes();
+  ligar();
+  renderTudo();
+
+  // Descobre o servidor depois de desenhar a tela — a página tem que subir
+  // igual mesmo sem ele. Nada é gravado por conta própria aqui: a primeira
+  // escrita só acontece na primeira alteração, ou no "Gravar agora".
+  detectarServidor().then((s) => {
+    if (!s || CONSULTA) return;
+    SERVIDOR = s;
+    document.body.classList.add('com-servidor');
+    marcarSalvamento(`grava direto em ${s.arquivo}`, 'ok');
+  });
+}

@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+
+# cópia que o servidor local guarda antes de sobrescrever os preços
+data/precos.bak.js

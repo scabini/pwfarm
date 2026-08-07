@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pwmarket — preços do The PW Clássico</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-linha">
+    <h1>pwmarket<small><strong>The PW Clássico</strong> &middot; servidor BR &middot; preços em medas</small></h1>
+    <nav>
+      <button data-painel="precos" class="ativo">Preços</button>
+      <button data-painel="receitas">Receitas</button>
+      <button data-painel="favoritos">Favoritos <span class="badge" id="badgeFav"></span></button>
+    </nav>
+  </div>
+</header>
+
+<div class="faixa-consulta oculto" id="faixaConsulta">
+  Modo consulta &mdash; os preços são somente leitura.
+  Favoritos e a coluna <strong>Tenho</strong> são seus e ficam neste navegador.
+  <a href="?editar=1">Abrir para edição</a>
+</div>
+
+<main>
+
+  <!-- ------------------------------------------------------------ PREÇOS -->
+  <section class="painel ativo" id="painel-precos">
+    <div class="barra">
+      <input class="busca" id="filtroPrecos" placeholder="Filtrar por nome, tipo ou subtipo…">
+      <select id="ordemPrecos">
+        <option value="nome">Ordenar: nome</option>
+        <option value="ref-desc">Preço ref. (maior)</option>
+        <option value="ref-asc">Preço ref. (menor)</option>
+        <option value="recente">Observação mais recente</option>
+        <option value="obs">Nº de observações</option>
+      </select>
+      <button class="acao so-edicao" id="btnRegistrar">+ Registrar preço</button>
+    </div>
+    <div id="conteudoPrecos"></div>
+  </section>
+
+  <!-- ---------------------------------------------------------- RECEITAS -->
+  <section class="painel" id="painel-receitas">
+    <div class="barra">
+      <input class="busca" id="filtroReceitas"
+             placeholder="Buscar por item, receita, forja ou ingrediente…">
+      <select id="secaoReceitas">
+        <option value="">Todas as seções</option>
+      </select>
+      <select id="ordemReceitas">
+        <option value="nome">Ordenar: nome</option>
+        <option value="nivel">Nível</option>
+        <option value="custo-asc">Custo (menor)</option>
+        <option value="custo-desc">Custo (maior)</option>
+      </select>
+    </div>
+    <div id="conteudoReceitas"></div>
+  </section>
+
+  <!-- --------------------------------------------------------- FAVORITOS -->
+  <section class="painel" id="painel-favoritos">
+    <div class="barra">
+      <input class="busca" id="filtroFav" placeholder="Filtrar favoritos…">
+      <button class="acao fantasma" id="btnSugeridos">Restaurar sugeridos</button>
+      <button class="acao fantasma" id="btnLimparFav">Limpar favoritos</button>
+    </div>
+    <div id="conteudoFav"></div>
+  </section>
+
+</main>
+
+<footer>
+  <span id="rodapeCatalogo">—</span>
+  <span class="so-edicao so-servidor"><a href="#" id="btnGravar">Gravar agora</a></span>
+  <span class="so-edicao"><a href="#" id="btnExportar">Exportar dados</a></span>
+  <span class="so-edicao"><a href="#" id="btnImportar">Importar dados</a></span>
+  <span class="estado-salvo" id="estadoSalvo"></span>
+  <span class="dir">Dados dos itens: <a href="https://www.pwdatabase.com/br/" target="_blank" rel="noopener">pwdatabase</a></span>
+</footer>
+
+<input type="file" id="arquivoImportar" accept=".json,.js" hidden>
+
+
+<!-- ==================================================== MODAL: registrar -->
+<div class="modal-fundo oculto" id="modalPreco">
+  <div class="modal">
+    <h2>Registrar preço observado <button class="fechar" data-fechar>&times;</button></h2>
+    <div class="modal-corpo">
+
+      <div class="campo" id="blocoBuscaItem">
+        <label for="buscaItem">Item</label>
+        <input id="buscaItem" placeholder="Digite o nome ou o tipo do item…" autocomplete="off">
+        <div class="resultados" id="resultadosItem" hidden></div>
+        <div class="dica">Só aparecem itens já importados. Para trazer um novo:
+          <code>py importar.py --nome "…"</code></div>
+      </div>
+
+      <div class="campo" id="blocoItemEscolhido" hidden>
+        <label>Item</label>
+        <div class="selecionado">
+          <img class="icone" id="escolhidoIcone" alt="">
+          <div class="info">
+            <div class="item-nome" id="escolhidoNome"></div>
+            <div class="item-sub" id="escolhidoSub"></div>
+          </div>
+          <button class="mini" id="btnTrocarItem">Trocar</button>
+        </div>
+      </div>
+
+      <div class="campo-duplo">
+        <div class="campo">
+          <label for="valorObs">Valor total pago/pedido</label>
+          <input id="valorObs" placeholder="ex. 1.5kk, 500k, 750" autocomplete="off">
+        </div>
+        <div class="campo">
+          <label for="qtdObs">Quantidade</label>
+          <input id="qtdObs" type="number" min="1" step="1" value="1">
+        </div>
+      </div>
+
+      <div class="avaliacao oculto" id="avaliacaoPreco"></div>
+
+      <div class="campo-duplo">
+        <div class="campo">
+          <label for="tipoObs">Tipo</label>
+          <select id="tipoObs">
+            <option value="venda">Vendendo (loja/anúncio)</option>
+            <option value="compra">Comprando (WTB)</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="dataObs">Data</label>
+          <input id="dataObs" type="date">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="notaObs">Nota (opcional)</label>
+        <input id="notaObs" placeholder="ex. loja no Arquipélago, player Fulano…" autocomplete="off">
+      </div>
+
+    </div>
+    <div class="modal-pe">
+      <button class="acao fantasma" data-fechar>Cancelar</button>
+      <button class="acao" id="btnSalvarObs">Salvar observação</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- catálogo gerado por importar.py. É <script> e não fetch() de propósito:
+     assim a página funciona com duplo-clique (file://), sem servidor. -->
+<script src="data/catalog.js"></script>
+<!-- preços e favoritos sugeridos publicados (opcional) -->
+<script src="data/precos.js" onerror="void 0"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
