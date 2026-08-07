@@ -1,0 +1,10 @@
+{
+  "name": "loop_spam_1",
+  "loop": true,
+  "start_delay": 3.0,
+  "loop_delay": 0.0,
+  "stop_hotkey": "f12",
+  "steps": [
+    { "key": "1", "delay_after": 1.0 }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "loop_rotation",
+  "loop": true,
+  "start_delay": 3.0,
+  "loop_delay": 0.5,
+  "stop_hotkey": "f12",
+  "steps": [
+    { "key": "1", "delay_after": 0.4 },
+    { "key": "2", "delay_after": 0.4 },
+    { "key": "3", "delay_after": 0.4 },
+    { "key": "4", "hold": 0.5, "delay_after": 0.6 },
+    { "keys": ["shift", "5"], "delay_after": 0.8 }
+  ]
+}

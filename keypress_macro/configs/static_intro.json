@@ -1,0 +1,14 @@
+{
+  "name": "static_intro",
+  "loop": false,
+  "start_delay": 3.0,
+  "stop_hotkey": "f12",
+  "steps": [
+    { "key": "enter", "delay_after": 0.5 },
+    { "key": "h",     "delay_after": 0.1 },
+    { "key": "i",     "delay_after": 0.5 },
+    { "key": "enter", "delay_after": 0.2 },
+    { "wait": 1.0 },
+    { "keys": ["ctrl", "s"], "delay_after": 0.3 }
+  ]
+}

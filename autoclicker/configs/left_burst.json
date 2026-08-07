@@ -1,0 +1,8 @@
+{
+  "name": "left_burst",
+  "button": "left",
+  "interval": 0.05,
+  "max_clicks": 50,
+  "start_delay": 3.0,
+  "stop_hotkey": "f12"
+}

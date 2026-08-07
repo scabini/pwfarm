@@ -1,0 +1,5 @@
+{
+  "title": "Auto Clicker",
+  "entry": "clicker.py",
+  "description": "Clicks left/right/middle at the current mouse position on an interval."
+}

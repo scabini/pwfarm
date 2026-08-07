@@ -1,0 +1,7 @@
+{
+  "name": "right_slow",
+  "button": "right",
+  "interval": 1.0,
+  "start_delay": 3.0,
+  "stop_hotkey": "f12"
+}

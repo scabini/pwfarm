@@ -1,0 +1,5 @@
+{
+  "title": "Keypress Macro",
+  "entry": "macro_runner.py",
+  "description": "Runs JSON-defined key sequences (static or looping). Use for in-game key rotations, sequences, holds, chords."
+}

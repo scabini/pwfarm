@@ -1,0 +1,7 @@
+{
+  "name": "left_fast",
+  "button": "left",
+  "interval": 0.1,
+  "start_delay": 3.0,
+  "stop_hotkey": "f12"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "abrir bau",
+  "button": "right",
+  "interval": 7.0,
+  "start_delay": 3.0,
+  "stop_hotkey": "f12"
+}
