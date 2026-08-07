@@ -1,5 +1,6 @@
-// pwmarket — preços e favoritos sugeridos.
-// Gravado pelo servidor local (servidor.py). Commite este arquivo para publicar.
+// pwmarket — preços publicados.
+// O campo projetos guarda a lista de quem edita o painel, como backup.
+// Quem visita a página sempre começa com a lista vazia.
 window.PW_PRECOS = {
  "obs": {
   "15258": [
@@ -367,31 +368,5 @@ window.PW_PRECOS = {
    }
   ]
  },
- "projetos": [
-  {
-   "chave": "14994:1980",
-   "itemId": "14994",
-   "receitaId": "1980",
-   "qtd": 1,
-   "tenho": {
-    "15308": 0
-   }
-  },
-  {
-   "chave": "14830:1829",
-   "itemId": "14830",
-   "receitaId": "1829",
-   "qtd": 1,
-   "tenho": {}
-  },
-  {
-   "chave": "15006:1993",
-   "itemId": "15006",
-   "receitaId": "1993",
-   "qtd": 1,
-   "tenho": {
-    "15275": 0
-   }
-  }
- ]
+ "projetos": []
 };

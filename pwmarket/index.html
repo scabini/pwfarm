@@ -14,15 +14,19 @@
     <nav>
       <button data-painel="precos" class="ativo">Preços</button>
       <button data-painel="receitas">Receitas</button>
-      <button data-painel="favoritos">Favoritos <span class="badge" id="badgeFav"></span></button>
+      <button data-painel="favoritos">Minha lista <span class="badge" id="badgeFav"></span></button>
     </nav>
   </div>
 </header>
 
 <div class="faixa-consulta oculto" id="faixaConsulta">
-  Modo consulta &mdash; os preços são somente leitura.
-  Favoritos e a coluna <strong>Tenho</strong> são seus e ficam neste navegador.
-  <a href="?editar=1">Abrir para edição</a>
+  <strong>Modo consulta.</strong>
+  Os preços aqui são os do dono do painel &mdash; só ele consegue publicar preço
+  que todo mundo vê. Sua lista e a coluna <strong>Tenho</strong> já funcionam
+  normalmente e ficam guardadas neste navegador.
+  <a href="?editar=1">Ligar o modo edição</a> deixa você anotar preços também,
+  mas <strong>só na sua cópia local</strong>: ninguém mais enxerga o que você
+  anotar, e nada disso altera o painel publicado.
 </div>
 
 <main>
@@ -64,9 +68,8 @@
   <!-- --------------------------------------------------------- FAVORITOS -->
   <section class="painel" id="painel-favoritos">
     <div class="barra">
-      <input class="busca" id="filtroFav" placeholder="Filtrar favoritos…">
-      <button class="acao fantasma" id="btnSugeridos">Restaurar sugeridos</button>
-      <button class="acao fantasma" id="btnLimparFav">Limpar favoritos</button>
+      <input class="busca" id="filtroFav" placeholder="Filtrar minha lista…">
+      <button class="acao fantasma" id="btnLimparFav">Limpar lista</button>
     </div>
     <div id="conteudoFav"></div>
   </section>

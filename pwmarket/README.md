@@ -166,9 +166,9 @@ favoritos, e o botão do rodapé faz isso e já te leva para lá.
 
 A estrela **☆** no canto do cartão favorita direto, sem abrir a prévia.
 
-## Favoritos
+## Minha lista
 
-As receitas que você marcou, cada uma com a tabela de planejamento: preencha
+As receitas que você adicionou, cada uma com a tabela de planejamento: preencha
 **Tenho** e ele calcula o que falta e quanto custa comprar o restante, pelo
 preço de referência de cada ingrediente.
 
@@ -180,8 +180,6 @@ mostrado sem esse aviso.
 Ingredientes que também têm receita aparecem marcados como **craftável** —
 às vezes vale produzir em vez de comprar.
 
-**Restaurar sugeridos** volta para a lista que o dono do painel publicou.
-
 ### De quem é cada dado
 
 Isto importa para compartilhar:
@@ -189,13 +187,18 @@ Isto importa para compartilhar:
 | Dado | De quem | Modo consulta |
 |---|---|---|
 | Preços observados | do dono do painel | somente leitura |
-| Favoritos e coluna **Tenho** | de quem está com a página aberta | **editáveis** |
+| Minha lista e coluna **Tenho** | de quem está com a página aberta | **editáveis** |
 
-Favorito é preferência de quem olha, não informação do jogo — travar isso em
-modo consulta deixaria seus amigos sem conseguir planejar nada. Eles pesquisam,
-favoritam e preenchem o estoque deles; fica tudo no navegador de cada um, e os
-seus preços continuam intactos. Os dois vivem em chaves separadas
+A lista é escolha de quem olha, não informação do jogo — travar isso em modo
+consulta deixaria seus amigos sem conseguir planejar nada. Eles pesquisam,
+montam a lista deles e preenchem o próprio estoque; fica tudo no navegador de
+cada um, e os seus preços continuam intactos. Os dois vivem em chaves separadas
 (`pwmarket.dados.v1` e `pwmarket.local.v1`).
+
+**Quem visita sempre começa com a lista vazia.** O campo `projetos` do
+`data/precos.js` guarda a lista de quem edita o painel apenas como backup — ela
+nunca é usada como sugestão para os outros. Herdar a lista do dono encheria a
+tela do visitante de projetos que não são dele.
 
 ## Publicar no GitHub Pages
 
@@ -208,18 +211,19 @@ Para publicar:
 Com Pages habilitado no repo, o painel fica em
 `scabini.github.io/pwfarm/pwmarket/`.
 
-O `precos.js` leva os **preços** e os **favoritos sugeridos** — a lista inicial
-que seus amigos vão ver na aba Favoritos.
+O `precos.js` leva os **preços**. A lista de receitas vai junto apenas como
+backup de quem edita — quem visita começa sempre com a lista vazia.
 
 **Modo consulta.** Em `github.io` a página abre com os preços em somente
 leitura. Não é trava de segurança — é que ninguém consegue gravar no repo pelo
 navegador, e deixar o botão de registrar preço ativo daria a impressão falsa de
-que a alteração vale para todos. Pesquisar receitas, favoritar e preencher
+que a alteração vale para todos. Pesquisar receitas, montar a lista e preencher
 **Tenho** continuam funcionando, porque são dados de quem está usando.
 
-Para editar preços na versão publicada, use `?editar=1` na URL. Suas mudanças
-ficam no seu navegador até você exportar e commitar de novo. Para simular o modo
-consulta localmente, use `?consulta=1`.
+Para editar preços na versão publicada, use `?editar=1` na URL. O que for
+anotado assim fica **só na cópia local de quem anotou** — mais ninguém vê, e o
+painel publicado não muda. Para simular o modo consulta localmente, use
+`?consulta=1`.
 
 **Importar dados** faz o caminho de volta — aceita tanto o `precos.js`
 exportado quanto um `.json` cru.

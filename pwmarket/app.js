@@ -5,12 +5,13 @@
  *
  * Há dois tipos de dado, guardados separado de propósito:
  *
- *   PREÇOS      são do dono do painel. Publicados em data/precos.js e
- *               somente leitura para quem visita.
- *   FAVORITOS   e a coluna "Tenho" são de quem está olhando a página. Ficam
- *   + TENHO     no localStorage de cada um e podem ser mexidos SEMPRE, mesmo
- *               em modo consulta — senão um amigo não conseguiria planejar o
- *               craft dele. O dono publica uma lista inicial de sugestões.
+ *   PREÇOS       são do dono do painel. Publicados em data/precos.js e
+ *                somente leitura para quem visita.
+ *   MINHA LISTA  e a coluna "Tenho" são de quem está olhando a página. Ficam
+ *   + TENHO      no localStorage de cada um e podem ser mexidos SEMPRE, mesmo
+ *                em modo consulta — senão um amigo não conseguiria planejar o
+ *                craft dele. Quem visita começa com a lista vazia: a lista do
+ *                dono vai no arquivo apenas como backup dele.
  */
 
 'use strict';
@@ -180,8 +181,15 @@ function carregar() {
   };
 }
 
-/** Favoritos que o dono publicou (o campo antigo se chamava "projetos"). */
+/** A lista guardada em data/precos.js.
+ *
+ * Serve de backup da lista de quem edita o painel, e NÃO de sugestão para
+ * quem visita: em modo consulta a lista começa vazia, sempre. Herdar a lista
+ * do dono encheria a tela do visitante com projetos que não são dele, e o
+ * primeiro trabalho seria apagar tudo.
+ */
 function sugeridos() {
+  if (CONSULTA) return [];
   const base = window.PW_PRECOS || {};
   return sanitizarFavoritos(base.projetos || base.favoritos || []);
 }
@@ -514,14 +522,14 @@ function cardReceita(x) {
     ? `<span class="pastilha caro" title="chance por tentativa">${r.prob}%</span>` : '';
 
   return `<div class="receita clicavel${fav ? ' favorita' : ''}" data-receita="${esc(chave)}"
-       title="Ver a receita e adicionar aos favoritos">
+       title="Ver a receita e adicionar à sua lista">
     <img class="icone" src="${iconeDe(it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
     <div class="corpo">
       <div class="topo">
         <div class="titulo">${nomeHTML(it)}</div>
         ${it.nivel_req ? `<span class="lv">lv ${it.nivel_req}</span>` : ''}
         <button class="estrela${fav ? ' on' : ''}" data-fav="${esc(chave)}"
-                title="${fav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${fav ? '★' : '☆'}</button>
+                title="${fav ? 'Tirar da minha lista' : 'Adicionar à minha lista'}">${fav ? '★' : '☆'}</button>
       </div>
       <div class="rec" title="${esc(r.nome)}">${esc(r.nome)} ${prob}</div>
       <div class="forja">${esc(r.npc || '—')}${r.local ? ' · ' + esc(r.local) : ''}</div>
@@ -610,15 +618,15 @@ function abrirPreviewReceita(chave) {
     </div>
     ${fav ? '' : `<div class="preview-nota">${SINAL}
       <div>Esta é uma <strong>prévia</strong>. A coluna <strong>Tenho</strong> fica editável
-      depois que a receita entrar nos seus favoritos — é lá que você marca o que já tem e
-      acompanha quanto ainda falta comprar.</div></div>`}`;
+      depois que a receita entrar na <strong>sua lista</strong> — é lá que você marca o que já
+      tem e acompanha quanto ainda falta comprar.</div></div>`}`;
 
   const botao = $('#btnFavoritarPreview');
   botao.className = 'acao grande' + (fav ? ' ja' : '');
   botao.innerHTML = fav
-    ? '<strong>Já está nos seus favoritos</strong>Ir para a lista e continuar de onde parou'
-    : '<strong>Adicionar aos meus favoritos</strong>Adicione à sua lista de favoritos para '
-      + 'poder acompanhar a receita e marcar os materiais que você já possui';
+    ? '<strong>Já está na sua lista</strong>Ir para a lista e continuar de onde parou'
+    : '<strong>Adicionar à minha lista</strong>Adicione à sua lista para poder acompanhar '
+      + 'a receita e marcar os materiais que você já possui';
 
   $('#modalReceita').classList.remove('oculto');
   botao.focus();
@@ -676,9 +684,11 @@ function renderFav() {
   atualizarBadge();
 
   if (!LOCAL.favoritos.length) {
-    alvo.innerHTML = `<div class="vazio"><strong>Nenhum favorito</strong>
-      Vá em <em>Receitas</em>, procure o que quer produzir e clique na estrela ☆.
-      <div style="margin-top:12px">Aqui você informa o que já tem e vê quanto falta comprar.</div></div>`;
+    alvo.innerHTML = `<div class="vazio"><strong>Sua lista está vazia</strong>
+      Vá em <em>Receitas</em>, abra a que você quer produzir e clique em
+      <em>Adicionar à minha lista</em> — ou use a estrela ☆ direto no cartão.
+      <div style="margin-top:12px">Aqui você marca o que já tem e acompanha
+      quanto ainda falta comprar.</div></div>`;
     return;
   }
 
@@ -697,7 +707,7 @@ function renderFav() {
     const c = calcular(fav);
     if (!c) {
       return `<div class="projeto"><div class="projeto-topo">
-        <div><div class="projeto-titulo">Favorito inválido</div>
+        <div><div class="projeto-titulo">Receita indisponível</div>
         <div class="projeto-meta">O item ${esc(fav.itemId)} não está mais no catálogo.</div></div>
         <div class="direita">
           <button class="mini perigo" data-del-fav="${esc(fav.chave)}">remover</button>
@@ -956,19 +966,10 @@ function ligar() {
   $('#ordemReceitas').addEventListener('change', renderReceitas);
 
   $('#filtroFav').addEventListener('input', renderFav);
-  $('#btnSugeridos').addEventListener('click', () => {
-    const s = sugeridos();
-    if (!s.length) return alert('Este painel não traz favoritos sugeridos.');
-    if (!confirm(`Substituir seus ${LOCAL.favoritos.length} favorito(s) pelos `
-      + `${s.length} sugeridos? A coluna Tenho volta a zero.`)) return;
-    LOCAL.favoritos = s;
-    salvarLocal();
-    renderReceitas();
-    renderFav();
-  });
   $('#btnLimparFav').addEventListener('click', () => {
     if (!LOCAL.favoritos.length) return;
-    if (!confirm(`Remover todos os ${LOCAL.favoritos.length} favoritos?`)) return;
+    if (!confirm(`Tirar todas as ${LOCAL.favoritos.length} receita(s) da sua lista? `
+      + 'O que você marcou em Tenho se perde junto.')) return;
     LOCAL.favoritos = [];
     salvarLocal();
     renderReceitas();
