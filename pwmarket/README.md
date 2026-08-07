@@ -67,6 +67,22 @@ junto com os itens que só existiam para servir de ingrediente a elas. A regra
 olha apenas os ingredientes *dessas* receitas, então material que você importou
 de propósito nunca é apagado por engano.
 
+### Diferenças do The PW Clássico
+
+O servidor é uma versão clássica customizada, então alguns itens têm outro nome
+em relação ao pwdatabase. Essas diferenças ficam em **`data/ajustes.json`**:
+
+```json
+{ "nomes": { "15307": "Pedra da Terra do Sonho" } }
+```
+
+O `importar.py` aplica isso toda vez que salva o catálogo, então o ajuste
+sobrevive a reimportações. O nome é trocado no item **e** em todas as receitas
+que o usam como ingrediente — se ficassem diferentes, a busca por ingrediente na
+aba Receitas encontraria o nome antigo.
+
+Depois de editar o arquivo, rode `py importar.py --ajustes`.
+
 Quando o nome não é exato, o script lista os candidatos com os ids para você
 rodar de novo com `--id`.
 
@@ -137,11 +153,18 @@ material, e `jóias` filtra pela forja. Vários termos funcionam como E:
 `asura bota` acha só as receitas daquela peça.
 
 Cada cartão mostra os ingredientes como fichas com quantidade (passe o mouse
-para nome e subtotal) e o **custo estimado** a preço de referência. Um `+` no
-custo quer dizer que falta preço de algum ingrediente, então o número é piso,
-não total.
+para nome e subtotal) e o **custo estimado** a preço de referência.
 
-Clique na estrela **☆** para favoritar.
+Material sem preço registrado ganha um **!** vermelho na ficha, e o custo vem
+com `+` seguido de *Há materiais sem preço registrado*. O `+` sozinho diria que
+o número está incompleto sem dizer por quê.
+
+**Clique no cartão** para ver a receita inteira como ela vai aparecer nos
+favoritos, com a tabela de ingredientes e o custo. A coluna *Tenho* aparece
+travada nessa prévia — ela só passa a valer depois que a receita entra nos seus
+favoritos, e o botão do rodapé faz isso e já te leva para lá.
+
+A estrela **☆** no canto do cartão favorita direto, sem abrir a prévia.
 
 ## Favoritos
 

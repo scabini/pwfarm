@@ -428,7 +428,28 @@ tr.historico.oculto { display: none; }
 }
 
 .ing-chip img { width: 18px; height: 18px; }
-.ing-chip.sem-preco { border-color: #4a3410; color: var(--alerta); }
+.ing-chip.sem-preco { border-color: #5c1620; color: var(--vermelho-claro); }
+
+/* sinal de material sem preço — some da leitura só quando todos têm preço */
+.falta-preco {
+  color: var(--vermelho-claro);
+  font-weight: 700;
+  font-family: var(--fonte);
+  text-shadow: 0 0 8px rgba(255, 53, 85, 0.55);
+}
+
+.ing-chip .falta-preco { margin-left: 1px; }
+
+.aviso-sem-preco {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--vermelho-claro);
+  white-space: nowrap;
+}
+
+.receita.clicavel { cursor: pointer; }
 
 .estrela {
   background: none;
@@ -579,7 +600,67 @@ tr.completo .medas { color: var(--ok); }
 
 .modal h2 .fechar:hover { color: var(--vermelho-claro); }
 
+.modal.largo { max-width: 820px; }
+
 .modal-corpo { padding: 18px; }
+
+/* ------------------------------------------- preview da receita (modal) */
+
+.preview-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.preview-topo .icone { width: 48px; height: 48px; }
+.preview-topo .titulo { font-size: 18px; font-weight: 600; }
+.preview-topo .meta { font-size: 12px; color: var(--texto-apagado); margin-top: 2px; }
+
+.preview-nota {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 12px 14px;
+  margin-top: 16px;
+  background: var(--vermelho-fundo);
+  border: 1px solid var(--borda);
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--texto-fraco);
+  line-height: 1.5;
+}
+
+.preview-nota strong { color: var(--vermelho-claro); }
+
+.modal-pe .acao.grande {
+  flex: 1;
+  padding: 13px 18px;
+  font-size: 12.5px;
+  letter-spacing: 0.7px;
+  line-height: 1.45;
+  text-transform: none;
+  white-space: normal;
+  text-align: left;
+}
+
+.modal-pe .acao.grande strong {
+  display: block;
+  font-size: 13.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.modal-pe .acao.grande.ja {
+  background: var(--bg-alt);
+  border-color: var(--linha);
+  color: var(--texto-fraco);
+}
+
+.modal-pe .acao.grande.ja strong { color: var(--ok); }
 
 .campo { margin-bottom: 15px; }
 

@@ -32,6 +32,7 @@ import pwdb
 RAIZ = Path(__file__).parent
 CATALOGO = RAIZ / "data" / "catalog.json"
 CATALOGO_JS = RAIZ / "data" / "catalog.js"
+AJUSTES = RAIZ / "data" / "ajustes.json"
 ICONES = RAIZ / "data" / "icons"
 
 # Materiais costumam ter dezenas de receitas de *decomposição* — a Pedra
@@ -60,7 +61,42 @@ def carregar() -> dict:
     return {"versao": 1, "atualizado": None, "itens": {}}
 
 
+def aplicar_ajustes(cat: dict) -> int:
+    """Sobrepõe as diferenças do The PW Clássico em cima do que veio do pwdatabase.
+
+    O servidor é uma versão clássica customizada, então alguns itens têm outro
+    nome. O nome aparece em dois lugares — no item e repetido em cada receita
+    que o usa como ingrediente — e os dois precisam bater, senão a busca por
+    ingrediente na aba Receitas encontra o nome antigo.
+    """
+    if not AJUSTES.exists():
+        return 0
+    try:
+        with AJUSTES.open(encoding="utf-8") as f:
+            nomes = json.load(f).get("nomes") or {}
+    except (json.JSONDecodeError, OSError) as e:
+        print(f"  ! ajustes.json ignorado: {e}")
+        return 0
+
+    trocas = 0
+    for iid, novo in nomes.items():
+        item = cat["itens"].get(str(iid))
+        if item and item.get("nome") != novo:
+            item["nome"] = novo
+            trocas += 1
+    # e as cópias dentro das receitas
+    for item in cat["itens"].values():
+        for receita in item.get("receitas") or []:
+            for ing in receita.get("ingredientes") or []:
+                novo = nomes.get(str(ing["id"]))
+                if novo and ing.get("nome") != novo:
+                    ing["nome"] = novo
+                    trocas += 1
+    return trocas
+
+
 def salvar(cat: dict) -> None:
+    aplicar_ajustes(cat)
     cat["atualizado"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     CATALOGO.parent.mkdir(parents=True, exist_ok=True)
     with CATALOGO.open("w", encoding="utf-8", newline="\n") as f:
@@ -305,6 +341,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="remove do catálogo as receitas fora do Crepúsculo (veja IGNORAR_RECEITA_COM)",
     )
+    alvo.add_argument(
+        "--ajustes",
+        action="store_true",
+        help="reaplica data/ajustes.json (nomes próprios do The PW Clássico)",
+    )
 
     p.add_argument(
         "--sem-ingredientes",
@@ -331,6 +372,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.faxina:
         return cmd_faxina(cat)
+
+    if args.ajustes:
+        n = aplicar_ajustes(cat)
+        salvar(cat)
+        print(f"{n} nome(s) ajustado(s) a partir de {AJUSTES.name}.")
+        return 0
 
     if args.remover:
         chave = str(args.remover)

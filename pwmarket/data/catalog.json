@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-07T20:48:43+00:00",
+ "atualizado": "2026-08-07T21:30:59+00:00",
  "itens": {
   "14809": {
    "desc": null,
@@ -371,6 +371,108 @@
    ],
    "stack": 1,
    "subtipo": "Espada / Lâminas Duplas",
+   "tipo": "Armas"
+  },
+  "14821": {
+   "desc": null,
+   "id": 14821,
+   "nivel": 9,
+   "nivel_req": 70,
+   "nome": "☆Machado do Arauto",
+   "npc_compra": 79600,
+   "npc_venda": 39800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1787,
+     "ingredientes": [
+      {
+       "id": 15236,
+       "nome": "Elmo do Tenente Primordial",
+       "qtd": 5,
+       "raridade": 7
+      },
+      {
+       "id": 15238,
+       "nome": "Caveira das Charadas",
+       "qtd": 10,
+       "raridade": 1
+      },
+      {
+       "id": 15337,
+       "nome": "Alma: Machado Esqueleto",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 2,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Machado DuploNível 70 2",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado/Martelo / Machados Duplos",
+   "tipo": "Armas"
+  },
+  "14825": {
+   "desc": null,
+   "id": 14825,
+   "nivel": 10,
+   "nivel_req": 80,
+   "nome": "☆Machado do Rei Leão",
+   "npc_compra": 100000,
+   "npc_venda": 50000,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1814,
+     "ingredientes": [
+      {
+       "id": 15249,
+       "nome": "Estandarte de Feng Wushen",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15240,
+       "nome": "Grande Tambor Tenaz",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15256,
+       "nome": "Antiga Espada Ornamental",
+       "qtd": 16,
+       "raridade": 1
+      },
+      {
+       "id": 15339,
+       "nome": "Alma: Machado do Arauto",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 9,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB MachadoDuplo Nível 80 4",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado/Martelo / Machados Duplos",
    "tipo": "Armas"
   },
   "14830": {
@@ -2152,7 +2254,7 @@
      "ingredientes": [
       {
        "id": 15307,
-       "nome": "Pedra da Ilusão",
+       "nome": "Pedra da Terra do Sonho",
        "qtd": 2,
        "raridade": 2
       },
@@ -2776,7 +2878,7 @@
      "ingredientes": [
       {
        "id": 15307,
-       "nome": "Pedra da Ilusão",
+       "nome": "Pedra da Terra do Sonho",
        "qtd": 2,
        "raridade": 2
       },
@@ -3400,7 +3502,7 @@
      "ingredientes": [
       {
        "id": 15307,
-       "nome": "Pedra da Ilusão",
+       "nome": "Pedra da Terra do Sonho",
        "qtd": 2,
        "raridade": 2
       },
@@ -5834,7 +5936,7 @@
    "id": 15307,
    "nivel": null,
    "nivel_req": null,
-   "nome": "Pedra da Ilusão",
+   "nome": "Pedra da Terra do Sonho",
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 2,
@@ -6033,6 +6135,34 @@
    "nivel": null,
    "nivel_req": null,
    "nome": "Alma: Espada do Dragão",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15337": {
+   "desc": "Imbuída com almas poderosas.",
+   "id": 15337,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Machado Esqueleto",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15339": {
+   "desc": "Imbuída com almas poderosas.",
+   "id": 15339,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Machado do Arauto",
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 7,

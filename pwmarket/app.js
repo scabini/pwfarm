@@ -103,18 +103,64 @@ function secaoDe(it) {
   return 'Outros';
 }
 
+/* -------------------------------------------------- saneamento de entrada */
+
+/* Tudo que vem de arquivo (data/precos.js ou um .js/.json importado) passa
+ * por aqui antes de existir no app. É a fronteira: depois deste ponto os
+ * campos têm tipo garantido, então nenhum deles pode carregar marcação para
+ * dentro do HTML — nem por descuido de escape em algum template futuro. */
+
+function sanitizarObs(bruto) {
+  const saida = {};
+  if (!bruto || typeof bruto !== 'object') return saida;
+  for (const [id, lista] of Object.entries(bruto)) {
+    if (!/^\d{1,10}$/.test(id) || !Array.isArray(lista)) continue;
+    const limpa = lista.slice(0, 500).map((o) => ({
+      id: String(o?.id ?? '').slice(0, 32) || uid(),
+      v: Math.max(0, Math.round(Number(o?.v)) || 0),
+      q: Math.max(1, Math.floor(Number(o?.q)) || 1),
+      d: /^\d{4}-\d{2}-\d{2}$/.test(o?.d) ? o.d : hoje(),
+      t: o?.t === 'compra' ? 'compra' : 'venda',
+      n: String(o?.n ?? '').slice(0, 300),
+    })).filter((o) => o.v > 0);
+    if (limpa.length) saida[id] = limpa;
+  }
+  return saida;
+}
+
+function sanitizarFavoritos(bruto) {
+  if (!Array.isArray(bruto)) return [];
+  const vistos = new Set();
+  const saida = [];
+  for (const p of bruto.slice(0, 300)) {
+    const itemId = String(p?.itemId ?? '').replace(/\D/g, '').slice(0, 10);
+    const receitaId = String(p?.receitaId ?? '').replace(/\D/g, '').slice(0, 10);
+    if (!itemId || !receitaId) continue;
+    const chave = `${itemId}:${receitaId}`;
+    if (vistos.has(chave)) continue;   // chave duplicada quebraria o toggle
+    vistos.add(chave);
+
+    const tenho = {};
+    for (const [k, v] of Object.entries(p?.tenho ?? {})) {
+      if (/^\d{1,10}$/.test(k)) tenho[k] = Math.max(0, Math.floor(Number(v)) || 0);
+    }
+    saida.push({ chave, itemId, receitaId, qtd: Math.max(1, Math.floor(Number(p?.qtd)) || 1), tenho });
+  }
+  return saida;
+}
+
 /* ------------------------------------------------------------ persistência */
 
 function carregar() {
   const base = window.PW_PRECOS || {};
 
   // preços: publicado, sobreposto pelo local quando o dono está editando
-  DADOS = { obs: base.obs || {} };
+  DADOS = { obs: sanitizarObs(base.obs) };
   try {
     const bruto = localStorage.getItem(CHAVE_DADOS);
     if (bruto) {
       const d = JSON.parse(bruto);
-      if (d.obs) DADOS.obs = d.obs;
+      if (d.obs) DADOS.obs = sanitizarObs(d.obs);
     }
   } catch (e) {
     console.warn('não consegui ler os preços locais:', e);
@@ -127,23 +173,17 @@ function carregar() {
   } catch (e) {
     console.warn('não consegui ler os favoritos locais:', e);
   }
-  if (salvo && Array.isArray(salvo.favoritos)) {
-    LOCAL = { favoritos: salvo.favoritos };
-  } else {
-    LOCAL = { favoritos: sugeridos() };
-  }
+  LOCAL = {
+    favoritos: salvo && Array.isArray(salvo.favoritos)
+      ? sanitizarFavoritos(salvo.favoritos)
+      : sugeridos(),
+  };
 }
 
 /** Favoritos que o dono publicou (o campo antigo se chamava "projetos"). */
 function sugeridos() {
   const base = window.PW_PRECOS || {};
-  return (base.projetos || base.favoritos || []).map((p) => ({
-    chave: `${p.itemId}:${p.receitaId}`,
-    itemId: String(p.itemId),
-    receitaId: String(p.receitaId),
-    qtd: Math.max(1, p.qtd || 1),
-    tenho: { ...(p.tenho || {}) },
-  }));
+  return sanitizarFavoritos(base.projetos || base.favoritos || []);
 }
 
 function salvarDados() {
@@ -443,6 +483,8 @@ function renderReceitas() {
   `).join('');
 }
 
+const SINAL = '<span class="falta-preco" title="sem preço registrado">!</span>';
+
 function cardReceita(x) {
   const { it, r, chave } = x;
   const c = custoReceita(r);
@@ -455,20 +497,24 @@ function cardReceita(x) {
     const preco = semPreco ? 'sem preço registrado'
       : `${fmtMedas(s.ref)} un · subtotal ${fmtMedas(s.ref * g.qtd)}`;
     return `<span class="ing-chip${semPreco ? ' sem-preco' : ''}" title="${esc(nome)} — ${g.qtd}× · ${preco}">
-      <img src="${iconeDe(g.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">${g.qtd}</span>`;
+      <img src="${iconeDe(g.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">${g.qtd}${semPreco ? SINAL : ''}</span>`;
   }).join('');
 
+  // O "+" sozinho não diz por que o número está incompleto — o aviso ao lado diz.
   const custo = c.total === 0 && !c.completo
-    ? '<span class="custo-chip vazio">sem preços</span>'
+    ? `<span class="aviso-sem-preco">${SINAL} Nenhum material tem preço registrado</span>`
     : `<span class="custo-chip${c.completo ? '' : ' parcial'}"
          title="${c.completo ? fmtCheio(c.total)
-           : `${fmtCheio(c.total)} — parcial, ${c.semPreco} ingrediente(s) sem preço`}">
-         ${fmtMedas(c.total)}${c.completo ? '' : '+'}</span>`;
+           : `${fmtCheio(c.total)} — parcial, ${c.semPreco} ingrediente(s) sem preço`}"
+         >${fmtMedas(c.total)}${c.completo ? '' : '+'}</span>`
+      + (c.completo ? ''
+        : `<span class="aviso-sem-preco">${SINAL} Há materiais sem preço registrado</span>`);
 
   const prob = r.prob != null && r.prob < 100
     ? `<span class="pastilha caro" title="chance por tentativa">${r.prob}%</span>` : '';
 
-  return `<div class="receita${fav ? ' favorita' : ''}">
+  return `<div class="receita clicavel${fav ? ' favorita' : ''}" data-receita="${esc(chave)}"
+       title="Ver a receita e adicionar aos favoritos">
     <img class="icone" src="${iconeDe(it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
     <div class="corpo">
       <div class="topo">
@@ -485,6 +531,112 @@ function cardReceita(x) {
       </div>
     </div>
   </div>`;
+}
+
+/* ------------------------------------------------- preview de uma receita */
+
+/** Monta a tabela de ingredientes. Sem `favChave`, a coluna Tenho é só leitura
+ *  — é o preview de como a receita vai aparecer depois de favoritada. */
+function tabelaIngredientes(c, favChave = null) {
+  const linhas = c.linhas.map((l) => `
+    <tr class="${l.falta === 0 ? 'completo' : ''}">
+      <td>
+        <div class="item-cel">
+          <img class="icone pequeno" src="${iconeDe(l.ing.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+          <div>
+            ${nomeHTML(item(l.ing.id) || { nome: l.ing.nome, raridade: l.ing.raridade })}
+            ${l.temReceita ? '<div class="item-sub">craftável</div>' : ''}
+          </div>
+        </div>
+      </td>
+      <td class="num"><span class="medas fraco">${l.precisa}</span></td>
+      <td class="meio">${favChave
+        ? `<input class="qtd-input" type="number" min="0" step="1" value="${l.tenho}"
+                  data-tenho="${esc(favChave)}" data-ing="${l.ing.id}">`
+        : `<span class="medas fraco">${l.tenho}</span>`}</td>
+      <td class="num"><span class="medas">${l.falta || '—'}</span></td>
+      <td class="num">${l.unit != null
+        ? `<span class="medas fraco" title="${fmtCheio(l.unit)}">${fmtMedas(l.unit)}</span>`
+        : `<span class="aviso-sem-preco">${SINAL} sem preço</span>`}</td>
+      <td class="num">${l.sub != null
+        ? `<span class="medas" title="${fmtCheio(l.sub)}">${l.falta ? fmtMedas(l.sub) : '—'}</span>`
+        : `<span class="medas fraco">?</span>`}</td>
+    </tr>`).join('');
+
+  return `<div class="tabela-wrap"><table>
+    <thead><tr>
+      <th>Ingrediente</th><th class="num">Precisa</th><th class="meio">Tenho</th>
+      <th class="num">Falta</th><th class="num">Preço un.</th><th class="num">Subtotal</th>
+    </tr></thead>
+    <tbody>${linhas}</tbody>
+  </table></div>`;
+}
+
+function avisoParcial(c) {
+  if (!c.semPreco.length) return '';
+  return `<div class="aviso-preco">${SINAL} Total parcial: ${c.semPreco.length} ingrediente(s)
+    sem preço registrado — ${c.semPreco.map((i) => esc(item(i.id)?.nome || i.nome)).join(', ')}.
+    Registre o preço deles para o custo ficar completo.</div>`;
+}
+
+let previewChave = null;
+
+function abrirPreviewReceita(chave) {
+  const x = todasReceitas().find((r) => r.chave === chave);
+  if (!x) return;
+  previewChave = chave;
+
+  const fav = LOCAL.favoritos.find((f) => f.chave === chave);
+  const c = calcular(fav || { itemId: x.it.id, receitaId: x.r.id, qtd: 1, tenho: {} });
+  if (!c) return;
+
+  const prob = c.receita.prob != null && c.receita.prob < 100
+    ? `<span class="pastilha caro" title="chance por tentativa">${c.receita.prob}%</span>` : '';
+
+  $('#corpoReceita').innerHTML = `
+    <div class="preview-topo">
+      <img class="icone" src="${iconeDe(x.it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+      <div>
+        <div class="titulo">${nomeHTML(x.it)} ${x.it.nivel_req ? `<span class="lv">lv ${x.it.nivel_req}</span>` : ''} ${prob}</div>
+        <div class="meta">${esc(c.receita.nome)}</div>
+        <div class="meta">${esc(c.receita.npc || '—')}${c.receita.local ? ' · ' + esc(c.receita.local) : ''}</div>
+      </div>
+    </div>
+    ${tabelaIngredientes(c, null)}
+    ${avisoParcial(c)}
+    <div class="total">
+      <span class="rotulo">${fav ? 'Falta comprar' : 'Custo estimado'}</span>
+      <span class="valor" title="${fmtCheio(c.total)}">${fmtMedas(c.total)}${c.semPreco.length ? '+' : ''}</span>
+    </div>
+    ${fav ? '' : `<div class="preview-nota">${SINAL}
+      <div>Esta é uma <strong>prévia</strong>. A coluna <strong>Tenho</strong> fica editável
+      depois que a receita entrar nos seus favoritos — é lá que você marca o que já tem e
+      acompanha quanto ainda falta comprar.</div></div>`}`;
+
+  const botao = $('#btnFavoritarPreview');
+  botao.className = 'acao grande' + (fav ? ' ja' : '');
+  botao.innerHTML = fav
+    ? '<strong>Já está nos seus favoritos</strong>Ir para a lista e continuar de onde parou'
+    : '<strong>Adicionar aos meus favoritos</strong>Adicione à sua lista de favoritos para '
+      + 'poder acompanhar a receita e marcar os materiais que você já possui';
+
+  $('#modalReceita').classList.remove('oculto');
+  botao.focus();
+}
+
+function confirmarPreview() {
+  if (!previewChave) return;
+  if (!ehFavorito(previewChave)) {
+    alternarFavorito(previewChave);
+    renderReceitas();
+  }
+  fecharModais();
+  irPara('favoritos');
+  renderFav();
+  // leva o olho até o card recém-adicionado; a chave é sempre "digitos:digitos"
+  // depois do saneamento, então cabe direto no seletor
+  const alvo = $(`[data-fav-card="${previewChave}"]`);
+  if (alvo && alvo.scrollIntoView) alvo.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 /* ============================================================= FAVORITOS */
@@ -552,41 +704,10 @@ function renderFav() {
         </div></div></div>`;
     }
 
-    const linhas = c.linhas.map((l) => `
-      <tr class="${l.falta === 0 ? 'completo' : ''}">
-        <td>
-          <div class="item-cel">
-            <img class="icone pequeno" src="${iconeDe(l.ing.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
-            <div>
-              ${nomeHTML(item(l.ing.id) || { nome: l.ing.nome, raridade: l.ing.raridade })}
-              ${l.temReceita ? '<div class="item-sub">craftável</div>' : ''}
-            </div>
-          </div>
-        </td>
-        <td class="num"><span class="medas fraco">${l.precisa}</span></td>
-        <td class="meio">
-          <input class="qtd-input" type="number" min="0" step="1" value="${l.tenho}"
-                 data-tenho="${esc(fav.chave)}" data-ing="${l.ing.id}"></td>
-        <td class="num"><span class="medas">${l.falta || '—'}</span></td>
-        <td class="num">${l.unit != null
-          ? `<span class="medas fraco" title="${fmtCheio(l.unit)}">${fmtMedas(l.unit)}</span>`
-          : '<span class="pastilha normal">sem preço</span>'}</td>
-        <td class="num">${l.sub != null
-          ? `<span class="medas" title="${fmtCheio(l.sub)}">${l.falta ? fmtMedas(l.sub) : '—'}</span>`
-          : '<span class="medas fraco">?</span>'}</td>
-      </tr>`).join('');
-
     const prob = c.receita.prob != null && c.receita.prob < 100
       ? `<span class="pastilha caro" title="chance de sucesso por tentativa">${c.receita.prob}%</span>` : '';
 
-    // O total só cobre o que tem preço. Dizer isso é obrigatório: um total
-    // parcial apresentado como final levaria a decisão errada.
-    const aviso = c.semPreco.length
-      ? `<div class="aviso-preco">Total parcial: ${c.semPreco.length} ingrediente(s) sem preço registrado —
-         ${c.semPreco.map((i) => esc(item(i.id)?.nome || i.nome)).join(', ')}.
-         Registre o preço deles para o custo ficar completo.</div>` : '';
-
-    return `<div class="projeto">
+    return `<div class="projeto" data-fav-card="${esc(fav.chave)}">
       <div class="projeto-topo">
         <img class="icone" src="${iconeDe(fav.itemId)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
         <div>
@@ -600,17 +721,11 @@ function renderFav() {
           <button class="mini perigo" data-del-fav="${esc(fav.chave)}">remover</button>
         </div>
       </div>
-      <div class="tabela-wrap"><table>
-        <thead><tr>
-          <th>Ingrediente</th><th class="num">Precisa</th><th class="meio">Tenho</th>
-          <th class="num">Falta</th><th class="num">Preço un.</th><th class="num">Subtotal</th>
-        </tr></thead>
-        <tbody>${linhas}</tbody>
-      </table></div>
-      ${aviso}
+      ${tabelaIngredientes(c, fav.chave)}
+      ${avisoParcial(c)}
       <div class="total">
         <span class="rotulo">Falta comprar</span>
-        <span class="valor" title="${fmtCheio(c.total)}">${fmtMedas(c.total)}</span>
+        <span class="valor" title="${fmtCheio(c.total)}">${fmtMedas(c.total)}${c.semPreco.length ? '+' : ''}</span>
       </div>
     </div>`;
   }).join('');
@@ -739,6 +854,7 @@ function salvarObs() {
 
 function fecharModais() {
   $('#modalPreco').classList.add('oculto');
+  $('#modalReceita').classList.add('oculto');
 }
 
 /* ------------------------------------------------------ exportar/importar */
@@ -766,18 +882,15 @@ function importar(arquivo) {
       const cru = t.startsWith('{') ? t : t.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/)?.[1];
       if (!cru) throw new Error('não reconheci o formato do arquivo');
       const d = JSON.parse(cru);
-      const nObs = Object.keys(d.obs || {}).length;
-      const favs = d.projetos || d.favoritos || [];
+      // sanea antes de perguntar: o número mostrado é o que de fato vai entrar
+      const obs = sanitizarObs(d.obs);
+      const favs = sanitizarFavoritos(d.projetos || d.favoritos);
+      const nObs = Object.keys(obs).length;
+      if (!nObs && !favs.length) throw new Error('o arquivo não tem preços nem favoritos válidos');
       if (!confirm(`Substituir os dados atuais por ${nObs} item(ns) com preço e `
         + `${favs.length} favorito(s)?`)) return;
-      DADOS = { obs: d.obs || {} };
-      LOCAL = {
-        favoritos: favs.map((p) => ({
-          chave: `${p.itemId}:${p.receitaId}`,
-          itemId: String(p.itemId), receitaId: String(p.receitaId),
-          qtd: Math.max(1, p.qtd || 1), tenho: { ...(p.tenho || {}) },
-        })),
-      };
+      DADOS = { obs };
+      LOCAL = { favoritos: favs };
       salvarDados();
       salvarLocal();
       renderTudo();
@@ -892,8 +1005,18 @@ function ligar() {
     e.target.value = '';
   });
 
+  $('#btnFavoritarPreview').addEventListener('click', confirmarPreview);
+
   // Delegação: as listas são reconstruídas a cada render.
   document.addEventListener('click', (e) => {
+    // clique no cartão da receita abre o preview — menos quando foi na estrela,
+    // que já tem ação própria
+    const cartao = e.target.closest('[data-receita]');
+    if (cartao && !e.target.closest('.estrela')) {
+      abrirPreviewReceita(cartao.dataset.receita);
+      return;
+    }
+
     const b = e.target.closest('button');
     if (!b) return;
 

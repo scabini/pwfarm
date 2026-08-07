@@ -1,0 +1,6 @@
+{
+ "_leia": "Diferenças do The PW Clássico em relação ao pwdatabase. O importar.py aplica isto sobre o catálogo toda vez que salva, então os ajustes sobrevivem a reimportações. Rode 'py importar.py --ajustes' depois de editar este arquivo.",
+ "nomes": {
+  "15307": "Pedra da Terra do Sonho"
+ }
+}
