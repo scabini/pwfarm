@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-07T21:30:59+00:00",
+ "atualizado": "2026-08-08T10:56:45+00:00",
  "itens": {
   "14809": {
    "desc": null,
@@ -6923,6 +6923,6586 @@
    "subtipo": null,
    "tipo": "Itens Básicos"
   },
+  "15954": {
+   "desc": null,
+   "id": 15954,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Braceletes da Fênix",
+   "npc_compra": 54240,
+   "npc_venda": 27120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2094,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Mágico Verde V da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Luvas",
+   "tipo": "Armaduras"
+  },
+  "15955": {
+   "desc": null,
+   "id": 15955,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Braceletes de Pena de Fênix",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2114,
+     "ingredientes": [
+      {
+       "id": 16719,
+       "nome": "Alma: Braceletes da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Mág Dourado V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Luvas",
+   "tipo": "Armaduras"
+  },
+  "15958": {
+   "desc": null,
+   "id": 15958,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Braceletes do Destemido",
+   "npc_compra": 54240,
+   "npc_venda": 27120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2088,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Leve Verde V. da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Manopla",
+   "tipo": "Armaduras"
+  },
+  "15959": {
+   "desc": null,
+   "id": 15959,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Braceletes da Luz Divina",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2108,
+     "ingredientes": [
+      {
+       "id": 16713,
+       "nome": "Alma: Braceletes do Destemido",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Leve Dourado V da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Manopla",
+   "tipo": "Armaduras"
+  },
+  "15962": {
+   "desc": null,
+   "id": 15962,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Mangas Brilhantes",
+   "npc_compra": 54240,
+   "npc_venda": 27120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2082,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Pesado Verde V da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Braceletes Pesados",
+   "tipo": "Armaduras"
+  },
+  "15963": {
+   "desc": null,
+   "id": 15963,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Mangas do Sol e da Lua",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2102,
+     "ingredientes": [
+      {
+       "id": 16707,
+       "nome": "Alma: Mangas Brilhantes",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Pesado Dourado V. Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Braceletes Pesados",
+   "tipo": "Armaduras"
+  },
+  "15966": {
+   "desc": null,
+   "id": 15966,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Calças da Fênix",
+   "npc_compra": 64410,
+   "npc_venda": 32205,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2092,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Mágica Verde V. da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Calças Místicas",
+   "tipo": "Armaduras"
+  },
+  "15967": {
+   "desc": null,
+   "id": 15967,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Calças de Pena de Fênix",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2112,
+     "ingredientes": [
+      {
+       "id": 16717,
+       "nome": "Alma: Calças da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Mágica Dourado V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Calças Místicas",
+   "tipo": "Armaduras"
+  },
+  "15970": {
+   "desc": null,
+   "id": 15970,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Calças do Destemido",
+   "npc_compra": 64410,
+   "npc_venda": 32205,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2086,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Leve Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Perneiras Leves",
+   "tipo": "Armaduras"
+  },
+  "15971": {
+   "desc": null,
+   "id": 15971,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Calças da Luz Divina",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2106,
+     "ingredientes": [
+      {
+       "id": 16711,
+       "nome": "Alma: Calças do Destemido",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Leve Dourada V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Perneiras Leves",
+   "tipo": "Armaduras"
+  },
+  "15974": {
+   "desc": null,
+   "id": 15974,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Calças Brilhantes",
+   "npc_compra": 64410,
+   "npc_venda": 32205,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2080,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Pesada Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Perneiras Pesadas",
+   "tipo": "Armaduras"
+  },
+  "15975": {
+   "desc": null,
+   "id": 15975,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Calças do Sol e da Lua",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2098,
+     "ingredientes": [
+      {
+       "id": 16705,
+       "nome": "Alma: Calças Brilhantes",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Pesada Dourada V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Perneiras Pesadas",
+   "tipo": "Armaduras"
+  },
+  "15978": {
+   "desc": null,
+   "id": 15978,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Asas Brilhantes",
+   "npc_compra": 54240,
+   "npc_venda": 27120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2084,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capa Pesada Verde Vale da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
+  },
+  "15979": {
+   "desc": null,
+   "id": 15979,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Capa do Destemido",
+   "npc_compra": 54240,
+   "npc_venda": 27120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2090,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capa Leve Verde V. da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
+  },
+  "15980": {
+   "desc": null,
+   "id": 15980,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Pluma da Luz de Fênix",
+   "npc_compra": 54240,
+   "npc_venda": 27120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2096,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capa Mágica Verde Vale da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
+  },
+  "15981": {
+   "desc": null,
+   "id": 15981,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Brilho do Sol e da Lua",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2104,
+     "ingredientes": [
+      {
+       "id": 16709,
+       "nome": "Alma: Asas Brilhantes",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capa Pesada Dourada V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
+  },
+  "15982": {
+   "desc": null,
+   "id": 15982,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Luz Divina",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2110,
+     "ingredientes": [
+      {
+       "id": 16715,
+       "nome": "Alma: Capa do Destemido",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capa Leve Dourada V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
+  },
+  "15983": {
+   "desc": null,
+   "id": 15983,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Broche da Fênix",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2116,
+     "ingredientes": [
+      {
+       "id": 16721,
+       "nome": "Alma: Pena de Luz da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capa Mágica Dourado V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
+  },
+  "15990": {
+   "desc": null,
+   "id": 15990,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Capa da Fênix",
+   "npc_compra": 67800,
+   "npc_venda": 33900,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2091,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Mágica Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Túnica",
+   "tipo": "Armaduras"
+  },
+  "15991": {
+   "desc": null,
+   "id": 15991,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Capa de Pena da Fênix",
+   "npc_compra": 80120,
+   "npc_venda": 40060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2111,
+     "ingredientes": [
+      {
+       "id": 16716,
+       "nome": "Alma: Manto da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Mág. Dourada V da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Túnica",
+   "tipo": "Armaduras"
+  },
+  "15994": {
+   "desc": null,
+   "id": 15994,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Vestes de Guerra do Destemido",
+   "npc_compra": 67800,
+   "npc_venda": 33900,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2085,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Leve Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Armadura Leve",
+   "tipo": "Armaduras"
+  },
+  "15995": {
+   "desc": null,
+   "id": 15995,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Vestes de Guerra da Luz Divina",
+   "npc_compra": 80120,
+   "npc_venda": 40060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2105,
+     "ingredientes": [
+      {
+       "id": 16710,
+       "nome": "Alma: Armadura do Destemido",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Leve Dourada V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Armadura Leve",
+   "tipo": "Armaduras"
+  },
+  "15998": {
+   "desc": null,
+   "id": 15998,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Armadura do Sol",
+   "npc_compra": 67800,
+   "npc_venda": 33900,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2079,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Pesada Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Armadura Pesada",
+   "tipo": "Armaduras"
+  },
+  "15999": {
+   "desc": null,
+   "id": 15999,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Armadura Pesada do Sol",
+   "npc_compra": 80120,
+   "npc_venda": 40060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2097,
+     "ingredientes": [
+      {
+       "id": 16704,
+       "nome": "Alma: Armadura Brilhante",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Pes. Dourada V da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Armadura Pesada",
+   "tipo": "Armaduras"
+  },
+  "16002": {
+   "desc": null,
+   "id": 16002,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Coroa da Fênix",
+   "npc_compra": 61020,
+   "npc_venda": 30510,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2095,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Touca Mística Verde Vale da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Touca Mística",
+   "tipo": "Armaduras"
+  },
+  "16003": {
+   "desc": null,
+   "id": 16003,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Coroa de Plumas da Fênix",
+   "npc_compra": 72110,
+   "npc_venda": 36055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2115,
+     "ingredientes": [
+      {
+       "id": 16720,
+       "nome": "Alma: Coroa da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Touca Mágica Dourada V da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Touca Mística",
+   "tipo": "Armaduras"
+  },
+  "16004": {
+   "desc": null,
+   "id": 16004,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Elmo do Destemido",
+   "npc_compra": 61020,
+   "npc_venda": 30510,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2089,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capacete Leve Verde V. da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Touca Mística",
+   "tipo": "Armaduras"
+  },
+  "16005": {
+   "desc": null,
+   "id": 16005,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Elmo da Luz Divina",
+   "npc_compra": 72110,
+   "npc_venda": 36055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2109,
+     "ingredientes": [
+      {
+       "id": 16714,
+       "nome": "Alma: Elmo do Destemido",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capacete Leve Dourado V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Touca Mística",
+   "tipo": "Armaduras"
+  },
+  "16010": {
+   "desc": null,
+   "id": 16010,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Meia Armadura do Sol e da Lua",
+   "npc_compra": 61020,
+   "npc_venda": 30510,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2083,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capacete Pesado Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Elmo Pesado",
+   "tipo": "Armaduras"
+  },
+  "16011": {
+   "desc": null,
+   "id": 16011,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Armadura do Sol e da Lua",
+   "npc_compra": 72110,
+   "npc_venda": 36055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2103,
+     "ingredientes": [
+      {
+       "id": 16708,
+       "nome": "Alma: Carapaça Brilhante",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capacete Pes. Dourado V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Elmo Pesado",
+   "tipo": "Armaduras"
+  },
+  "16014": {
+   "desc": null,
+   "id": 16014,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Sapatos do Destemido",
+   "npc_compra": 57630,
+   "npc_venda": 28815,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2087,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Leve Verde V. da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Botas Leves",
+   "tipo": "Armaduras"
+  },
+  "16015": {
+   "desc": null,
+   "id": 16015,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Sapatos da Luz Divina",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2107,
+     "ingredientes": [
+      {
+       "id": 16712,
+       "nome": "Alma: Sapatos do Destemido",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Leve Dourada V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Botas Leves",
+   "tipo": "Armaduras"
+  },
+  "16020": {
+   "desc": null,
+   "id": 16020,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Sandálias da Fênix",
+   "npc_compra": 57630,
+   "npc_venda": 28815,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2093,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Mágica Verde V. da Lua.",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Sandálias",
+   "tipo": "Armaduras"
+  },
+  "16021": {
+   "desc": null,
+   "id": 16021,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Sandálias de Plumas da Fênix",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2113,
+     "ingredientes": [
+      {
+       "id": 16718,
+       "nome": "Alma: Sandálias da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Mágica Dourado V.da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Sandálias",
+   "tipo": "Armaduras"
+  },
+  "16025": {
+   "desc": null,
+   "id": 16025,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Botas da Lua",
+   "npc_compra": 57630,
+   "npc_venda": 28815,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2081,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 7,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Pesada Verde V. da Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Botas Pesadas",
+   "tipo": "Armaduras"
+  },
+  "16026": {
+   "desc": null,
+   "id": 16026,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Botas do Sol e da Lua",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2101,
+     "ingredientes": [
+      {
+       "id": 16706,
+       "nome": "Alma: Botas Brilhantes",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Pes(Verdadeira) Dour V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2099,
+     "ingredientes": [
+      {
+       "id": 16025,
+       "nome": "☆Botas da Lua",
+       "qtd": 3,
+       "raridade": 7
+      },
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": null,
+     "nome": "Bota Pesada Dourada V. da Lua",
+     "npc": null,
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Botas Pesadas",
+   "tipo": "Armaduras"
+  },
+  "16029": {
+   "desc": null,
+   "id": 16029,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Marca do Gelo",
+   "npc_compra": 61020,
+   "npc_venda": 30510,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2138,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 4,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Anel Físico Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Anel / Anel de Metal",
+   "tipo": "Acessórios"
+  },
+  "16033": {
+   "desc": null,
+   "id": 16033,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Símbolo da Preservação",
+   "npc_compra": 61020,
+   "npc_venda": 30510,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2139,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 4,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Anel Mágico Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Anel / Anel da Gema",
+   "tipo": "Acessórios"
+  },
+  "16037": {
+   "desc": null,
+   "id": 16037,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Sino da Primavera",
+   "npc_compra": 64410,
+   "npc_venda": 32205,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2132,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Colar Físico Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar Amuleto",
+   "tipo": "Acessórios"
+  },
+  "16038": {
+   "desc": null,
+   "id": 16038,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Sino da Primavera Selvagem",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2140,
+     "ingredientes": [
+      {
+       "id": 16722,
+       "nome": "Alma: Amuleto da Primavera",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15273,
+       "nome": "Carapaça do Escravo Fantasma",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 15299,
+       "nome": "Alma da Mulher Demônio",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Colar Físico Dourado V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar Amuleto",
+   "tipo": "Acessórios"
+  },
+  "16041": {
+   "desc": null,
+   "id": 16041,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Essência da Fênix Selvagem",
+   "npc_compra": 64410,
+   "npc_venda": 32205,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2133,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Colar Mágico Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar Colorido",
+   "tipo": "Acessórios"
+  },
+  "16042": {
+   "desc": null,
+   "id": 16042,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Alma da Fênix Selvagem",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2141,
+     "ingredientes": [
+      {
+       "id": 16723,
+       "nome": "Alma: Amuleto da Alma da Fênix",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15273,
+       "nome": "Carapaça do Escravo Fantasma",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 15299,
+       "nome": "Alma da Mulher Demônio",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Colar Mágico Dourado V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar Colorido",
+   "tipo": "Acessórios"
+  },
+  "16045": {
+   "desc": null,
+   "id": 16045,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Voz do Trovão Rompante",
+   "npc_compra": 64410,
+   "npc_venda": 32205,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2134,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Colar Esquiva Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar da Luz Flutuante",
+   "tipo": "Acessórios"
+  },
+  "16046": {
+   "desc": null,
+   "id": 16046,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Símbolo do Trovão Rompante",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2142,
+     "ingredientes": [
+      {
+       "id": 16724,
+       "nome": "Alma: Trovão Rasteiro",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15273,
+       "nome": "Carapaça do Escravo Fantasma",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 15299,
+       "nome": "Alma da Mulher Demônio",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Colar Esquiva Dourado V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar da Luz Flutuante",
+   "tipo": "Acessórios"
+  },
+  "16049": {
+   "desc": null,
+   "id": 16049,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Emblema da Fadiga",
+   "npc_compra": 57630,
+   "npc_venda": 28815,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2136,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Cinto Mágico Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Ornamento / Pingente",
+   "tipo": "Acessórios"
+  },
+  "16050": {
+   "desc": null,
+   "id": 16050,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Emblema da Exaustão",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2144,
+     "ingredientes": [
+      {
+       "id": 16726,
+       "nome": "Alma: Emblema da Exaustão",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15273,
+       "nome": "Carapaça do Escravo Fantasma",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 15299,
+       "nome": "Alma da Mulher Demônio",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Cinto Mágico Dourado V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Ornamento / Pingente",
+   "tipo": "Acessórios"
+  },
+  "16053": {
+   "desc": null,
+   "id": 16053,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Emblema do Caos",
+   "npc_compra": 57630,
+   "npc_venda": 28815,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2137,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Cinto Esquiva Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Ornamento / Bolsa Perfumada",
+   "tipo": "Acessórios"
+  },
+  "16054": {
+   "desc": null,
+   "id": 16054,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Emblema do Caos Total",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2145,
+     "ingredientes": [
+      {
+       "id": 16727,
+       "nome": "Alma: Emblema do Caos",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15273,
+       "nome": "Carapaça do Escravo Fantasma",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 15299,
+       "nome": "Alma da Mulher Demônio",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Cinto Esquiva Dourado V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Ornamento / Bolsa Perfumada",
+   "tipo": "Acessórios"
+  },
+  "16057": {
+   "desc": null,
+   "id": 16057,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Emblema do Vento",
+   "npc_compra": 57630,
+   "npc_venda": 28815,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2135,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 3,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Cinto Físico Verde V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Ornamento / Ornamentação",
+   "tipo": "Acessórios"
+  },
+  "16058": {
+   "desc": null,
+   "id": 16058,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Emblema do Vento Selvagem",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2143,
+     "ingredientes": [
+      {
+       "id": 16725,
+       "nome": "Alma: Emblema do Vento",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15273,
+       "nome": "Carapaça do Escravo Fantasma",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 15299,
+       "nome": "Alma da Mulher Demônio",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 10,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Cinto Físico Dourado V. da Lua",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Ornamento / Ornamentação",
+   "tipo": "Acessórios"
+  },
+  "16061": {
+   "desc": null,
+   "id": 16061,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Lâmpada dos Cem Anos",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2051,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Simples Verde V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Espada",
+   "tipo": "Armas"
+  },
+  "16062": {
+   "desc": "Uma taça de Vinho da Brisa de Primavera, uma gota do RIo da Chuva da Noite e uma Lâmpada de Dez Anos.",
+   "id": 16062,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Lâmpada dos Mil Anos",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2066,
+     "ingredientes": [
+      {
+       "id": 16651,
+       "nome": "Alma: Lâmpada de Dez Anos",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Simples Dourada V da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2916,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Espada Simples Roxo Matde Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Espada",
+   "tipo": "Armas"
+  },
+  "16065": {
+   "desc": null,
+   "id": 16065,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Vento Sonoro",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2055,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Dupla Verde V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Lâminas Duplas",
+   "tipo": "Armas"
+  },
+  "16066": {
+   "desc": "A cacofonia que é o som de uma luta de três espadas; pedras queimando, corpos sonhando, chuva caíndo na névoa.",
+   "id": 16066,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Vento da Cacofonia",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2067,
+     "ingredientes": [
+      {
+       "id": 16652,
+       "nome": "Alma: Eremita",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Dupla Dourada V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2925,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Lâmina Dupla Roxo Mat de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Lâminas Duplas",
+   "tipo": "Armas"
+  },
+  "16069": {
+   "desc": null,
+   "id": 16069,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Vento Veloz",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2056,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Marreta Longa Verde V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado/Martelo / Marreta",
+   "tipo": "Armas"
+  },
+  "16070": {
+   "desc": "Coração Galopante, Espada Insana. Nuvens Tóxicas, Vento Veloz.",
+   "id": 16070,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Vento Veloz Direcionado",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2068,
+     "ingredientes": [
+      {
+       "id": 16653,
+       "nome": "Alma: Vento Veloz",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Marreta Longa Dourada V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2943,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Marreta Longa Roxo Mat de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado/Martelo / Marreta",
+   "tipo": "Armas"
+  },
+  "16075": {
+   "desc": null,
+   "id": 16075,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Lâmina da Escama Dourada",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2057,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Machado Duplo Verde V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado/Martelo / Machados Duplos",
+   "tipo": "Armas"
+  },
+  "16076": {
+   "desc": "O Dragão Mergulhador quebra a linha dos céus, acreditando-se superior a tudo que vive. O vento leste acorda o sonho heróico, e aponta para a lua minguante e as riquezas que ela esconde.",
+   "id": 16076,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Poder da Escama do Dragão",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2069,
+     "ingredientes": [
+      {
+       "id": 16654,
+       "nome": "Alma: Escamas Douradas",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Machado Duplo Dourado V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2940,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Machado Duplo Roxo Mat de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado/Martelo / Machados Duplos",
+   "tipo": "Armas"
+  },
+  "16077": {
+   "desc": null,
+   "id": 16077,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Dança Cósmica",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2058,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Longa Verde V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado de haste longa / Lança de Justa Laminada",
+   "tipo": "Armas"
+  },
+  "16078": {
+   "desc": "Quando bêbado até um cavalo puro sangue afasta a beleza de sua forma. Nas peças do xadrez pode se ver a dança universal, toda a natreza está nas mãos da nobreza.",
+   "id": 16078,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Valsa Cósmica",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2070,
+     "ingredientes": [
+      {
+       "id": 16655,
+       "nome": "Alma: Dança Cósmica",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Longa Dourada V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2928,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Espada Longa Roxo Mat de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado de haste longa / Lança de Justa Laminada",
+   "tipo": "Armas"
+  },
+  "16085": {
+   "desc": null,
+   "id": 16085,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Enma",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2059,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Arco Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Longo Alcance / Arco",
+   "tipo": "Armas"
+  },
+  "16086": {
+   "desc": "Quando uma mulher bonita sorri, as montanhas tremem, e até demônios perdem sua sede de sangue. Quem cedo começa o dia deve agradecer aos céus e partir para o trabalho.",
+   "id": 16086,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Executor Divino",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2071,
+     "ingredientes": [
+      {
+       "id": 16656,
+       "nome": "Alma: Enma",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Arco Dourado V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2955,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Arco Roxo Material de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Longo Alcance / Arco",
+   "tipo": "Armas"
+  },
+  "16091": {
+   "desc": null,
+   "id": 16091,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Tristeza Eterna",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2060,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Estilingue Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Longo Alcance / Funda",
+   "tipo": "Armas"
+  },
+  "16092": {
+   "desc": "Tristeza antiga, perigo eterno. Os anos levam a beleza e o poder. Apenas os sonhos permanecem. Trocam contos na estrada dos ventos, eternamente jovens.",
+   "id": 16092,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Tristeza Eterna Abandonada",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2072,
+     "ingredientes": [
+      {
+       "id": 16657,
+       "nome": "Alma: Problema Eterno",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Estilingue Dourado V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2961,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Estilingue Roxo Mat. de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Longo Alcance / Funda",
+   "tipo": "Armas"
+  },
+  "16093": {
+   "desc": null,
+   "id": 16093,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Mundo do Além",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2061,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Cajado Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Magia / Cetro",
+   "tipo": "Armas"
+  },
+  "16094": {
+   "desc": "Um cetro da montanha de ossos, sangue lavado em água pura. O mundo definha no mesm oritmo em que caem as flores do pessegueiro.",
+   "id": 16094,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Mundo da Terra do Além",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2073,
+     "ingredientes": [
+      {
+       "id": 16658,
+       "nome": "Alma: Inumano",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Cajado Dourado V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2964,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Cajado Roxo Material de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Magia / Cetro",
+   "tipo": "Armas"
+  },
+  "16097": {
+   "desc": "Meio mundo desperdiçado por bebida, resistência não passa de apaia disfarçada de simpatia. Flores caindo sobre um caminho, a luz do sol criando uma sombra rubra.",
+   "id": 16097,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Uma Folha Um Mundo",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2075,
+     "ingredientes": [
+      {
+       "id": 16701,
+       "nome": "Alma: Florescer do Mundo",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Mágica Dourado V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2967,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Espada Mágica Roxo Mat de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Magia / Espada Mágica",
+   "tipo": "Armas"
+  },
+  "16098": {
+   "desc": null,
+   "id": 16098,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Uma Flor Um Mundo",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2063,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Espada Mágica Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Magia / Espada Mágica",
+   "tipo": "Armas"
+  },
+  "16103": {
+   "desc": null,
+   "id": 16103,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Dez Passos Um Morto",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2064,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Punho Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Punhos / Garra",
+   "tipo": "Armas"
+  },
+  "16104": {
+   "desc": "Um botão de flor do tamanho do mundo, a folha de Bodhi. Poder sem fim, eternidade instantânea.",
+   "id": 16104,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Dez Passos Um Deus Morto",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2076,
+     "ingredientes": [
+      {
+       "id": 16703,
+       "nome": "Alma: Mercenário Furioso",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Punho Dourado V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2952,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Punho Roxo Material de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Punhos / Garra",
+   "tipo": "Armas"
+  },
+  "16107": {
+   "desc": null,
+   "id": 16107,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Bela Adormecida",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2065,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Luva Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Punhos / Punho de Ferro",
+   "tipo": "Armas"
+  },
+  "16108": {
+   "desc": "A Beleza Embriagada se curvou ao Poder da Mão Divina. Tudo pareceu um sonho, enquanto eu andava na neve.",
+   "id": 16108,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Dominação do Mundo",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2077,
+     "ingredientes": [
+      {
+       "id": 16702,
+       "nome": "Alma: Beleza Enebriante",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Luva Dourada V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2949,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Luva Roxo Material de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Punhos / Punho de Ferro",
+   "tipo": "Armas"
+  },
+  "16111": {
+   "desc": null,
+   "id": 16111,
+   "nivel": 11,
+   "nivel_req": 95,
+   "nome": "☆Morte Floral",
+   "npc_compra": 135600,
+   "npc_venda": 67800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 2062,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16548,
+       "nome": "Condensação",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 5,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bandeira Verde Vale da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Magia / Cajado",
+   "tipo": "Armas"
+  },
+  "16112": {
+   "desc": "Meio mundo morto por bebida, tenacidade não passa de apatia disfarçada de simpatia. Flores caíndo sobre um caminho cortado, o por do sol criando uma sombra vermelha.",
+   "id": 16112,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Lamentação Celestial",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2074,
+     "ingredientes": [
+      {
+       "id": 16659,
+       "nome": "Alma: Morte Florida",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 25,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bandeira Dourada V. da Lua",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 2973,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Bandeira Roxo Material de Troca",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Magia / Cajado",
+   "tipo": "Armas"
+  },
+  "16113": {
+   "desc": null,
+   "id": 16113,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Algema da Prisão Aquática",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2129,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16469,
+       "nome": "Sangue de Bruxa Aquática",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Mág de Água Dou V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Luvas",
+   "tipo": "Armaduras"
+  },
+  "16114": {
+   "desc": null,
+   "id": 16114,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Algema da Prisão Aquática",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2125,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16469,
+       "nome": "Sangue de Bruxa Aquática",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Brac. Leve de Água Dour V. Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Manopla",
+   "tipo": "Armaduras"
+  },
+  "16115": {
+   "desc": null,
+   "id": 16115,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Algema da Prisão Aquática",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2120,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16469,
+       "nome": "Sangue de Bruxa Aquática",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bracelete Pes de Água Dou V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braceletes / Braceletes Pesados",
+   "tipo": "Armaduras"
+  },
+  "16116": {
+   "desc": null,
+   "id": 16116,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Benção do Deus Honghuang",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2127,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16472,
+       "nome": "Couro do Destruidor Ancião",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Mág. de Terra Dour V. Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Calças Místicas",
+   "tipo": "Armaduras"
+  },
+  "16117": {
+   "desc": null,
+   "id": 16117,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Benção do Deus Honghuang",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2123,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16472,
+       "nome": "Couro do Destruidor Ancião",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Leve de Terra Dour V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Perneiras Leves",
+   "tipo": "Armaduras"
+  },
+  "16118": {
+   "desc": null,
+   "id": 16118,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Benção do Deus Honghuang",
+   "npc_compra": 76115,
+   "npc_venda": 38060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2118,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16472,
+       "nome": "Couro do Destruidor Ancião",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Calça Pes. de Terra Dou. V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Braço / Perneiras Pesadas",
+   "tipo": "Armaduras"
+  },
+  "16119": {
+   "desc": null,
+   "id": 16119,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Defesa do Pojun",
+   "npc_compra": 80120,
+   "npc_venda": 40060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2126,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16473,
+       "nome": "Osso de Tropa Assassina",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Arm. Mágica de Metal Dour V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Túnica",
+   "tipo": "Armaduras"
+  },
+  "16120": {
+   "desc": null,
+   "id": 16120,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Defesa do Pojun",
+   "npc_compra": 80120,
+   "npc_venda": 40060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2122,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16473,
+       "nome": "Osso de Tropa Assassina",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Arm. Leve de Metal Dour. V. Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Armadura Leve",
+   "tipo": "Armaduras"
+  },
+  "16121": {
+   "desc": null,
+   "id": 16121,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Defesa do Pojun",
+   "npc_compra": 80120,
+   "npc_venda": 40060,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2117,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16473,
+       "nome": "Osso de Tropa Assassina",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Armadura Pes de Metal Dou V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Corpo / Armadura Pesada",
+   "tipo": "Armaduras"
+  },
+  "16124": {
+   "desc": null,
+   "id": 16124,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Coroa Lamentação Fantasmagoria",
+   "npc_compra": 72110,
+   "npc_venda": 36055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2130,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16470,
+       "nome": "Coração do Espectro Bardo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Coroa Mág de Fogo Dourado V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Touca Mística",
+   "tipo": "Armaduras"
+  },
+  "16125": {
+   "desc": null,
+   "id": 16125,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Capacete Lamentação Fantasma",
+   "npc_compra": 72110,
+   "npc_venda": 36055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2121,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16470,
+       "nome": "Coração do Espectro Bardo",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capacete Pesado Dourado Nv95",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Elmo Pesado",
+   "tipo": "Armaduras"
+  },
+  "16126": {
+   "desc": null,
+   "id": 16126,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Sapato do Youti",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2124,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16471,
+       "nome": "Veneno de Veia Negra",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Leve de Madeira Dour V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Botas Leves",
+   "tipo": "Armaduras"
+  },
+  "16127": {
+   "desc": null,
+   "id": 16127,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Sandália do Youti",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2128,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16471,
+       "nome": "Veneno de Veia Negra",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Mág de Madeira Dour V. Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Sandálias",
+   "tipo": "Armaduras"
+  },
+  "16128": {
+   "desc": null,
+   "id": 16128,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Bota do Youti",
+   "npc_compra": 68105,
+   "npc_venda": 34055,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2119,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 3,
+       "raridade": 3
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16471,
+       "nome": "Veneno de Veia Negra",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 15,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Bota Pes. de Madeira Dour V Lua",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sapatos / Botas Pesadas",
+   "tipo": "Armaduras"
+  },
+  "16460": {
+   "desc": "Relíquias Antigas, contém energia selada.",
+   "id": 16460,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência da Água Pura",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16461": {
+   "desc": "Relíquias Antigas, contém energia selada.",
+   "id": 16461,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência do Fogo Indomável",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16462": {
+   "desc": "Relíquias Antigas, contém energia selada.",
+   "id": 16462,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência da Terra Mãe",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16463": {
+   "desc": "Relíquias Antigas, contém energia selada.",
+   "id": 16463,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência da Vida",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16464": {
+   "desc": "Relíquias Antigas, contém energia selada.",
+   "id": 16464,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência de Ferro Refinado",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16465": {
+   "desc": "Relíquias Antigas, contém energia selada.",
+   "id": 16465,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência do Caos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16466": {
+   "desc": "Elas são curiosas a nosso respeito.",
+   "id": 16466,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Sílex sem Nome",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3300,
+     "ingredientes": [
+      {
+       "id": 19277,
+       "nome": "Joia Misteriosa",
+       "qtd": 140,
+       "raridade": 3
+      }
+     ],
+     "local": "World: 129 863 (38)",
+     "nome": "Itens Laranja Sílex sem Nome",
+     "npc": "Místico da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16467": {
+   "desc": "Elas são curiosas a nosso respeito.",
+   "id": 16467,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Sílex Colorido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3301,
+     "ingredientes": [
+      {
+       "id": 19277,
+       "nome": "Joia Misteriosa",
+       "qtd": 420,
+       "raridade": 3
+      }
+     ],
+     "local": "World: 129 863 (38)",
+     "nome": "Itens Laranja Sílex Colorido",
+     "npc": "Místico da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16468": {
+   "desc": "Elas são curiosas a nosso respeito.",
+   "id": 16468,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Sílex Antigo",
+   "npc_compra": 600,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3302,
+     "ingredientes": [
+      {
+       "id": 19277,
+       "nome": "Joia Misteriosa",
+       "qtd": 420,
+       "raridade": 3
+      }
+     ],
+     "local": "World: 129 863 (38)",
+     "nome": "Itens Laranja Sílex Antigo",
+     "npc": "Místico da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16469": {
+   "desc": "Amostra de líquido não identificado.",
+   "id": 16469,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Sangue de Bruxa Aquática",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16470": {
+   "desc": "Pode comer, mas cuidado para não queimar a língua.",
+   "id": 16470,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Coração do Espectro Bardo",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16471": {
+   "desc": "A maioria dos venenos é verde, não é?",
+   "id": 16471,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Veneno de Veia Negra",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16472": {
+   "desc": "Não há diferença entre a morte e a vida. Ambas são duras como o aço.",
+   "id": 16472,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Couro do Destruidor Ancião",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16473": {
+   "desc": "Nunca olhe nos olhos dele. Entregue rapidamente para quem precisa.",
+   "id": 16473,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Osso de Tropa Assassina",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16545": {
+   "desc": null,
+   "id": 16545,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência da Natureza",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 2049,
+     "ingredientes": [
+      {
+       "id": 799,
+       "nome": "Essência de Madeira",
+       "qtd": 5,
+       "raridade": 0
+      },
+      {
+       "id": 804,
+       "nome": "Aço Damasco",
+       "qtd": 5,
+       "raridade": 0
+      },
+      {
+       "id": 809,
+       "nome": "Esmeril",
+       "qtd": 5,
+       "raridade": 0
+      },
+      {
+       "id": 819,
+       "nome": "Coque Refinado",
+       "qtd": 5,
+       "raridade": 0
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Essência da Natureza",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 4129,
+     "ingredientes": [
+      {
+       "id": 24721,
+       "nome": "Sorte - Perfect World",
+       "qtd": 7,
+       "raridade": 1
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "Sorte PW - Essência da Natureza",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16546": {
+   "desc": "Alma do Vale da Lua congelada em forma de Fragmento. Pode ser usada na criação de equipamentos do Vale da Lua.",
+   "id": 16546,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Fraqmento Condensado",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 2052,
+     "ingredientes": [
+      {
+       "id": 16448,
+       "nome": "Peça de Água Pura",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16449,
+       "nome": "Peça do Fogo Indomável",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16450,
+       "nome": "Peça da Mãe Terra",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16451,
+       "nome": "Peça da Vida",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16452,
+       "nome": "Peça de Ferro Refinado",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16453,
+       "nome": "Peça do Caos",
+       "qtd": 10,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "Fraqmento Condensado",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 2148,
+     "ingredientes": [
+      {
+       "id": 16448,
+       "nome": "Peça de Água Pura",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16449,
+       "nome": "Peça do Fogo Indomável",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16450,
+       "nome": "Peça da Mãe Terra",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16451,
+       "nome": "Peça da Vida",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16452,
+       "nome": "Peça de Ferro Refinado",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16453,
+       "nome": "Peça do Caos",
+       "qtd": 10,
+       "raridade": 3
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Fraqmento Condensado",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 3297,
+     "ingredientes": [
+      {
+       "id": 19277,
+       "nome": "Joia Misteriosa",
+       "qtd": 59,
+       "raridade": 3
+      }
+     ],
+     "local": "World: 129 863 (38)",
+     "nome": "Itens Laranja Fraqmento Conden.",
+     "npc": "Místico da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16547": {
+   "desc": "Alma do Vale da Lua congelada em forma de Cristal. Pode ser usada na criação de equipamentos do Vale da Lua.",
+   "id": 16547,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal Condensado",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 2053,
+     "ingredientes": [
+      {
+       "id": 16454,
+       "nome": "Cristal da Água Pura",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16455,
+       "nome": "Cristal do Fogo Indomável",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16456,
+       "nome": "Cristal da Terra Mãe",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16457,
+       "nome": "Cristal da Vida",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16458,
+       "nome": "Cristal de Ferro Refinado",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16459,
+       "nome": "Cristal do Caos",
+       "qtd": 10,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "Cristal Condensado",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 2149,
+     "ingredientes": [
+      {
+       "id": 16454,
+       "nome": "Cristal da Água Pura",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16455,
+       "nome": "Cristal do Fogo Indomável",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16456,
+       "nome": "Cristal da Terra Mãe",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16457,
+       "nome": "Cristal da Vida",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16458,
+       "nome": "Cristal de Ferro Refinado",
+       "qtd": 10,
+       "raridade": 3
+      },
+      {
+       "id": 16459,
+       "nome": "Cristal do Caos",
+       "qtd": 10,
+       "raridade": 3
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Cristal Condensado",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 3298,
+     "ingredientes": [
+      {
+       "id": 19277,
+       "nome": "Joia Misteriosa",
+       "qtd": 42,
+       "raridade": 3
+      }
+     ],
+     "local": "World: 129 863 (38)",
+     "nome": "Itens Laranja Cristal Conden.",
+     "npc": "Místico da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16548": {
+   "desc": "Alma do Vale da Lua congelada em forma de Essência. Pode ser usada na criação de equipamentos do Vale da Lua.",
+   "id": 16548,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Condensação",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 2054,
+     "ingredientes": [
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 5,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "Condensação",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 2150,
+     "ingredientes": [
+      {
+       "id": 16460,
+       "nome": "Essência da Água Pura",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16461,
+       "nome": "Essência do Fogo Indomável",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16462,
+       "nome": "Essência da Terra Mãe",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16463,
+       "nome": "Essência da Vida",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16464,
+       "nome": "Essência de Ferro Refinado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 16465,
+       "nome": "Essência do Caos",
+       "qtd": 5,
+       "raridade": 3
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Condensação",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 3299,
+     "ingredientes": [
+      {
+       "id": 19277,
+       "nome": "Joia Misteriosa",
+       "qtd": 350,
+       "raridade": 3
+      }
+     ],
+     "local": "World: 129 863 (38)",
+     "nome": "Itens Laranja Condensação",
+     "npc": "Místico da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16651": {
+   "desc": null,
+   "id": 16651,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Lâmpada de Dez Anos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16652": {
+   "desc": null,
+   "id": 16652,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Eremita",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16653": {
+   "desc": null,
+   "id": 16653,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Vento Veloz",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16654": {
+   "desc": null,
+   "id": 16654,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Escamas Douradas",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16655": {
+   "desc": null,
+   "id": 16655,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Dança Cósmica",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16656": {
+   "desc": null,
+   "id": 16656,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Enma",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16657": {
+   "desc": null,
+   "id": 16657,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Problema Eterno",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16658": {
+   "desc": null,
+   "id": 16658,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Inumano",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16659": {
+   "desc": null,
+   "id": 16659,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Morte Florida",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16701": {
+   "desc": null,
+   "id": 16701,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Florescer do Mundo",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16702": {
+   "desc": null,
+   "id": 16702,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Beleza Enebriante",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16703": {
+   "desc": null,
+   "id": 16703,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Mercenário Furioso",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16704": {
+   "desc": null,
+   "id": 16704,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Armadura Brilhante",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16705": {
+   "desc": null,
+   "id": 16705,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Calças Brilhantes",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16706": {
+   "desc": null,
+   "id": 16706,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Botas Brilhantes",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16707": {
+   "desc": null,
+   "id": 16707,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Mangas Brilhantes",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16708": {
+   "desc": null,
+   "id": 16708,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Carapaça Brilhante",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16709": {
+   "desc": null,
+   "id": 16709,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Asas Brilhantes",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16710": {
+   "desc": null,
+   "id": 16710,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Armadura do Destemido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16711": {
+   "desc": null,
+   "id": 16711,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Calças do Destemido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16712": {
+   "desc": null,
+   "id": 16712,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Sapatos do Destemido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16713": {
+   "desc": null,
+   "id": 16713,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Braceletes do Destemido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16714": {
+   "desc": null,
+   "id": 16714,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Elmo do Destemido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16715": {
+   "desc": null,
+   "id": 16715,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Capa do Destemido",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16716": {
+   "desc": null,
+   "id": 16716,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Manto da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16717": {
+   "desc": null,
+   "id": 16717,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Calças da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16718": {
+   "desc": null,
+   "id": 16718,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Sandálias da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16719": {
+   "desc": null,
+   "id": 16719,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Braceletes da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16720": {
+   "desc": null,
+   "id": 16720,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Coroa da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16721": {
+   "desc": null,
+   "id": 16721,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Pena de Luz da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16722": {
+   "desc": null,
+   "id": 16722,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Amuleto da Primavera",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16723": {
+   "desc": null,
+   "id": 16723,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Amuleto da Alma da Fênix",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16724": {
+   "desc": null,
+   "id": 16724,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Trovão Rasteiro",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16725": {
+   "desc": null,
+   "id": 16725,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Emblema do Vento",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16726": {
+   "desc": null,
+   "id": 16726,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Emblema da Exaustão",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16727": {
+   "desc": null,
+   "id": 16727,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Emblema do Caos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
   "19277": {
    "desc": "Troque por vários itens raros no Místico da Lua.",
    "id": 19277,
@@ -7163,6 +13743,583 @@
    "subtipo": null,
    "tipo": "Itens Básicos"
   },
+  "23250": {
+   "desc": "Tesouro raro do Vale da Lua, usado para trocar por armas da instância. Troque em qualquer Administradora de Trocas.",
+   "id": 23250,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Vale da Lua - Arma",
+   "npc_compra": 100000,
+   "npc_venda": 1,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 9838,
+     "ingredientes": [
+      {
+       "id": 56295,
+       "nome": "Chave Lunar·Arcana do GM",
+       "qtd": 2,
+       "raridade": 0
+      }
+     ],
+     "local": null,
+     "nome": "Loteria Japonesa 50",
+     "npc": "Nova Loteria Japonesa",
+     "prob": 100.0
+    },
+    {
+     "id": 9670,
+     "ingredientes": [
+      {
+       "id": 55175,
+       "nome": "Perfeito: Símbolo da Alma",
+       "qtd": 8,
+       "raridade": 0
+      }
+     ],
+     "local": null,
+     "nome": "n/d2016日本新彩票兑换03",
+     "npc": "Nova Loteria Japonesa",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23388": {
+   "desc": null,
+   "id": 23388,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Coração Flamejante",
+   "npc_compra": 67944,
+   "npc_venda": 33972,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3728,
+     "ingredientes": [
+      {
+       "id": 23564,
+       "nome": "Olho Flamejante de Wu Canxuan",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23566,
+       "nome": "Esqueleto do Vento Flamejante",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23565,
+       "nome": "Molde de Colar Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Coração Flamejante",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar Amuleto",
+   "tipo": "Acessórios"
+  },
+  "23389": {
+   "desc": null,
+   "id": 23389,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Olho da Tristeza",
+   "npc_compra": 67944,
+   "npc_venda": 33972,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3729,
+     "ingredientes": [
+      {
+       "id": 23567,
+       "nome": "A Tristeza de Receptáculo Negro",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23568,
+       "nome": "Pedra da Verdadeira Fantasma",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23565,
+       "nome": "Molde de Colar Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Olho da Tristeza",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar Colorido",
+   "tipo": "Acessórios"
+  },
+  "23390": {
+   "desc": null,
+   "id": 23390,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Amuleto do Guardião",
+   "npc_compra": 67944,
+   "npc_venda": 33972,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3727,
+     "ingredientes": [
+      {
+       "id": 23562,
+       "nome": "Placa de Acalmar Bruxa Aquática",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23563,
+       "nome": "Coração Demônio da Destruição",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23565,
+       "nome": "Molde de Colar Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Amuleto do Guardião",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Amuleto / Colar da Luz Flutuante",
+   "tipo": "Acessórios"
+  },
+  "23391": {
+   "desc": null,
+   "id": 23391,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Herança da Família Wang",
+   "npc_compra": 64368,
+   "npc_venda": 32184,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3730,
+     "ingredientes": [
+      {
+       "id": 23569,
+       "nome": "Tesouro de Wang Erli",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23570,
+       "nome": "Tesouro de Wang Dali",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23573,
+       "nome": "Molde de Anel Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Herança da Família Wang",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Anel / Anel de Metal",
+   "tipo": "Acessórios"
+  },
+  "23392": {
+   "desc": null,
+   "id": 23392,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Anel de Destruição de Demônio",
+   "npc_compra": 64368,
+   "npc_venda": 32184,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3731,
+     "ingredientes": [
+      {
+       "id": 23571,
+       "nome": "Argola de Demônio Destruidor",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23572,
+       "nome": "Escama de Dragão dos Nove Céus",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23573,
+       "nome": "Molde de Anel Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 547 (22)",
+     "nome": "Anel de Destruição de Demônio",
+     "npc": "Forja de Acessório da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Anel / Anel da Gema",
+   "tipo": "Acessórios"
+  },
+  "23393": {
+   "desc": null,
+   "id": 23393,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Capacete de Tigre e Dragão",
+   "npc_compra": 64368,
+   "npc_venda": 32184,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3725,
+     "ingredientes": [
+      {
+       "id": 23574,
+       "nome": "Dente de Pojun das Sete Mortes",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23575,
+       "nome": "Chifre de Dragão dos Nove Céus",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23576,
+       "nome": "Molde de Capacete Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Capacete de Tigre e Dragão",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Elmo Pesado",
+   "tipo": "Armaduras"
+  },
+  "23394": {
+   "desc": null,
+   "id": 23394,
+   "nivel": 12,
+   "nivel_req": 95,
+   "nome": "☆Coroa de Cristal",
+   "npc_compra": 64368,
+   "npc_venda": 32184,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 3726,
+     "ingredientes": [
+      {
+       "id": 23577,
+       "nome": "Cristal de Esqueleto do Vento",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23578,
+       "nome": "Essência de Demônio Destruidor",
+       "qtd": 1,
+       "raridade": 2
+      },
+      {
+       "id": 23576,
+       "nome": "Molde de Capacete Ancestral",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "Coroa de Cristal",
+     "npc": "Forja de Armaduras da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Capacete / Touca Mística",
+   "tipo": "Armaduras"
+  },
+  "23562": {
+   "desc": "Material vital para fabricar o Amuleto do Valor.",
+   "id": 23562,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Placa de Acalmar Bruxa Aquática",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23563": {
+   "desc": "Material vital para fabricar o Amuleto do Valor.",
+   "id": 23563,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Coração Demônio da Destruição",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23564": {
+   "desc": "Material vital para fabricar o Coração de Chamas.",
+   "id": 23564,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Olho Flamejante de Wu Canxuan",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23565": {
+   "desc": "Material vital para fabricar o Amuleto do Valor, o Coração de Chamas e o Olho da Melancolia.",
+   "id": 23565,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Molde de Colar Ancestral",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23566": {
+   "desc": "Material vital para fabricar o Coração de Chamas.",
+   "id": 23566,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Esqueleto do Vento Flamejante",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23567": {
+   "desc": "Material vital para fabricar o Olho da Melancolia.",
+   "id": 23567,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "A Tristeza de Receptáculo Negro",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23568": {
+   "desc": "Material vital para fabricar o Olho da Melancolia.",
+   "id": 23568,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pedra da Verdadeira Fantasma",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23569": {
+   "desc": "Material vital para fabricar o Anel Precioso de Wang.",
+   "id": 23569,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Tesouro de Wang Erli",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23570": {
+   "desc": "Material vital para fabricar o Anel Precioso de Wang.",
+   "id": 23570,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Tesouro de Wang Dali",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23571": {
+   "desc": "Material vital para fabricar o Anel do Ardor.",
+   "id": 23571,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Argola de Demônio Destruidor",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23572": {
+   "desc": "Material vital para fabricar o Anel do Ardor.",
+   "id": 23572,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Escama de Dragão dos Nove Céus",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23573": {
+   "desc": "Material vital para fabricar o Anel Precioso de Wang e o Anel do Ardor.",
+   "id": 23573,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Molde de Anel Ancestral",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23574": {
+   "desc": "Material vital para fabricar o Elmo da Galantaria.",
+   "id": 23574,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Dente de Pojun das Sete Mortes",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23575": {
+   "desc": "Material vital para fabricar o Elmo da Galantaria.",
+   "id": 23575,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Chifre de Dragão dos Nove Céus",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23576": {
+   "desc": "Material vital para fabricar o Elmo da Galantaria e o Chapéu de Safira.",
+   "id": 23576,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Molde de Capacete Ancestral",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23577": {
+   "desc": "Material vital para fabricar o Chapéu de Safira.",
+   "id": 23577,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal de Esqueleto do Vento",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "23578": {
+   "desc": "Material vital para fabricar o Chapéu de Safira.",
+   "id": 23578,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência de Demônio Destruidor",
+   "npc_compra": 10000,
+   "npc_venda": 100,
+   "raridade": 2,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
   "24721": {
    "desc": "Troque junto à Administradora de Trocas por prêmios!",
    "id": 24721,
@@ -7253,545 +14410,113 @@
    "subtipo": null,
    "tipo": "Itens Básicos"
   },
-  "26051": {
-   "desc": null,
-   "id": 26051,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Mar em Fúria",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
+  "27711": {
+   "desc": "Uma túnica excelente, feita no Vale da Lua.",
+   "id": 27711,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Manto-Lunar do Esplendor",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
    "raridade": 2,
    "receitas": [
     {
-     "id": 4484,
+     "id": 4648,
      "ingredientes": [
       {
-       "id": 15306,
-       "nome": "Marca do Senhor das Ilusões",
+       "id": 16548,
+       "nome": "Condensação",
        "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 6,
        "raridade": 2
       },
       {
-       "id": 15298,
-       "nome": "Fonte Espelhada Ilusória",
-       "qtd": 10,
-       "raridade": 7
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 3,
+       "raridade": 2
       },
       {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 20,
-       "raridade": 1
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 9,
+       "raridade": 2
       },
       {
-       "id": 27827,
-       "nome": "Alma: Caluniador",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
+       "id": 16545,
+       "nome": "Essência da Natureza",
        "qtd": 30,
-       "raridade": 0
+       "raridade": 2
       }
      ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A随机生产匕首配方",
-     "npc": "Armas do Crepúsculo",
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "N/A2010神月补充重甲披风",
+     "npc": "Forja de Armaduras da Lua",
      "prob": 100.0
     }
    ],
    "stack": 1,
-   "subtipo": "Adagas / Adagas",
-   "tipo": "Armas"
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
   },
-  "26059": {
-   "desc": null,
-   "id": 26059,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Inferno do Mar",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
+  "27712": {
+   "desc": "Uma túnica excelente, feita no Vale da Lua.",
+   "id": 27712,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Manto-Lunar do Brilho",
+   "npc_compra": 64100,
+   "npc_venda": 32050,
    "raridade": 2,
    "receitas": [
     {
-     "id": 4501,
+     "id": 4649,
      "ingredientes": [
       {
-       "id": 15306,
-       "nome": "Marca do Senhor das Ilusões",
+       "id": 16548,
+       "nome": "Condensação",
        "qtd": 2,
+       "raridade": 3
+      },
+      {
+       "id": 16466,
+       "nome": "Sílex sem Nome",
+       "qtd": 6,
        "raridade": 2
       },
       {
-       "id": 15298,
-       "nome": "Fonte Espelhada Ilusória",
-       "qtd": 10,
-       "raridade": 7
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 3,
+       "raridade": 2
       },
       {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 20,
-       "raridade": 1
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 9,
+       "raridade": 2
       },
       {
-       "id": 27842,
-       "nome": "Alma: Pétala de Gelo",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
+       "id": 16545,
+       "nome": "Essência da Natureza",
        "qtd": 30,
-       "raridade": 0
+       "raridade": 2
       }
      ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A随机生产法宝配方",
-     "npc": "Armas do Crepúsculo",
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "N/A2010神月补充法系披风",
+     "npc": "Forja de Armaduras da Lua",
      "prob": 100.0
     }
    ],
    "stack": 1,
-   "subtipo": "Orbe / Orbe",
-   "tipo": "Armas"
-  },
-  "27804": {
-   "desc": null,
-   "id": 27804,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Escama Flamejante",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4666,
-     "ingredientes": [
-      {
-       "id": 15289,
-       "nome": "Hálito Negro da Grande Besta",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15286,
-       "nome": "Energia da Mulher Demônio",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27827,
-       "nome": "Alma: Caluniador",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿匕首01",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Adagas / Adagas",
-   "tipo": "Armas"
-  },
-  "27805": {
-   "desc": null,
-   "id": 27805,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Toque de Midas",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4667,
-     "ingredientes": [
-      {
-       "id": 15296,
-       "nome": "Espírito Guerreiro do Rei",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15281,
-       "nome": "Lâmina-Machado do Fantasma",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27828,
-       "nome": "Alma: Olhar Cruel",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿匕首02",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Adagas / Adagas",
-   "tipo": "Armas"
-  },
-  "27806": {
-   "desc": null,
-   "id": 27806,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Lâminas Assassinas",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4668,
-     "ingredientes": [
-      {
-       "id": 15291,
-       "nome": "Chifre Rubro da Grande Besta",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15285,
-       "nome": "Pedra Espiritual da Sagrada Mãe",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27829,
-       "nome": "Alma: Pluma de Jade",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿匕首03",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Adagas / Adagas",
-   "tipo": "Armas"
-  },
-  "27807": {
-   "desc": null,
-   "id": 27807,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Adagas da Corrupção",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4669,
-     "ingredientes": [
-      {
-       "id": 15288,
-       "nome": "Coração da Sagrada Mãe",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15286,
-       "nome": "Energia da Mulher Demônio",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27830,
-       "nome": "Alma: Alma do Mar",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿匕首04",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Adagas / Adagas",
-   "tipo": "Armas"
-  },
-  "27816": {
-   "desc": null,
-   "id": 27816,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Alteração Universal",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4681,
-     "ingredientes": [
-      {
-       "id": 15289,
-       "nome": "Hálito Negro da Grande Besta",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15286,
-       "nome": "Energia da Mulher Demônio",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27842,
-       "nome": "Alma: Pétala de Gelo",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿法宝01",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Orbe / Orbe",
-   "tipo": "Armas"
-  },
-  "27817": {
-   "desc": null,
-   "id": 27817,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Céu Fluente",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4682,
-     "ingredientes": [
-      {
-       "id": 15296,
-       "nome": "Espírito Guerreiro do Rei",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15281,
-       "nome": "Lâmina-Machado do Fantasma",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27843,
-       "nome": "Alma: Lua Cadente",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿法宝02",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Orbe / Orbe",
-   "tipo": "Armas"
-  },
-  "27818": {
-   "desc": null,
-   "id": 27818,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Arte da Encarnação",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4683,
-     "ingredientes": [
-      {
-       "id": 15291,
-       "nome": "Chifre Rubro da Grande Besta",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15285,
-       "nome": "Pedra Espiritual da Sagrada Mãe",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27844,
-       "nome": "Alma: Medo Cadavérico",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿法宝03",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Orbe / Orbe",
-   "tipo": "Armas"
-  },
-  "27819": {
-   "desc": null,
-   "id": 27819,
-   "nivel": 12,
-   "nivel_req": 99,
-   "nome": "☆Ressonância Estelar",
-   "npc_compra": 141920,
-   "npc_venda": 70960,
-   "raridade": 7,
-   "receitas": [
-    {
-     "id": 4684,
-     "ingredientes": [
-      {
-       "id": 15288,
-       "nome": "Coração da Sagrada Mãe",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15286,
-       "nome": "Energia da Mulher Demônio",
-       "qtd": 8,
-       "raridade": 7
-      },
-      {
-       "id": 15308,
-       "nome": "Símbolo do Crepúsculo",
-       "qtd": 16,
-       "raridade": 1
-      },
-      {
-       "id": 27845,
-       "nome": "Alma: Prima da Visão",
-       "qtd": 1,
-       "raridade": 7
-      },
-      {
-       "id": 15461,
-       "nome": "Essência do Crepúsculo",
-       "qtd": 15,
-       "raridade": 0
-      }
-     ],
-     "local": "Palácio do Crepúsculo: 351 597 (13)",
-     "nome": "N/A黄昏99级绿法宝04",
-     "npc": "Armas do Crepúsculo",
-     "prob": 100.0
-    }
-   ],
-   "stack": 1,
-   "subtipo": "Orbe / Orbe",
-   "tipo": "Armas"
+   "subtipo": "Manto / Manto",
+   "tipo": "Armaduras"
   },
   "27827": {
    "desc": "Imbuída com almas poderosas.",
@@ -7904,6 +14629,156 @@
    "stack": 1,
    "subtipo": null,
    "tipo": "Itens Básicos"
+  },
+  "44932": {
+   "desc": "A maioria das pessoas vive e morre sem que suas canções sejam cantadas. Elas nunca ousam tentar.",
+   "id": 44932,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Isolamento Solitário",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 7324,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 3,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 30,
+       "raridade": 2
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "N/A2014神月13品胧刀生产",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 7326,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "N/A2014神月13品胧刀生产商城",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Sabre / Sabre",
+   "tipo": "Armas"
+  },
+  "45015": {
+   "desc": "Embora sejam regadas pela mesma chuva, as plantas podem ter gostos diferentes.",
+   "id": 45015,
+   "nivel": 13,
+   "nivel_req": 95,
+   "nome": "☆Flor da Chuva",
+   "npc_compra": 160240,
+   "npc_venda": 80120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 7325,
+     "ingredientes": [
+      {
+       "id": 16546,
+       "nome": "Fraqmento Condensado",
+       "qtd": 5,
+       "raridade": 3
+      },
+      {
+       "id": 15302,
+       "nome": "Destino do Crepúsculo",
+       "qtd": 4,
+       "raridade": 2
+      },
+      {
+       "id": 16467,
+       "nome": "Sílex Colorido",
+       "qtd": 3,
+       "raridade": 2
+      },
+      {
+       "id": 16468,
+       "nome": "Sílex Antigo",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 16545,
+       "nome": "Essência da Natureza",
+       "qtd": 30,
+       "raridade": 2
+      },
+      {
+       "id": 16547,
+       "nome": "Cristal Condensado",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": "Vale da Lua: 355 548 (22)",
+     "nome": "N/A2014神月13品月镰生产",
+     "npc": "Forja de Armas da Lua",
+     "prob": 100.0
+    },
+    {
+     "id": 7327,
+     "ingredientes": [
+      {
+       "id": 23250,
+       "nome": "Vale da Lua - Arma",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "World: 117 855 (38)",
+     "nome": "N/A2014神月13品月镰生产商城",
+     "npc": "Trocas Comerciais",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Foice / Foice",
+   "tipo": "Armas"
   }
  },
  "versao": 1

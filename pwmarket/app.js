@@ -181,17 +181,20 @@ function carregar() {
   };
 }
 
-/** A lista guardada em data/precos.js.
+/** A lista guardada em data/lista.js.
  *
- * Serve de backup da lista de quem edita o painel, e NÃO de sugestão para
- * quem visita: em modo consulta a lista começa vazia, sempre. Herdar a lista
- * do dono encheria a tela do visitante com projetos que não são dele, e o
- * primeiro trabalho seria apagar tudo.
+ * Esse arquivo fica fora do git de propósito, então no site publicado ele não
+ * existe e todo visitante começa com a lista vazia. Localmente, ele é o backup
+ * da lista de quem usa a máquina.
+ *
+ * `PW_PRECOS.projetos` é o formato antigo, quando os dois viviam no mesmo
+ * arquivo; ainda é lido para não descartar a lista de quem já tinha uma.
  */
 function sugeridos() {
   if (CONSULTA) return [];
-  const base = window.PW_PRECOS || {};
-  return sanitizarFavoritos(base.projetos || base.favoritos || []);
+  const lista = window.PW_LISTA || {};
+  const antigo = window.PW_PRECOS || {};
+  return sanitizarFavoritos(lista.favoritos || antigo.projetos || antigo.favoritos || []);
 }
 
 function salvarDados() {
@@ -233,7 +236,7 @@ async function enviarAoServidor() {
     const r = await fetch('api/salvar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ obs: DADOS.obs, projetos: LOCAL.favoritos }),
+      body: JSON.stringify({ obs: DADOS.obs, favoritos: LOCAL.favoritos }),
     });
     const d = await r.json().catch(() => ({}));
     if (!r.ok || !d.ok) throw new Error(d.erro || `HTTP ${r.status}`);
@@ -703,7 +706,8 @@ function renderFav() {
     return;
   }
 
-  alvo.innerHTML = lista.map((fav) => {
+  const resumo = resumoLista(lista);
+  const cards = lista.map((fav) => {
     const c = calcular(fav);
     if (!c) {
       return `<div class="projeto"><div class="projeto-topo">
@@ -739,6 +743,43 @@ function renderFav() {
       </div>
     </div>`;
   }).join('');
+
+  // o mesmo somatório em cima e embaixo: em cima para saber o tamanho do
+  // investimento antes de rolar, embaixo para fechar a conta depois de ver tudo
+  alvo.innerHTML = resumo + cards + resumo;
+}
+
+/** Soma o que falta comprar em todas as receitas da lista. */
+function resumoLista(lista) {
+  let total = 0;
+  let receitas = 0;
+  let prontas = 0;
+  const semPreco = new Set();
+
+  for (const fav of lista) {
+    const c = calcular(fav);
+    if (!c) continue;
+    receitas++;
+    total += c.total;
+    c.semPreco.forEach((i) => semPreco.add(i.id));
+    if (!c.linhas.some((l) => l.falta > 0)) prontas++;
+  }
+
+  const aviso = semPreco.size
+    ? `<span class="aviso-sem-preco">${SINAL} ${semPreco.size} material(is) sem preço —
+       o total é o mínimo, não o valor final</span>`
+    : '';
+
+  return `<div class="resumo-lista">
+    <div class="resumo-info">
+      <strong>${receitas}</strong> receita(s) na lista${prontas ? ` · <strong>${prontas}</strong> com tudo em mãos` : ''}
+      ${aviso}
+    </div>
+    <div class="resumo-total">
+      <span class="rotulo">Investimento total</span>
+      <span class="valor" title="${fmtCheio(total)}">${fmtMedas(total)}${semPreco.size ? '+' : ''}</span>
+    </div>
+  </div>`;
 }
 
 function atualizarBadge() {
@@ -869,19 +910,28 @@ function fecharModais() {
 
 /* ------------------------------------------------------ exportar/importar */
 
-function exportar() {
-  // Sai como .js (e não .json) para poder ir direto em data/precos.js e
-  // continuar funcionando via file://, igual ao catálogo. Os favoritos vão
-  // como sugestão inicial para quem abrir a página publicada.
-  const corpo = JSON.stringify({ obs: DADOS.obs, projetos: LOCAL.favoritos }, null, 1);
-  const texto = '// pwmarket — preços e favoritos sugeridos. Gerado pelo botão Exportar.\n'
-    + `window.PW_PRECOS = ${corpo};\n`;
+function baixar(nome, texto) {
   const url = URL.createObjectURL(new Blob([texto], { type: 'text/javascript' }));
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'precos.js';
+  a.download = nome;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+/** Baixa os dois arquivos: preços (para commitar) e lista (pessoal). */
+function exportar() {
+  // Sai como .js (e não .json) para poder ir direto em data/ e continuar
+  // funcionando via file://, igual ao catálogo.
+  baixar('precos.js',
+    '// pwmarket — preços observados. Gerado pelo botão Exportar.\n'
+    + `window.PW_PRECOS = ${JSON.stringify({ obs: DADOS.obs }, null, 1)};\n`);
+
+  if (LOCAL.favoritos.length) {
+    baixar('lista.js',
+      '// pwmarket — sua lista de receitas. Não vai para o git.\n'
+      + `window.PW_LISTA = ${JSON.stringify({ favoritos: LOCAL.favoritos }, null, 1)};\n`);
+  }
 }
 
 function importar(arquivo) {
@@ -894,15 +944,19 @@ function importar(arquivo) {
       const d = JSON.parse(cru);
       // sanea antes de perguntar: o número mostrado é o que de fato vai entrar
       const obs = sanitizarObs(d.obs);
-      const favs = sanitizarFavoritos(d.projetos || d.favoritos);
+      const favs = sanitizarFavoritos(d.favoritos || d.projetos);
       const nObs = Object.keys(obs).length;
-      if (!nObs && !favs.length) throw new Error('o arquivo não tem preços nem favoritos válidos');
-      if (!confirm(`Substituir os dados atuais por ${nObs} item(ns) com preço e `
-        + `${favs.length} favorito(s)?`)) return;
-      DADOS = { obs };
-      LOCAL = { favoritos: favs };
-      salvarDados();
-      salvarLocal();
+      if (!nObs && !favs.length) throw new Error('o arquivo não tem preços nem lista válidos');
+
+      // aceita os dois arquivos, um de cada vez: só substitui o que o
+      // arquivo realmente traz, senão importar a lista apagaria os preços
+      const partes = [];
+      if (nObs) partes.push(`${nObs} item(ns) com preço`);
+      if (favs.length) partes.push(`${favs.length} receita(s) na lista`);
+      if (!confirm(`Substituir ${partes.join(' e ')}?`)) return;
+
+      if (nObs) { DADOS = { obs }; salvarDados(); }
+      if (favs.length) { LOCAL = { favoritos: favs }; salvarLocal(); }
       renderTudo();
     } catch (e) {
       alert('Falha ao importar: ' + e.message);

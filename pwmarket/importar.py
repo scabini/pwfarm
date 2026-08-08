@@ -48,6 +48,10 @@ LIMITE_INGREDIENTES = 25
 # poluiriam a aba Receitas com um caminho que não passa por material nenhum.
 IGNORAR_RECEITA_COM = ("Alma da Batalha",)
 
+# Armas de classes que não existem no The PW Clássico. Ninguém no servidor
+# consegue equipar, então na busca só atrapalhariam.
+IGNORAR_SUBTIPO = ("Adagas", "Orbe")
+
 
 # --------------------------------------------------------------------------
 # catálogo
@@ -138,6 +142,17 @@ def receita_ignorada(receita: dict) -> bool:
     return any(termo.lower() in nome for nome in nomes for termo in IGNORAR_RECEITA_COM)
 
 
+def item_ignorado(item: dict) -> bool:
+    """É equipamento de uma classe que o servidor não tem?
+
+    Compara por segmento do subtipo ("Adagas / Adagas", "Orbe / Orbe") e não por
+    substring solta, senão um material com "orbe" no nome cairia junto.
+    """
+    partes = [p.strip().lower() for p in (item.get("subtipo") or "").split("/")]
+    partes.append((item.get("tipo") or "").strip().lower())
+    return any(p == termo.lower() for p in partes for termo in IGNORAR_SUBTIPO)
+
+
 def importar_item(cat: dict, item_id: int, com_ingredientes: bool = True) -> int:
     """Importa um item (e, por padrão, os ingredientes das receitas dele).
 
@@ -155,6 +170,10 @@ def importar_item(cat: dict, item_id: int, com_ingredientes: bool = True) -> int
         return 0
 
     registro = item.to_dict()
+    if item_ignorado(registro):
+        print(f"  ~ {item.id} {item.nome} — {item.subtipo}: classe fora do servidor, não importei")
+        return 0
+
     todas = registro["receitas"]
     registro["receitas"] = [r for r in todas if not receita_ignorada(r)]
     descartadas = len(todas) - len(registro["receitas"])
@@ -267,6 +286,15 @@ def cmd_faxina(cat: dict) -> int:
     orfaos_possiveis: set[str] = set()
     removidas = 0
 
+    # equipamento de classe que o servidor não tem
+    fora = [k for k, v in cat["itens"].items() if item_ignorado(v)]
+    if fora:
+        print(f"  {len(fora)} item(ns) de classe fora do servidor:")
+        for k in fora:
+            it = cat["itens"].pop(k)
+            (ICONES / f"{k}.png").unlink(missing_ok=True)
+            print(f"  - {k} {it['nome']} ({it.get('subtipo')})")
+
     for item in cat["itens"].values():
         ficam, saem = [], []
         for r in item.get("receitas") or []:
@@ -280,8 +308,13 @@ def cmd_faxina(cat: dict) -> int:
             for ing in r.get("ingredientes") or []:
                 orfaos_possiveis.add(str(ing["id"]))
 
+    if not removidas and not fora:
+        print(f"nada a limpar — nenhuma receita casa com {IGNORAR_RECEITA_COM} "
+              f"e nenhum item com {IGNORAR_SUBTIPO}")
+        return 0
     if not removidas:
-        print("nada a limpar — nenhuma receita casa com " + str(IGNORAR_RECEITA_COM))
+        salvar(cat)
+        print(f"\n{len(fora)} item(ns) removidos. Catálogo: {len(cat['itens'])} itens.")
         return 0
 
     # quem continua sendo usado por alguma receita que ficou?

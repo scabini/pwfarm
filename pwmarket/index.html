@@ -171,8 +171,11 @@
 <!-- catálogo gerado por importar.py. É <script> e não fetch() de propósito:
      assim a página funciona com duplo-clique (file://), sem servidor. -->
 <script src="data/catalog.js"></script>
-<!-- preços e favoritos sugeridos publicados (opcional) -->
+<!-- preços publicados (opcional) -->
 <script src="data/precos.js" onerror="void 0"></script>
+<!-- sua lista pessoal. Fica fora do git, então no site publicado não existe
+     e cada visitante começa com a lista vazia. -->
+<script src="data/lista.js" onerror="void 0"></script>
 <script src="app.js"></script>
 
 </body>

@@ -27,25 +27,40 @@ from pathlib import Path
 RAIZ = Path(__file__).parent
 DESTINO = RAIZ / "data" / "precos.js"
 BACKUP = RAIZ / "data" / "precos.bak.js"
+LISTA = RAIZ / "data" / "lista.js"
 PORTA_PADRAO = 8731
 
-CABECALHO = (
-    "// pwmarket — preços e favoritos sugeridos.\n"
-    "// Gravado pelo servidor local (servidor.py). Commite este arquivo para publicar.\n"
+# Os dois arquivos existem separados porque têm donos diferentes: os preços são
+# publicados para todo mundo, a lista é de quem usa a máquina. Só o precos.js
+# vai para o git; lista.js está no .gitignore, então o site publicado nunca
+# carrega lista nenhuma e cada visitante começa do zero.
+CAB_PRECOS = (
+    "// pwmarket — preços observados. Gravado pelo servidor local (servidor.py).\n"
+    "// Commite este arquivo para publicar os preços.\n"
+)
+CAB_LISTA = (
+    "// pwmarket — sua lista de receitas. Gravado pelo servidor local.\n"
+    "// Fica FORA do git (veja .gitignore): é pessoal e não vai para o site.\n"
 )
 
 
-def escrever_precos(dados: dict) -> int:
-    """Grava data/precos.js, guardando a versão anterior em precos.bak.js."""
+def _escrever(destino: Path, variavel: str, cabecalho: str, dados: dict) -> int:
+    corpo = json.dumps(dados, ensure_ascii=False, indent=1)
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    with destino.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(cabecalho)
+        f.write(f"window.{variavel} = {corpo};\n")
+    return destino.stat().st_size
+
+
+def escrever_precos(dados: dict) -> tuple[int, int]:
+    """Grava data/precos.js e data/lista.js, com backup do arquivo de preços."""
     if DESTINO.exists():
         shutil.copy2(DESTINO, BACKUP)
 
-    corpo = json.dumps(dados, ensure_ascii=False, indent=1)
-    DESTINO.parent.mkdir(parents=True, exist_ok=True)
-    with DESTINO.open("w", encoding="utf-8", newline="\n") as f:
-        f.write(CABECALHO)
-        f.write(f"window.PW_PRECOS = {corpo};\n")
-    return DESTINO.stat().st_size
+    n1 = _escrever(DESTINO, "PW_PRECOS", CAB_PRECOS, {"obs": dados["obs"]})
+    n2 = _escrever(LISTA, "PW_LISTA", CAB_LISTA, {"favoritos": dados.get("favoritos") or []})
+    return n1, n2
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -68,6 +83,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return self._json({
                 "ok": True,
                 "arquivo": str(DESTINO.relative_to(RAIZ)).replace("\\", "/"),
+                "lista": str(LISTA.relative_to(RAIZ)).replace("\\", "/"),
             })
         return super().do_GET()
 
@@ -90,18 +106,23 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         # forma mínima esperada — não grava lixo por cima do arquivo bom
         if not isinstance(dados, dict) or not isinstance(dados.get("obs"), dict):
             return self._json({"ok": False, "erro": "payload sem o campo obs"}, 400)
-        dados.setdefault("projetos", [])
+        lista = dados.get("favoritos")
+        if lista is None:
+            lista = dados.get("projetos")  # nome antigo do campo
+        dados["favoritos"] = lista if isinstance(lista, list) else []
 
         try:
-            n = escrever_precos(dados)
+            n1, n2 = escrever_precos(dados)
         except OSError as e:
             return self._json({"ok": False, "erro": f"falha ao gravar: {e}"}, 500)
 
         itens = len(dados["obs"])
         obs = sum(len(v) for v in dados["obs"].values() if isinstance(v, list))
         agora = datetime.now(timezone.utc).astimezone().strftime("%H:%M:%S")
-        print(f"  [{agora}] data/precos.js gravado — {itens} item(ns), {obs} observação(ões), {n} bytes")
-        return self._json({"ok": True, "itens": itens, "observacoes": obs, "bytes": n})
+        print(f"  [{agora}] precos.js {itens} item(ns)/{obs} obs ({n1}b) · "
+              f"lista.js {len(dados['favoritos'])} receita(s) ({n2}b)")
+        return self._json({"ok": True, "itens": itens, "observacoes": obs,
+                           "lista": len(dados["favoritos"]), "bytes": n1 + n2})
 
     def log_message(self, *args):
         pass  # o log padrão por requisição só polui; imprimimos o que importa

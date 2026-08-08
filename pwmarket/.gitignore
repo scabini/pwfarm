@@ -4,3 +4,8 @@ __pycache__/
 
 # cópia que o servidor local guarda antes de sobrescrever os preços
 data/precos.bak.js
+
+# Sua lista de receitas: é pessoal de cada máquina e não vai para o site.
+# Como o arquivo não existe no repositório, quem abrir a página publicada
+# sempre começa com a lista vazia.
+data/lista.js

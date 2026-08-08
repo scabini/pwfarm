@@ -5,9 +5,11 @@ Perfect World. Você anota o que vê nas lojinhas e no chat, e o painel te diz q
 é o preço normal de cada coisa — e quanto falta pra fechar um craft.
 
 Os dados dos itens (nome, tipo, ícone, receitas) vêm do
-[pwdatabase BR](https://www.pwdatabase.com/br/), importados sob demanda. Como o
-foco é o Palácio do Crepúsculo, receitas que não usam material de dusk são
-descartadas na importação — veja `IGNORAR_RECEITA_COM` no `importar.py`.
+[pwdatabase BR](https://www.pwdatabase.com/br/), importados sob demanda. O foco é
+o **Palácio do Crepúsculo** e o **Vale da Lua**; receitas que trocam a peça por
+item de loja e equipamentos de classes que o servidor não tem (adagas e orbes)
+são descartados na importação — veja `IGNORAR_RECEITA_COM` e `IGNORAR_SUBTIPO`
+no `importar.py`.
 
 ## Abrir
 
@@ -31,16 +33,16 @@ py servidor.py --porta 8732 --sem-navegador
 
 Uma página em `file://` **não pode escrever no disco** — proibição do navegador,
 não escolha do projeto. Servindo daqui, ela ganha para onde mandar os dados, e
-cada preço registrado cai em `data/precos.js` sozinho (agrupado a cada 600ms,
-para 3 registros seguidos virarem uma escrita só). O rodapé mostra o estado, e
-**Gravar agora** força a escrita — útil na primeira vez, para levar ao disco o
-que já estava no localStorage.
+tudo cai em disco sozinho: os preços em `data/precos.js` e a sua lista em
+`data/lista.js` (agrupado a cada 600ms, para 3 registros seguidos virarem uma
+escrita só). O rodapé mostra o estado, e **Gravar agora** força a escrita — útil
+na primeira vez, para levar ao disco o que já estava no localStorage.
 
 Antes de sobrescrever, a versão anterior vai para `data/precos.bak.js` (fora do
 git). Payload malformado é recusado com 400 sem tocar no arquivo bom.
 
 O servidor escuta **apenas em 127.0.0.1**: ninguém na sua rede alcança. Ele só
-grava `data/precos.js` — nenhuma outra rota escreve nada.
+grava esses dois arquivos — nenhuma outra rota escreve nada.
 
 Publicar continua sendo `git commit` + `push`; o servidor tira só o trabalho de
 exportar e mover o arquivo na mão.
@@ -62,8 +64,9 @@ py importar.py --reicones               # rebaixa ícones que faltam
 py importar.py --faxina                 # aplica IGNORAR_RECEITA_COM ao catálogo
 ```
 
-`--faxina` remove as receitas fora do Crepúsculo de um catálogo já importado,
-junto com os itens que só existiam para servir de ingrediente a elas. A regra
+`--faxina` aplica as duas regras de exclusão a um catálogo já importado: tira as
+receitas que trocam a peça por item de loja, os itens que só existiam para servir
+de ingrediente a elas, e os equipamentos de adagas e orbes. A regra dos órfãos
 olha apenas os ingredientes *dessas* receitas, então material que você importou
 de propósito nunca é apagado por engano.
 
@@ -159,12 +162,12 @@ Material sem preço registrado ganha um **!** vermelho na ficha, e o custo vem
 com `+` seguido de *Há materiais sem preço registrado*. O `+` sozinho diria que
 o número está incompleto sem dizer por quê.
 
-**Clique no cartão** para ver a receita inteira como ela vai aparecer nos
-favoritos, com a tabela de ingredientes e o custo. A coluna *Tenho* aparece
-travada nessa prévia — ela só passa a valer depois que a receita entra nos seus
-favoritos, e o botão do rodapé faz isso e já te leva para lá.
+**Clique no cartão** para ver a receita inteira como ela vai aparecer na sua
+lista, com a tabela de ingredientes e o custo. A coluna *Tenho* aparece travada
+nessa prévia — ela só passa a valer depois que a receita entra na sua lista, e o
+botão do rodapé faz isso e já te leva para lá.
 
-A estrela **☆** no canto do cartão favorita direto, sem abrir a prévia.
+A estrela **☆** no canto do cartão adiciona direto, sem abrir a prévia.
 
 ## Minha lista
 
@@ -180,25 +183,29 @@ mostrado sem esse aviso.
 Ingredientes que também têm receita aparecem marcados como **craftável** —
 às vezes vale produzir em vez de comprar.
 
+No topo e no fim da lista aparece o **investimento total**: a soma do que falta
+comprar em todas as receitas. Se algum material ainda não tem preço, o total vem
+com `+` e o aviso de que é o mínimo.
+
 ### De quem é cada dado
 
 Isto importa para compartilhar:
 
-| Dado | De quem | Modo consulta |
-|---|---|---|
-| Preços observados | do dono do painel | somente leitura |
-| Minha lista e coluna **Tenho** | de quem está com a página aberta | **editáveis** |
+| Dado | Arquivo | Vai para o git? | Modo consulta |
+|---|---|---|---|
+| Preços observados | `data/precos.js` | **sim** | somente leitura |
+| Minha lista e **Tenho** | `data/lista.js` | **não** (`.gitignore`) | editáveis |
+
+Os dois são arquivos separados porque têm donos diferentes. O preço é publicado
+para todo mundo; a lista é de quem está usando a máquina.
+
+**Quem visita sempre começa com a lista vazia** — e isso não depende de nenhuma
+regra no código: o `data/lista.js` simplesmente não existe no repositório, logo
+não existe no site publicado. Cada visitante monta a dele, que fica no navegador
+dele (`pwmarket.local.v1`), sem encostar nos seus preços (`pwmarket.dados.v1`).
 
 A lista é escolha de quem olha, não informação do jogo — travar isso em modo
-consulta deixaria seus amigos sem conseguir planejar nada. Eles pesquisam,
-montam a lista deles e preenchem o próprio estoque; fica tudo no navegador de
-cada um, e os seus preços continuam intactos. Os dois vivem em chaves separadas
-(`pwmarket.dados.v1` e `pwmarket.local.v1`).
-
-**Quem visita sempre começa com a lista vazia.** O campo `projetos` do
-`data/precos.js` guarda a lista de quem edita o painel apenas como backup — ela
-nunca é usada como sugestão para os outros. Herdar a lista do dono encheria a
-tela do visitante de projetos que não são dele.
+consulta deixaria seus amigos sem conseguir planejar nada.
 
 ## Publicar no GitHub Pages
 
@@ -206,7 +213,7 @@ Para publicar:
 
 1. Garanta que `data/precos.js` está em dia — no **modo servidor** ele já está;
    no modo arquivo, **Exportar dados** e mova o download para `pwmarket/data/`.
-2. Commite e dê push.
+2. Commite e dê push. O `data/lista.js` não entra: ele está no `.gitignore`.
 
 Com Pages habilitado no repo, o painel fica em
 `scabini.github.io/pwfarm/pwmarket/`.
@@ -225,8 +232,9 @@ anotado assim fica **só na cópia local de quem anotou** — mais ninguém vê,
 painel publicado não muda. Para simular o modo consulta localmente, use
 `?consulta=1`.
 
-**Importar dados** faz o caminho de volta — aceita tanto o `precos.js`
-exportado quanto um `.json` cru.
+**Exportar dados** baixa os dois arquivos separados. **Importar dados** faz o
+caminho de volta e aceita um de cada vez: mandar só o `lista.js` não apaga os
+preços, e vice-versa.
 
 ## Arquivos
 
@@ -236,11 +244,15 @@ style.css         tema preto + vermelho, cores de raridade do jogo
 app.js            preços, estatísticas e cálculo de crafting
 importar.py       CLI de importação
 pwdb.py           cliente e parser do pwdatabase
+servidor.py       servidor local que grava os preços em disco
+abrir.bat         sobe o servidor e abre o navegador
 data/
   catalog.json    catálogo (fonte legível, versionada)
   catalog.js      mesmo conteúdo para carregar via file://
+  ajustes.json    nomes próprios do The PW Clássico
   icons/<id>.png  ícones baixados
-  precos.js       seus preços, quando você exporta para publicar
+  precos.js       preços — este é o arquivo que você commita
+  lista.js        sua lista de receitas — fica fora do git
 ```
 
 As cores dos nomes de item seguem as classes `item_colorN` do próprio

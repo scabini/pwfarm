@@ -1,8 +1,37 @@
-// pwmarket — preços publicados.
-// O campo projetos guarda a lista de quem edita o painel, como backup.
-// Quem visita a página sempre começa com a lista vazia.
+// pwmarket — preços e favoritos sugeridos.
+// Gravado pelo servidor local (servidor.py). Commite este arquivo para publicar.
 window.PW_PRECOS = {
  "obs": {
+  "15236": [
+   {
+    "id": "5cvu4k65",
+    "v": 1500000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (Lojas100)"
+   }
+  ],
+  "15249": [
+   {
+    "id": "rqatj8zs",
+    "v": 700000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (Dusk/Materias)"
+   }
+  ],
+  "15256": [
+   {
+    "id": "6d3bdcof",
+    "v": 50000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (Lojinha01)"
+   }
+  ],
   "15258": [
    {
     "id": "15kqqshb",
@@ -105,6 +134,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (Dusk/Materias)"
+   },
+   {
+    "id": "q7jr944x",
+    "v": 200000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (Vendor1)"
    }
   ],
   "15275": [
@@ -305,6 +342,16 @@ window.PW_PRECOS = {
     "n": "loja forjas dusk (LOJINHA300K)"
    }
   ],
+  "15306": [
+   {
+    "id": "tsasfx9d",
+    "v": 8000000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (DUSKDORED)"
+   }
+  ],
   "15307": [
    {
     "id": "9r1jrsk2",
@@ -339,6 +386,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (MBAPPESO)"
+   },
+   {
+    "id": "3i2r68ff",
+    "v": 5000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (LOJA _ON)"
    }
   ],
   "15461": [
@@ -365,8 +420,69 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja forjas dusk (MANJERICAO)"
+   },
+   {
+    "id": "3tsrrorm",
+    "v": 190000,
+    "q": 1,
+    "d": "2026-08-08",
+    "t": "venda",
+    "n": "loja CDO (MOISES)"
    }
   ]
  },
- "projetos": []
+ "projetos": [
+  {
+   "chave": "14994:1980",
+   "itemId": "14994",
+   "receitaId": "1980",
+   "qtd": 1,
+   "tenho": {
+    "15299": 2,
+    "15308": 0
+   }
+  },
+  {
+   "chave": "14830:1829",
+   "itemId": "14830",
+   "receitaId": "1829",
+   "qtd": 1,
+   "tenho": {}
+  },
+  {
+   "chave": "15006:1993",
+   "itemId": "15006",
+   "receitaId": "1993",
+   "qtd": 1,
+   "tenho": {
+    "15275": 0
+   }
+  },
+  {
+   "chave": "14992:1968",
+   "itemId": "14992",
+   "receitaId": "1968",
+   "qtd": 1,
+   "tenho": {
+    "15258": 5,
+    "15259": 1,
+    "15279": 10,
+    "15461": 12
+   }
+  },
+  {
+   "chave": "14825:1814",
+   "itemId": "14825",
+   "receitaId": "1814",
+   "qtd": 1,
+   "tenho": {}
+  },
+  {
+   "chave": "14821:1787",
+   "itemId": "14821",
+   "receitaId": "1787",
+   "qtd": 1,
+   "tenho": {}
+  }
+ ]
 };
