@@ -79,8 +79,13 @@ em relação ao pwdatabase. Essas diferenças ficam em **`data/ajustes.json`**:
 { "nomes": { "15307": "Pedra da Terra do Sonho" } }
 ```
 
-O `importar.py` aplica isso toda vez que salva o catálogo, então o ajuste
-sobrevive a reimportações. O nome é trocado no item **e** em todas as receitas
+O mesmo arquivo tem `sem_receitas`: itens que continuam no catálogo, porque são
+ingredientes que você quer precificar, mas cujas receitas somem. São as caixas de
+evento e loteria — a "Joia Misteriosa" sozinha traz 15 receitas apontando para
+cupons e chaves de GM, que nunca entrariam no catálogo.
+
+O `importar.py` aplica os dois toda vez que salva o catálogo, então os ajustes
+sobrevivem a reimportações. O nome é trocado no item **e** em todas as receitas
 que o usam como ingrediente — se ficassem diferentes, a busca por ingrediente na
 aba Receitas encontraria o nome antigo.
 

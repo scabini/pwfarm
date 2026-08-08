@@ -77,10 +77,13 @@ def aplicar_ajustes(cat: dict) -> int:
         return 0
     try:
         with AJUSTES.open(encoding="utf-8") as f:
-            nomes = json.load(f).get("nomes") or {}
+            cfg = json.load(f)
     except (json.JSONDecodeError, OSError) as e:
         print(f"  ! ajustes.json ignorado: {e}")
         return 0
+
+    nomes = cfg.get("nomes") or {}
+    sem_receitas = set(cfg.get("sem_receitas") or {})
 
     trocas = 0
     for iid, novo in nomes.items():
@@ -88,8 +91,15 @@ def aplicar_ajustes(cat: dict) -> int:
         if item and item.get("nome") != novo:
             item["nome"] = novo
             trocas += 1
-    # e as cópias dentro das receitas
-    for item in cat["itens"].values():
+
+    for iid, item in cat["itens"].items():
+        # caixas de evento e loteria: o item fica (é ingrediente e dá para
+        # precificar), a receita sai — ela aponta para cupom e chave de GM
+        if iid in sem_receitas and item.get("receitas"):
+            trocas += len(item["receitas"])
+            item["receitas"] = []
+            continue
+        # e as cópias do nome dentro das receitas
         for receita in item.get("receitas") or []:
             for ing in receita.get("ingredientes") or []:
                 novo = nomes.get(str(ing["id"]))

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-08T10:56:45+00:00",
+ "atualizado": "2026-08-08T11:04:45+00:00",
  "itens": {
   "14809": {
    "desc": null,
@@ -12332,6 +12332,324 @@
    "subtipo": "Sapatos / Botas Pesadas",
    "tipo": "Armaduras"
   },
+  "16443": {
+   "desc": "Uma alma esta presa na Pedra Vermelha... Alguém pode se interessar por isso.",
+   "id": 16443,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "União da Alma Vermelha",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16444": {
+   "desc": "Uma alma esta presa na Pedra Azul... Alguém pode se interessar por isso.",
+   "id": 16444,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "União da Alma Azul",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16445": {
+   "desc": "Uma alma esta presa na Pedra Verde... Alguém pode se interessar por isso.",
+   "id": 16445,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "União da Alma Verde",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16446": {
+   "desc": "Uma alma esta presa na Pedra Branca... Alguém pode se interessar por isso.",
+   "id": 16446,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "União da Alma Branca",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16447": {
+   "desc": "Uma alma esta presa na Pedra Transparente... Alguém pode se interessar por isso.",
+   "id": 16447,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "União da Alma Transparente",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16448": {
+   "desc": "Relíquias Antigas, emanam energia.",
+   "id": 16448,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Peça de Água Pura",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 4654,
+     "ingredientes": [
+      {
+       "id": 16443,
+       "nome": "União da Alma Vermelha",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Troca de Alma Vermelha",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16449": {
+   "desc": "Relíquias Antigas, emanam energia.",
+   "id": 16449,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Peça do Fogo Indomável",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 4653,
+     "ingredientes": [
+      {
+       "id": 16444,
+       "nome": "União da Alma Azul",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Troca de Alma Azul",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16450": {
+   "desc": "Relíquias Antigas, emanam energia.",
+   "id": 16450,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Peça da Mãe Terra",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 4652,
+     "ingredientes": [
+      {
+       "id": 16445,
+       "nome": "União da Alma Verde",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Troca de Alma Verde",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16451": {
+   "desc": "Relíquias Antigas, emanam energia.",
+   "id": 16451,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Peça da Vida",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 4651,
+     "ingredientes": [
+      {
+       "id": 16446,
+       "nome": "União da Alma Branca",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Troca de Alma Branca",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16452": {
+   "desc": "Relíquias Antigas, emanam energia.",
+   "id": 16452,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Peça de Ferro Refinado",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 4650,
+     "ingredientes": [
+      {
+       "id": 16447,
+       "nome": "União da Alma Transparente",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Vale da Lua: 355 549 (22)",
+     "nome": "Troca de Alma Transparente",
+     "npc": "Forja Essência do Vale da Lua",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16453": {
+   "desc": "Relíquias Antigas, emanam energia.",
+   "id": 16453,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Peça do Caos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16454": {
+   "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "id": 16454,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal da Água Pura",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16455": {
+   "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "id": 16455,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal do Fogo Indomável",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16456": {
+   "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "id": 16456,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal da Terra Mãe",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16457": {
+   "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "id": 16457,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal da Vida",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16458": {
+   "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "id": 16458,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal de Ferro Refinado",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "16459": {
+   "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "id": 16459,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Cristal do Caos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 3,
+   "receitas": [],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
   "16460": {
    "desc": "Relíquias Antigas, contém energia selada.",
    "id": 16460,
@@ -13512,233 +13830,7 @@
    "npc_compra": 0,
    "npc_venda": 0,
    "raridade": 3,
-   "receitas": [
-    {
-     "id": 3346,
-     "ingredientes": [
-      {
-       "id": 21069,
-       "nome": "Ordem do Imperador",
-       "qtd": 1,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "08G.Matança_Prêmio_1 por 2 Item",
-     "npc": "Fornalha Escarlate",
-     "prob": 100.0
-    },
-    {
-     "id": 3347,
-     "ingredientes": [
-      {
-       "id": 21069,
-       "nome": "Ordem do Imperador",
-       "qtd": 2,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "08G.Matança_Prêmio_2 por 6 Item",
-     "npc": "Fornalha Escarlate",
-     "prob": 100.0
-    },
-    {
-     "id": 3349,
-     "ingredientes": [
-      {
-       "id": 21069,
-       "nome": "Ordem do Imperador",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "08GMatançaPrêmio_10 por 50 Item",
-     "npc": "Fornalha Escarlate",
-     "prob": 100.0
-    },
-    {
-     "id": 3348,
-     "ingredientes": [
-      {
-       "id": 21069,
-       "nome": "Ordem do Imperador",
-       "qtd": 5,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "08GMatança_Prêmio_5 por 20 Item",
-     "npc": "Fornalha Escarlate",
-     "prob": 100.0
-    },
-    {
-     "id": 3049,
-     "ingredientes": [
-      {
-       "id": 20453,
-       "nome": "Pedra da Alma da Guerra",
-       "qtd": 1,
-       "raridade": 3
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": null,
-     "prob": 100.0
-    },
-    {
-     "id": 3634,
-     "ingredientes": [
-      {
-       "id": 21547,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3640,
-     "ingredientes": [
-      {
-       "id": 21547,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3694,
-     "ingredientes": [
-      {
-       "id": 23489,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3695,
-     "ingredientes": [
-      {
-       "id": 23490,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3696,
-     "ingredientes": [
-      {
-       "id": 23491,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3712,
-     "ingredientes": [
-      {
-       "id": 23489,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3713,
-     "ingredientes": [
-      {
-       "id": 23490,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 3714,
-     "ingredientes": [
-      {
-       "id": 23491,
-       "nome": "Pílula de Alma de Nove Estrelas",
-       "qtd": 10,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Jóia Misteriosa",
-     "npc": "Enviado da Cidade Sombria",
-     "prob": 100.0
-    },
-    {
-     "id": 4943,
-     "ingredientes": [
-      {
-       "id": 31451,
-       "nome": "Coração Sangrento",
-       "qtd": 15,
-       "raridade": 2
-      }
-     ],
-     "local": "Arena: 400 559 (28)",
-     "nome": "Jóia Misteriosa",
-     "npc": "Manes",
-     "prob": 100.0
-    },
-    {
-     "id": 4900,
-     "ingredientes": [
-      {
-       "id": 29718,
-       "nome": "Honra Divina do Vazio",
-       "qtd": 1,
-       "raridade": 2
-      }
-     ],
-     "local": "World: 550 635 (22)",
-     "nome": "N/A库任务神秘筹码",
-     "npc": "Emissário Divino da Sombra",
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -13752,38 +13844,7 @@
    "npc_compra": 100000,
    "npc_venda": 1,
    "raridade": 2,
-   "receitas": [
-    {
-     "id": 9838,
-     "ingredientes": [
-      {
-       "id": 56295,
-       "nome": "Chave Lunar·Arcana do GM",
-       "qtd": 2,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Loteria Japonesa 50",
-     "npc": "Nova Loteria Japonesa",
-     "prob": 100.0
-    },
-    {
-     "id": 9670,
-     "ingredientes": [
-      {
-       "id": 55175,
-       "nome": "Perfeito: Símbolo da Alma",
-       "qtd": 8,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "n/d2016日本新彩票兑换03",
-     "npc": "Nova Loteria Japonesa",
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -14329,23 +14390,7 @@
    "npc_compra": 10000,
    "npc_venda": 0,
    "raridade": 1,
-   "receitas": [
-    {
-     "id": 6268,
-     "ingredientes": [
-      {
-       "id": 39872,
-       "nome": "Moeda de Bronze",
-       "qtd": 1,
-       "raridade": 0
-      }
-     ],
-     "local": "World: 118 861 (38)",
-     "nome": "Trocar Sím. por Moeda de Bronze",
-     "npc": "Wang Cai",
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -14359,53 +14404,7 @@
    "npc_compra": 10000,
    "npc_venda": 0,
    "raridade": 3,
-   "receitas": [
-    {
-     "id": 9835,
-     "ingredientes": [
-      {
-       "id": 56293,
-       "nome": "Fragmento Arcano: Lâmina",
-       "qtd": 1,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "Loteria Japonesa 47",
-     "npc": "Nova Loteria Japonesa",
-     "prob": 100.0
-    },
-    {
-     "id": 9668,
-     "ingredientes": [
-      {
-       "id": 55174,
-       "nome": "Perfeito: Fragmento Para-Lâmina",
-       "qtd": 1,
-       "raridade": 0
-      }
-     ],
-     "local": null,
-     "nome": "n/d2016日本新彩票兑换01",
-     "npc": "Nova Loteria Japonesa",
-     "prob": 100.0
-    },
-    {
-     "id": 9771,
-     "ingredientes": [
-      {
-       "id": 21652,
-       "nome": "Cupom Perfeito",
-       "qtd": 1,
-       "raridade": 3
-      }
-     ],
-     "local": null,
-     "nome": "Troca Símb. da Sorte Suprema",
-     "npc": "Comerciante de Tesouros Hagen",
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -14779,6 +14778,62 @@
    "stack": 1,
    "subtipo": "Foice / Foice",
    "tipo": "Armas"
+  },
+  "799": {
+   "desc": "Madeira do nível especial para a produção de equipamento.",
+   "id": 799,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Essência de Madeira",
+   "npc_compra": 2600,
+   "npc_venda": 1,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 100,
+   "subtipo": "Materiais de Forja / Madeira",
+   "tipo": "Materiais"
+  },
+  "804": {
+   "desc": "Metal do nível especial para a produção de equipamento.",
+   "id": 804,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Aço Damasco",
+   "npc_compra": 2600,
+   "npc_venda": 1,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 100,
+   "subtipo": "Materiais de Forja / Metal",
+   "tipo": "Materiais"
+  },
+  "809": {
+   "desc": "Polidor do nível especial para a produção de equipamento.",
+   "id": 809,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Esmeril",
+   "npc_compra": 2600,
+   "npc_venda": 1,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 100,
+   "subtipo": "Materiais de Forja / Pedra",
+   "tipo": "Materiais"
+  },
+  "819": {
+   "desc": "Energia do nível especial para a produção de equipamento.",
+   "id": 819,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Coque Refinado",
+   "npc_compra": 2600,
+   "npc_venda": 1,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 100,
+   "subtipo": "Materiais de Forja / Combustível",
+   "tipo": "Materiais"
   }
  },
  "versao": 1
