@@ -298,6 +298,135 @@ function avaliar(unit, ref) {
 
 const pctTxt = (dif) => (dif > 0 ? '+' : '') + Math.round(dif * 100) + '%';
 
+/* -------------------------------------------------------------------- tags */
+
+/* O jogador procura por "dusk 99 dourado", "arma vale da lua", "set pesado" —
+ * e nenhum desses é campo do pwdatabase. As tags saem do próprio catálogo:
+ *
+ *   conteúdo  a zona onde a receita é feita. Nos materiais isso não aparece
+ *             (a forja fica no meio do mapa), então vem de quem os consome.
+ *   nível     nivel_req do item.
+ *   cor       raridade — a mesma que colore o nome dentro do jogo.
+ *   set       classe da armadura. Sai do nome da receita ("Bota Pesada Dourada
+ *             V. da Lua"), não do subtipo: o pwdatabase tem só dois subtipos de
+ *             capacete para três classes, e erra o do set leve.
+ */
+
+const GRUPOS_TAG = [
+  { id: 'conteudo', rot: 'Conteúdo', tags: [['dusk', 'Dusk'], ['lua', 'Vale da Lua']] },
+  { id: 'nivel', rot: 'Nível', tags: [['lv90', '90'], ['lv95', '95'], ['lv99', '99']] },
+  { id: 'cor', rot: 'Cor', tags: [['dourado', 'Dourado'], ['verde', 'Verde'], ['roxo', 'Roxo'], ['laranja', 'Laranja']] },
+  { id: 'set', rot: 'Set', tags: [['pesado', 'Pesado'], ['leve', 'Leve'], ['mistico', 'Místico']] },
+];
+
+const ROTULO_TAG = new Map(GRUPOS_TAG.flatMap((g) => g.tags));
+const GRUPO_DA_TAG = new Map(GRUPOS_TAG.flatMap((g) => g.tags.map(([t]) => [t, g.id])));
+const ORDEM_TAG = [...ROTULO_TAG.keys()];
+
+const COR_RARIDADE = { 2: 'dourado', 3: 'roxo', 4: 'laranja', 7: 'verde' };
+const NIVEIS_TAG = [90, 95, 99];
+
+const RE_DUSK = /crep[úu]sculo/i;
+const RE_LUA = /vale da lua|v\.? ?(?:da )?lua/i;
+// os dois últimos são chinês: as capas do Vale da Lua ficaram sem tradução
+const RE_PESADO = /pesad|pes\.|重甲/i;
+const RE_LEVE = /leve|轻甲/i;
+const RE_MAGICO = /m[áa]g|法系/i;
+
+const SUBTIPO_SET = {
+  'armadura pesada': 'pesado', 'perneiras pesadas': 'pesado', 'botas pesadas': 'pesado',
+  'braceletes pesados': 'pesado', 'elmo pesado': 'pesado',
+  'armadura leve': 'leve', 'perneiras leves': 'leve', 'botas leves': 'leve', 'manopla': 'leve',
+  'túnica': 'mistico', 'calças místicas': 'mistico', 'sandálias': 'mistico',
+  'luvas': 'mistico', 'touca mística': 'mistico',
+};
+
+const ehEquipamento = (it) => it?.tipo === 'Armas' || it?.tipo === 'Armaduras' || it?.tipo === 'Acessórios';
+
+/** Onde a receita é feita, pelo que a forja e o nome dela entregam. */
+function zonaReceita(r) {
+  const txt = `${r?.local || ''} ${r?.npc || ''} ${r?.nome || ''}`;
+  if (RE_DUSK.test(txt)) return 'dusk';
+  if (RE_LUA.test(txt)) return 'lua';
+  return null;
+}
+
+/** Zonas de um item pelas próprias receitas — ou pelo nome, quando ele se entrega. */
+function zonasProprias(it) {
+  const z = new Set();
+  for (const r of it.receitas || []) {
+    const q = zonaReceita(r);
+    if (q) z.add(q);
+  }
+  if (!z.size && RE_DUSK.test(it.nome || '')) z.add('dusk');
+  return z;
+}
+
+/* Material nenhum diz de onde vem: "Essência do Crepúsculo" é óbvia, mas
+ * "Pedra da Terra do Sonho" é forjada num NPC solto no mapa. Quem responde é
+ * o consumo — se um equipamento do Vale da Lua usa o material, o material é
+ * do Vale da Lua. Vale para a cadeia inteira, por isso repete até parar de
+ * mudar (a maior tem 3 níveis). Um material usado nas duas zonas fica com as
+ * duas tags, que é a resposta certa. */
+let ZONAS = null;
+
+function zonasDeItem(id) {
+  if (!ZONAS) {
+    ZONAS = new Map();
+    for (const [iid, it] of Object.entries(CATALOGO)) ZONAS.set(iid, zonasProprias(it));
+    for (let volta = 0; volta < 8; volta++) {
+      let mudou = false;
+      for (const [iid, it] of Object.entries(CATALOGO)) {
+        const zonas = ZONAS.get(iid);
+        if (!zonas.size) continue;
+        for (const r of it.receitas || []) {
+          for (const g of r.ingredientes || []) {
+            const alvo = ZONAS.get(String(g.id));
+            if (!alvo) continue;
+            for (const q of zonas) {
+              if (!alvo.has(q)) { alvo.add(q); mudou = true; }
+            }
+          }
+        }
+      }
+      if (!mudou) break;
+    }
+  }
+  return ZONAS.get(String(id)) || new Set();
+}
+
+/** Classe da armadura de uma receita, ou null se ela não disser. */
+function setReceita(it, r) {
+  const nome = r?.nome || '';
+  if (RE_PESADO.test(nome)) return 'pesado';
+  if (RE_LEVE.test(nome)) return 'leve';
+  if (RE_MAGICO.test(nome)) return 'mistico';
+  return SUBTIPO_SET[(it.subtipo || '').split('/').pop().trim().toLowerCase()] || null;
+}
+
+/** Tags de uma receita, sempre na ordem dos grupos. */
+function tagsDe(it, r) {
+  const t = new Set();
+
+  // No equipamento a zona é da receita — as armas do Vale da Lua têm uma
+  // versão feita em Trocas Comerciais, e ela continua sendo do Vale da Lua.
+  if (ehEquipamento(it)) {
+    const z = zonaReceita(r);
+    for (const q of z ? [z] : zonasProprias(it)) t.add(q);
+  } else {
+    for (const q of zonasDeItem(it.id)) t.add(q);
+  }
+
+  if (NIVEIS_TAG.includes(it.nivel_req)) t.add('lv' + it.nivel_req);
+  if (COR_RARIDADE[it.raridade]) t.add(COR_RARIDADE[it.raridade]);
+  if (it.tipo === 'Armaduras') {
+    const s = setReceita(it, r);
+    if (s) t.add(s);
+  }
+
+  return ORDEM_TAG.filter((x) => t.has(x));
+}
+
 /* ---------------------------------------------------------------- receitas */
 
 /** Achata o catálogo em uma lista de receitas, uma entrada por receita. */
@@ -306,14 +435,19 @@ function todasReceitas() {
   for (const it of Object.values(CATALOGO)) {
     for (const r of it.receitas || []) {
       if (!r.ingredientes || !r.ingredientes.length) continue;
+      const tags = tagsDe(it, r);
       saida.push({
         chave: `${it.id}:${r.id}`,
         it,
         r,
         secao: secaoDe(it),
-        // texto único para a busca: item, receita, forja e ingredientes
+        tags,
+        // texto único para a busca: item, receita, forja, tags e ingredientes.
+        // As tags entram aqui também para "dusk 99" funcionar digitado — a
+        // palavra "dusk" não aparece em campo nenhum do pwdatabase.
         busca: [
           it.nome, it.tipo, it.subtipo, r.nome, r.npc, r.local,
+          ...tags.map((x) => ROTULO_TAG.get(x)),
           ...r.ingredientes.map((g) => g.nome),
         ].join(' ').toLowerCase(),
       });
@@ -447,11 +581,23 @@ function renderPrecos() {
 
 /* ============================================================== RECEITAS */
 
-function renderReceitas() {
-  const alvo = $('#conteudoReceitas');
+const filtroTags = new Set();
+
+/** OR dentro do grupo, AND entre grupos: marcar Dourado e Verde alarga a
+ *  busca, marcar Dourado e Dusk aperta — que é como o jogador pensa. */
+function casaTags(x, ativas) {
+  if (!ativas.size) return true;
+  for (const g of GRUPOS_TAG) {
+    const doGrupo = g.tags.filter(([t]) => ativas.has(t));
+    if (doGrupo.length && !doGrupo.some(([t]) => x.tags.includes(t))) return false;
+  }
+  return true;
+}
+
+/** Receitas que passam pela busca e pela seção — a base das contagens. */
+function receitasFiltradas(comTags = true) {
   const termo = $('#filtroReceitas').value.trim().toLowerCase();
   const secao = $('#secaoReceitas').value;
-  const ordem = $('#ordemReceitas').value;
 
   let lista = todasReceitas();
   if (secao) lista = lista.filter((x) => x.secao === secao);
@@ -460,10 +606,59 @@ function renderReceitas() {
     const palavras = termo.split(/\s+/);
     lista = lista.filter((x) => palavras.every((p) => x.busca.includes(p)));
   }
+  if (comTags) lista = lista.filter((x) => casaTags(x, filtroTags));
+  return lista;
+}
+
+/** Quantas receitas sairiam ao marcar esta tag, respeitando os outros grupos.
+ *  Sem isso o filtro é tentativa e erro: dá para clicar e cair em zero. */
+function contarTag(base, tag) {
+  const grupo = GRUPO_DA_TAG.get(tag);
+  const ativas = new Set([...filtroTags].filter((t) => GRUPO_DA_TAG.get(t) !== grupo));
+  ativas.add(tag);
+  return base.reduce((n, x) => n + (casaTags(x, ativas) ? 1 : 0), 0);
+}
+
+function renderChipsTags() {
+  const base = receitasFiltradas(false);
+
+  // tag que não sobrou nada só ocupa espaço; a marcada fica para poder desmarcar
+  const grupos = GRUPOS_TAG.map((g) => {
+    const chips = g.tags
+      .map(([t, rot]) => ({ t, rot, n: contarTag(base, t) }))
+      .filter((c) => c.n > 0 || filtroTags.has(c.t));
+    if (!chips.length) return '';
+    return `<div class="grupo-tag"><span class="rot">${esc(g.rot)}</span>${chips.map((c) => {
+      const on = filtroTags.has(c.t);
+      return `<button class="chip-tag p-${esc(c.t)}${on ? ' on' : ''}" data-tag="${esc(c.t)}"
+        aria-pressed="${on}" title="${on ? 'Desmarcar' : 'Filtrar por'} ${esc(c.rot)}"
+        >${esc(c.rot)}<span class="n">${c.n}</span></button>`;
+    }).join('')}</div>`;
+  }).join('');
+
+  $('#chipsTags').innerHTML = grupos + (filtroTags.size
+    ? '<button class="chip-tag limpar" data-limpar-tags="1">✕ limpar</button>' : '');
+}
+
+function alternarTag(tag) {
+  if (!ROTULO_TAG.has(tag)) return;
+  if (filtroTags.has(tag)) filtroTags.delete(tag);
+  else filtroTags.add(tag);
+  renderReceitas();
+}
+
+function renderReceitas() {
+  const alvo = $('#conteudoReceitas');
+  const termo = $('#filtroReceitas').value.trim().toLowerCase();
+  const secao = $('#secaoReceitas').value;
+  const ordem = $('#ordemReceitas').value;
+
+  renderChipsTags();
+  const lista = receitasFiltradas();
 
   if (!lista.length) {
     alvo.innerHTML = `<div class="vazio"><strong>Nenhuma receita encontrada</strong>
-      ${termo || secao ? 'Tente outro termo ou seção.'
+      ${termo || secao || filtroTags.size ? 'Tente outro termo, seção ou combinação de tags.'
         : `O catálogo tem ${Object.keys(CATALOGO).length} itens, nenhum com receita.`}</div>`;
     return;
   }
@@ -524,6 +719,11 @@ function cardReceita(x) {
   const prob = r.prob != null && r.prob < 100
     ? `<span class="pastilha caro" title="chance por tentativa">${r.prob}%</span>` : '';
 
+  // clicáveis: a tag no cartão é o caminho mais curto para "quero mais disso"
+  const tags = x.tags.map((t) => `<button class="pill p-${esc(t)}${filtroTags.has(t) ? ' on' : ''}"
+      data-tag="${esc(t)}" title="Filtrar por ${esc(ROTULO_TAG.get(t))}"
+      >${esc(ROTULO_TAG.get(t))}</button>`).join('');
+
   return `<div class="receita clicavel${fav ? ' favorita' : ''}" data-receita="${esc(chave)}"
        title="Ver a receita e adicionar à sua lista">
     <img class="icone" src="${iconeDe(it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
@@ -536,6 +736,7 @@ function cardReceita(x) {
       </div>
       <div class="rec" title="${esc(r.nome)}">${esc(r.nome)} ${prob}</div>
       <div class="forja">${esc(r.npc || '—')}${r.local ? ' · ' + esc(r.local) : ''}</div>
+      ${tags ? `<div class="tags">${tags}</div>` : ''}
       <div class="pe">
         <div class="ingredientes">${chips}</div>
         ${custo}
@@ -1067,13 +1268,23 @@ function ligar() {
     // clique no cartão da receita abre o preview — menos quando foi na estrela,
     // que já tem ação própria
     const cartao = e.target.closest('[data-receita]');
-    if (cartao && !e.target.closest('.estrela')) {
+    if (cartao && !e.target.closest('.estrela, [data-tag]')) {
       abrirPreviewReceita(cartao.dataset.receita);
       return;
     }
 
     const b = e.target.closest('button');
     if (!b) return;
+
+    if (b.dataset.tag) {
+      alternarTag(b.dataset.tag);
+      return;
+    }
+    if (b.dataset.limparTags) {
+      filtroTags.clear();
+      renderReceitas();
+      return;
+    }
 
     if (b.dataset.fav) {
       alternarFavorito(b.dataset.fav);

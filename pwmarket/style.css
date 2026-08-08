@@ -327,6 +327,96 @@ tr.historico.oculto { display: none; }
 
 .badge.tem { display: inline-block; }
 
+/* filtros por tag da aba Receitas */
+
+.chips-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  align-items: center;
+  margin: -8px 0 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.grupo-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.grupo-tag .rot {
+  font: 600 10px/1 var(--fonte);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--texto-apagado);
+  margin-right: 2px;
+}
+
+.chip-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-alt);
+  border: 1px solid var(--linha);
+  border-radius: 12px;
+  color: var(--texto-fraco);
+  font: 500 12px/1 var(--fonte);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.chip-tag:hover { border-color: var(--borda); color: var(--texto); background: var(--vermelho-fundo); }
+
+.chip-tag.on {
+  background: var(--vermelho-fundo);
+  border-color: var(--borda-forte);
+  color: var(--vermelho-claro);
+}
+
+.chip-tag .n {
+  font: 600 10px/1 var(--mono);
+  color: var(--texto-apagado);
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 3px 5px;
+}
+
+.chip-tag.on .n { color: var(--vermelho-claro); background: #2a0c15; }
+.chip-tag.limpar { border-style: dashed; margin-left: auto; }
+
+/* tags no cartão da receita — a cor é a mesma que colore o nome no jogo */
+
+.receita .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: -4px 0 8px;
+}
+
+.pill {
+  background: none;
+  border: 1px solid var(--linha);
+  border-radius: 9px;
+  color: var(--texto-apagado);
+  font: 500 10px/1 var(--fonte);
+  letter-spacing: 0.3px;
+  padding: 3px 7px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.pill:hover { border-color: var(--borda); background: var(--vermelho-fundo); }
+.pill.on { border-color: var(--borda-forte); background: var(--vermelho-fundo); }
+
+.pill.p-dourado, .chip-tag.p-dourado:not(.on) { color: var(--r2); }
+.pill.p-verde, .chip-tag.p-verde:not(.on) { color: var(--r7); }
+.pill.p-roxo, .chip-tag.p-roxo:not(.on) { color: var(--r3); }
+.pill.p-laranja, .chip-tag.p-laranja:not(.on) { color: var(--r4); }
+.pill.p-dusk, .pill.p-lua { color: var(--texto-fraco); border-color: #3d1a22; }
+
 .secao {
   display: flex;
   align-items: center;

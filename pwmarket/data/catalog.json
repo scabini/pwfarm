@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-08T11:04:45+00:00",
+ "atualizado": "2026-08-08T11:32:00+00:00",
  "itens": {
   "14809": {
    "desc": null,
@@ -5984,31 +5984,7 @@
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 4,
-   "receitas": [
-    {
-     "id": 3993,
-     "ingredientes": [
-      {
-       "id": 24722,
-       "nome": "Muita Sorte - Perfect World",
-       "qtd": 10,
-       "raridade": 3
-      }
-     ],
-     "local": "World: 117 855 (38)",
-     "nome": "Mta.Sor.PW- Máscara Dourada",
-     "npc": "Trocas Comerciais",
-     "prob": 100.0
-    },
-    {
-     "id": 3654,
-     "ingredientes": [],
-     "local": null,
-     "nome": "Troca de Máscara Dourada",
-     "npc": null,
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -6022,23 +5998,7 @@
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 4,
-   "receitas": [
-    {
-     "id": 3991,
-     "ingredientes": [
-      {
-       "id": 24722,
-       "nome": "Muita Sorte - Perfect World",
-       "qtd": 60,
-       "raridade": 3
-      }
-     ],
-     "local": "World: 117 855 (38)",
-     "nome": "Mta. Sor.PW-Cetro Poder do Crep",
-     "npc": "Trocas Comerciais",
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -6052,23 +6012,7 @@
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 4,
-   "receitas": [
-    {
-     "id": 3992,
-     "ingredientes": [
-      {
-       "id": 24722,
-       "nome": "Muita Sorte - Perfect World",
-       "qtd": 30,
-       "raridade": 3
-      }
-     ],
-     "local": "World: 117 855 (38)",
-     "nome": "Mta.Sor.PW-Esp.do Céu e Terra",
-     "npc": "Trocas Comerciais",
-     "prob": 100.0
-    }
-   ],
+   "receitas": [],
    "stack": 9999,
    "subtipo": null,
    "tipo": "Itens Básicos"
@@ -14390,20 +14334,6 @@
    "npc_compra": 10000,
    "npc_venda": 0,
    "raridade": 1,
-   "receitas": [],
-   "stack": 9999,
-   "subtipo": null,
-   "tipo": "Itens Básicos"
-  },
-  "24722": {
-   "desc": "Use a opção Troca de Itens com a Administradora de Trocas para trocar por itens.",
-   "id": 24722,
-   "nivel": null,
-   "nivel_req": null,
-   "nome": "Muita Sorte - Perfect World",
-   "npc_compra": 10000,
-   "npc_venda": 0,
-   "raridade": 3,
    "receitas": [],
    "stack": 9999,
    "subtipo": null,

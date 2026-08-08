@@ -82,7 +82,10 @@ em relação ao pwdatabase. Essas diferenças ficam em **`data/ajustes.json`**:
 O mesmo arquivo tem `sem_receitas`: itens que continuam no catálogo, porque são
 ingredientes que você quer precificar, mas cujas receitas somem. São as caixas de
 evento e loteria — a "Joia Misteriosa" sozinha traz 15 receitas apontando para
-cupons e chaves de GM, que nunca entrariam no catálogo.
+cupons e chaves de GM, que nunca entrariam no catálogo. Os três itens laranja
+(*Máscara Dourada*, *Cetro do Crepúsculo*, *Espírito do Céu e da Terra*) estão
+aí pelo mesmo motivo: só saíam de "Muita Sorte - Perfect World", que este
+servidor não tem.
 
 O `importar.py` aplica os dois toda vez que salva o catálogo, então os ajustes
 sobrevivem a reimportações. O nome é trocado no item **e** em todas as receitas
@@ -155,10 +158,43 @@ Catálogo navegável de tudo que dá para produzir, em seções: **Armas**,
 novo). Um item com duas receitas aparece duas vezes — a escolha entre elas é
 uma decisão de custo, não um detalhe.
 
-A busca cobre **nome do item, nome da receita, forja, localização e os
+A busca cobre **nome do item, nome da receita, forja, localização, tags e os
 ingredientes**. Então `símbolo do crepúsculo` lista tudo que consome esse
 material, e `jóias` filtra pela forja. Vários termos funcionam como E:
 `asura bota` acha só as receitas daquela peça.
+
+### Filtros por tag
+
+Ninguém procura por "Armaduras / Corpo / Armadura Pesada" — procura por *dusk
+99 dourado* e *set pesado dusk*. A barra de filtros tem quatro grupos de botões
+que falam essa língua:
+
+| Grupo | Botões |
+| --- | --- |
+| **Conteúdo** | Dusk · Vale da Lua |
+| **Nível** | 90 · 95 · 99 |
+| **Cor** | Dourado · Verde · Roxo (na cor que o nome tem no jogo) |
+| **Set** | Pesado · Leve · Místico |
+
+Dentro do grupo é **ou**, entre grupos é **e**: *Dourado + Verde* alarga a
+busca, *Dourado + Dusk* aperta. Cada botão traz **quanto ele daria** com o que
+já está marcado, então não dá para clicar e cair em zero — e botão que zerou
+desaparece da barra (é o que acontece hoje com *Laranja*, sem receita nenhuma
+neste servidor). As mesmas tags aparecem em cada cartão, clicáveis: é o caminho
+curto para "quero mais disso".
+
+As tags também entram na busca por texto, então `dusk dourado 99` digitado dá o
+mesmo resultado que os três botões — a palavra "dusk" não existe em campo nenhum
+do pwdatabase.
+
+Nada disso é campo importado: as tags são **derivadas** do catálogo. Conteúdo
+sai da zona da forja e, nos materiais, de quem os consome — a *Pedra da Terra do
+Sonho* é forjada num NPC solto no mapa e só é "dusk" porque o peito dusk 99 a
+usa. Material que serve às duas zonas fica com as duas tags, que é a resposta
+certa: quem for atrás de arma do Vale da Lua também precisa do *Destino do
+Crepúsculo*. O set vem do **nome da receita** ("Bota Pesada Dourada V. da Lua"),
+não do subtipo: o pwdatabase tem só dois subtipos de capacete para três classes,
+e erra o do set leve.
 
 Cada cartão mostra os ingredientes como fichas com quantidade (passe o mouse
 para nome e subtotal) e o **custo estimado** a preço de referência.
