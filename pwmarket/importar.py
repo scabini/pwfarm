@@ -145,12 +145,12 @@ def aplicar_ajustes(cat: dict) -> int:
     nomes = cfg.get("nomes") or {}
     sem_receitas = set(cfg.get("sem_receitas") or {})
 
-    # Os rótulos de sala viajam junto com o catálogo em vez de ficarem no
-    # app.js: assim renomear "Dusk 3-3" é editar um JSON e rodar --ajustes,
+    # Em que modo da dusk cada material cai. Viaja junto com o catálogo em vez
+    # de ficar no app.js: corrigir um modo é editar um JSON e rodar --ajustes,
     # sem mexer em código nem reimportar item nenhum.
-    salas = {str(k): v for k, v in (cfg.get("salas") or {}).items()}
-    if cat.get("salas") != salas:
-        cat["salas"] = salas
+    modos = {str(k): list(v) for k, v in (cfg.get("modos") or {}).items()}
+    if cat.get("modos") != modos:
+        cat["modos"] = modos
 
     trocas = 0
     for iid, novo in nomes.items():

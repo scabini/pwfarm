@@ -271,33 +271,37 @@ farma é um chefe só).
 privado mexe em drop rate. O nome do chefe é o dado firme; a porcentagem é
 referência, e o painel avisa isso onde a mostra.
 
-### O modo (3-3) não vem pronto — e não dá para deduzir
+### O modo (3-3) vem dos guias, não do pwdatabase
 
-O pwdatabase dá a zona, a coordenada e um número de sala, e é só isso. A sala
-**separa** os modos corretamente (o mesmo chefe reaparece em outra sala com mais
-vida, que é o modo difícil), mas não recebe nome, e a página do mob também não
-traz o mapa.
+O pwdatabase dá a zona, a coordenada e um número de sala — nada que diga "2-3".
+Tentei deduzir de três lados e nenhum funciona: o nível dos equipamentos que os
+materiais servem aponta **errado** (dava 3-2 para o que é 2-3), a vida dos mobs
+não ordena (o Guardião diz 3 < 4 < 5, a Grande Besta diz 4 < 3) e as faixas de
+id se sobrepõem quase todas.
 
-Já tentei deduzir de três lados, e nenhum funciona:
+O que resolve é o guia do jogo. **O modo é do item, não da sala:** cada capítulo
+tem três dificuldades e o mesmo chefe larga material diferente em cada uma — o
+Rei Cang Li dá *Destino do Crepúsculo* no 3-2 e *Máscara Dourada* no 3-3.
 
-| Tentativa | Por que falha |
-| --- | --- |
-| Nível do equipamento que os materiais servem | Deu **errado**: apontava a sala 3 como 3-2, e ela é a 2-3 |
-| Vida dos mobs | Não ordena — o Guardião diz 3 < 4 < 5, a Grande Besta diz 4 < 3 |
-| Faixa de id dos mobs | As faixas se sobrepõem quase todas |
-
-Então `salas`, no `data/ajustes.json`, só recebe **modo confirmado por quem
-joga**:
+Os três guias do IronfreaK estão transcritos em `data/ajustes.json`, em `modos`:
 
 ```json
-"salas": { "3": "Dusk 2-3", "5": "Dusk 3-3" }
+"modos": { "15302": ["3-2"], "15309": ["3-3"], "15279": ["2-2","2-3","3-1","3-2"] }
 ```
 
-Sala sem linha ali não fica sem rótulo: o painel a chama **pelo chefão dela** —
-`Dusk · Qin Tian` — que sai da vida dos mobs e está sempre certo. Quando o mesmo
-chefe manda em duas salas (a Serpente Ancestral, na 7 e na 13), o número entra
-para não juntar conteúdo que se faz separado. Preencha conforme for confirmando
-e rode `py importar.py --ajustes`; nada disso está no código.
+A transcrição foi **conferida contra a tabela de drop do pwdatabase**: dos 78
+materiais com dado dos dois lados, em 73 o chefe bate, e os 5 restantes são só
+nome diferente (o guia diz "Emissário", o pwdatabase "Emissário das Almas").
+Cobertura: 83 dos 84 materiais de dusk.
+
+Item que cai em vários modos tem todos listados — a *Pedra do Lar* aparece em
+2-2, 2-3, 3-1 e 3-2, e filtrar por qualquer um deles a encontra. O que ficar
+fora do guia não some: é chamado pelo chefão da sala (`Dusk · Ministro Zi Cun`),
+derivado da vida dos mobs. Material do Vale da Lua não tem guia de modo e fica
+com a zona.
+
+Corrigiu algo? Edite a linha e rode `py importar.py --ajustes`. Nada disso está
+no código.
 
 ## Minha lista
 

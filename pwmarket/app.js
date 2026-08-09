@@ -445,7 +445,18 @@ function tagsDe(it, r) {
  * aparece sempre rotulada como do pwdatabase — o nome do chefe é o dado
  * confiável aqui, o percentual é referência. */
 
-const SALAS = (window.PW_CATALOGO && window.PW_CATALOGO.salas) || {};
+/* O MODO é do item, não da sala.
+ *
+ * Cada capítulo da dusk tem três dificuldades, e o mesmo chefe larga material
+ * diferente em cada uma — o Rei Cang Li dá Destino do Crepúsculo no 3-2 e
+ * Máscara Dourada no 3-3. Então quem responde "que modo eu faço" é o item.
+ *
+ * Isso não vem do pwdatabase; vem dos guias que o dono do painel passou,
+ * transcritos em ajustes.json. Conferidos contra a tabela de drop: em 73 dos
+ * 78 materiais com dado dos dois lados o chefe bate, e os 5 restantes são só
+ * nome diferente. Item que cai em vários modos tem todos listados. */
+
+const MODOS_ITEM = (window.PW_CATALOGO && window.PW_CATALOGO.modos) || {};
 const ZONAS_SALA = (window.PW_CATALOGO && window.PW_CATALOGO.zonas) || {};
 
 /** "Dusk", "Vale da Lua" — a zona, curta. */
@@ -454,56 +465,47 @@ function zonaCurta(sala) {
   return /crep[úu]sculo/i.test(z) ? 'Dusk' : z;
 }
 
-/* O mesmo chefão manda em mais de uma sala — a Serpente Ancestral aparece na 7
- * e na 13, que são modos diferentes. Sem desambiguar, as duas viravam o mesmo
- * rótulo e o filtro juntava conteúdo que o jogador faz separado. Só nesses
- * casos o número da sala entra. */
-const CHEFE_AMBIGUO = (() => {
-  const porChefe = new Map();
-  for (const [s, reg] of Object.entries(ZONAS_SALA)) {
-    if (!reg?.chefe) continue;
-    porChefe.set(reg.chefe, (porChefe.get(reg.chefe) || 0) + 1);
-  }
-  return new Set([...porChefe].filter(([, n]) => n > 1).map(([c]) => c));
-})();
+/** Modos de um material: do guia, ou a zona quando o guia não cobre. */
+function modosDoItem(it) {
+  const doGuia = MODOS_ITEM[String(it?.id)];
+  if (doGuia?.length) return doGuia.map((m) => `Dusk ${m}`);
 
-/* Rótulo da sala. O modo ("Dusk 2-3") só existe se alguém que joga confirmou,
- * porque o pwdatabase não tem esse dado e deduzi-lo do nível dos equipamentos
- * deu errado. Sem confirmação, a sala é chamada pelo chefão dela — que sai da
- * vida dos mobs, está sempre certo, e é como o jogador fala mesmo ("a sala do
- * Rei Cang Li"). Nunca vira número solto. */
-function rotuloSala(sala) {
-  if (sala == null) return null;
-  const s = String(sala);
-  if (SALAS[s]) return SALAS[s];
-  const reg = ZONAS_SALA[s];
-  if (reg?.chefe) {
-    const sufixo = CHEFE_AMBIGUO.has(reg.chefe) ? ` (sala ${s})` : '';
-    return `${zonaCurta(s) || 'Sala'} · ${reg.chefe}${sufixo}`;
+  // Vale da Lua não tem guia de modo — a zona já é a resposta. E o material de
+  // dusk que sobrar fora do guia fica com o chefão da sala, que sempre existe.
+  const zonas = new Set();
+  for (const d of it?.drops || []) {
+    const z = zonaCurta(d.sala);
+    if (z === 'Vale da Lua') zonas.add(z);
+    else if (z) zonas.add(`Dusk · ${ZONAS_SALA[String(d.sala)]?.chefe || `sala ${d.sala}`}`);
   }
-  return reg?.zona ? `${reg.zona} (sala ${s})` : `sala ${s}`;
+  return [...zonas];
+}
+
+/** "Dusk 3-2, 3-3" — compacto, sem repetir "Dusk" a cada modo. */
+function rotuloModos(modos) {
+  const dusk = modos.filter((m) => /^Dusk \d-\d$/.test(m)).map((m) => m.slice(5));
+  const resto = modos.filter((m) => !/^Dusk \d-\d$/.test(m));
+  return [dusk.length ? `Dusk ${dusk.join(', ')}` : null, ...resto].filter(Boolean).join(' · ');
 }
 
 /** Modos existentes, na ordem em que o jogador pensa (1-1 → 3-3 → Vale da Lua). */
 function modosConhecidos() {
-  const vistos = new Map();
+  const vistos = new Set();
   for (const it of Object.values(CATALOGO)) {
-    for (const d of it.drops || []) {
-      const r = rotuloSala(d.sala);
-      if (r) vistos.set(r, (vistos.get(r) || 0) + 1);
-    }
+    if (it.drops?.length) modosDoItem(it).forEach((m) => vistos.add(m));
   }
-  return [...vistos.keys()].sort((a, b) =>
-    a.localeCompare(b, 'pt-BR', { numeric: true, sensitivity: 'base' }));
+  // "Dusk 1-1" antes de "Dusk · Qin Tian" antes de "Vale da Lua"
+  const peso = (m) => (/^Dusk \d-\d$/.test(m) ? 0 : m.startsWith('Dusk') ? 1 : 2);
+  return [...vistos].sort((a, b) =>
+    peso(a) - peso(b) || a.localeCompare(b, 'pt-BR', { numeric: true }));
 }
 
 const fmtPct = (p) => (p == null ? '' : (p >= 10 ? p.toFixed(1) : p.toFixed(2))
   .replace(/\.?0+$/, '').replace('.', ',') + '%');
 
-/** Uma linha curta: "Rei Cang Li · Dusk 3-3 · 0,58%". */
+/** Uma linha curta: "Rei Cang Li · 0,58%". O modo é do item, vai à parte. */
 function textoOrigem(d, comPct = true) {
-  return [d.nome, rotuloSala(d.sala), comPct ? fmtPct(d.pct) : null]
-    .filter(Boolean).join(' · ');
+  return [d.nome, comPct ? fmtPct(d.pct) : null].filter(Boolean).join(' · ');
 }
 
 /* O catálogo não muda em tempo de execução, e a grade de receitas remonta a
@@ -516,13 +518,19 @@ function origemDe(id) {
   const chave = String(id);
   if (CACHE_ORIGEM.has(chave)) return CACHE_ORIGEM.get(chave);
 
-  const ds = item(id)?.drops || [];
+  const it = item(id);
+  const ds = it?.drops || [];
+  const modos = ds.length ? rotuloModos(modosDoItem(it)) : '';
   const primeiro = ds.length ? textoOrigem(ds[0]) : null;
   const saida = !ds.length ? null : {
     lista: ds,
-    curto: ds.length > 1 ? `${primeiro} +${ds.length - 1}` : primeiro,
+    modos,
+    // o modo vem primeiro: é por ele que o jogador escolhe o que vai fazer
+    curto: [modos, ds.length > 1 ? `${primeiro} +${ds.length - 1}` : primeiro]
+      .filter(Boolean).join(' · '),
     // o title completo: até 6 chefes, senão vira parede de texto
-    longo: 'Cai de:\n' + ds.slice(0, 6).map((d) => '· ' + textoOrigem(d)).join('\n')
+    longo: (modos ? `${modos}\n\n` : '')
+      + 'Cai de:\n' + ds.slice(0, 6).map((d) => '· ' + textoOrigem(d)).join('\n')
       + (ds.length > 6 ? `\n· +${ds.length - 6} outros` : '')
       + '\n(taxas do pwdatabase, podem diferir no servidor)',
   };
@@ -564,10 +572,11 @@ function montarReceitas() {
         busca: [
           it.nome, it.tipo, it.subtipo, r.nome, r.npc, r.local,
           ...tags.map((x) => ROTULO_TAG.get(x)),
-          ...r.ingredientes.flatMap((g) => [
-            g.nome,
-            ...(item(g.id)?.drops || []).map((d) => `${d.nome} ${rotuloSala(d.sala) || ''}`),
-          ]),
+          ...r.ingredientes.flatMap((g) => {
+            const ing = item(g.id);
+            if (!ing?.drops?.length) return [g.nome];
+            return [g.nome, ...ing.drops.map((d) => d.nome), ...modosDoItem(ing)];
+          }),
         ].join(' ').toLowerCase(),
       });
     }
@@ -880,7 +889,7 @@ function todosDrops() {
   for (const it of Object.values(CATALOGO)) {
     const ds = it.drops || [];
     if (!ds.length) continue;
-    const modos = [...new Set(ds.map((d) => rotuloSala(d.sala)).filter(Boolean))];
+    const modos = modosDoItem(it);
     saida.push({
       it,
       drops: ds,
@@ -1056,7 +1065,6 @@ function cardDrop(x) {
   const linhas = mostrados.map((d) => `
     <tr>
       <td>${esc(d.nome)}</td>
-      <td>${d.sala ? `<span class="modo">${esc(rotuloSala(d.sala))}</span>` : '—'}</td>
       <td class="num"><span class="medas${d.pct >= 5 ? '' : ' fraco'}">${fmtPct(d.pct)}</span></td>
     </tr>`).join('');
 
@@ -1072,14 +1080,15 @@ function cardDrop(x) {
       <div class="drop-id">
         <div class="titulo">${nomeHTML(it)}</div>
         <div class="drop-meta">
-          ${x.usos ? `usado em ${x.usos} receita${x.usos > 1 ? 's' : ''}` : 'não entra em receita nossa'}
+          <span class="modo">${esc(rotuloModos(x.modos))}</span>
+          · ${x.usos ? `usado em ${x.usos} receita${x.usos > 1 ? 's' : ''}` : 'fora das receitas'}
           · ${preco}
           ${x.drops.length > LIMITE_CHEFES ? `· ${x.drops.length} chefes` : ''}
         </div>
       </div>
     </div>
     <div class="tabela-wrap"><table class="drop-tabela">
-      <thead><tr><th>Chefe</th><th>Modo</th><th class="num">Chance</th></tr></thead>
+      <thead><tr><th>Chefe</th><th class="num">Chance</th></tr></thead>
       <tbody>${linhas}</tbody>
     </table></div>
     ${alternar}

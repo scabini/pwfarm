@@ -1,11 +1,9 @@
 {
  "_leia": "Diferenças do The PW Clássico em relação ao pwdatabase. O importar.py aplica isto sobre o catálogo toda vez que salva, então os ajustes sobrevivem a reimportações. Rode 'py importar.py --ajustes' depois de editar este arquivo.",
-
  "_nomes": "Itens que o servidor renomeou.",
  "nomes": {
   "15307": "Pedra da Terra do Sonho"
  },
-
  "_sem_receitas": "Itens que continuam no catálogo (são ingredientes válidos e você quer precificar), mas cujas receitas somem: são caixas de evento e loteria, não craft de verdade. As receitas delas apontam para cupons e chaves de GM que nunca entrariam no catálogo.",
  "sem_receitas": {
   "19277": "Joia Misteriosa",
@@ -15,12 +13,269 @@
   "15310": "Cetro do Crepúsculo — idem",
   "15311": "Espírito do Céu e da Terra — idem"
  },
-
- "_salas": "Modo de cada sala da tabela de drop. O pwdatabase dá só o número entre parênteses da coordenada: ele separa os modos da dusk (o mesmo chefe reaparece em outra sala com mais vida, que é o modo difícil), mas não os nomeia, e não há nada na página de onde deduzir isso — tentei pelo nível dos equipamentos e saiu errado. Então aqui entra SÓ modo confirmado por quem joga. Sala sem linha aqui não fica sem rótulo: o painel a chama pelo chefão dela ('Dusk · Rei Cang Li'), que é derivado da vida dos mobs e está sempre certo. Preencha conforme for confirmando e rode 'py importar.py --ajustes'.",
- "salas": {
-  "3": "Dusk 2-3",
-  "5": "Dusk 3-3",
-  "21": "Vale da Lua",
-  "22": "Vale da Lua"
+ "_modos": "Em que modo da dusk cada material cai. Transcrito dos três guias do IronfreaK (Capítulo 1 Cântico Espiritual, 2 Sinfonia do Destino, 3 Ópera do Crepúsculo), que o dono do painel forneceu — o pwdatabase não tem esse dado e tentar deduzi-lo do nível dos equipamentos deu errado. O guia foi conferido contra a tabela de drop do pwdatabase: em 73 dos 78 materiais com dado dos dois lados o chefe bate, e os 5 restantes são só nome diferente (o guia diz 'Emissário', o pwdatabase 'Emissário das Almas'). Item que cai em mais de um modo tem todos listados. Editou? 'py importar.py --ajustes'.",
+ "modos": {
+  "15227": [
+   "1-1"
+  ],
+  "15228": [
+   "1-1"
+  ],
+  "15229": [
+   "1-1",
+   "1-2"
+  ],
+  "15230": [
+   "1-2"
+  ],
+  "15231": [
+   "1-2"
+  ],
+  "15232": [
+   "1-2"
+  ],
+  "15233": [
+   "2-1"
+  ],
+  "15234": [
+   "1-2"
+  ],
+  "15235": [
+   "1-2"
+  ],
+  "15236": [
+   "2-1"
+  ],
+  "15237": [
+   "2-1"
+  ],
+  "15238": [
+   "1-2",
+   "1-3",
+   "2-1"
+  ],
+  "15239": [
+   "1-3"
+  ],
+  "15240": [
+   "1-3"
+  ],
+  "15241": [
+   "2-2"
+  ],
+  "15242": [
+   "1-3"
+  ],
+  "15243": [
+   "2-2"
+  ],
+  "15244": [
+   "1-3"
+  ],
+  "15245": [
+   "1-3"
+  ],
+  "15246": [
+   "2-1"
+  ],
+  "15247": [
+   "2-1"
+  ],
+  "15248": [
+   "2-1"
+  ],
+  "15249": [
+   "2-2"
+  ],
+  "15250": [
+   "2-2"
+  ],
+  "15251": [
+   "2-2"
+  ],
+  "15253": [
+   "1-3"
+  ],
+  "15254": [
+   "2-1",
+   "2-2"
+  ],
+  "15255": [
+   "2-1",
+   "2-2"
+  ],
+  "15256": [
+   "1-3",
+   "2-1",
+   "2-2",
+   "3-1"
+  ],
+  "15257": [
+   "2-3"
+  ],
+  "15258": [
+   "3-1"
+  ],
+  "15259": [
+   "2-3"
+  ],
+  "15260": [
+   "3-1"
+  ],
+  "15261": [
+   "2-3"
+  ],
+  "15262": [
+   "3-1"
+  ],
+  "15263": [
+   "3-1"
+  ],
+  "15264": [
+   "2-3"
+  ],
+  "15265": [
+   "2-2"
+  ],
+  "15266": [
+   "3-1"
+  ],
+  "15267": [
+   "2-3"
+  ],
+  "15268": [
+   "3-1"
+  ],
+  "15269": [
+   "2-3"
+  ],
+  "15270": [
+   "2-3"
+  ],
+  "15271": [
+   "2-3"
+  ],
+  "15272": [
+   "2-3"
+  ],
+  "15273": [
+   "3-1"
+  ],
+  "15274": [
+   "3-1"
+  ],
+  "15275": [
+   "2-2"
+  ],
+  "15276": [
+   "3-1",
+   "3-2"
+  ],
+  "15277": [
+   "2-3"
+  ],
+  "15278": [
+   "2-3"
+  ],
+  "15279": [
+   "2-2",
+   "2-3",
+   "3-1",
+   "3-2"
+  ],
+  "15280": [
+   "3-2"
+  ],
+  "15281": [
+   "3-2"
+  ],
+  "15282": [
+   "3-3"
+  ],
+  "15283": [
+   "3-3"
+  ],
+  "15284": [
+   "3-3"
+  ],
+  "15285": [
+   "3-2"
+  ],
+  "15286": [
+   "3-2"
+  ],
+  "15287": [
+   "3-2"
+  ],
+  "15288": [
+   "3-3"
+  ],
+  "15289": [
+   "3-2"
+  ],
+  "15290": [
+   "3-3"
+  ],
+  "15291": [
+   "3-3"
+  ],
+  "15292": [
+   "3-2"
+  ],
+  "15293": [
+   "3-2"
+  ],
+  "15295": [
+   "3-2"
+  ],
+  "15296": [
+   "3-3"
+  ],
+  "15297": [
+   "3-3"
+  ],
+  "15298": [
+   "3-3"
+  ],
+  "15299": [
+   "3-2"
+  ],
+  "15300": [
+   "3-3"
+  ],
+  "15301": [
+   "3-3"
+  ],
+  "15302": [
+   "3-2"
+  ],
+  "15303": [
+   "3-2"
+  ],
+  "15304": [
+   "3-3"
+  ],
+  "15305": [
+   "3-3"
+  ],
+  "15306": [
+   "3-3"
+  ],
+  "15307": [
+   "3-3"
+  ],
+  "15308": [
+   "3-2",
+   "3-3"
+  ],
+  "15309": [
+   "3-3"
+  ],
+  "15310": [
+   "3-3"
+  ],
+  "15311": [
+   "3-3"
+  ]
  }
 }
