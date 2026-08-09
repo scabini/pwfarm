@@ -13,269 +13,563 @@
   "15310": "Cetro do Crepúsculo — idem",
   "15311": "Espírito do Céu e da Terra — idem"
  },
- "_modos": "Em que modo da dusk cada material cai. Transcrito dos três guias do IronfreaK (Capítulo 1 Cântico Espiritual, 2 Sinfonia do Destino, 3 Ópera do Crepúsculo), que o dono do painel forneceu — o pwdatabase não tem esse dado e tentar deduzi-lo do nível dos equipamentos deu errado. O guia foi conferido contra a tabela de drop do pwdatabase: em 73 dos 78 materiais com dado dos dois lados o chefe bate, e os 5 restantes são só nome diferente (o guia diz 'Emissário', o pwdatabase 'Emissário das Almas'). Item que cai em mais de um modo tem todos listados. Editou? 'py importar.py --ajustes'.",
- "modos": {
+ "_guia": "Onde cada material da dusk cai: [chefe, modo]. Transcrito dos três guias do IronfreaK (Capítulo 1 Cântico Espiritual, 2 Sinfonia do Destino, 3 Ópera do Crepúsculo), que o dono do painel forneceu — o pwdatabase não tem o modo, e deduzi-lo do nível dos equipamentos ou da sala deu errado (a sala 3 tem chefe do capítulo 2 e do 3). É o ITEM que diz o modo: o mesmo chefe larga material diferente em cada dificuldade. A transcrição foi conferida contra a tabela de drop do pwdatabase — em 73 dos 78 materiais com dado dos dois lados o chefe bate, e os 5 restantes são só nome diferente. Nome do chefe é o do pwdatabase, que é o que aparece no jogo; 'Baú e mobs' é a linha genérica do guia. Item que cai em mais de um lugar tem todos os pares. Editou? 'py importar.py --ajustes'.",
+ "guia": {
   "15227": [
-   "1-1"
+   [
+    "Qin Tian",
+    "1-1"
+   ]
   ],
   "15228": [
-   "1-1"
+   [
+    "Deus Tambor",
+    "1-1"
+   ]
   ],
   "15229": [
-   "1-1",
-   "1-2"
+   [
+    "Baú e mobs",
+    "1-1"
+   ],
+   [
+    "Baú e mobs",
+    "1-2"
+   ]
   ],
   "15230": [
-   "1-2"
+   [
+    "Qin Tian",
+    "1-2"
+   ]
   ],
   "15231": [
-   "1-2"
+   [
+    "Deus Tambor",
+    "1-2"
+   ]
   ],
   "15232": [
-   "1-2"
+   [
+    "Emissário das Almas",
+    "1-2"
+   ]
   ],
   "15233": [
-   "2-1"
+   [
+    "Leão Insano Zhen Jun",
+    "2-1"
+   ]
   ],
   "15234": [
-   "1-2"
+   [
+    "Serpente Ancestral",
+    "1-2"
+   ]
   ],
   "15235": [
-   "1-2"
+   [
+    "Armadura Dourada",
+    "1-2"
+   ]
   ],
   "15236": [
-   "2-1"
+   [
+    "Marechal Shen Wuluo",
+    "2-1"
+   ]
   ],
   "15237": [
-   "2-1"
+   [
+    "Marechal Shen Wuluo",
+    "2-1"
+   ]
   ],
   "15238": [
-   "1-2",
-   "1-3",
-   "2-1"
+   [
+    "Baú e mobs",
+    "1-2"
+   ],
+   [
+    "Baú e mobs",
+    "1-3"
+   ],
+   [
+    "Baú e mobs",
+    "2-1"
+   ]
   ],
   "15239": [
-   "1-3"
+   [
+    "Qin Tian",
+    "1-3"
+   ]
   ],
   "15240": [
-   "1-3"
+   [
+    "Deus Tambor",
+    "1-3"
+   ]
   ],
   "15241": [
-   "2-2"
+   [
+    "Leão Insano Zhen Jun",
+    "2-2"
+   ]
   ],
   "15242": [
-   "1-3"
+   [
+    "Emissário das Almas",
+    "1-3"
+   ]
   ],
   "15243": [
-   "2-2"
+   [
+    "Marechal Shen Wuluo",
+    "2-2"
+   ]
   ],
   "15244": [
-   "1-3"
+   [
+    "Serpente Ancestral",
+    "1-3"
+   ]
   ],
   "15245": [
-   "1-3"
+   [
+    "Armadura Dourada",
+    "1-3"
+   ]
   ],
   "15246": [
-   "2-1"
+   [
+    "Marechal Feng Wuhen",
+    "2-1"
+   ]
   ],
   "15247": [
-   "2-1"
+   [
+    "Grande Símio",
+    "2-1"
+   ]
   ],
   "15248": [
-   "2-1"
+   [
+    "Devorador Insano",
+    "2-1"
+   ]
   ],
   "15249": [
-   "2-2"
+   [
+    "Marechal Feng Wuhen",
+    "2-2"
+   ]
   ],
   "15250": [
-   "2-2"
+   [
+    "Grande Símio",
+    "2-2"
+   ]
   ],
   "15251": [
-   "2-2"
+   [
+    "Devorador Insano",
+    "2-2"
+   ]
   ],
   "15253": [
-   "1-3"
+   [
+    "Armadura Dourada",
+    "1-3"
+   ]
   ],
   "15254": [
-   "2-1",
-   "2-2"
+   [
+    "Marechal Feng Wuhen",
+    "2-1"
+   ],
+   [
+    "Marechal Feng Wuhen",
+    "2-2"
+   ]
   ],
   "15255": [
-   "2-1",
-   "2-2"
+   [
+    "Grande Símio",
+    "2-1"
+   ],
+   [
+    "Grande Símio",
+    "2-2"
+   ]
   ],
   "15256": [
-   "1-3",
-   "2-1",
-   "2-2",
-   "3-1"
+   [
+    "Baú e mobs",
+    "1-3"
+   ],
+   [
+    "Baú e mobs",
+    "2-1"
+   ],
+   [
+    "Baú e mobs",
+    "2-2"
+   ],
+   [
+    "Baú e mobs",
+    "3-1"
+   ]
   ],
   "15257": [
-   "2-3"
+   [
+    "Leão Insano Zhen Jun",
+    "2-3"
+   ]
   ],
   "15258": [
-   "3-1"
+   [
+    "Qiu Jian",
+    "3-1"
+   ]
   ],
   "15259": [
-   "2-3"
+   [
+    "Marechal Shen Wuluo",
+    "2-3"
+   ]
   ],
   "15260": [
-   "3-1"
+   [
+    "Escravo Demônio",
+    "3-1"
+   ]
   ],
   "15261": [
-   "2-3"
+   [
+    "Marechal Feng Wuhen",
+    "2-3"
+   ]
   ],
   "15262": [
-   "3-1"
+   [
+    "Mulher Demônio",
+    "3-1"
+   ]
   ],
   "15263": [
-   "3-1"
+   [
+    "Sagrada Mãe das Almas",
+    "3-1"
+   ]
   ],
   "15264": [
-   "2-3"
+   [
+    "Grande Símio",
+    "2-3"
+   ]
   ],
   "15265": [
-   "2-2"
+   [
+    "Emissário das Sete Almas",
+    "2-2"
+   ]
   ],
   "15266": [
-   "3-1"
+   [
+    "Tie Luoyun",
+    "3-1"
+   ]
   ],
   "15267": [
-   "2-3"
+   [
+    "Devorador Insano",
+    "2-3"
+   ]
   ],
   "15268": [
-   "3-1"
+   [
+    "Grande Besta das Trevas",
+    "3-1"
+   ]
   ],
   "15269": [
-   "2-3"
+   [
+    "Emissário das Sete Almas",
+    "2-3"
+   ]
   ],
   "15270": [
-   "2-3"
+   [
+    "Emissário das Sete Almas",
+    "2-3"
+   ]
   ],
   "15271": [
-   "2-3"
+   [
+    "Aniquilador Ancestral",
+    "2-3"
+   ]
   ],
   "15272": [
-   "2-3"
+   [
+    "Aniquilador Ancestral",
+    "2-3"
+   ]
   ],
   "15273": [
-   "3-1"
+   [
+    "Escravo Demônio",
+    "3-1"
+   ]
   ],
   "15274": [
-   "3-1"
+   [
+    "Sagrada Mãe das Almas",
+    "3-1"
+   ]
   ],
   "15275": [
-   "2-2"
+   [
+    "Emissário das Sete Almas",
+    "2-2"
+   ]
   ],
   "15276": [
-   "3-1",
-   "3-2"
+   [
+    "Grande Besta das Trevas",
+    "3-1"
+   ],
+   [
+    "Ministro Zi Cun",
+    "3-2"
+   ]
   ],
   "15277": [
-   "2-3"
+   [
+    "Emissário das Sete Almas",
+    "2-3"
+   ]
   ],
   "15278": [
-   "2-3"
+   [
+    "Aniquilador Ancestral",
+    "2-3"
+   ]
   ],
   "15279": [
-   "2-2",
-   "2-3",
-   "3-1",
-   "3-2"
+   [
+    "Baú e mobs",
+    "2-2"
+   ],
+   [
+    "Baú e mobs",
+    "2-3"
+   ],
+   [
+    "Baú e mobs",
+    "3-1"
+   ],
+   [
+    "Baú e mobs",
+    "3-2"
+   ]
   ],
   "15280": [
-   "3-2"
+   [
+    "Qiu Jian",
+    "3-2"
+   ]
   ],
   "15281": [
-   "3-2"
+   [
+    "Escravo Demônio",
+    "3-2"
+   ]
   ],
   "15282": [
-   "3-3"
+   [
+    "Qiu Jian",
+    "3-3"
+   ]
   ],
   "15283": [
-   "3-3"
+   [
+    "Mulher Demônio",
+    "3-3"
+   ]
   ],
   "15284": [
-   "3-3"
+   [
+    "Escravo Demônio",
+    "3-3"
+   ]
   ],
   "15285": [
-   "3-2"
+   [
+    "Sagrada Mãe das Almas",
+    "3-2"
+   ]
   ],
   "15286": [
-   "3-2"
+   [
+    "Mulher Demônio",
+    "3-2"
+   ]
   ],
   "15287": [
-   "3-2"
+   [
+    "Tie Luoyun",
+    "3-2"
+   ]
   ],
   "15288": [
-   "3-3"
+   [
+    "Sagrada Mãe das Almas",
+    "3-3"
+   ]
   ],
   "15289": [
-   "3-2"
+   [
+    "Grande Besta das Trevas",
+    "3-2"
+   ]
   ],
   "15290": [
-   "3-3"
+   [
+    "Tie Luoyun",
+    "3-3"
+   ]
   ],
   "15291": [
-   "3-3"
+   [
+    "Grande Besta das Trevas",
+    "3-3"
+   ]
   ],
   "15292": [
-   "3-2"
+   [
+    "Rei Cang Li",
+    "3-2"
+   ]
   ],
   "15293": [
-   "3-2"
+   [
+    "Rei Cang Li",
+    "3-2"
+   ]
+  ],
+  "15294": [
+   [
+    "Ministro Zi Cun",
+    "3-3"
+   ]
   ],
   "15295": [
-   "3-2"
+   [
+    "Ministro Zi Cun",
+    "3-2"
+   ]
   ],
   "15296": [
-   "3-3"
+   [
+    "Rei Cang Li",
+    "3-3"
+   ]
   ],
   "15297": [
-   "3-3"
+   [
+    "Ministro Zi Cun",
+    "3-3"
+   ]
   ],
   "15298": [
-   "3-3"
+   [
+    "Senhor das Ilusões",
+    "3-3"
+   ]
   ],
   "15299": [
-   "3-2"
+   [
+    "Mulher Demônio",
+    "3-2"
+   ]
   ],
   "15300": [
-   "3-3"
+   [
+    "Tie Luoyun",
+    "3-3"
+   ]
   ],
   "15301": [
-   "3-3"
+   [
+    "Grande Besta das Trevas",
+    "3-3"
+   ]
   ],
   "15302": [
-   "3-2"
+   [
+    "Rei Cang Li",
+    "3-2"
+   ]
   ],
   "15303": [
-   "3-2"
+   [
+    "Ministro Zi Cun",
+    "3-2"
+   ]
   ],
   "15304": [
-   "3-3"
+   [
+    "Rei Cang Li",
+    "3-3"
+   ]
   ],
   "15305": [
-   "3-3"
+   [
+    "Ministro Zi Cun",
+    "3-3"
+   ]
   ],
   "15306": [
-   "3-3"
+   [
+    "Senhor das Ilusões",
+    "3-3"
+   ]
   ],
   "15307": [
-   "3-3"
+   [
+    "Senhor das Ilusões",
+    "3-3"
+   ]
   ],
   "15308": [
-   "3-2",
-   "3-3"
+   [
+    "Baú e mobs",
+    "3-2"
+   ],
+   [
+    "Baú e mobs",
+    "3-3"
+   ]
   ],
   "15309": [
-   "3-3"
+   [
+    "Rei Cang Li",
+    "3-3"
+   ]
   ],
   "15310": [
-   "3-3"
+   [
+    "Ministro Zi Cun",
+    "3-3"
+   ]
   ],
   "15311": [
-   "3-3"
+   [
+    "Senhor das Ilusões",
+    "3-3"
+   ]
   ]
  }
 }

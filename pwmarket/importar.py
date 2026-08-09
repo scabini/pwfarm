@@ -145,12 +145,12 @@ def aplicar_ajustes(cat: dict) -> int:
     nomes = cfg.get("nomes") or {}
     sem_receitas = set(cfg.get("sem_receitas") or {})
 
-    # Em que modo da dusk cada material cai. Viaja junto com o catálogo em vez
-    # de ficar no app.js: corrigir um modo é editar um JSON e rodar --ajustes,
-    # sem mexer em código nem reimportar item nenhum.
-    modos = {str(k): list(v) for k, v in (cfg.get("modos") or {}).items()}
-    if cat.get("modos") != modos:
-        cat["modos"] = modos
+    # Onde cada material da dusk cai: [chefe, modo], dos guias do jogo. Viaja
+    # junto com o catálogo em vez de ficar no app.js — corrigir uma linha é
+    # editar um JSON e rodar --ajustes, sem mexer em código nem reimportar.
+    guia = {str(k): [list(par) for par in v] for k, v in (cfg.get("guia") or {}).items()}
+    if cat.get("guia") != guia:
+        cat["guia"] = guia
 
     trocas = 0
     for iid, novo in nomes.items():

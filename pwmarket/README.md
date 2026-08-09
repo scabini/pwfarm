@@ -236,69 +236,81 @@ A estrela **☆** no canto do cartão adiciona direto, sem abrir a prévia.
 ## Drops
 
 De onde cada material sai. É a pergunta inversa da aba Receitas: em vez de "o
-que preciso para esta peça", responde **"o que farmo, e onde"**.
+que preciso para esta peça", responde **"o que este chefe me dá"**.
 
-Um cartão por material, com os chefes que o largam, o modo e a chance. Dois
-grupos de botões filtram — **Modo** e **Cor** (Dourado, Verde, Roxo, Roxinho,
-Laranja) — com a mesma regra da aba Receitas: **ou** dentro do grupo, **e**
-entre grupos. A busca cobre nome do material e nome do chefe: `cang li` lista
-tudo que ele solta. O cartão ainda diz em quantas receitas o material entra e o
-preço de referência, que é o que decide entre farmar e comprar.
+Por isso o bloco é o **chefe num modo** — *Rei Cang Li · Dusk 3-2* — e não o
+item. É assim que a run acontece: você entra num modo, mata os chefes dele e
+cada um solta a lista dele. Dentro do bloco, uma linha por material: ícone,
+nome na cor da raridade e a chance.
 
-**Lista longa começa fechada.** Material barato cai de meio mundo — a *Antiga
-Espada Ornamental* sai de 38 chefes — e listar tudo enterra o que interessa (o
-verde e o dourado vêm de um ou dois chefes) numa parede de linhas. Acima de
-**3 chefes** o cartão mostra os de maior chance e um botão *+ N outros chefes*.
-São 29 dos 135 materiais, e é o que segura a aba em 135 KB de HTML em vez de
-215 KB.
+Dois grupos de botões filtram: **Modo** (Dusk 1-1 … 3-3, Vale da Lua) e **Cor**
+(Dourado, Verde, Roxo, Roxinho, Laranja). A cor filtra **dentro** do bloco —
+marcar *3-3 + Dourado* mostra os chefes do 3-3 com só o que eles largam de
+dourado, e bloco que fica vazio some. A busca cobre chefe, modo e material:
+`cang li` traz os dois blocos dele, `destino do crep` filtra dentro dos blocos.
+
+Material que cai em mais de um lugar aparece em **cada** bloco onde cai, com um
+**+N** ao lado: abrir mostra os outros chefes e modos. Sem isso, quem olha o
+bloco do Feng Wuhen no 2-1 não faria ideia de que as Luvas também caem no 2-2.
+
+No Vale da Lua quase todo mob larga quase todo material — tem chefe com 23
+linhas. Acima de **6 materiais** o bloco mostra os de maior chance e abre no
+clique.
 
 A mesma informação aparece onde você já está olhando: no **tooltip da ficha do
 ingrediente** na aba Receitas, e como linha curta na **tabela de ingredientes**,
-no lugar onde antes só dizia *craftável* — um material que dropa **e** é
-craftável mostra os dois, porque são dois caminhos de verdade.
-
-Buscar por chefe também funciona na aba Receitas: `cang li` lá lista as receitas
-que dependem de algo que ele larga.
+no lugar onde antes só dizia *craftável* — `Dusk 3-2 · Rei Cang Li · 0,58%`. Um
+material que dropa **e** é craftável mostra os dois, porque são dois caminhos de
+verdade. Buscar por chefe também funciona lá: `cang li` lista as receitas que
+dependem de algo que ele larga.
 
 ### De onde vem, e o que confiar
 
-A tabela é o `Drop from` do pwdatabase, podada na importação: só as duas zonas
-que o painel cobre, e um chefe por sala (o pwdatabase lista uma linha por *mob*,
-e o "Deus Tambor" tem três ids com vidas diferentes na mesma sala — para quem
-farma é um chefe só).
+Duas fontes, e elas cobrem coisas diferentes:
+
+| | Fonte | O que dá |
+| --- | --- | --- |
+| **Quem larga o quê, e em que modo** | os três guias da dusk | chefe × modo → material |
+| **A chance** | `Drop from` do pwdatabase | porcentagem por mob |
 
 **As taxas são do banco oficial do jogo, não do The PW Clássico.** Servidor
-privado mexe em drop rate. O nome do chefe é o dado firme; a porcentagem é
-referência, e o painel avisa isso onde a mostra.
+privado mexe em drop rate. O chefe é o dado firme; a porcentagem é referência, e
+o painel avisa isso onde a mostra.
+
+A tabela do pwdatabase é podada na importação: só as duas zonas que o painel
+cobre, e um chefe por sala (o pwdatabase lista uma linha por *mob*, e o "Deus
+Tambor" tem três ids com vidas diferentes na mesma sala — para quem farma é um
+chefe só).
 
 ### O modo (3-3) vem dos guias, não do pwdatabase
 
-O pwdatabase dá a zona, a coordenada e um número de sala — nada que diga "2-3".
-Tentei deduzir de três lados e nenhum funciona: o nível dos equipamentos que os
-materiais servem aponta **errado** (dava 3-2 para o que é 2-3), a vida dos mobs
-não ordena (o Guardião diz 3 < 4 < 5, a Grande Besta diz 4 < 3) e as faixas de
-id se sobrepõem quase todas.
+O pwdatabase dá a zona, a coordenada e um número de sala, e é só isso. Tentei
+deduzir o modo de três lados e nenhum funciona:
 
-O que resolve é o guia do jogo. **O modo é do item, não da sala:** cada capítulo
-tem três dificuldades e o mesmo chefe larga material diferente em cada uma — o
-Rei Cang Li dá *Destino do Crepúsculo* no 3-2 e *Máscara Dourada* no 3-3.
+| Tentativa | Por que falha |
+| --- | --- |
+| Nível do equipamento que os materiais servem | Deu **errado**: apontava 3-2 para o que é 2-3 |
+| Vida dos mobs | Não ordena — o Guardião diz 3 < 4 < 5, a Grande Besta diz 4 < 3 |
+| Faixa de id dos mobs | As faixas se sobrepõem quase todas |
 
-Os três guias do IronfreaK estão transcritos em `data/ajustes.json`, em `modos`:
+E a sala também não serve: a **sala 3 tem chefe do capítulo 2 e do 3**. O que
+resolve é o guia do jogo, porque **o modo é do item**: cada capítulo tem três
+dificuldades e o mesmo chefe larga material diferente em cada uma — o Rei Cang
+Li dá *Destino do Crepúsculo* no 3-2 e *Máscara Dourada* no 3-3.
+
+Os três guias do IronfreaK estão transcritos em `data/ajustes.json`, em `guia`,
+como pares `[chefe, modo]`:
 
 ```json
-"modos": { "15302": ["3-2"], "15309": ["3-3"], "15279": ["2-2","2-3","3-1","3-2"] }
+"guia": { "15302": [["Rei Cang Li", "3-2"]],
+          "15254": [["Marechal Feng Wuhen", "2-1"], ["Marechal Feng Wuhen", "2-2"]] }
 ```
 
 A transcrição foi **conferida contra a tabela de drop do pwdatabase**: dos 78
 materiais com dado dos dois lados, em 73 o chefe bate, e os 5 restantes são só
-nome diferente (o guia diz "Emissário", o pwdatabase "Emissário das Almas").
-Cobertura: 83 dos 84 materiais de dusk.
-
-Item que cai em vários modos tem todos listados — a *Pedra do Lar* aparece em
-2-2, 2-3, 3-1 e 3-2, e filtrar por qualquer um deles a encontra. O que ficar
-fora do guia não some: é chamado pelo chefão da sala (`Dusk · Ministro Zi Cun`),
-derivado da vida dos mobs. Material do Vale da Lua não tem guia de modo e fica
-com a zona.
+nome diferente (o guia diz "Emissário", o pwdatabase "Emissário das Almas" — o
+nome que vale é o do pwdatabase, que é o que aparece no jogo). Cobertura: 84 dos
+84 materiais de dusk, em 62 blocos.
 
 Corrigiu algo? Edite a linha e rode `py importar.py --ajustes`. Nada disso está
 no código.

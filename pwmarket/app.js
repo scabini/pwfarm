@@ -456,7 +456,7 @@ function tagsDe(it, r) {
  * 78 materiais com dado dos dois lados o chefe bate, e os 5 restantes são só
  * nome diferente. Item que cai em vários modos tem todos listados. */
 
-const MODOS_ITEM = (window.PW_CATALOGO && window.PW_CATALOGO.modos) || {};
+const GUIA_ITEM = (window.PW_CATALOGO && window.PW_CATALOGO.guia) || {};
 const ZONAS_SALA = (window.PW_CATALOGO && window.PW_CATALOGO.zonas) || {};
 
 /** "Dusk", "Vale da Lua" — a zona, curta. */
@@ -465,20 +465,23 @@ function zonaCurta(sala) {
   return /crep[úu]sculo/i.test(z) ? 'Dusk' : z;
 }
 
-/** Modos de um material: do guia, ou a zona quando o guia não cobre. */
-function modosDoItem(it) {
-  const doGuia = MODOS_ITEM[String(it?.id)];
-  if (doGuia?.length) return doGuia.map((m) => `Dusk ${m}`);
+/** Onde o material cai: [[chefe, modo], ...]. O Vale da Lua não tem guia, então
+ *  os pares saem da própria tabela de drop, com a zona no lugar do modo. */
+function origensDoItem(it) {
+  const doGuia = GUIA_ITEM[String(it?.id)];
+  if (doGuia?.length) return doGuia.map(([c, m]) => [c, `Dusk ${m}`]);
 
-  // Vale da Lua não tem guia de modo — a zona já é a resposta. E o material de
-  // dusk que sobrar fora do guia fica com o chefão da sala, que sempre existe.
-  const zonas = new Set();
+  const vistos = new Map();
   for (const d of it?.drops || []) {
-    const z = zonaCurta(d.sala);
-    if (z === 'Vale da Lua') zonas.add(z);
-    else if (z) zonas.add(`Dusk · ${ZONAS_SALA[String(d.sala)]?.chefe || `sala ${d.sala}`}`);
+    const par = [d.nome, zonaCurta(d.sala) || 'Outros'];
+    vistos.set(par.join('|'), par);
   }
-  return [...zonas];
+  return [...vistos.values()];
+}
+
+/** Modos de um material, sem repetir. */
+function modosDoItem(it) {
+  return [...new Set(origensDoItem(it).map(([, m]) => m))];
 }
 
 /** "Dusk 3-2, 3-3" — compacto, sem repetir "Dusk" a cada modo. */
@@ -878,32 +881,25 @@ function cardReceita(x) {
 /* ================================================================= DROPS */
 
 /* A aba responde a pergunta inversa da aba Receitas: em vez de "o que preciso
- * para esta peça", ela responde "o que este chefe me dá" e "onde farmo isto".
- * Uma linha por material, com todos os chefes que o largam. */
+ * para esta peça", ela responde "o que este chefe me dá".
+ *
+ * Por isso o bloco é o CHEFE em um modo — "Rei Cang Li · Dusk 3-2" — e não o
+ * item. É assim que a run acontece: você entra num modo, mata os chefes dele e
+ * cada um solta a lista dele. Material que cai em mais de um lugar aparece em
+ * cada bloco onde cai, com um botão para ver os outros. */
 
 const filtroModos = new Set();
+const filtroCores = new Set();
+const fontesAbertas = new Set();
 
-/** Um registro por material com origem conhecida. */
-function todosDrops() {
-  const saida = [];
-  for (const it of Object.values(CATALOGO)) {
-    const ds = it.drops || [];
-    if (!ds.length) continue;
-    const modos = modosDoItem(it);
-    saida.push({
-      it,
-      drops: ds,
-      modos,
-      cor: COR_RARIDADE[it.raridade] || null,
-      melhor: Math.max(...ds.map((d) => d.pct || 0)),
-      // usado em quantas receitas — mede o quanto o material importa
-      usos: usosDe(it.id),
-      busca: [it.nome, it.tipo, it.subtipo, ...modos,
-        ROTULO_TAG.get(COR_RARIDADE[it.raridade]) || '',
-        ...ds.map((d) => d.nome)].join(' ').toLowerCase(),
-    });
-  }
-  return saida;
+/** Chance deste material neste chefe, pela tabela de drop do pwdatabase. */
+function chanceEm(it, chefe) {
+  const ds = it.drops || [];
+  const doChefe = ds.filter((d) => d.nome === chefe);
+  // "Baú e mobs" não é um chefe: o guia agrupa baú, mobs comuns e chefe menor.
+  // Aí vale a melhor chance registrada, que é a informação útil.
+  const alvo = doChefe.length ? doChefe : (chefe === 'Baú e mobs' ? ds : []);
+  return alvo.length ? Math.max(...alvo.map((d) => d.pct || 0)) : null;
 }
 
 let CACHE_USOS = null;
@@ -924,17 +920,48 @@ function usosDe(id) {
   return CACHE_USOS.get(String(id)) || 0;
 }
 
-/* Dois grupos de filtro, mesma regra da aba Receitas: OU dentro do grupo, E
- * entre grupos. Material sem cor conhecida não casa com nenhum chip de cor —
- * some quando você filtra por cor, e é o certo. */
-const filtroCores = new Set();
+/** Um bloco por (chefe, modo), com os materiais que ele larga naquele modo. */
+let CACHE_BLOCOS = null;
 
-const GRUPOS_DROP = [
-  { id: 'modo', rot: 'Modo', set: filtroModos, valores: modosConhecidos,
-    de: (x) => x.modos },
-  { id: 'cor', rot: 'Cor', set: filtroCores, valores: coresConhecidas,
-    de: (x) => (x.cor ? [x.cor] : []) },
-];
+function todosBlocos() {
+  if (CACHE_BLOCOS) return CACHE_BLOCOS;
+  const mapa = new Map();
+  for (const it of Object.values(CATALOGO)) {
+    if (!it.drops?.length) continue;
+    const origens = origensDoItem(it);
+    for (const [chefe, modo] of origens) {
+      const chave = `${chefe}|${modo}`;
+      if (!mapa.has(chave)) mapa.set(chave, { chave, chefe, modo, itens: [] });
+      mapa.get(chave).itens.push({
+        it,
+        pct: chanceEm(it, chefe),
+        cor: COR_RARIDADE[it.raridade] || null,
+        usos: usosDe(it.id),
+        // as outras origens do mesmo material — é o que o "+N" abre
+        outras: origens.filter(([c, m]) => c !== chefe || m !== modo),
+      });
+    }
+  }
+
+  for (const b of mapa.values()) {
+    b.itens.sort((a, c) => (c.pct ?? -1) - (a.pct ?? -1)
+      || a.it.nome.localeCompare(c.it.nome, 'pt-BR'));
+    b.busca = [b.chefe, b.modo, ...b.itens.map((l) => l.it.nome)].join(' ').toLowerCase();
+  }
+  CACHE_BLOCOS = [...mapa.values()];
+  return CACHE_BLOCOS;
+}
+
+/** Modos existentes, na ordem em que o jogador pensa (1-1 → 3-3 → Vale da Lua). */
+function modosConhecidos() {
+  const vistos = new Set();
+  for (const it of Object.values(CATALOGO)) {
+    if (it.drops?.length) modosDoItem(it).forEach((m) => vistos.add(m));
+  }
+  const peso = (m) => (/^Dusk \d-\d$/.test(m) ? 0 : m === 'Vale da Lua' ? 2 : 1);
+  return [...vistos].sort((a, b) =>
+    peso(a) - peso(b) || a.localeCompare(b, 'pt-BR', { numeric: true }));
+}
 
 /** Cores presentes nos materiais que dropam, na ordem em que o jogador pensa. */
 function coresConhecidas() {
@@ -945,42 +972,55 @@ function coresConhecidas() {
   return ORDEM_COR.filter((c) => tem.has(c));
 }
 
-function casaDrop(x, ativos) {
-  for (const g of GRUPOS_DROP) {
-    const marcados = ativos[g.id];
-    if (marcados?.size && !g.de(x).some((v) => marcados.has(v))) return false;
-  }
-  return true;
-}
-
-const ativosDrop = () =>
-  Object.fromEntries(GRUPOS_DROP.map((g) => [g.id, g.set]));
-
-function dropsFiltrados(comChips = true) {
+/* A cor filtra DENTRO do bloco, não o bloco inteiro: marcar "dourado" junto com
+ * o 3-3 mostra os chefes do 3-3 com só o que eles largam de dourado. Bloco que
+ * fica sem item nenhum sai da lista. */
+function blocosFiltrados() {
   const termo = $('#filtroDrops').value.trim().toLowerCase();
-  let lista = todosDrops();
-  if (termo) {
-    const palavras = termo.split(/\s+/);
-    lista = lista.filter((x) => palavras.every((p) => x.busca.includes(p)));
+  const palavras = termo ? termo.split(/\s+/) : [];
+
+  const saida = [];
+  for (const b of todosBlocos()) {
+    if (filtroModos.size && !filtroModos.has(b.modo)) continue;
+
+    // o termo casa o bloco inteiro (nome do chefe) ou item a item
+    const cabecalho = `${b.chefe} ${b.modo}`.toLowerCase();
+    const blocoCasa = palavras.length && palavras.every((p) => cabecalho.includes(p));
+    let itens = b.itens;
+    if (palavras.length && !blocoCasa) {
+      itens = itens.filter((l) => palavras.every((p) => l.it.nome.toLowerCase().includes(p)));
+    }
+    if (filtroCores.size) itens = itens.filter((l) => l.cor && filtroCores.has(l.cor));
+    if (!itens.length) continue;
+
+    saida.push({ ...b, itens });
   }
-  if (comChips) lista = lista.filter((x) => casaDrop(x, ativosDrop()));
-  return lista;
+  return saida;
 }
 
-/** Quanto sobraria ao marcar este chip, respeitando os outros grupos. */
-function contarChipDrop(base, grupo, valor) {
-  const ativos = {};
-  for (const g of GRUPOS_DROP) ativos[g.id] = g.id === grupo ? new Set([valor]) : g.set;
-  return base.reduce((n, x) => n + (casaDrop(x, ativos) ? 1 : 0), 0);
+const GRUPOS_DROP = [
+  { id: 'modo', rot: 'Modo', set: filtroModos, valores: modosConhecidos },
+  { id: 'cor', rot: 'Cor', set: filtroCores, valores: coresConhecidas },
+];
+
+/** Quantos materiais sobrariam ao marcar este chip, respeitando o outro grupo. */
+function contarChipDrop(grupo, valor) {
+  const alvo = GRUPOS_DROP.find((g) => g.id === grupo).set;
+  const guardado = [...alvo];
+  alvo.clear();
+  alvo.add(valor);
+  const n = new Set(blocosFiltrados().flatMap((b) => b.itens.map((l) => String(l.it.id)))).size;
+  alvo.clear();
+  guardado.forEach((v) => alvo.add(v));
+  return n;
 }
 
 function renderChipsDrops() {
-  const base = dropsFiltrados(false);
   const marcado = GRUPOS_DROP.some((g) => g.set.size);
 
   const html = GRUPOS_DROP.map((g) => {
     const chips = g.valores()
-      .map((v) => ({ v, n: contarChipDrop(base, g.id, v) }))
+      .map((v) => ({ v, n: contarChipDrop(g.id, v) }))
       .filter((c) => c.n > 0 || g.set.has(c.v));
     if (!chips.length) return '';
     return `<div class="grupo-tag"><span class="rot">${esc(g.rot)}</span>${chips.map((c) => {
@@ -1000,97 +1040,97 @@ function renderChipsDrops() {
 function renderDrops() {
   const alvo = $('#conteudoDrops');
   const termo = $('#filtroDrops').value.trim();
-  const ordem = $('#ordemDrops').value || 'modo';   // o padrão do select
+  const ordem = $('#ordemDrops').value || 'modo';
 
   renderChipsDrops();
-  const lista = dropsFiltrados();
+  const lista = blocosFiltrados();
 
   if (!lista.length) {
-    const total = todosDrops().length;
-    alvo.innerHTML = `<div class="vazio"><strong>Nenhum material encontrado</strong>
-      ${termo || filtroModos.size ? 'Tente outro termo ou modo.'
-        : total ? '' : 'O catálogo ainda não tem origem de drop. Rode <code>py importar.py --redrops</code>.'}</div>`;
+    alvo.innerHTML = `<div class="vazio"><strong>Nada encontrado</strong>
+      ${termo || filtroModos.size || filtroCores.size ? 'Tente outro termo, modo ou cor.'
+        : 'O catálogo ainda não tem origem de drop. Rode <code>py importar.py --redrops</code>.'}</div>`;
     return;
   }
 
+  const melhor = (b) => Math.max(...b.itens.map((l) => l.pct ?? 0));
   lista.sort((a, b) => {
     switch (ordem) {
-      case 'nome': return a.it.nome.localeCompare(b.it.nome, 'pt-BR');
-      case 'pct-desc': return b.melhor - a.melhor;
-      case 'pct-asc': return a.melhor - b.melhor;
-      // por modo: agrupa e, dentro, põe na frente o que mais receita usa
+      case 'nome': return a.chefe.localeCompare(b.chefe, 'pt-BR');
+      case 'pct-desc': return melhor(b) - melhor(a);
+      case 'pct-asc': return melhor(a) - melhor(b);
       default:
-        return (a.modos[0] || '').localeCompare(b.modos[0] || '', 'pt-BR', { numeric: true })
-          || b.usos - a.usos
-          || a.it.nome.localeCompare(b.it.nome, 'pt-BR');
+        return a.modo.localeCompare(b.modo, 'pt-BR', { numeric: true })
+          || b.itens.length - a.itens.length
+          || a.chefe.localeCompare(b.chefe, 'pt-BR');
     }
   });
 
   const grupos = new Map();
-  for (const x of lista) {
-    const g = ordem === 'modo' ? (x.modos[0] || 'Sem modo') : 'Materiais';
+  for (const b of lista) {
+    const g = ordem === 'modo' ? b.modo : 'Chefes';
     if (!grupos.has(g)) grupos.set(g, []);
-    grupos.get(g).push(x);
+    grupos.get(g).push(b);
   }
 
-  alvo.innerHTML = [...grupos].map(([g, xs]) => `
-    <div class="secao">${esc(g)} <span class="qtd">${xs.length}</span></div>
-    <div class="grade-drops">${xs.map(cardDrop).join('')}</div>
+  alvo.innerHTML = [...grupos].map(([g, bs]) => `
+    <div class="secao">${esc(g)} <span class="qtd">${bs.length} chefe${bs.length > 1 ? 's' : ''}</span></div>
+    <div class="grade-drops">${bs.map(cardBloco).join('')}</div>
   `).join('')
-    + `<p class="nota-drops">Taxas do <strong>pwdatabase</strong>, do banco oficial do jogo.
-       O The PW Clássico pode ter ajustado os valores — o nome do chefe é o dado
-       firme aqui, a porcentagem é referência.</p>`;
+    + `<p class="nota-drops">Quem larga o quê vem dos guias da dusk; as chances vêm do
+       <strong>pwdatabase</strong>, do banco oficial do jogo. O The PW Clássico pode ter
+       ajustado os valores — o chefe é o dado firme, a porcentagem é referência.</p>`;
 }
 
-/* Material barato cai de meio mundo — a Antiga Espada Ornamental sai de 38
- * chefes. Listar tudo enterra o que interessa (o verde e o dourado, que vêm de
- * um ou dois chefes) numa parede de linhas. Acima deste número a lista começa
- * fechada, mostrando os de maior chance. */
-const LIMITE_CHEFES = 3;
-const dropsExpandidos = new Set();
+/* Material que cai em mais de um lugar ganha um "+N": abrir mostra os outros
+ * chefes e modos. Sem isso, quem olha o bloco do Feng Wuhen no 2-1 não faz
+ * ideia de que as Luvas também caem no 2-2. */
+function linhaDrop(l, chaveBloco) {
+  const id = `${chaveBloco}|${l.it.id}`;
+  const aberto = fontesAbertas.has(id);
+  const extra = l.outras.length
+    ? `<button class="mais-fontes${aberto ? ' on' : ''}" data-expandir="${esc(id)}"
+         title="${aberto ? 'Fechar' : 'Ver os outros lugares onde cai'}"
+         >+${l.outras.length}</button>` : '';
 
-function cardDrop(x) {
-  const { it } = x;
-  const s = stats(it.id);
-  const preco = s?.ref != null
-    ? `<span class="medas" title="${fmtCheio(s.ref)}">${fmtMedas(s.ref)}</span>`
-    : `<span class="aviso-sem-preco">${SINAL} sem preço</span>`;
+  const detalhe = aberto ? `
+    <div class="fontes">${l.outras.map(([c, m]) => `
+      <div><span class="modo">${esc(m)}</span> ${esc(c)}
+        <span class="medas fraco">${fmtPct(chanceEm(l.it, c))}</span></div>`).join('')}
+    </div>` : '';
 
-  const id = String(it.id);
-  const aberto = dropsExpandidos.has(id);
-  const cortar = x.drops.length > LIMITE_CHEFES && !aberto;
-  const mostrados = cortar ? x.drops.slice(0, LIMITE_CHEFES) : x.drops;
-  const escondidos = x.drops.length - mostrados.length;
+  return `<div class="linha-drop">
+    <img class="icone pequeno" src="${iconeDe(l.it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+    <span class="nome" title="${esc(l.it.nome)}${l.usos ? ` — usado em ${l.usos} receita(s)` : ''}"
+      >${nomeHTML(l.it)}</span>
+    ${extra}
+    <span class="chance medas${(l.pct ?? 0) >= 5 ? '' : ' fraco'}">${l.pct == null ? '—' : fmtPct(l.pct)}</span>
+  </div>${detalhe}`;
+}
 
-  const linhas = mostrados.map((d) => `
-    <tr>
-      <td>${esc(d.nome)}</td>
-      <td class="num"><span class="medas${d.pct >= 5 ? '' : ' fraco'}">${fmtPct(d.pct)}</span></td>
-    </tr>`).join('');
+/* No Vale da Lua quase todo mob larga quase todo material — tem chefe com 23
+ * linhas. Na dusk o guia já entrega listas curtas. Acima do limite o bloco
+ * mostra os de maior chance e abre no clique. */
+const LIMITE_ITENS = 6;
+const blocosAbertos = new Set();
 
-  const alternar = x.drops.length > LIMITE_CHEFES
-    ? `<button class="mais-chefes" data-expandir="${esc(id)}">${escondidos
-        ? `+ ${escondidos} outro${escondidos > 1 ? 's' : ''} chefe${escondidos > 1 ? 's' : ''}`
+function cardBloco(b) {
+  const aberto = blocosAbertos.has(b.chave);
+  const cortar = b.itens.length > LIMITE_ITENS && !aberto;
+  const mostrados = cortar ? b.itens.slice(0, LIMITE_ITENS) : b.itens;
+  const escondidos = b.itens.length - mostrados.length;
+
+  const alternar = b.itens.length > LIMITE_ITENS
+    ? `<button class="mais-chefes" data-abrir-bloco="${esc(b.chave)}">${escondidos
+        ? `+ ${escondidos} material${escondidos > 1 ? 'is' : ''}`
         : '− recolher'}</button>`
     : '';
 
   return `<div class="drop-card">
-    <div class="drop-topo">
-      <img class="icone" src="${iconeDe(it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
-      <div class="drop-id">
-        <div class="titulo">${nomeHTML(it)}</div>
-        <div class="drop-meta">
-          <span class="modo">${esc(rotuloModos(x.modos))}</span>
-          · ${x.usos ? `usado em ${x.usos} receita${x.usos > 1 ? 's' : ''}` : 'fora das receitas'}
-          · ${preco}
-          ${x.drops.length > LIMITE_CHEFES ? `· ${x.drops.length} chefes` : ''}
-        </div>
-      </div>
+    <div class="bloco-topo">
+      <span class="chefe">${esc(b.chefe)}</span>
+      <span class="modo">${esc(b.modo)}</span>
     </div>
-    <div class="tabela-wrap"><table class="drop-tabela">
-      <thead><tr><th>Chefe</th><th class="num">Chance</th></tr></thead>
-      <tbody>${linhas}</tbody>
-    </table></div>
+    ${mostrados.map((l) => linhaDrop(l, b.chave)).join('')}
     ${alternar}
   </div>`;
 }
@@ -1666,8 +1706,15 @@ function ligar() {
     }
     if (b.dataset.expandir) {
       const id = b.dataset.expandir;
-      if (dropsExpandidos.has(id)) dropsExpandidos.delete(id);
-      else dropsExpandidos.add(id);
+      if (fontesAbertas.has(id)) fontesAbertas.delete(id);
+      else fontesAbertas.add(id);
+      renderDrops();
+      return;
+    }
+    if (b.dataset.abrirBloco) {
+      const k = b.dataset.abrirBloco;
+      if (blocosAbertos.has(k)) blocosAbertos.delete(k);
+      else blocosAbertos.add(k);
       renderDrops();
       return;
     }
