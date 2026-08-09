@@ -67,6 +67,28 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(RAIZ), **kwargs)
 
+    def end_headers(self) -> None:
+        """Nada de cache aqui.
+
+        O SimpleHTTPRequestHandler não manda `Cache-Control`, e sem ele o
+        navegador aplica cache heurístico: guarda app.js e catalog.js por conta
+        própria e nem revalida. Dá para acabar com index.html novo e app.js
+        velho ao mesmo tempo, que é a pior combinação possível — a aba nova
+        aparece no HTML e fica em branco porque o código que a desenha não veio.
+        Servidor local existe para editar e recarregar, então cache aqui só
+        atrapalha.
+        """
+        if "Cache-Control" not in self._headers_buffer_nomes():
+            self.send_header("Cache-Control", "no-store, must-revalidate")
+        super().end_headers()
+
+    def _headers_buffer_nomes(self) -> set[str]:
+        return {
+            linha.split(b":")[0].decode("latin-1")
+            for linha in getattr(self, "_headers_buffer", []) or []
+            if b":" in linha
+        }
+
     # --- respostas ------------------------------------------------------
     def _json(self, payload: dict, status: int = 200) -> None:
         corpo = json.dumps(payload, ensure_ascii=False).encode("utf-8")

@@ -21,6 +21,7 @@ Use --sem-ingredientes para desligar.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -34,6 +35,7 @@ RAIZ = Path(__file__).parent
 CATALOGO = RAIZ / "data" / "catalog.json"
 CATALOGO_JS = RAIZ / "data" / "catalog.js"
 AJUSTES = RAIZ / "data" / "ajustes.json"
+INDEX = RAIZ / "index.html"
 ICONES = RAIZ / "data" / "icons"
 
 # Materiais costumam ter dezenas de receitas de *decomposição* — a Pedra
@@ -166,6 +168,49 @@ def salvar(cat: dict) -> None:
     with CATALOGO_JS.open("w", encoding="utf-8", newline="\n") as f:
         f.write("// gerado por importar.py — não edite à mão\n")
         f.write(f"window.PW_CATALOGO = {compacto};\n")
+
+    # o selo só pode ser calculado depois de o catalog.js estar em disco
+    versionar_index()
+
+
+# Arquivos que o index.html carrega e que quebram a página se vierem
+# desencontrados. precos.js e lista.js ficam de fora de propósito: mudam a cada
+# preço anotado, e preço velho por 10 minutos não quebra nada — já uma mistura
+# de app.js novo com catalog.js velho, sim.
+VERSIONAR = ("style.css", "app.js", "data/catalog.js")
+
+
+def versionar_index() -> int:
+    """Carimba `?v=<hash>` nos assets do index.html.
+
+    O GitHub Pages serve com `Cache-Control: max-age=600` e não revalida dentro
+    da janela. Como o index.html é o documento navegado, ele costuma vir novo
+    enquanto o app.js ainda vem do cache — a aba nova aparece e fica vazia,
+    porque o código que a desenha não chegou. Com o hash na URL o navegador não
+    tem como servir a versão anterior: é outro endereço.
+    """
+    if not INDEX.exists():
+        return 0
+    html = INDEX.open(encoding="utf-8").read()
+    original = html
+
+    for alvo in VERSIONAR:
+        arquivo = RAIZ / alvo
+        if not arquivo.exists():
+            continue
+        selo = hashlib.sha256(arquivo.read_bytes()).hexdigest()[:10]
+        # casa com ou sem ?v= anterior, em href= ou src=
+        html = re.sub(
+            rf'((?:href|src)="{re.escape(alvo)})(?:\?v=[0-9a-f]+)?"',
+            rf'\g<1>?v={selo}"',
+            html,
+        )
+
+    if html == original:
+        return 0
+    with INDEX.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(html)
+    return 1
 
 
 def baixar_icone(item_id: int, forcar: bool = False) -> bool:
@@ -424,6 +469,11 @@ def main(argv: list[str] | None = None) -> int:
     alvo.add_argument("--remover", type=int, metavar="N", help="remove um item do catálogo")
     alvo.add_argument("--reicones", action="store_true", help="rebaixa os ícones que faltam")
     alvo.add_argument(
+        "--versionar",
+        action="store_true",
+        help="recarimba ?v= nos assets do index.html (rode depois de mexer em app.js/style.css)",
+    )
+    alvo.add_argument(
         "--redrops",
         action="store_true",
         help="rebusca a tabela de drop dos itens já no catálogo (1 requisição por item)",
@@ -480,6 +530,10 @@ def main(argv: list[str] | None = None) -> int:
         (ICONES / f"{args.remover}.png").unlink(missing_ok=True)
         salvar(cat)
         print(f"removido: {args.remover} {item['nome']}")
+        return 0
+
+    if args.versionar:
+        print("index.html recarimbado." if versionar_index() else "selos já estavam em dia.")
         return 0
 
     if args.reicones:

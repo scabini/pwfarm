@@ -62,6 +62,7 @@ py importar.py --listar                 # o que já tem no catálogo
 py importar.py --remover 20320
 py importar.py --reicones               # rebaixa ícones que faltam
 py importar.py --redrops                # rebusca a tabela de drop dos materiais
+py importar.py --versionar              # recarimba ?v= nos assets do index.html
 py importar.py --faxina                 # aplica IGNORAR_RECEITA_COM ao catálogo
 ```
 
@@ -128,6 +129,27 @@ que você escolheu, por tentativa.
 - Os ícones são **baixados** para `data/icons/` em vez de linkados. Isso
   mantém a página funcionando offline, não consome banda deles a cada
   visita, e não quebra se eles mudarem de host.
+
+### Cache: por que os assets têm `?v=`
+
+O GitHub Pages serve com `Cache-Control: max-age=600` e não revalida dentro da
+janela. Como o `index.html` é o documento navegado, ele costuma vir novo
+enquanto o `app.js` ainda vem do cache — e essa mistura é a pior possível: a aba
+nova aparece no HTML e fica **em branco**, porque o código que a desenha não
+chegou. Nenhum erro no console, nada quebrado no servidor; só duas versões
+conversando.
+
+Por isso `style.css`, `app.js` e `data/catalog.js` são carregados com um
+`?v=<hash do conteúdo>`. Mudou o arquivo, mudou a URL, e o navegador não tem
+como servir a anterior. O `salvar()` do importador recarimba sozinho quando o
+catálogo muda; **depois de mexer no `app.js` ou no `style.css`, rode
+`py importar.py --versionar` antes de commitar**.
+
+`precos.js` e `lista.js` ficam de fora de propósito: mudam a cada preço anotado,
+e preço com 10 minutos de atraso não quebra nada.
+
+No **modo servidor** o problema não existe — o `servidor.py` responde tudo com
+`Cache-Control: no-store`, porque servidor local existe para editar e recarregar.
 
 ## Registrar preços
 
