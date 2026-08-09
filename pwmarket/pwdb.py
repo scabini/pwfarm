@@ -137,6 +137,7 @@ class Drop:
     nivel: int | None
     zona: str | None
     sala: str | None
+    vida: int | None
     pct: float
 
 
@@ -240,7 +241,7 @@ _DROP = re.compile(
     r"<td>(\d*)</td>\s*"
     r"<td>(.*?)</td>\s*"
     r"<td>.*?</td>\s*"          # elemento
-    r"<td>.*?</td>\s*"          # vida
+    r"<td>(\d*)</td>\s*"        # vida — separa o chefão da sala do trash dela
     r"<td>([\d.]+)</td>",
     re.S,
 )
@@ -257,7 +258,7 @@ def _parse_drops(page: str) -> list[Drop]:
         bloco = bloco[:fim]
 
     saida = []
-    for mob, nome, nivel, onde, pct in _DROP.findall(bloco):
+    for mob, nome, nivel, onde, vida, pct in _DROP.findall(bloco):
         # "Palácio do Crepúsculo<br />397 519 (9)" — zona e coordenada
         partes = re.split(r"<br\s*/?>", onde, maxsplit=1)
         zona = _clean(partes[0]) or None
@@ -267,7 +268,7 @@ def _parse_drops(page: str) -> list[Drop]:
             zona = None
         saida.append(Drop(
             mob=int(mob), nome=_clean(nome), nivel=_num(nivel) if nivel else None,
-            zona=zona, sala=sala, pct=float(pct),
+            zona=zona, sala=sala, vida=int(vida) if vida else None, pct=float(pct),
         ))
     return saida
 

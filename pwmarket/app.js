@@ -315,7 +315,10 @@ const pctTxt = (dif) => (dif > 0 ? '+' : '') + Math.round(dif * 100) + '%';
 const GRUPOS_TAG = [
   { id: 'conteudo', rot: 'Conteúdo', tags: [['dusk', 'Dusk'], ['lua', 'Vale da Lua']] },
   { id: 'nivel', rot: 'Nível', tags: [['lv90', '90'], ['lv95', '95'], ['lv99', '99']] },
-  { id: 'cor', rot: 'Cor', tags: [['dourado', 'Dourado'], ['verde', 'Verde'], ['roxo', 'Roxo'], ['laranja', 'Laranja']] },
+  // "roxinho" é como o jogador chama o azul-violeta do pwdatabase (raridade 1):
+  // Fragmento de Esqueleto, Caveira das Charadas. Material barato, e é
+  // justamente o que ninguém quer ver ocupando a tela.
+  { id: 'cor', rot: 'Cor', tags: [['dourado', 'Dourado'], ['verde', 'Verde'], ['roxo', 'Roxo'], ['roxinho', 'Roxinho'], ['laranja', 'Laranja']] },
   { id: 'set', rot: 'Set', tags: [['pesado', 'Pesado'], ['leve', 'Leve'], ['mistico', 'Místico']] },
 ];
 
@@ -323,7 +326,8 @@ const ROTULO_TAG = new Map(GRUPOS_TAG.flatMap((g) => g.tags));
 const GRUPO_DA_TAG = new Map(GRUPOS_TAG.flatMap((g) => g.tags.map(([t]) => [t, g.id])));
 const ORDEM_TAG = [...ROTULO_TAG.keys()];
 
-const COR_RARIDADE = { 2: 'dourado', 3: 'roxo', 4: 'laranja', 7: 'verde' };
+const COR_RARIDADE = { 1: 'roxinho', 2: 'dourado', 3: 'roxo', 4: 'laranja', 7: 'verde' };
+const ORDEM_COR = ['dourado', 'verde', 'roxo', 'roxinho', 'laranja'];
 const NIVEIS_TAG = [90, 95, 99];
 
 const RE_DUSK = /crep[úu]sculo/i;
@@ -444,14 +448,40 @@ function tagsDe(it, r) {
 const SALAS = (window.PW_CATALOGO && window.PW_CATALOGO.salas) || {};
 const ZONAS_SALA = (window.PW_CATALOGO && window.PW_CATALOGO.zonas) || {};
 
-/** Rótulo do modo. Sala sem rótulo cai na zona + número, que ainda situa quem
- *  está lendo — melhor que sumir com a informação. */
+/** "Dusk", "Vale da Lua" — a zona, curta. */
+function zonaCurta(sala) {
+  const z = ZONAS_SALA[String(sala)]?.zona || '';
+  return /crep[úu]sculo/i.test(z) ? 'Dusk' : z;
+}
+
+/* O mesmo chefão manda em mais de uma sala — a Serpente Ancestral aparece na 7
+ * e na 13, que são modos diferentes. Sem desambiguar, as duas viravam o mesmo
+ * rótulo e o filtro juntava conteúdo que o jogador faz separado. Só nesses
+ * casos o número da sala entra. */
+const CHEFE_AMBIGUO = (() => {
+  const porChefe = new Map();
+  for (const [s, reg] of Object.entries(ZONAS_SALA)) {
+    if (!reg?.chefe) continue;
+    porChefe.set(reg.chefe, (porChefe.get(reg.chefe) || 0) + 1);
+  }
+  return new Set([...porChefe].filter(([, n]) => n > 1).map(([c]) => c));
+})();
+
+/* Rótulo da sala. O modo ("Dusk 2-3") só existe se alguém que joga confirmou,
+ * porque o pwdatabase não tem esse dado e deduzi-lo do nível dos equipamentos
+ * deu errado. Sem confirmação, a sala é chamada pelo chefão dela — que sai da
+ * vida dos mobs, está sempre certo, e é como o jogador fala mesmo ("a sala do
+ * Rei Cang Li"). Nunca vira número solto. */
 function rotuloSala(sala) {
   if (sala == null) return null;
   const s = String(sala);
   if (SALAS[s]) return SALAS[s];
-  const zona = ZONAS_SALA[s];
-  return zona ? `${zona} (sala ${s})` : `sala ${s}`;
+  const reg = ZONAS_SALA[s];
+  if (reg?.chefe) {
+    const sufixo = CHEFE_AMBIGUO.has(reg.chefe) ? ` (sala ${s})` : '';
+    return `${zonaCurta(s) || 'Sala'} · ${reg.chefe}${sufixo}`;
+  }
+  return reg?.zona ? `${reg.zona} (sala ${s})` : `sala ${s}`;
 }
 
 /** Modos existentes, na ordem em que o jogador pensa (1-1 → 3-3 → Vale da Lua). */
@@ -855,10 +885,12 @@ function todosDrops() {
       it,
       drops: ds,
       modos,
+      cor: COR_RARIDADE[it.raridade] || null,
       melhor: Math.max(...ds.map((d) => d.pct || 0)),
       // usado em quantas receitas — mede o quanto o material importa
       usos: usosDe(it.id),
       busca: [it.nome, it.tipo, it.subtipo, ...modos,
+        ROTULO_TAG.get(COR_RARIDADE[it.raridade]) || '',
         ...ds.map((d) => d.nome)].join(' ').toLowerCase(),
     });
   }
@@ -883,34 +915,77 @@ function usosDe(id) {
   return CACHE_USOS.get(String(id)) || 0;
 }
 
-function dropsFiltrados(comModos = true) {
+/* Dois grupos de filtro, mesma regra da aba Receitas: OU dentro do grupo, E
+ * entre grupos. Material sem cor conhecida não casa com nenhum chip de cor —
+ * some quando você filtra por cor, e é o certo. */
+const filtroCores = new Set();
+
+const GRUPOS_DROP = [
+  { id: 'modo', rot: 'Modo', set: filtroModos, valores: modosConhecidos,
+    de: (x) => x.modos },
+  { id: 'cor', rot: 'Cor', set: filtroCores, valores: coresConhecidas,
+    de: (x) => (x.cor ? [x.cor] : []) },
+];
+
+/** Cores presentes nos materiais que dropam, na ordem em que o jogador pensa. */
+function coresConhecidas() {
+  const tem = new Set();
+  for (const it of Object.values(CATALOGO)) {
+    if (it.drops?.length && COR_RARIDADE[it.raridade]) tem.add(COR_RARIDADE[it.raridade]);
+  }
+  return ORDEM_COR.filter((c) => tem.has(c));
+}
+
+function casaDrop(x, ativos) {
+  for (const g of GRUPOS_DROP) {
+    const marcados = ativos[g.id];
+    if (marcados?.size && !g.de(x).some((v) => marcados.has(v))) return false;
+  }
+  return true;
+}
+
+const ativosDrop = () =>
+  Object.fromEntries(GRUPOS_DROP.map((g) => [g.id, g.set]));
+
+function dropsFiltrados(comChips = true) {
   const termo = $('#filtroDrops').value.trim().toLowerCase();
   let lista = todosDrops();
   if (termo) {
     const palavras = termo.split(/\s+/);
     lista = lista.filter((x) => palavras.every((p) => x.busca.includes(p)));
   }
-  if (comModos && filtroModos.size) {
-    lista = lista.filter((x) => x.modos.some((m) => filtroModos.has(m)));
-  }
+  if (comChips) lista = lista.filter((x) => casaDrop(x, ativosDrop()));
   return lista;
+}
+
+/** Quanto sobraria ao marcar este chip, respeitando os outros grupos. */
+function contarChipDrop(base, grupo, valor) {
+  const ativos = {};
+  for (const g of GRUPOS_DROP) ativos[g.id] = g.id === grupo ? new Set([valor]) : g.set;
+  return base.reduce((n, x) => n + (casaDrop(x, ativos) ? 1 : 0), 0);
 }
 
 function renderChipsDrops() {
   const base = dropsFiltrados(false);
-  const chips = modosConhecidos()
-    .map((m) => ({ m, n: base.filter((x) => x.modos.includes(m)).length }))
-    .filter((c) => c.n > 0 || filtroModos.has(c.m));
+  const marcado = GRUPOS_DROP.some((g) => g.set.size);
 
-  $('#chipsDrops').innerHTML = chips.length
-    ? `<div class="grupo-tag"><span class="rot">Modo</span>${chips.map((c) => {
-        const on = filtroModos.has(c.m);
-        return `<button class="chip-tag${on ? ' on' : ''}" data-modo="${esc(c.m)}"
-          aria-pressed="${on}" title="${on ? 'Desmarcar' : 'Filtrar por'} ${esc(c.m)}"
-          >${esc(c.m)}<span class="n">${c.n}</span></button>`;
-      }).join('')}</div>`
-      + (filtroModos.size ? '<button class="chip-tag limpar" data-limpar-modos="1">✕ limpar</button>' : '')
-    : '';
+  const html = GRUPOS_DROP.map((g) => {
+    const chips = g.valores()
+      .map((v) => ({ v, n: contarChipDrop(base, g.id, v) }))
+      .filter((c) => c.n > 0 || g.set.has(c.v));
+    if (!chips.length) return '';
+    return `<div class="grupo-tag"><span class="rot">${esc(g.rot)}</span>${chips.map((c) => {
+      const on = g.set.has(c.v);
+      const rot = g.id === 'cor' ? ROTULO_TAG.get(c.v) || c.v : c.v;
+      return `<button class="chip-tag${g.id === 'cor' ? ' p-' + esc(c.v) : ''}${on ? ' on' : ''}"
+        data-drop-grupo="${esc(g.id)}" data-drop-valor="${esc(c.v)}" aria-pressed="${on}"
+        title="${on ? 'Desmarcar' : 'Filtrar por'} ${esc(rot)}"
+        >${esc(rot)}<span class="n">${c.n}</span></button>`;
+    }).join('')}</div>`;
+  }).join('');
+
+  $('#chipsDrops').innerHTML = html
+    + (marcado ? '<button class="chip-tag limpar" data-limpar-modos="1">✕ limpar</button>' : '');
 }
 
 function renderDrops() {
@@ -958,6 +1033,13 @@ function renderDrops() {
        firme aqui, a porcentagem é referência.</p>`;
 }
 
+/* Material barato cai de meio mundo — a Antiga Espada Ornamental sai de 38
+ * chefes. Listar tudo enterra o que interessa (o verde e o dourado, que vêm de
+ * um ou dois chefes) numa parede de linhas. Acima deste número a lista começa
+ * fechada, mostrando os de maior chance. */
+const LIMITE_CHEFES = 3;
+const dropsExpandidos = new Set();
+
 function cardDrop(x) {
   const { it } = x;
   const s = stats(it.id);
@@ -965,12 +1047,24 @@ function cardDrop(x) {
     ? `<span class="medas" title="${fmtCheio(s.ref)}">${fmtMedas(s.ref)}</span>`
     : `<span class="aviso-sem-preco">${SINAL} sem preço</span>`;
 
-  const linhas = x.drops.map((d) => `
+  const id = String(it.id);
+  const aberto = dropsExpandidos.has(id);
+  const cortar = x.drops.length > LIMITE_CHEFES && !aberto;
+  const mostrados = cortar ? x.drops.slice(0, LIMITE_CHEFES) : x.drops;
+  const escondidos = x.drops.length - mostrados.length;
+
+  const linhas = mostrados.map((d) => `
     <tr>
       <td>${esc(d.nome)}</td>
       <td>${d.sala ? `<span class="modo">${esc(rotuloSala(d.sala))}</span>` : '—'}</td>
       <td class="num"><span class="medas${d.pct >= 5 ? '' : ' fraco'}">${fmtPct(d.pct)}</span></td>
     </tr>`).join('');
+
+  const alternar = x.drops.length > LIMITE_CHEFES
+    ? `<button class="mais-chefes" data-expandir="${esc(id)}">${escondidos
+        ? `+ ${escondidos} outro${escondidos > 1 ? 's' : ''} chefe${escondidos > 1 ? 's' : ''}`
+        : '− recolher'}</button>`
+    : '';
 
   return `<div class="drop-card">
     <div class="drop-topo">
@@ -980,6 +1074,7 @@ function cardDrop(x) {
         <div class="drop-meta">
           ${x.usos ? `usado em ${x.usos} receita${x.usos > 1 ? 's' : ''}` : 'não entra em receita nossa'}
           · ${preco}
+          ${x.drops.length > LIMITE_CHEFES ? `· ${x.drops.length} chefes` : ''}
         </div>
       </div>
     </div>
@@ -987,6 +1082,7 @@ function cardDrop(x) {
       <thead><tr><th>Chefe</th><th>Modo</th><th class="num">Chance</th></tr></thead>
       <tbody>${linhas}</tbody>
     </table></div>
+    ${alternar}
   </div>`;
 }
 
@@ -1544,14 +1640,25 @@ function ligar() {
       renderReceitas();
       return;
     }
-    if (b.dataset.modo) {
-      if (filtroModos.has(b.dataset.modo)) filtroModos.delete(b.dataset.modo);
-      else filtroModos.add(b.dataset.modo);
-      renderDrops();
+    if (b.dataset.dropGrupo) {
+      const g = GRUPOS_DROP.find((x) => x.id === b.dataset.dropGrupo);
+      const v = b.dataset.dropValor;
+      if (g) {
+        if (g.set.has(v)) g.set.delete(v);
+        else g.set.add(v);
+        renderDrops();
+      }
       return;
     }
     if (b.dataset.limparModos) {
-      filtroModos.clear();
+      GRUPOS_DROP.forEach((g) => g.set.clear());
+      renderDrops();
+      return;
+    }
+    if (b.dataset.expandir) {
+      const id = b.dataset.expandir;
+      if (dropsExpandidos.has(id)) dropsExpandidos.delete(id);
+      else dropsExpandidos.add(id);
       renderDrops();
       return;
     }

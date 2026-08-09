@@ -238,11 +238,19 @@ A estrela **☆** no canto do cartão adiciona direto, sem abrir a prévia.
 De onde cada material sai. É a pergunta inversa da aba Receitas: em vez de "o
 que preciso para esta peça", responde **"o que farmo, e onde"**.
 
-Um cartão por material, com todos os chefes que o largam, o modo e a chance.
-Os botões filtram por modo (**Dusk 1-1** … **Dusk 3-3**, **Vale da Lua**) e a
-busca cobre nome do material e nome do chefe — `cang li` lista tudo que ele
-solta. O cartão ainda diz em quantas receitas o material entra e o preço de
-referência, que é o que decide entre farmar e comprar.
+Um cartão por material, com os chefes que o largam, o modo e a chance. Dois
+grupos de botões filtram — **Modo** e **Cor** (Dourado, Verde, Roxo, Roxinho,
+Laranja) — com a mesma regra da aba Receitas: **ou** dentro do grupo, **e**
+entre grupos. A busca cobre nome do material e nome do chefe: `cang li` lista
+tudo que ele solta. O cartão ainda diz em quantas receitas o material entra e o
+preço de referência, que é o que decide entre farmar e comprar.
+
+**Lista longa começa fechada.** Material barato cai de meio mundo — a *Antiga
+Espada Ornamental* sai de 38 chefes — e listar tudo enterra o que interessa (o
+verde e o dourado vêm de um ou dois chefes) numa parede de linhas. Acima de
+**3 chefes** o cartão mostra os de maior chance e um botão *+ N outros chefes*.
+São 29 dos 135 materiais, e é o que segura a aba em 135 KB de HTML em vez de
+215 KB.
 
 A mesma informação aparece onde você já está olhando: no **tooltip da ficha do
 ingrediente** na aba Receitas, e como linha curta na **tabela de ingredientes**,
@@ -263,27 +271,33 @@ farma é um chefe só).
 privado mexe em drop rate. O nome do chefe é o dado firme; a porcentagem é
 referência, e o painel avisa isso onde a mostra.
 
-### O modo (3-3) não vem pronto
+### O modo (3-3) não vem pronto — e não dá para deduzir
 
-O pwdatabase dá a zona, a coordenada e um número de sala — e é só isso. A sala
-separa os modos (o mesmo chefe aparece em salas diferentes, com mais vida no
-modo difícil), mas não recebe nome.
+O pwdatabase dá a zona, a coordenada e um número de sala, e é só isso. A sala
+**separa** os modos corretamente (o mesmo chefe reaparece em outra sala com mais
+vida, que é o modo difícil), mas não recebe nome, e a página do mob também não
+traz o mapa.
 
-O de-para saiu do nível dos equipamentos que os materiais de cada sala servem,
-seguindo a regra do jogo (1-x = 60/70/80, 2-x = 70/80/90, 3-x = 90/99), e a
-ordem dentro do tier, de quanto item alto cada sala larga. A sala 5 é a que mais
-dropa material de 99 e é onde fica o **Rei Cang Li** — bate com o 3-3.
+Já tentei deduzir de três lados, e nenhum funciona:
 
-O resultado está em `data/ajustes.json`, em `salas`:
+| Tentativa | Por que falha |
+| --- | --- |
+| Nível do equipamento que os materiais servem | Deu **errado**: apontava a sala 3 como 3-2, e ela é a 2-3 |
+| Vida dos mobs | Não ordena — o Guardião diz 3 < 4 < 5, a Grande Besta diz 4 < 3 |
+| Faixa de id dos mobs | As faixas se sobrepõem quase todas |
+
+Então `salas`, no `data/ajustes.json`, só recebe **modo confirmado por quem
+joga**:
 
 ```json
-"salas": { "5": "Dusk 3-3", "3": "Dusk 3-2", "4": "Dusk 3-1" }
+"salas": { "3": "Dusk 2-3", "5": "Dusk 3-3" }
 ```
 
-Errou alguma? Corrija a linha e rode `py importar.py --ajustes`. Nada disso está
-no código, e sala sem rótulo cai em "Palácio do Crepúsculo (sala 31)" em vez de
-sumir. As salas 1-x são as menos certas — elas servem equipamento lv60-80, que
-este catálogo nem cobre: só 2 dos 53 ingredientes de dusk vêm de lá.
+Sala sem linha ali não fica sem rótulo: o painel a chama **pelo chefão dela** —
+`Dusk · Qin Tian` — que sai da vida dos mobs e está sempre certo. Quando o mesmo
+chefe manda em duas salas (a Serpente Ancestral, na 7 e na 13), o número entra
+para não juntar conteúdo que se faz separado. Preencha conforme for confirmando
+e rode `py importar.py --ajustes`; nada disso está no código.
 
 ## Minha lista
 

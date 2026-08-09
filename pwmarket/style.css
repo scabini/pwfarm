@@ -464,6 +464,28 @@ tr.historico.oculto { display: none; }
   white-space: nowrap;
 }
 
+.mais-chefes {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  background: none;
+  border: 1px dashed var(--linha);
+  border-radius: 3px;
+  color: var(--texto-apagado);
+  font: 500 11px/1 var(--fonte);
+  padding: 6px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.mais-chefes:hover {
+  border-color: var(--borda);
+  color: var(--vermelho-claro);
+  background: var(--vermelho-fundo);
+}
+
+.pill.p-roxinho, .chip-tag.p-roxinho:not(.on) { color: var(--r1); }
+
 .nota-drops {
   margin: 26px 0 0;
   padding-top: 14px;

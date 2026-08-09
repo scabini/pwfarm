@@ -73,6 +73,30 @@ def carregar() -> dict:
     return {"versao": 1, "atualizado": None, "itens": {}}
 
 
+def anotar_sala(salas: dict, d: dict) -> None:
+    """Guarda a zona e o chefão de cada sala.
+
+    O pwdatabase não nomeia as salas, e o modo da dusk ("2-3") não sai de dado
+    nenhum — tentei deduzir do nível dos equipamentos e errei. O que dá para
+    afirmar é qual o mob de mais vida que aparece ali, e isso já nomeia a sala
+    de um jeito que o jogador reconhece: a sala do Rei Cang Li. Quando o modo
+    for confirmado, o rótulo do ajustes.json passa na frente.
+    """
+    sala = str(d.get("sala") or "")
+    if not sala:
+        return
+    reg = salas.get(sala)
+    if not isinstance(reg, dict):          # formato antigo (só a zona, em texto)
+        reg = {"zona": reg if isinstance(reg, str) else d.get("zona"),
+               "chefe": None, "vida": 0}
+        salas[sala] = reg
+    reg.setdefault("zona", d.get("zona"))
+    reg.setdefault("vida", 0)
+    if (d.get("vida") or 0) > (reg["vida"] or 0):
+        reg["vida"] = d["vida"]
+        reg["chefe"] = d.get("nome")
+
+
 def filtrar_drops(drops: list[dict], zonas: dict | None = None) -> list[dict]:
     """Reduz a tabela de drop ao que serve para planejar farm.
 
@@ -91,8 +115,8 @@ def filtrar_drops(drops: list[dict], zonas: dict | None = None) -> list[dict]:
         zona = d.get("zona") or ""
         if not any(z in zona for z in ZONAS_DROP):
             continue
-        if zonas is not None and d.get("sala"):
-            zonas[str(d["sala"])] = zona
+        if zonas is not None:
+            anotar_sala(zonas, d)
         chave = (d.get("nome") or "", d.get("sala"))
         if chave not in melhor or d.get("pct", 0) > melhor[chave].get("pct", 0):
             melhor[chave] = d
@@ -554,6 +578,7 @@ def main(argv: list[str] | None = None) -> int:
             if i.get("tipo") not in ("Armas", "Armaduras", "Acessórios")
         )
         print(f"rebuscando drop de {len(alvos)} materiais (~{len(alvos)}s)")
+        cat["zonas"] = {}      # remonta do zero: chefão da sala pode ter mudado
         com = linhas = 0
         for n, iid in enumerate(alvos, 1):
             try:

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-09T11:28:05+00:00",
+ "atualizado": "2026-08-09T12:43:28+00:00",
  "itens": {
   "14809": {
    "desc": null,
@@ -4600,12 +4600,12 @@
     {
      "nome": "Deus Tambor",
      "pct": 33.3333,
-     "sala": "8"
+     "sala": "7"
     },
     {
      "nome": "Deus Tambor",
      "pct": 33.3333,
-     "sala": "7"
+     "sala": "8"
     },
     {
      "nome": "Qin Tian",
@@ -5331,12 +5331,12 @@
     {
      "nome": "Marechal Feng Wuhen",
      "pct": 2.3256,
-     "sala": "26"
+     "sala": "9"
     },
     {
      "nome": "Marechal Feng Wuhen",
      "pct": 2.3256,
-     "sala": "9"
+     "sala": "26"
     }
    ],
    "id": 15254,
@@ -5445,12 +5445,12 @@
     {
      "nome": "Grande Símio",
      "pct": 46.5116,
-     "sala": "9"
+     "sala": "26"
     },
     {
      "nome": "Grande Símio",
      "pct": 46.5116,
-     "sala": "26"
+     "sala": "9"
     },
     {
      "nome": "Marechal Feng Wuhen",
@@ -18803,40 +18803,92 @@
   }
  },
  "salas": {
-  "10": "Dusk 1-3",
-  "11": "Dusk 1-1",
-  "12": "Dusk 1-1",
-  "13": "Dusk 1-3",
-  "16": "Dusk 1-1",
   "21": "Vale da Lua",
   "22": "Vale da Lua",
-  "26": "Dusk 2-2",
-  "27": "Dusk 2-1",
-  "3": "Dusk 3-2",
-  "4": "Dusk 3-1",
-  "5": "Dusk 3-3",
-  "6": "Dusk 1-2",
-  "7": "Dusk 1-2",
-  "8": "Dusk 1-2",
-  "9": "Dusk 2-3"
+  "3": "Dusk 2-3",
+  "5": "Dusk 3-3"
  },
  "versao": 1,
  "zonas": {
-  "10": "Palácio do Crepúsculo",
-  "11": "Palácio do Crepúsculo",
-  "12": "Palácio do Crepúsculo",
-  "13": "Palácio do Crepúsculo",
-  "16": "Palácio do Crepúsculo",
-  "21": "Vale da Lua",
-  "22": "Vale da Lua",
-  "26": "Palácio do Crepúsculo",
-  "27": "Palácio do Crepúsculo",
-  "3": "Palácio do Crepúsculo",
-  "4": "Palácio do Crepúsculo",
-  "5": "Palácio do Crepúsculo",
-  "6": "Palácio do Crepúsculo",
-  "7": "Palácio do Crepúsculo",
-  "8": "Palácio do Crepúsculo",
-  "9": "Palácio do Crepúsculo"
+  "10": {
+   "chefe": "Armadura Dourada",
+   "vida": 3321735,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "11": {
+   "chefe": "Emissário das Almas",
+   "vida": 1246067,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "12": {
+   "chefe": "Aparição da Alma Perdida",
+   "vida": 151740,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "13": {
+   "chefe": "Serpente Ancestral",
+   "vida": 1944137,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "16": {
+   "chefe": "Aparição da Alma Perdida",
+   "vida": 300000,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "21": {
+   "chefe": "Demônio Destruidor Budista",
+   "vida": 2408753,
+   "zona": "Vale da Lua"
+  },
+  "22": {
+   "chefe": "Besta de Rugido do Céu",
+   "vida": 9125161,
+   "zona": "Vale da Lua"
+  },
+  "26": {
+   "chefe": "Grande Símio",
+   "vida": 2447853,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "27": {
+   "chefe": "Devorador Insano",
+   "vida": 1223927,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "3": {
+   "chefe": "Senhor das Ilusões",
+   "vida": 10331082,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "4": {
+   "chefe": "Grande Besta das Trevas",
+   "vida": 4333703,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "5": {
+   "chefe": "Ministro Zi Cun",
+   "vida": 6456927,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "6": {
+   "chefe": "Qin Tian",
+   "vida": 1497335,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "7": {
+   "chefe": "Serpente Ancestral",
+   "vida": 1303861,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "8": {
+   "chefe": "Devorador Insano",
+   "vida": 3223518,
+   "zona": "Palácio do Crepúsculo"
+  },
+  "9": {
+   "chefe": "Emissário das Sete Almas",
+   "vida": 5000000,
+   "zona": "Palácio do Crepúsculo"
+  }
  }
 }
