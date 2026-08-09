@@ -241,7 +241,14 @@ que preciso para esta peça", responde **"o que este chefe me dá"**.
 Por isso o bloco é o **chefe num modo** — *Rei Cang Li · Dusk 3-2* — e não o
 item. É assim que a run acontece: você entra num modo, mata os chefes dele e
 cada um solta a lista dele. Dentro do bloco, uma linha por material: ícone,
-nome na cor da raridade e a chance.
+nome na cor da raridade, **preço de referência** e chance.
+
+O preço fecha o ciclo com a aba Preços: quem farma para vender vê quanto vale o
+que caiu, e quem planeja compra compara com o custo de farmar. Material ainda
+sem preço mostra o mesmo **!** do resto do painel — mas apagado, não vermelho:
+aqui a falta de preço é o caso comum (105 dos 135 materiais), e no vermelho com
+brilho das receitas viraria uma parede que não avisa mais nada. Passe o mouse
+para ele acender.
 
 Dois grupos de botões filtram: **Modo** (Dusk 1-1 … 3-3, Vale da Lua) e **Cor**
 (Dourado, Verde, Roxo, Roxinho, Laranja). A cor filtra **dentro** do bloco —

@@ -1098,11 +1098,22 @@ function linhaDrop(l, chaveBloco) {
         <span class="medas fraco">${fmtPct(chanceEm(l.it, c))}</span></div>`).join('')}
     </div>` : '';
 
+  // O preço fecha o ciclo com a aba Preços: quem farma para vender quer saber
+  // quanto vale o que caiu, e quem planeja compra quer comparar com o custo de
+  // farmar. Sem preço vai o mesmo "!" do resto do painel, não um espaço em
+  // branco — assim dá para ver de relance o que ainda falta anotar.
+  const s = stats(l.it.id);
+  const preco = s?.ref != null
+    ? `<span class="preco medas" title="Preço de referência: ${fmtCheio(s.ref)}
+ (mediana de ${s.n} observação${s.n > 1 ? 'ões' : ''})">${fmtMedas(s.ref)}</span>`
+    : `<span class="preco sem">${SINAL}</span>`;
+
   return `<div class="linha-drop">
     <img class="icone pequeno" src="${iconeDe(l.it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
     <span class="nome" title="${esc(l.it.nome)}${l.usos ? ` — usado em ${l.usos} receita(s)` : ''}"
       >${nomeHTML(l.it)}</span>
     ${extra}
+    ${preco}
     <span class="chance medas${(l.pct ?? 0) >= 5 ? '' : ' fraco'}">${l.pct == null ? '—' : fmtPct(l.pct)}</span>
   </div>${detalhe}`;
 }

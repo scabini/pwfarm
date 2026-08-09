@@ -421,7 +421,7 @@ tr.historico.oculto { display: none; }
 
 .grade-drops {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 11px;
   align-items: start;
 }
@@ -475,10 +475,38 @@ tr.historico.oculto { display: none; }
   white-space: nowrap;
 }
 
+/* duas colunas numéricas: preço e chance. O % desambigua sem precisar de
+   cabeçalho em cada um dos 100+ blocos. */
+.linha-drop .preco {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  white-space: nowrap;
+  text-align: right;
+  min-width: 46px;
+  flex: none;
+}
+
+/* Nas receitas o "!" é alarme: significa que o custo mostrado está incompleto,
+   e é raro. Aqui é o caso comum — 105 dos 135 materiais ainda não têm preço —
+   e o vermelho com brilho viraria uma parede que não avisa mais nada. Fica o
+   mesmo símbolo, no peso de informação de fundo. */
+.linha-drop .preco.sem .falta-preco {
+  color: var(--texto-apagado);
+  font-weight: 500;
+  text-shadow: none;
+  cursor: help;
+}
+
+.linha-drop:hover .preco.sem .falta-preco { color: var(--vermelho-claro); }
+
 .linha-drop .chance {
   font-family: var(--mono);
   font-size: 11.5px;
   white-space: nowrap;
+  text-align: right;
+  min-width: 44px;
+  flex: none;
+  color: var(--texto-fraco);
 }
 
 .mais-fontes {
