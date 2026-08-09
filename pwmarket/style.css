@@ -489,14 +489,23 @@ tr.historico.oculto { display: none; }
 /* Nas receitas o "!" é alarme: significa que o custo mostrado está incompleto,
    e é raro. Aqui é o caso comum — 105 dos 135 materiais ainda não têm preço —
    e o vermelho com brilho viraria uma parede que não avisa mais nada. Fica o
-   mesmo símbolo, no peso de informação de fundo. */
-.linha-drop .preco.sem .falta-preco {
+   mesmo símbolo, no peso de informação de fundo, e com o rótulo do lado: "!"
+   sozinho não diz o que está faltando. */
+.linha-drop .preco.sem {
+  font-family: var(--fonte);
+  font-size: 10.5px;
   color: var(--texto-apagado);
-  font-weight: 500;
-  text-shadow: none;
+  min-width: 68px;
   cursor: help;
 }
 
+.linha-drop .preco.sem .falta-preco {
+  color: var(--texto-apagado);
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.linha-drop:hover .preco.sem,
 .linha-drop:hover .preco.sem .falta-preco { color: var(--vermelho-claro); }
 
 .linha-drop .chance {

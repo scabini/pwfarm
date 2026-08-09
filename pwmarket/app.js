@@ -1106,7 +1106,9 @@ function linhaDrop(l, chaveBloco) {
   const preco = s?.ref != null
     ? `<span class="preco medas" title="Preço de referência: ${fmtCheio(s.ref)}
  (mediana de ${s.n} observação${s.n > 1 ? 'ões' : ''})">${fmtMedas(s.ref)}</span>`
-    : `<span class="preco sem">${SINAL}</span>`;
+    // com o "!" sozinho ninguém adivinha o que falta; o rótulo diz.
+    : `<span class="preco sem" title="Sem preço registrado — anote na aba Preços"
+        ><span class="falta-preco">!</span> sem preço</span>`;
 
   return `<div class="linha-drop">
     <img class="icone pequeno" src="${iconeDe(l.it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">

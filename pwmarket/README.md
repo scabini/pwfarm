@@ -245,10 +245,10 @@ nome na cor da raridade, **preço de referência** e chance.
 
 O preço fecha o ciclo com a aba Preços: quem farma para vender vê quanto vale o
 que caiu, e quem planeja compra compara com o custo de farmar. Material ainda
-sem preço mostra o mesmo **!** do resto do painel — mas apagado, não vermelho:
-aqui a falta de preço é o caso comum (105 dos 135 materiais), e no vermelho com
-brilho das receitas viraria uma parede que não avisa mais nada. Passe o mouse
-para ele acender.
+sem preço mostra **! sem preço** — o símbolo sozinho não diria o que está
+faltando. Vem apagado, não vermelho: aqui a falta de preço é o caso comum (105
+dos 135 materiais), e no vermelho com brilho das receitas viraria uma parede que
+não avisa mais nada. Acende no hover, e o tooltip diz onde anotar.
 
 Dois grupos de botões filtram: **Modo** (Dusk 1-1 … 3-3, Vale da Lua) e **Cor**
 (Dourado, Verde, Roxo, Roxinho, Laranja). A cor filtra **dentro** do bloco —
