@@ -61,6 +61,7 @@ py importar.py --categoria 15           # uma categoria inteira
 py importar.py --listar                 # o que já tem no catálogo
 py importar.py --remover 20320
 py importar.py --reicones               # rebaixa ícones que faltam
+py importar.py --redrops                # rebusca a tabela de drop dos materiais
 py importar.py --faxina                 # aplica IGNORAR_RECEITA_COM ao catálogo
 ```
 
@@ -210,6 +211,58 @@ botão do rodapé faz isso e já te leva para lá.
 
 A estrela **☆** no canto do cartão adiciona direto, sem abrir a prévia.
 
+## Drops
+
+De onde cada material sai. É a pergunta inversa da aba Receitas: em vez de "o
+que preciso para esta peça", responde **"o que farmo, e onde"**.
+
+Um cartão por material, com todos os chefes que o largam, o modo e a chance.
+Os botões filtram por modo (**Dusk 1-1** … **Dusk 3-3**, **Vale da Lua**) e a
+busca cobre nome do material e nome do chefe — `cang li` lista tudo que ele
+solta. O cartão ainda diz em quantas receitas o material entra e o preço de
+referência, que é o que decide entre farmar e comprar.
+
+A mesma informação aparece onde você já está olhando: no **tooltip da ficha do
+ingrediente** na aba Receitas, e como linha curta na **tabela de ingredientes**,
+no lugar onde antes só dizia *craftável* — um material que dropa **e** é
+craftável mostra os dois, porque são dois caminhos de verdade.
+
+Buscar por chefe também funciona na aba Receitas: `cang li` lá lista as receitas
+que dependem de algo que ele larga.
+
+### De onde vem, e o que confiar
+
+A tabela é o `Drop from` do pwdatabase, podada na importação: só as duas zonas
+que o painel cobre, e um chefe por sala (o pwdatabase lista uma linha por *mob*,
+e o "Deus Tambor" tem três ids com vidas diferentes na mesma sala — para quem
+farma é um chefe só).
+
+**As taxas são do banco oficial do jogo, não do The PW Clássico.** Servidor
+privado mexe em drop rate. O nome do chefe é o dado firme; a porcentagem é
+referência, e o painel avisa isso onde a mostra.
+
+### O modo (3-3) não vem pronto
+
+O pwdatabase dá a zona, a coordenada e um número de sala — e é só isso. A sala
+separa os modos (o mesmo chefe aparece em salas diferentes, com mais vida no
+modo difícil), mas não recebe nome.
+
+O de-para saiu do nível dos equipamentos que os materiais de cada sala servem,
+seguindo a regra do jogo (1-x = 60/70/80, 2-x = 70/80/90, 3-x = 90/99), e a
+ordem dentro do tier, de quanto item alto cada sala larga. A sala 5 é a que mais
+dropa material de 99 e é onde fica o **Rei Cang Li** — bate com o 3-3.
+
+O resultado está em `data/ajustes.json`, em `salas`:
+
+```json
+"salas": { "5": "Dusk 3-3", "3": "Dusk 3-2", "4": "Dusk 3-1" }
+```
+
+Errou alguma? Corrija a linha e rode `py importar.py --ajustes`. Nada disso está
+no código, e sala sem rótulo cai em "Palácio do Crepúsculo (sala 31)" em vez de
+sumir. As salas 1-x são as menos certas — elas servem equipamento lv60-80, que
+este catálogo nem cobre: só 2 dos 53 ingredientes de dusk vêm de lá.
+
 ## Minha lista
 
 As receitas que você adicionou, cada uma com a tabela de planejamento: preencha
@@ -290,7 +343,7 @@ abrir.bat         sobe o servidor e abre o navegador
 data/
   catalog.json    catálogo (fonte legível, versionada)
   catalog.js      mesmo conteúdo para carregar via file://
-  ajustes.json    nomes próprios do The PW Clássico
+  ajustes.json    nomes, receitas removidas e rótulo das salas do The PW Clássico
   icons/<id>.png  ícones baixados
   precos.js       preços — este é o arquivo que você commita
   lista.js        sua lista de receitas — fica fora do git

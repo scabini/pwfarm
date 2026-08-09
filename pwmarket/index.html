@@ -14,6 +14,7 @@
     <nav>
       <button data-painel="precos" class="ativo">Preços</button>
       <button data-painel="receitas">Receitas</button>
+      <button data-painel="drops">Drops</button>
       <button data-painel="favoritos">Minha lista <span class="badge" id="badgeFav"></span></button>
     </nav>
   </div>
@@ -64,6 +65,22 @@
     </div>
     <div class="chips-tags" id="chipsTags"></div>
     <div id="conteudoReceitas"></div>
+  </section>
+
+  <!-- ------------------------------------------------------------- DROPS -->
+  <section class="painel" id="painel-drops">
+    <div class="barra">
+      <input class="busca" id="filtroDrops"
+             placeholder="Buscar por material ou chefe…">
+      <select id="ordemDrops">
+        <option value="modo">Ordenar: modo</option>
+        <option value="nome">Nome do material</option>
+        <option value="pct-desc">Chance (maior)</option>
+        <option value="pct-asc">Chance (menor)</option>
+      </select>
+    </div>
+    <div class="chips-tags" id="chipsDrops"></div>
+    <div id="conteudoDrops"></div>
   </section>
 
   <!-- --------------------------------------------------------- FAVORITOS -->

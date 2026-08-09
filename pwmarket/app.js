@@ -427,10 +427,94 @@ function tagsDe(it, r) {
   return ORDEM_TAG.filter((x) => t.has(x));
 }
 
+/* ------------------------------------------------------------------ origem */
+
+/* De onde o material cai. Vem do "Drop from" do pwdatabase, já podado pelo
+ * importar.py: só as duas zonas do painel e um chefe por sala.
+ *
+ * A sala é o número entre parênteses da coordenada. O pwdatabase não a nomeia,
+ * mas ela separa os modos da dusk — o mesmo chefe aparece em salas diferentes,
+ * com mais vida no modo difícil. O rótulo ("Dusk 3-3") vem do ajustes.json,
+ * então corrigir um modo é editar um JSON, não o código.
+ *
+ * A TAXA é do banco oficial. Servidor privado mexe em drop rate, então ela
+ * aparece sempre rotulada como do pwdatabase — o nome do chefe é o dado
+ * confiável aqui, o percentual é referência. */
+
+const SALAS = (window.PW_CATALOGO && window.PW_CATALOGO.salas) || {};
+const ZONAS_SALA = (window.PW_CATALOGO && window.PW_CATALOGO.zonas) || {};
+
+/** Rótulo do modo. Sala sem rótulo cai na zona + número, que ainda situa quem
+ *  está lendo — melhor que sumir com a informação. */
+function rotuloSala(sala) {
+  if (sala == null) return null;
+  const s = String(sala);
+  if (SALAS[s]) return SALAS[s];
+  const zona = ZONAS_SALA[s];
+  return zona ? `${zona} (sala ${s})` : `sala ${s}`;
+}
+
+/** Modos existentes, na ordem em que o jogador pensa (1-1 → 3-3 → Vale da Lua). */
+function modosConhecidos() {
+  const vistos = new Map();
+  for (const it of Object.values(CATALOGO)) {
+    for (const d of it.drops || []) {
+      const r = rotuloSala(d.sala);
+      if (r) vistos.set(r, (vistos.get(r) || 0) + 1);
+    }
+  }
+  return [...vistos.keys()].sort((a, b) =>
+    a.localeCompare(b, 'pt-BR', { numeric: true, sensitivity: 'base' }));
+}
+
+const fmtPct = (p) => (p == null ? '' : (p >= 10 ? p.toFixed(1) : p.toFixed(2))
+  .replace(/\.?0+$/, '').replace('.', ',') + '%');
+
+/** Uma linha curta: "Rei Cang Li · Dusk 3-3 · 0,58%". */
+function textoOrigem(d, comPct = true) {
+  return [d.nome, rotuloSala(d.sala), comPct ? fmtPct(d.pct) : null]
+    .filter(Boolean).join(' · ');
+}
+
+/* O catálogo não muda em tempo de execução, e a grade de receitas remonta a
+ * cada tecla digitada na busca — 1059 fichas de ingrediente por render. Montar
+ * os mesmos textos toda vez é desperdício puro, então guarda. */
+const CACHE_ORIGEM = new Map();
+
+/** Resumo de uma linha para a ficha do ingrediente e a tabela da receita. */
+function origemDe(id) {
+  const chave = String(id);
+  if (CACHE_ORIGEM.has(chave)) return CACHE_ORIGEM.get(chave);
+
+  const ds = item(id)?.drops || [];
+  const primeiro = ds.length ? textoOrigem(ds[0]) : null;
+  const saida = !ds.length ? null : {
+    lista: ds,
+    curto: ds.length > 1 ? `${primeiro} +${ds.length - 1}` : primeiro,
+    // o title completo: até 6 chefes, senão vira parede de texto
+    longo: 'Cai de:\n' + ds.slice(0, 6).map((d) => '· ' + textoOrigem(d)).join('\n')
+      + (ds.length > 6 ? `\n· +${ds.length - 6} outros` : '')
+      + '\n(taxas do pwdatabase, podem diferir no servidor)',
+  };
+  CACHE_ORIGEM.set(chave, saida);
+  return saida;
+}
+
 /* ---------------------------------------------------------------- receitas */
 
-/** Achata o catálogo em uma lista de receitas, uma entrada por receita. */
+/* Mesma história do CACHE_ORIGEM: todasReceitas() é chamada três vezes por
+ * render (lista, contagem dos chips e rodapé) e a string de busca de cada
+ * receita costura nome, tags, ingredientes e chefes. Devolve uma cópia rasa
+ * porque renderReceitas ordena o resultado no lugar. */
+let CACHE_RECEITAS = null;
+
 function todasReceitas() {
+  if (!CACHE_RECEITAS) CACHE_RECEITAS = montarReceitas();
+  return CACHE_RECEITAS.slice();
+}
+
+/** Achata o catálogo em uma lista de receitas, uma entrada por receita. */
+function montarReceitas() {
   const saida = [];
   for (const it of Object.values(CATALOGO)) {
     for (const r of it.receitas || []) {
@@ -442,13 +526,18 @@ function todasReceitas() {
         r,
         secao: secaoDe(it),
         tags,
-        // texto único para a busca: item, receita, forja, tags e ingredientes.
-        // As tags entram aqui também para "dusk 99" funcionar digitado — a
-        // palavra "dusk" não aparece em campo nenhum do pwdatabase.
+        // texto único para a busca: item, receita, forja, tags, ingredientes e
+        // os chefes que largam esses ingredientes. As tags entram aqui também
+        // para "dusk 99" funcionar digitado — a palavra "dusk" não aparece em
+        // campo nenhum do pwdatabase. E buscar "cang li" lista tudo que
+        // depende de material que ele solta.
         busca: [
           it.nome, it.tipo, it.subtipo, r.nome, r.npc, r.local,
           ...tags.map((x) => ROTULO_TAG.get(x)),
-          ...r.ingredientes.map((g) => g.nome),
+          ...r.ingredientes.flatMap((g) => [
+            g.nome,
+            ...(item(g.id)?.drops || []).map((d) => `${d.nome} ${rotuloSala(d.sala) || ''}`),
+          ]),
         ].join(' ').toLowerCase(),
       });
     }
@@ -702,7 +791,9 @@ function cardReceita(x) {
     const nome = item(g.id)?.nome || g.nome;
     const preco = semPreco ? 'sem preço registrado'
       : `${fmtMedas(s.ref)} un · subtotal ${fmtMedas(s.ref * g.qtd)}`;
-    return `<span class="ing-chip${semPreco ? ' sem-preco' : ''}" title="${esc(nome)} — ${g.qtd}× · ${preco}">
+    const o = origemDe(g.id);
+    const dica = `${esc(nome)} — ${g.qtd}× · ${preco}${o ? '\n\n' + esc(o.longo) : ''}`;
+    return `<span class="ing-chip${semPreco ? ' sem-preco' : ''}" title="${dica}">
       <img src="${iconeDe(g.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">${g.qtd}${semPreco ? SINAL : ''}</span>`;
   }).join('');
 
@@ -745,19 +836,182 @@ function cardReceita(x) {
   </div>`;
 }
 
+/* ================================================================= DROPS */
+
+/* A aba responde a pergunta inversa da aba Receitas: em vez de "o que preciso
+ * para esta peça", ela responde "o que este chefe me dá" e "onde farmo isto".
+ * Uma linha por material, com todos os chefes que o largam. */
+
+const filtroModos = new Set();
+
+/** Um registro por material com origem conhecida. */
+function todosDrops() {
+  const saida = [];
+  for (const it of Object.values(CATALOGO)) {
+    const ds = it.drops || [];
+    if (!ds.length) continue;
+    const modos = [...new Set(ds.map((d) => rotuloSala(d.sala)).filter(Boolean))];
+    saida.push({
+      it,
+      drops: ds,
+      modos,
+      melhor: Math.max(...ds.map((d) => d.pct || 0)),
+      // usado em quantas receitas — mede o quanto o material importa
+      usos: usosDe(it.id),
+      busca: [it.nome, it.tipo, it.subtipo, ...modos,
+        ...ds.map((d) => d.nome)].join(' ').toLowerCase(),
+    });
+  }
+  return saida;
+}
+
+let CACHE_USOS = null;
+
+/** Quantas receitas do catálogo consomem este item. */
+function usosDe(id) {
+  if (!CACHE_USOS) {
+    CACHE_USOS = new Map();
+    for (const it of Object.values(CATALOGO)) {
+      for (const r of it.receitas || []) {
+        for (const g of r.ingredientes || []) {
+          const k = String(g.id);
+          CACHE_USOS.set(k, (CACHE_USOS.get(k) || 0) + 1);
+        }
+      }
+    }
+  }
+  return CACHE_USOS.get(String(id)) || 0;
+}
+
+function dropsFiltrados(comModos = true) {
+  const termo = $('#filtroDrops').value.trim().toLowerCase();
+  let lista = todosDrops();
+  if (termo) {
+    const palavras = termo.split(/\s+/);
+    lista = lista.filter((x) => palavras.every((p) => x.busca.includes(p)));
+  }
+  if (comModos && filtroModos.size) {
+    lista = lista.filter((x) => x.modos.some((m) => filtroModos.has(m)));
+  }
+  return lista;
+}
+
+function renderChipsDrops() {
+  const base = dropsFiltrados(false);
+  const chips = modosConhecidos()
+    .map((m) => ({ m, n: base.filter((x) => x.modos.includes(m)).length }))
+    .filter((c) => c.n > 0 || filtroModos.has(c.m));
+
+  $('#chipsDrops').innerHTML = chips.length
+    ? `<div class="grupo-tag"><span class="rot">Modo</span>${chips.map((c) => {
+        const on = filtroModos.has(c.m);
+        return `<button class="chip-tag${on ? ' on' : ''}" data-modo="${esc(c.m)}"
+          aria-pressed="${on}" title="${on ? 'Desmarcar' : 'Filtrar por'} ${esc(c.m)}"
+          >${esc(c.m)}<span class="n">${c.n}</span></button>`;
+      }).join('')}</div>`
+      + (filtroModos.size ? '<button class="chip-tag limpar" data-limpar-modos="1">✕ limpar</button>' : '')
+    : '';
+}
+
+function renderDrops() {
+  const alvo = $('#conteudoDrops');
+  const termo = $('#filtroDrops').value.trim();
+  const ordem = $('#ordemDrops').value || 'modo';   // o padrão do select
+
+  renderChipsDrops();
+  const lista = dropsFiltrados();
+
+  if (!lista.length) {
+    const total = todosDrops().length;
+    alvo.innerHTML = `<div class="vazio"><strong>Nenhum material encontrado</strong>
+      ${termo || filtroModos.size ? 'Tente outro termo ou modo.'
+        : total ? '' : 'O catálogo ainda não tem origem de drop. Rode <code>py importar.py --redrops</code>.'}</div>`;
+    return;
+  }
+
+  lista.sort((a, b) => {
+    switch (ordem) {
+      case 'nome': return a.it.nome.localeCompare(b.it.nome, 'pt-BR');
+      case 'pct-desc': return b.melhor - a.melhor;
+      case 'pct-asc': return a.melhor - b.melhor;
+      // por modo: agrupa e, dentro, põe na frente o que mais receita usa
+      default:
+        return (a.modos[0] || '').localeCompare(b.modos[0] || '', 'pt-BR', { numeric: true })
+          || b.usos - a.usos
+          || a.it.nome.localeCompare(b.it.nome, 'pt-BR');
+    }
+  });
+
+  const grupos = new Map();
+  for (const x of lista) {
+    const g = ordem === 'modo' ? (x.modos[0] || 'Sem modo') : 'Materiais';
+    if (!grupos.has(g)) grupos.set(g, []);
+    grupos.get(g).push(x);
+  }
+
+  alvo.innerHTML = [...grupos].map(([g, xs]) => `
+    <div class="secao">${esc(g)} <span class="qtd">${xs.length}</span></div>
+    <div class="grade-drops">${xs.map(cardDrop).join('')}</div>
+  `).join('')
+    + `<p class="nota-drops">Taxas do <strong>pwdatabase</strong>, do banco oficial do jogo.
+       O The PW Clássico pode ter ajustado os valores — o nome do chefe é o dado
+       firme aqui, a porcentagem é referência.</p>`;
+}
+
+function cardDrop(x) {
+  const { it } = x;
+  const s = stats(it.id);
+  const preco = s?.ref != null
+    ? `<span class="medas" title="${fmtCheio(s.ref)}">${fmtMedas(s.ref)}</span>`
+    : `<span class="aviso-sem-preco">${SINAL} sem preço</span>`;
+
+  const linhas = x.drops.map((d) => `
+    <tr>
+      <td>${esc(d.nome)}</td>
+      <td>${d.sala ? `<span class="modo">${esc(rotuloSala(d.sala))}</span>` : '—'}</td>
+      <td class="num"><span class="medas${d.pct >= 5 ? '' : ' fraco'}">${fmtPct(d.pct)}</span></td>
+    </tr>`).join('');
+
+  return `<div class="drop-card">
+    <div class="drop-topo">
+      <img class="icone" src="${iconeDe(it.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+      <div class="drop-id">
+        <div class="titulo">${nomeHTML(it)}</div>
+        <div class="drop-meta">
+          ${x.usos ? `usado em ${x.usos} receita${x.usos > 1 ? 's' : ''}` : 'não entra em receita nossa'}
+          · ${preco}
+        </div>
+      </div>
+    </div>
+    <div class="tabela-wrap"><table class="drop-tabela">
+      <thead><tr><th>Chefe</th><th>Modo</th><th class="num">Chance</th></tr></thead>
+      <tbody>${linhas}</tbody>
+    </table></div>
+  </div>`;
+}
+
 /* ------------------------------------------------- preview de uma receita */
 
 /** Monta a tabela de ingredientes. Sem `favChave`, a coluna Tenho é só leitura
  *  — é o preview de como a receita vai aparecer depois de favoritada. */
 function tabelaIngredientes(c, favChave = null) {
-  const linhas = c.linhas.map((l) => `
+  const linhas = c.linhas.map((l) => {
+    // No lugar do "craftável": de onde o material sai. Um material craftável
+    // que também dropa mostra os dois — são dois caminhos de verdade.
+    const o = origemDe(l.ing.id);
+    const sub = [
+      l.temReceita ? 'craftável' : null,
+      o ? `<span class="origem" title="${esc(o.longo)}">${esc(o.curto)}</span>` : null,
+    ].filter(Boolean).join(' · ');
+
+    return `
     <tr class="${l.falta === 0 ? 'completo' : ''}">
       <td>
         <div class="item-cel">
           <img class="icone pequeno" src="${iconeDe(l.ing.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
           <div>
             ${nomeHTML(item(l.ing.id) || { nome: l.ing.nome, raridade: l.ing.raridade })}
-            ${l.temReceita ? '<div class="item-sub">craftável</div>' : ''}
+            ${sub ? `<div class="item-sub">${sub}</div>` : ''}
           </div>
         </div>
       </td>
@@ -773,7 +1027,8 @@ function tabelaIngredientes(c, favChave = null) {
       <td class="num">${l.sub != null
         ? `<span class="medas" title="${fmtCheio(l.sub)}">${l.falta ? fmtMedas(l.sub) : '—'}</span>`
         : `<span class="medas fraco">?</span>`}</td>
-    </tr>`).join('');
+    </tr>`;
+  }).join('');
 
   return `<div class="tabela-wrap"><table>
     <thead><tr>
@@ -1198,6 +1453,7 @@ function preencherSecoes() {
 function renderTudo() {
   renderPrecos();
   renderReceitas();
+  renderDrops();
   renderFav();
   atualizarRodape();
 }
@@ -1219,6 +1475,9 @@ function ligar() {
   $('#filtroReceitas').addEventListener('input', renderReceitas);
   $('#secaoReceitas').addEventListener('change', renderReceitas);
   $('#ordemReceitas').addEventListener('change', renderReceitas);
+
+  $('#filtroDrops').addEventListener('input', renderDrops);
+  $('#ordemDrops').addEventListener('change', renderDrops);
 
   $('#filtroFav').addEventListener('input', renderFav);
   $('#btnLimparFav').addEventListener('click', () => {
@@ -1283,6 +1542,17 @@ function ligar() {
     if (b.dataset.limparTags) {
       filtroTags.clear();
       renderReceitas();
+      return;
+    }
+    if (b.dataset.modo) {
+      if (filtroModos.has(b.dataset.modo)) filtroModos.delete(b.dataset.modo);
+      else filtroModos.add(b.dataset.modo);
+      renderDrops();
+      return;
+    }
+    if (b.dataset.limparModos) {
+      filtroModos.clear();
+      renderDrops();
       return;
     }
 

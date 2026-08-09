@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-08T11:32:00+00:00",
+ "atualizado": "2026-08-09T11:28:05+00:00",
  "itens": {
   "14809": {
    "desc": null,
@@ -4539,6 +4539,13 @@
   },
   "15227": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Qin Tian",
+     "pct": 33.3333,
+     "sala": "6"
+    }
+   ],
    "id": 15227,
    "nivel": null,
    "nivel_req": null,
@@ -4553,6 +4560,18 @@
   },
   "15228": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Deus Tambor",
+     "pct": 33.3333,
+     "sala": "8"
+    },
+    {
+     "nome": "Deus Tambor",
+     "pct": 16.6667,
+     "sala": "7"
+    }
+   ],
    "id": 15228,
    "nivel": null,
    "nivel_req": null,
@@ -4567,6 +4586,63 @@
   },
   "15229": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Almas",
+     "pct": 66.6666,
+     "sala": "11"
+    },
+    {
+     "nome": "Serpente Ancestral",
+     "pct": 66.6666,
+     "sala": "7"
+    },
+    {
+     "nome": "Deus Tambor",
+     "pct": 33.3333,
+     "sala": "8"
+    },
+    {
+     "nome": "Deus Tambor",
+     "pct": 33.3333,
+     "sala": "7"
+    },
+    {
+     "nome": "Qin Tian",
+     "pct": 33.3333,
+     "sala": "6"
+    },
+    {
+     "nome": "Ladrão do Túmulo Real",
+     "pct": 22.1426,
+     "sala": "11"
+    },
+    {
+     "nome": "Guarda do Túmulo Real",
+     "pct": 21.8259,
+     "sala": "9"
+    },
+    {
+     "nome": "Alma do Túmulo Real",
+     "pct": 21.6237,
+     "sala": "11"
+    },
+    {
+     "nome": "Arqueiro do Túmulo Real",
+     "pct": 21.5145,
+     "sala": "11"
+    },
+    {
+     "nome": "Soldado do Túmulo Real",
+     "pct": 21.416,
+     "sala": "8"
+    },
+    {
+     "nome": "Soldado de Elite do Túmulo",
+     "pct": 21.3179,
+     "sala": "9"
+    }
+   ],
    "id": 15229,
    "nivel": null,
    "nivel_req": null,
@@ -4581,6 +4657,28 @@
   },
   "15230": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Qin Tian",
+     "pct": 33.3333,
+     "sala": "6"
+    },
+    {
+     "nome": "Aparição da Alma Perdida",
+     "pct": 29.4119,
+     "sala": "16"
+    },
+    {
+     "nome": "Aparição da Alma Perdida",
+     "pct": 29.4119,
+     "sala": "12"
+    },
+    {
+     "nome": "Aparição da Alma Perdida",
+     "pct": 29.4119,
+     "sala": "11"
+    }
+   ],
    "id": 15230,
    "nivel": null,
    "nivel_req": null,
@@ -4595,6 +4693,18 @@
   },
   "15231": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Deus Tambor",
+     "pct": 46.5116,
+     "sala": "7"
+    },
+    {
+     "nome": "Guarda das Ilusões Eternas",
+     "pct": 29.4119,
+     "sala": "4"
+    }
+   ],
    "id": 15231,
    "nivel": null,
    "nivel_req": null,
@@ -4609,6 +4719,13 @@
   },
   "15232": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Almas",
+     "pct": 47.619,
+     "sala": "10"
+    }
+   ],
    "id": 15232,
    "nivel": null,
    "nivel_req": null,
@@ -4623,6 +4740,13 @@
   },
   "15233": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Leão Insano Zhen Jun",
+     "pct": 33.3333,
+     "sala": "9"
+    }
+   ],
    "id": 15233,
    "nivel": null,
    "nivel_req": null,
@@ -4637,6 +4761,13 @@
   },
   "15234": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Serpente Ancestral",
+     "pct": 47.619,
+     "sala": "13"
+    }
+   ],
    "id": 15234,
    "nivel": null,
    "nivel_req": null,
@@ -4651,6 +4782,13 @@
   },
   "15235": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Armadura Dourada",
+     "pct": 32.2581,
+     "sala": "10"
+    }
+   ],
    "id": 15235,
    "nivel": null,
    "nivel_req": null,
@@ -4665,6 +4803,13 @@
   },
   "15236": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 46.5116,
+     "sala": "26"
+    }
+   ],
    "id": 15236,
    "nivel": null,
    "nivel_req": null,
@@ -4679,6 +4824,13 @@
   },
   "15237": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 2.3256,
+     "sala": "26"
+    }
+   ],
    "id": 15237,
    "nivel": null,
    "nivel_req": null,
@@ -4709,6 +4861,143 @@
   },
   "15238": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Armadura Dourada",
+     "pct": 64.5161,
+     "sala": "10"
+    },
+    {
+     "nome": "Aparição da Alma Perdida",
+     "pct": 58.8235,
+     "sala": "16"
+    },
+    {
+     "nome": "Aparição da Alma Perdida",
+     "pct": 58.8235,
+     "sala": "12"
+    },
+    {
+     "nome": "Aparição da Alma Perdida",
+     "pct": 58.8235,
+     "sala": "11"
+    },
+    {
+     "nome": "Guarda das Ilusões Eternas",
+     "pct": 58.8235,
+     "sala": "4"
+    },
+    {
+     "nome": "Emissário das Almas",
+     "pct": 47.619,
+     "sala": "10"
+    },
+    {
+     "nome": "Serpente Ancestral",
+     "pct": 47.619,
+     "sala": "13"
+    },
+    {
+     "nome": "Deus Tambor",
+     "pct": 46.5116,
+     "sala": "7"
+    },
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 46.5116,
+     "sala": "26"
+    },
+    {
+     "nome": "Leão Insano Zhen Jun",
+     "pct": 33.3333,
+     "sala": "9"
+    },
+    {
+     "nome": "Qin Tian",
+     "pct": 33.3333,
+     "sala": "6"
+    },
+    {
+     "nome": "Ladrão do Túmulo Real",
+     "pct": 24.4649,
+     "sala": "11"
+    },
+    {
+     "nome": "Guerreiro Touro Insano",
+     "pct": 24.0699,
+     "sala": "26"
+    },
+    {
+     "nome": "Mago Rato Infernal",
+     "pct": 24.0699,
+     "sala": "27"
+    },
+    {
+     "nome": "Guarda do Túmulo Real",
+     "pct": 23.8997,
+     "sala": "9"
+    },
+    {
+     "nome": "Arqueiro do Túmulo Real",
+     "pct": 23.7,
+     "sala": "11"
+    },
+    {
+     "nome": "Guarda Leão Infernal",
+     "pct": 23.6335,
+     "sala": "26"
+    },
+    {
+     "nome": "Guarda Lobo Insano",
+     "pct": 23.6335,
+     "sala": "26"
+    },
+    {
+     "nome": "Alma do Túmulo Real",
+     "pct": 23.6279,
+     "sala": "11"
+    },
+    {
+     "nome": "Soldado Sem Alma",
+     "pct": 23.4901,
+     "sala": "26"
+    },
+    {
+     "nome": "Fantasma Infernal",
+     "pct": 23.3268,
+     "sala": "26"
+    },
+    {
+     "nome": "Soldado de Elite do Túmulo",
+     "pct": 23.2761,
+     "sala": "9"
+    },
+    {
+     "nome": "Soldado do Túmulo Real",
+     "pct": 23.1159,
+     "sala": "8"
+    },
+    {
+     "nome": "Cavalaria Real",
+     "pct": 19.7751,
+     "sala": "8"
+    },
+    {
+     "nome": "Aparição Real",
+     "pct": 18.2975,
+     "sala": "8"
+    },
+    {
+     "nome": "Cavalaria Sem Alma",
+     "pct": 13.6074,
+     "sala": "9"
+    },
+    {
+     "nome": "Colosso Dem. de Capital",
+     "pct": 9.5231,
+     "sala": "9"
+    }
+   ],
    "id": 15238,
    "nivel": null,
    "nivel_req": null,
@@ -4723,6 +5012,13 @@
   },
   "15239": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Qin Tian",
+     "pct": 33.3333,
+     "sala": "6"
+    }
+   ],
    "id": 15239,
    "nivel": null,
    "nivel_req": null,
@@ -4737,6 +5033,13 @@
   },
   "15240": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Deus Tambor",
+     "pct": 47.619,
+     "sala": "7"
+    }
+   ],
    "id": 15240,
    "nivel": null,
    "nivel_req": null,
@@ -4751,6 +5054,13 @@
   },
   "15241": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Leão Insano Zhen Jun",
+     "pct": 47.619,
+     "sala": "9"
+    }
+   ],
    "id": 15241,
    "nivel": null,
    "nivel_req": null,
@@ -4765,6 +5075,13 @@
   },
   "15242": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Almas",
+     "pct": 47.619,
+     "sala": "10"
+    }
+   ],
    "id": 15242,
    "nivel": null,
    "nivel_req": null,
@@ -4779,6 +5096,13 @@
   },
   "15243": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 47.619,
+     "sala": "26"
+    }
+   ],
    "id": 15243,
    "nivel": null,
    "nivel_req": null,
@@ -4793,6 +5117,13 @@
   },
   "15244": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Serpente Ancestral",
+     "pct": 46.5116,
+     "sala": "13"
+    }
+   ],
    "id": 15244,
    "nivel": null,
    "nivel_req": null,
@@ -4807,6 +5138,13 @@
   },
   "15245": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Armadura Dourada",
+     "pct": 31.746,
+     "sala": "10"
+    }
+   ],
    "id": 15245,
    "nivel": null,
    "nivel_req": null,
@@ -4821,6 +5159,13 @@
   },
   "15246": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 46.5116,
+     "sala": "26"
+    }
+   ],
    "id": 15246,
    "nivel": null,
    "nivel_req": null,
@@ -4835,6 +5180,13 @@
   },
   "15247": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Símio",
+     "pct": 46.5116,
+     "sala": "26"
+    }
+   ],
    "id": 15247,
    "nivel": null,
    "nivel_req": null,
@@ -4849,6 +5201,13 @@
   },
   "15248": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Devorador Insano",
+     "pct": 33.3333,
+     "sala": "27"
+    }
+   ],
    "id": 15248,
    "nivel": null,
    "nivel_req": null,
@@ -4863,6 +5222,18 @@
   },
   "15249": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 46.5116,
+     "sala": "9"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 16.6667,
+     "sala": "26"
+    }
+   ],
    "id": 15249,
    "nivel": null,
    "nivel_req": null,
@@ -4877,6 +5248,13 @@
   },
   "15250": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Símio",
+     "pct": 46.5116,
+     "sala": "9"
+    }
+   ],
    "id": 15250,
    "nivel": null,
    "nivel_req": null,
@@ -4891,6 +5269,13 @@
   },
   "15251": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Devorador Insano",
+     "pct": 47.619,
+     "sala": "8"
+    }
+   ],
    "id": 15251,
    "nivel": null,
    "nivel_req": null,
@@ -4905,6 +5290,13 @@
   },
   "15253": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Armadura Dourada",
+     "pct": 1.5873,
+     "sala": "10"
+    }
+   ],
    "id": 15253,
    "nivel": null,
    "nivel_req": null,
@@ -4935,6 +5327,18 @@
   },
   "15254": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 2.3256,
+     "sala": "26"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 2.3256,
+     "sala": "9"
+    }
+   ],
    "id": 15254,
    "nivel": null,
    "nivel_req": null,
@@ -4965,6 +5369,18 @@
   },
   "15255": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Símio",
+     "pct": 2.3256,
+     "sala": "9"
+    },
+    {
+     "nome": "Grande Símio",
+     "pct": 2.3256,
+     "sala": "26"
+    }
+   ],
    "id": 15255,
    "nivel": null,
    "nivel_req": null,
@@ -4995,6 +5411,198 @@
   },
   "15256": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Armadura Dourada",
+     "pct": 63.4921,
+     "sala": "10"
+    },
+    {
+     "nome": "Deus Tambor",
+     "pct": 47.619,
+     "sala": "7"
+    },
+    {
+     "nome": "Devorador Insano",
+     "pct": 47.619,
+     "sala": "8"
+    },
+    {
+     "nome": "Emissário das Almas",
+     "pct": 47.619,
+     "sala": "10"
+    },
+    {
+     "nome": "Leão Insano Zhen Jun",
+     "pct": 47.619,
+     "sala": "9"
+    },
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 47.619,
+     "sala": "26"
+    },
+    {
+     "nome": "Grande Símio",
+     "pct": 46.5116,
+     "sala": "9"
+    },
+    {
+     "nome": "Grande Símio",
+     "pct": 46.5116,
+     "sala": "26"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 46.5116,
+     "sala": "26"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 46.5116,
+     "sala": "9"
+    },
+    {
+     "nome": "Serpente Ancestral",
+     "pct": 46.5116,
+     "sala": "13"
+    },
+    {
+     "nome": "Devorador Insano",
+     "pct": 33.3333,
+     "sala": "27"
+    },
+    {
+     "nome": "Qin Tian",
+     "pct": 33.3333,
+     "sala": "6"
+    },
+    {
+     "nome": "Ladrão do Túmulo Real",
+     "pct": 27.0488,
+     "sala": "11"
+    },
+    {
+     "nome": "Arqueiro do Túmulo Real",
+     "pct": 26.756,
+     "sala": "11"
+    },
+    {
+     "nome": "Soldado Sem Alma",
+     "pct": 26.6727,
+     "sala": "26"
+    },
+    {
+     "nome": "Guarda do Túmulo Real",
+     "pct": 26.6721,
+     "sala": "9"
+    },
+    {
+     "nome": "Soldado de Elite do Túmulo",
+     "pct": 26.566,
+     "sala": "9"
+    },
+    {
+     "nome": "Mago Rato Infernal",
+     "pct": 25.8746,
+     "sala": "27"
+    },
+    {
+     "nome": "Guerreiro Touro Insano",
+     "pct": 25.8571,
+     "sala": "26"
+    },
+    {
+     "nome": "Alma do Túmulo Real",
+     "pct": 25.6636,
+     "sala": "11"
+    },
+    {
+     "nome": "Guarda Lobo Insano",
+     "pct": 25.3161,
+     "sala": "26"
+    },
+    {
+     "nome": "Guarda Leão Infernal",
+     "pct": 25.3005,
+     "sala": "26"
+    },
+    {
+     "nome": "Fantasma Infernal",
+     "pct": 25.2401,
+     "sala": "26"
+    },
+    {
+     "nome": "Soldado do Túmulo Real",
+     "pct": 25.0739,
+     "sala": "8"
+    },
+    {
+     "nome": "Aparição Real",
+     "pct": 20.4065,
+     "sala": "8"
+    },
+    {
+     "nome": "Guardião do Crepúsculo",
+     "pct": 19.6452,
+     "sala": "3"
+    },
+    {
+     "nome": "Batedor do Crepúsculo",
+     "pct": 19.0244,
+     "sala": "3"
+    },
+    {
+     "nome": "Tigre do Crepúsculo",
+     "pct": 18.9409,
+     "sala": "4"
+    },
+    {
+     "nome": "Bruxa do Crepúsculo",
+     "pct": 18.8723,
+     "sala": "5"
+    },
+    {
+     "nome": "Guarda do Crepúsculo",
+     "pct": 18.7881,
+     "sala": "4"
+    },
+    {
+     "nome": "Mestre Espadachim do Crepúsculo",
+     "pct": 18.7881,
+     "sala": "5"
+    },
+    {
+     "nome": "Guardião do Crepúsculo",
+     "pct": 13.2887,
+     "sala": "4"
+    },
+    {
+     "nome": "Guerreiro do Crepúsculo",
+     "pct": 9.3266,
+     "sala": "5"
+    },
+    {
+     "nome": "Cavalo do Crepúsculo",
+     "pct": 9.2635,
+     "sala": "6"
+    },
+    {
+     "nome": "Touro do Crepúsculo",
+     "pct": 8.8048,
+     "sala": "4"
+    },
+    {
+     "nome": "Cavalaria Sem Alma",
+     "pct": 8.6503,
+     "sala": "9"
+    },
+    {
+     "nome": "Colosso Dem. de Capital",
+     "pct": 4.9428,
+     "sala": "9"
+    }
+   ],
    "id": 15256,
    "nivel": null,
    "nivel_req": null,
@@ -5009,6 +5617,13 @@
   },
   "15257": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Leão Insano Zhen Jun",
+     "pct": 47.619,
+     "sala": "9"
+    }
+   ],
    "id": 15257,
    "nivel": null,
    "nivel_req": null,
@@ -5023,6 +5638,13 @@
   },
   "15258": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Qiu Jian",
+     "pct": 16.6667,
+     "sala": "4"
+    }
+   ],
    "id": 15258,
    "nivel": null,
    "nivel_req": null,
@@ -5037,6 +5659,13 @@
   },
   "15259": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 47.619,
+     "sala": "26"
+    }
+   ],
    "id": 15259,
    "nivel": null,
    "nivel_req": null,
@@ -5051,6 +5680,18 @@
   },
   "15260": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Escravo Demônio",
+     "pct": 16.6667,
+     "sala": "4"
+    },
+    {
+     "nome": "Grito de Djin",
+     "pct": 16.6667,
+     "sala": "4"
+    }
+   ],
    "id": 15260,
    "nivel": null,
    "nivel_req": null,
@@ -5065,6 +5706,18 @@
   },
   "15261": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 47.619,
+     "sala": "9"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 16.6667,
+     "sala": "26"
+    }
+   ],
    "id": 15261,
    "nivel": null,
    "nivel_req": null,
@@ -5079,6 +5732,13 @@
   },
   "15262": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Mulher Demônio",
+     "pct": 16.6667,
+     "sala": "4"
+    }
+   ],
    "id": 15262,
    "nivel": null,
    "nivel_req": null,
@@ -5093,6 +5753,13 @@
   },
   "15263": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Sagrada Mãe das Almas",
+     "pct": 11.4087,
+     "sala": "4"
+    }
+   ],
    "id": 15263,
    "nivel": null,
    "nivel_req": null,
@@ -5107,6 +5774,13 @@
   },
   "15264": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Símio",
+     "pct": 47.619,
+     "sala": "9"
+    }
+   ],
    "id": 15264,
    "nivel": null,
    "nivel_req": null,
@@ -5121,6 +5795,13 @@
   },
   "15265": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Almas",
+     "pct": 31.746,
+     "sala": "9"
+    }
+   ],
    "id": 15265,
    "nivel": null,
    "nivel_req": null,
@@ -5135,6 +5816,13 @@
   },
   "15266": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Tie Luoyun",
+     "pct": 10.8007,
+     "sala": "5"
+    }
+   ],
    "id": 15266,
    "nivel": null,
    "nivel_req": null,
@@ -5149,6 +5837,13 @@
   },
   "15267": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Devorador Insano",
+     "pct": 47.619,
+     "sala": "8"
+    }
+   ],
    "id": 15267,
    "nivel": null,
    "nivel_req": null,
@@ -5163,6 +5858,13 @@
   },
   "15268": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 9.723,
+     "sala": "4"
+    }
+   ],
    "id": 15268,
    "nivel": null,
    "nivel_req": null,
@@ -5177,6 +5879,13 @@
   },
   "15269": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Almas",
+     "pct": 24.0964,
+     "sala": "9"
+    }
+   ],
    "id": 15269,
    "nivel": null,
    "nivel_req": null,
@@ -5191,6 +5900,13 @@
   },
   "15270": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Almas",
+     "pct": 24.0964,
+     "sala": "9"
+    }
+   ],
    "id": 15270,
    "nivel": null,
    "nivel_req": null,
@@ -5205,6 +5921,13 @@
   },
   "15271": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Aniquilador Ancestral",
+     "pct": 24.0964,
+     "sala": "3"
+    }
+   ],
    "id": 15271,
    "nivel": null,
    "nivel_req": null,
@@ -5219,6 +5942,13 @@
   },
   "15272": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Aniquilador Ancestral",
+     "pct": 24.0964,
+     "sala": "3"
+    }
+   ],
    "id": 15272,
    "nivel": null,
    "nivel_req": null,
@@ -5233,6 +5963,18 @@
   },
   "15273": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Escravo Demônio",
+     "pct": 0.8333,
+     "sala": "4"
+    },
+    {
+     "nome": "Grito de Djin",
+     "pct": 0.3333,
+     "sala": "4"
+    }
+   ],
    "id": 15273,
    "nivel": null,
    "nivel_req": null,
@@ -5263,6 +6005,13 @@
   },
   "15274": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Sagrada Mãe das Almas",
+     "pct": 0.5705,
+     "sala": "4"
+    }
+   ],
    "id": 15274,
    "nivel": null,
    "nivel_req": null,
@@ -5293,6 +6042,13 @@
   },
   "15275": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Almas",
+     "pct": 1.5873,
+     "sala": "9"
+    }
+   ],
    "id": 15275,
    "nivel": null,
    "nivel_req": null,
@@ -5323,6 +6079,13 @@
   },
   "15276": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 0.4862,
+     "sala": "4"
+    }
+   ],
    "id": 15276,
    "nivel": null,
    "nivel_req": null,
@@ -5353,6 +6116,13 @@
   },
   "15277": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Almas",
+     "pct": 1.2048,
+     "sala": "9"
+    }
+   ],
    "id": 15277,
    "nivel": null,
    "nivel_req": null,
@@ -5383,6 +6153,13 @@
   },
   "15278": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Aniquilador Ancestral",
+     "pct": 1.2048,
+     "sala": "3"
+    }
+   ],
    "id": 15278,
    "nivel": null,
    "nivel_req": null,
@@ -5413,6 +6190,183 @@
   },
   "15279": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Almas",
+     "pct": 63.4921,
+     "sala": "9"
+    },
+    {
+     "nome": "Aniquilador Ancestral",
+     "pct": 48.1928,
+     "sala": "3"
+    },
+    {
+     "nome": "Devorador Insano",
+     "pct": 47.619,
+     "sala": "8"
+    },
+    {
+     "nome": "Grande Símio",
+     "pct": 47.619,
+     "sala": "9"
+    },
+    {
+     "nome": "Leão Insano Zhen Jun",
+     "pct": 47.619,
+     "sala": "9"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 47.619,
+     "sala": "9"
+    },
+    {
+     "nome": "Marechal Shen Wuluo",
+     "pct": 47.619,
+     "sala": "26"
+    },
+    {
+     "nome": "Grito de Djin",
+     "pct": 33.3333,
+     "sala": "4"
+    },
+    {
+     "nome": "Marechal Feng Wuhen",
+     "pct": 33.3333,
+     "sala": "26"
+    },
+    {
+     "nome": "Mulher Demônio",
+     "pct": 33.3333,
+     "sala": "4"
+    },
+    {
+     "nome": "Qiu Jian",
+     "pct": 33.3333,
+     "sala": "4"
+    },
+    {
+     "nome": "Soldado Sem Alma",
+     "pct": 29.7269,
+     "sala": "26"
+    },
+    {
+     "nome": "Guerreiro Touro Insano",
+     "pct": 28.9148,
+     "sala": "26"
+    },
+    {
+     "nome": "Mago Rato Infernal",
+     "pct": 28.9148,
+     "sala": "27"
+    },
+    {
+     "nome": "Guarda Leão Infernal",
+     "pct": 28.2793,
+     "sala": "26"
+    },
+    {
+     "nome": "Guarda Lobo Insano",
+     "pct": 28.2793,
+     "sala": "26"
+    },
+    {
+     "nome": "Fantasma Infernal",
+     "pct": 27.9464,
+     "sala": "26"
+    },
+    {
+     "nome": "Guardião do Crepúsculo",
+     "pct": 23.8112,
+     "sala": "3"
+    },
+    {
+     "nome": "Tigre do Crepúsculo",
+     "pct": 22.7951,
+     "sala": "4"
+    },
+    {
+     "nome": "Cavalaria Real",
+     "pct": 22.3135,
+     "sala": "8"
+    },
+    {
+     "nome": "Batedor do Crepúsculo",
+     "pct": 20.5187,
+     "sala": "3"
+    },
+    {
+     "nome": "Bruxa do Crepúsculo",
+     "pct": 20.3011,
+     "sala": "5"
+    },
+    {
+     "nome": "Guarda do Crepúsculo",
+     "pct": 20.2151,
+     "sala": "4"
+    },
+    {
+     "nome": "Mestre Espadachim do Crepúsculo",
+     "pct": 20.2151,
+     "sala": "5"
+    },
+    {
+     "nome": "Escravo Demônio",
+     "pct": 16.6667,
+     "sala": "4"
+    },
+    {
+     "nome": "Guardião do Crepúsculo",
+     "pct": 15.6071,
+     "sala": "5"
+    },
+    {
+     "nome": "Tigre do Crepúsculo",
+     "pct": 12.8506,
+     "sala": "3"
+    },
+    {
+     "nome": "Cavalaria Sem Alma",
+     "pct": 11.6312,
+     "sala": "9"
+    },
+    {
+     "nome": "Sagrada Mãe das Almas",
+     "pct": 11.4087,
+     "sala": "4"
+    },
+    {
+     "nome": "Tie Luoyun",
+     "pct": 10.8007,
+     "sala": "5"
+    },
+    {
+     "nome": "Guerreiro do Crepúsculo",
+     "pct": 10.3971,
+     "sala": "5"
+    },
+    {
+     "nome": "Cavalo do Crepúsculo",
+     "pct": 10.3295,
+     "sala": "5"
+    },
+    {
+     "nome": "Touro do Crepúsculo",
+     "pct": 10.3295,
+     "sala": "5"
+    },
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 9.723,
+     "sala": "4"
+    },
+    {
+     "nome": "Colosso Dem. de Capital",
+     "pct": 7.8563,
+     "sala": "9"
+    }
+   ],
    "id": 15279,
    "nivel": null,
    "nivel_req": null,
@@ -5427,6 +6381,13 @@
   },
   "15280": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Qiu Jian",
+     "pct": 18.9614,
+     "sala": "4"
+    }
+   ],
    "id": 15280,
    "nivel": null,
    "nivel_req": null,
@@ -5441,6 +6402,18 @@
   },
   "15281": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Escravo Demônio",
+     "pct": 25.6056,
+     "sala": "4"
+    },
+    {
+     "nome": "Grito de Djin",
+     "pct": 16.6667,
+     "sala": "4"
+    }
+   ],
    "id": 15281,
    "nivel": null,
    "nivel_req": null,
@@ -5455,6 +6428,13 @@
   },
   "15282": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Qiu Jian",
+     "pct": 22.1415,
+     "sala": "4"
+    }
+   ],
    "id": 15282,
    "nivel": null,
    "nivel_req": null,
@@ -5469,6 +6449,13 @@
   },
   "15283": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Mulher Demônio",
+     "pct": 21.7882,
+     "sala": "4"
+    }
+   ],
    "id": 15283,
    "nivel": null,
    "nivel_req": null,
@@ -5483,6 +6470,18 @@
   },
   "15284": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Escravo Demônio",
+     "pct": 28.7883,
+     "sala": "4"
+    },
+    {
+     "nome": "Grito de Djin",
+     "pct": 16.6667,
+     "sala": "4"
+    }
+   ],
    "id": 15284,
    "nivel": null,
    "nivel_req": null,
@@ -5497,6 +6496,13 @@
   },
   "15285": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Sagrada Mãe das Almas",
+     "pct": 15.3061,
+     "sala": "5"
+    }
+   ],
    "id": 15285,
    "nivel": null,
    "nivel_req": null,
@@ -5511,6 +6517,13 @@
   },
   "15286": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Mulher Demônio",
+     "pct": 18.4356,
+     "sala": "4"
+    }
+   ],
    "id": 15286,
    "nivel": null,
    "nivel_req": null,
@@ -5525,6 +6538,13 @@
   },
   "15287": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Tie Luoyun",
+     "pct": 14.4879,
+     "sala": "5"
+    }
+   ],
    "id": 15287,
    "nivel": null,
    "nivel_req": null,
@@ -5539,6 +6559,13 @@
   },
   "15288": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Sagrada Mãe das Almas",
+     "pct": 18.2854,
+     "sala": "5"
+    }
+   ],
    "id": 15288,
    "nivel": null,
    "nivel_req": null,
@@ -5553,6 +6580,13 @@
   },
   "15289": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 13.2325,
+     "sala": "3"
+    }
+   ],
    "id": 15289,
    "nivel": null,
    "nivel_req": null,
@@ -5567,6 +6601,13 @@
   },
   "15290": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Tie Luoyun",
+     "pct": 17.237,
+     "sala": "5"
+    }
+   ],
    "id": 15290,
    "nivel": null,
    "nivel_req": null,
@@ -5581,6 +6622,13 @@
   },
   "15291": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 15.8745,
+     "sala": "3"
+    }
+   ],
    "id": 15291,
    "nivel": null,
    "nivel_req": null,
@@ -5595,6 +6643,13 @@
   },
   "15292": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Rei Cang Li",
+     "pct": 11.5587,
+     "sala": "5"
+    }
+   ],
    "id": 15292,
    "nivel": null,
    "nivel_req": null,
@@ -5609,6 +6664,13 @@
   },
   "15293": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Rei Cang Li",
+     "pct": 11.5587,
+     "sala": "5"
+    }
+   ],
    "id": 15293,
    "nivel": null,
    "nivel_req": null,
@@ -5623,6 +6685,13 @@
   },
   "15294": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 9.1724,
+     "sala": "5"
+    }
+   ],
    "id": 15294,
    "nivel": null,
    "nivel_req": null,
@@ -5637,6 +6706,13 @@
   },
   "15295": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 9.1724,
+     "sala": "5"
+    }
+   ],
    "id": 15295,
    "nivel": null,
    "nivel_req": null,
@@ -5651,6 +6727,13 @@
   },
   "15296": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Rei Cang Li",
+     "pct": 15.223,
+     "sala": "5"
+    }
+   ],
    "id": 15296,
    "nivel": null,
    "nivel_req": null,
@@ -5665,6 +6748,13 @@
   },
   "15297": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 12.0798,
+     "sala": "5"
+    }
+   ],
    "id": 15297,
    "nivel": null,
    "nivel_req": null,
@@ -5679,6 +6769,13 @@
   },
   "15298": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Senhor das Ilusões",
+     "pct": 8.7681,
+     "sala": "3"
+    }
+   ],
    "id": 15298,
    "nivel": null,
    "nivel_req": null,
@@ -5693,6 +6790,13 @@
   },
   "15299": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Mulher Demônio",
+     "pct": 0.9217,
+     "sala": "4"
+    }
+   ],
    "id": 15299,
    "nivel": null,
    "nivel_req": null,
@@ -5723,6 +6827,13 @@
   },
   "15300": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Tie Luoyun",
+     "pct": 0.8618,
+     "sala": "5"
+    }
+   ],
    "id": 15300,
    "nivel": null,
    "nivel_req": null,
@@ -5753,6 +6864,13 @@
   },
   "15301": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 0.7938,
+     "sala": "3"
+    }
+   ],
    "id": 15301,
    "nivel": null,
    "nivel_req": null,
@@ -5783,6 +6901,13 @@
   },
   "15302": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Rei Cang Li",
+     "pct": 0.578,
+     "sala": "5"
+    }
+   ],
    "id": 15302,
    "nivel": null,
    "nivel_req": null,
@@ -5813,6 +6938,13 @@
   },
   "15303": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 0.4587,
+     "sala": "5"
+    }
+   ],
    "id": 15303,
    "nivel": null,
    "nivel_req": null,
@@ -5843,6 +6975,13 @@
   },
   "15304": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Rei Cang Li",
+     "pct": 0.7612,
+     "sala": "5"
+    }
+   ],
    "id": 15304,
    "nivel": null,
    "nivel_req": null,
@@ -5873,6 +7012,13 @@
   },
   "15305": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 0.604,
+     "sala": "5"
+    }
+   ],
    "id": 15305,
    "nivel": null,
    "nivel_req": null,
@@ -5903,6 +7049,13 @@
   },
   "15306": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Senhor das Ilusões",
+     "pct": 0.4384,
+     "sala": "3"
+    }
+   ],
    "id": 15306,
    "nivel": null,
    "nivel_req": null,
@@ -5933,6 +7086,13 @@
   },
   "15307": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Senhor das Ilusões",
+     "pct": 0.4384,
+     "sala": "3"
+    }
+   ],
    "id": 15307,
    "nivel": null,
    "nivel_req": null,
@@ -5963,6 +7123,123 @@
   },
   "15308": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Grito de Djin",
+     "pct": 33.3333,
+     "sala": "4"
+    },
+    {
+     "nome": "Mulher Demônio",
+     "pct": 33.3333,
+     "sala": "4"
+    },
+    {
+     "nome": "Qiu Jian",
+     "pct": 33.3333,
+     "sala": "4"
+    },
+    {
+     "nome": "Rei Cang Li",
+     "pct": 30.4461,
+     "sala": "5"
+    },
+    {
+     "nome": "Escravo Demônio",
+     "pct": 28.7883,
+     "sala": "4"
+    },
+    {
+     "nome": "Guardião do Crepúsculo",
+     "pct": 25.8137,
+     "sala": "3"
+    },
+    {
+     "nome": "Tigre do Crepúsculo",
+     "pct": 24.7735,
+     "sala": "4"
+    },
+    {
+     "nome": "Batedor do Crepúsculo",
+     "pct": 24.3572,
+     "sala": "3"
+    },
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 24.1597,
+     "sala": "5"
+    },
+    {
+     "nome": "Guarda do Crepúsculo",
+     "pct": 22.9334,
+     "sala": "4"
+    },
+    {
+     "nome": "Mestre Espadachim do Crepúsculo",
+     "pct": 22.9334,
+     "sala": "5"
+    },
+    {
+     "nome": "Bruxa do Crepúsculo",
+     "pct": 22.9125,
+     "sala": "5"
+    },
+    {
+     "nome": "Aparição Real",
+     "pct": 22.2822,
+     "sala": "8"
+    },
+    {
+     "nome": "Sagrada Mãe das Almas",
+     "pct": 18.2854,
+     "sala": "5"
+    },
+    {
+     "nome": "Senhor das Ilusões",
+     "pct": 17.5364,
+     "sala": "3"
+    },
+    {
+     "nome": "Tie Luoyun",
+     "pct": 17.237,
+     "sala": "5"
+    },
+    {
+     "nome": "Grande Besta das Trevas",
+     "pct": 15.8745,
+     "sala": "3"
+    },
+    {
+     "nome": "Guardião do Crepúsculo",
+     "pct": 13.564,
+     "sala": "5"
+    },
+    {
+     "nome": "Tigre do Crepúsculo",
+     "pct": 12.9908,
+     "sala": "3"
+    },
+    {
+     "nome": "Cavalaria Real",
+     "pct": 12.2147,
+     "sala": "8"
+    },
+    {
+     "nome": "Cavalo do Crepúsculo",
+     "pct": 10.3852,
+     "sala": "5"
+    },
+    {
+     "nome": "Touro do Crepúsculo",
+     "pct": 10.3852,
+     "sala": "5"
+    },
+    {
+     "nome": "Guerreiro do Crepúsculo",
+     "pct": 10.3677,
+     "sala": "4"
+    }
+   ],
    "id": 15308,
    "nivel": null,
    "nivel_req": null,
@@ -5977,6 +7254,13 @@
   },
   "15309": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Rei Cang Li",
+     "pct": 0.0076,
+     "sala": "5"
+    }
+   ],
    "id": 15309,
    "nivel": null,
    "nivel_req": null,
@@ -5991,6 +7275,13 @@
   },
   "15310": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Ministro Zi Cun",
+     "pct": 0.0061,
+     "sala": "5"
+    }
+   ],
    "id": 15310,
    "nivel": null,
    "nivel_req": null,
@@ -6005,6 +7296,13 @@
   },
   "15311": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar Itens do Crepúsculo.",
+   "drops": [
+    {
+     "nome": "Senhor das Ilusões",
+     "pct": 0.0044,
+     "sala": "3"
+    }
+   ],
    "id": 15311,
    "nivel": null,
    "nivel_req": null,
@@ -6019,6 +7317,7 @@
   },
   "15327": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15327,
    "nivel": null,
    "nivel_req": null,
@@ -6033,6 +7332,7 @@
   },
   "15328": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15328,
    "nivel": null,
    "nivel_req": null,
@@ -6047,6 +7347,7 @@
   },
   "15329": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15329,
    "nivel": null,
    "nivel_req": null,
@@ -6061,6 +7362,7 @@
   },
   "15330": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15330,
    "nivel": null,
    "nivel_req": null,
@@ -6075,6 +7377,7 @@
   },
   "15336": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15336,
    "nivel": null,
    "nivel_req": null,
@@ -6089,6 +7392,7 @@
   },
   "15337": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15337,
    "nivel": null,
    "nivel_req": null,
@@ -6103,6 +7407,7 @@
   },
   "15339": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15339,
    "nivel": null,
    "nivel_req": null,
@@ -6117,6 +7422,7 @@
   },
   "15342": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15342,
    "nivel": null,
    "nivel_req": null,
@@ -6131,6 +7437,7 @@
   },
   "15343": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15343,
    "nivel": null,
    "nivel_req": null,
@@ -6145,6 +7452,7 @@
   },
   "15344": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15344,
    "nivel": null,
    "nivel_req": null,
@@ -6159,6 +7467,7 @@
   },
   "15345": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15345,
    "nivel": null,
    "nivel_req": null,
@@ -6173,6 +7482,7 @@
   },
   "15346": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15346,
    "nivel": null,
    "nivel_req": null,
@@ -6187,6 +7497,7 @@
   },
   "15351": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15351,
    "nivel": null,
    "nivel_req": null,
@@ -6201,6 +7512,7 @@
   },
   "15358": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15358,
    "nivel": null,
    "nivel_req": null,
@@ -6215,6 +7527,7 @@
   },
   "15359": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15359,
    "nivel": null,
    "nivel_req": null,
@@ -6229,6 +7542,7 @@
   },
   "15360": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15360,
    "nivel": null,
    "nivel_req": null,
@@ -6243,6 +7557,7 @@
   },
   "15361": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15361,
    "nivel": null,
    "nivel_req": null,
@@ -6257,6 +7572,7 @@
   },
   "15372": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15372,
    "nivel": null,
    "nivel_req": null,
@@ -6271,6 +7587,7 @@
   },
   "15373": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15373,
    "nivel": null,
    "nivel_req": null,
@@ -6285,6 +7602,7 @@
   },
   "15385": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15385,
    "nivel": null,
    "nivel_req": null,
@@ -6299,6 +7617,7 @@
   },
   "15386": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15386,
    "nivel": null,
    "nivel_req": null,
@@ -6313,6 +7632,7 @@
   },
   "15387": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15387,
    "nivel": null,
    "nivel_req": null,
@@ -6327,6 +7647,7 @@
   },
   "15393": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15393,
    "nivel": null,
    "nivel_req": null,
@@ -6341,6 +7662,7 @@
   },
   "15400": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15400,
    "nivel": null,
    "nivel_req": null,
@@ -6355,6 +7677,7 @@
   },
   "15401": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15401,
    "nivel": null,
    "nivel_req": null,
@@ -6369,6 +7692,7 @@
   },
   "15408": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15408,
    "nivel": null,
    "nivel_req": null,
@@ -6383,6 +7707,7 @@
   },
   "15410": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15410,
    "nivel": null,
    "nivel_req": null,
@@ -6397,6 +7722,7 @@
   },
   "15411": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15411,
    "nivel": null,
    "nivel_req": null,
@@ -6411,6 +7737,7 @@
   },
   "15413": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15413,
    "nivel": null,
    "nivel_req": null,
@@ -6425,6 +7752,7 @@
   },
   "15414": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15414,
    "nivel": null,
    "nivel_req": null,
@@ -6439,6 +7767,7 @@
   },
   "15416": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15416,
    "nivel": null,
    "nivel_req": null,
@@ -6453,6 +7782,7 @@
   },
   "15417": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15417,
    "nivel": null,
    "nivel_req": null,
@@ -6467,6 +7797,7 @@
   },
   "15419": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15419,
    "nivel": null,
    "nivel_req": null,
@@ -6481,6 +7812,7 @@
   },
   "15420": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15420,
    "nivel": null,
    "nivel_req": null,
@@ -6495,6 +7827,7 @@
   },
   "15422": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15422,
    "nivel": null,
    "nivel_req": null,
@@ -6509,6 +7842,7 @@
   },
   "15423": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15423,
    "nivel": null,
    "nivel_req": null,
@@ -6523,6 +7857,7 @@
   },
   "15425": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15425,
    "nivel": null,
    "nivel_req": null,
@@ -6537,6 +7872,7 @@
   },
   "15426": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15426,
    "nivel": null,
    "nivel_req": null,
@@ -6551,6 +7887,7 @@
   },
   "15428": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15428,
    "nivel": null,
    "nivel_req": null,
@@ -6565,6 +7902,7 @@
   },
   "15429": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15429,
    "nivel": null,
    "nivel_req": null,
@@ -6579,6 +7917,7 @@
   },
   "15431": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15431,
    "nivel": null,
    "nivel_req": null,
@@ -6593,6 +7932,7 @@
   },
   "15432": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15432,
    "nivel": null,
    "nivel_req": null,
@@ -6607,6 +7947,7 @@
   },
   "15434": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15434,
    "nivel": null,
    "nivel_req": null,
@@ -6621,6 +7962,7 @@
   },
   "15435": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15435,
    "nivel": null,
    "nivel_req": null,
@@ -6635,6 +7977,7 @@
   },
   "15437": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15437,
    "nivel": null,
    "nivel_req": null,
@@ -6649,6 +7992,7 @@
   },
   "15438": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15438,
    "nivel": null,
    "nivel_req": null,
@@ -6663,6 +8007,7 @@
   },
   "15440": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15440,
    "nivel": null,
    "nivel_req": null,
@@ -6677,6 +8022,7 @@
   },
   "15441": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15441,
    "nivel": null,
    "nivel_req": null,
@@ -6691,6 +8037,7 @@
   },
   "15443": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15443,
    "nivel": null,
    "nivel_req": null,
@@ -6705,6 +8052,7 @@
   },
   "15444": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15444,
    "nivel": null,
    "nivel_req": null,
@@ -6719,6 +8067,7 @@
   },
   "15445": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15445,
    "nivel": null,
    "nivel_req": null,
@@ -6733,6 +8082,7 @@
   },
   "15446": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15446,
    "nivel": null,
    "nivel_req": null,
@@ -6747,6 +8097,7 @@
   },
   "15448": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15448,
    "nivel": null,
    "nivel_req": null,
@@ -6761,6 +8112,7 @@
   },
   "15450": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15450,
    "nivel": null,
    "nivel_req": null,
@@ -6775,6 +8127,7 @@
   },
   "15452": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15452,
    "nivel": null,
    "nivel_req": null,
@@ -6789,6 +8142,7 @@
   },
   "15454": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15454,
    "nivel": null,
    "nivel_req": null,
@@ -6803,6 +8157,7 @@
   },
   "15456": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15456,
    "nivel": null,
    "nivel_req": null,
@@ -6817,6 +8172,7 @@
   },
   "15458": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 15458,
    "nivel": null,
    "nivel_req": null,
@@ -6831,6 +8187,7 @@
   },
   "15461": {
    "desc": null,
+   "drops": [],
    "id": 15461,
    "nivel": null,
    "nivel_req": null,
@@ -12278,6 +13635,13 @@
   },
   "16443": {
    "desc": "Uma alma esta presa na Pedra Vermelha... Alguém pode se interessar por isso.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 4.1667,
+     "sala": "22"
+    }
+   ],
    "id": 16443,
    "nivel": null,
    "nivel_req": null,
@@ -12292,6 +13656,13 @@
   },
   "16444": {
    "desc": "Uma alma esta presa na Pedra Azul... Alguém pode se interessar por isso.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 4.1667,
+     "sala": "22"
+    }
+   ],
    "id": 16444,
    "nivel": null,
    "nivel_req": null,
@@ -12306,6 +13677,13 @@
   },
   "16445": {
    "desc": "Uma alma esta presa na Pedra Verde... Alguém pode se interessar por isso.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 4.1667,
+     "sala": "22"
+    }
+   ],
    "id": 16445,
    "nivel": null,
    "nivel_req": null,
@@ -12320,6 +13698,13 @@
   },
   "16446": {
    "desc": "Uma alma esta presa na Pedra Branca... Alguém pode se interessar por isso.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 4.1667,
+     "sala": "22"
+    }
+   ],
    "id": 16446,
    "nivel": null,
    "nivel_req": null,
@@ -12334,6 +13719,13 @@
   },
   "16447": {
    "desc": "Uma alma esta presa na Pedra Transparente... Alguém pode se interessar por isso.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 4.1667,
+     "sala": "22"
+    }
+   ],
    "id": 16447,
    "nivel": null,
    "nivel_req": null,
@@ -12348,6 +13740,173 @@
   },
   "16448": {
    "desc": "Relíquias Antigas, emanam energia.",
+   "drops": [
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 3.2813,
+     "sala": "22"
+    }
+   ],
    "id": 16448,
    "nivel": null,
    "nivel_req": null,
@@ -12378,6 +13937,173 @@
   },
   "16449": {
    "desc": "Relíquias Antigas, emanam energia.",
+   "drops": [
+    {
+     "nome": "Espectro da Voz",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 3.2813,
+     "sala": "22"
+    }
+   ],
    "id": 16449,
    "nivel": null,
    "nivel_req": null,
@@ -12408,6 +14134,173 @@
   },
   "16450": {
    "desc": "Relíquias Antigas, emanam energia.",
+   "drops": [
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 3.2813,
+     "sala": "22"
+    }
+   ],
    "id": 16450,
    "nivel": null,
    "nivel_req": null,
@@ -12438,6 +14331,173 @@
   },
   "16451": {
    "desc": "Relíquias Antigas, emanam energia.",
+   "drops": [
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 4.8953,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 3.2813,
+     "sala": "22"
+    }
+   ],
    "id": 16451,
    "nivel": null,
    "nivel_req": null,
@@ -12468,6 +14528,168 @@
   },
   "16452": {
    "desc": "Relíquias Antigas, emanam energia.",
+   "drops": [
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 3.4733,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 3.2813,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 2.4476,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 2.4476,
+     "sala": "22"
+    }
+   ],
    "id": 16452,
    "nivel": null,
    "nivel_req": null,
@@ -12498,6 +14720,178 @@
   },
   "16453": {
    "desc": "Relíquias Antigas, emanam energia.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 50.0,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 13.3334,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 7.8007,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 7.8007,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 4.3039,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 4.3039,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 4.2982,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 0.4737,
+     "sala": "22"
+    }
+   ],
    "id": 16453,
    "nivel": null,
    "nivel_req": null,
@@ -12512,6 +14906,148 @@
   },
   "16454": {
    "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "drops": [
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Banruo",
+     "pct": 9.226,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 9.226,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 9.226,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 16454,
    "nivel": null,
    "nivel_req": null,
@@ -12526,6 +15062,158 @@
   },
   "16455": {
    "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "drops": [
+    {
+     "nome": "Espectro da Voz",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yanxiong",
+     "pct": 9.226,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling Yuezhou",
+     "pct": 9.226,
+     "sala": "22"
+    },
+    {
+     "nome": "Ling ZhenMo",
+     "pct": 9.226,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 16455,
    "nivel": null,
    "nivel_req": null,
@@ -12540,6 +15228,143 @@
   },
   "16456": {
    "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "drops": [
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 16456,
    "nivel": null,
    "nivel_req": null,
@@ -12554,6 +15379,143 @@
   },
   "16457": {
    "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "drops": [
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 16457,
    "nivel": null,
    "nivel_req": null,
@@ -12568,6 +15530,138 @@
   },
   "16458": {
    "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "drops": [
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 16458,
    "nivel": null,
    "nivel_req": null,
@@ -12582,6 +15676,158 @@
   },
   "16459": {
    "desc": "Relíquias Antigas, emanam energia poderosa.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 33.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Dali",
+     "pct": 7.3429,
+     "sala": "22"
+    },
+    {
+     "nome": "Xuan Juchan",
+     "pct": 7.3429,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 4.6296,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "An Tianying",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Xinyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "An Yebai",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Destruições",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio das Trevas",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Gangshou",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Jinmian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Heng Tieyi",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Huangluo",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Xiangwang",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Ming Zaiyuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Mãe da Verdadeira Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Mengchan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Wusheng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Shen Yuexian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Canxuan",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Wu Liaojun",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Huanjian",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Qumeng",
+     "pct": 3.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Zhen Wuhen",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 16459,
    "nivel": null,
    "nivel_req": null,
@@ -12596,6 +15842,73 @@
   },
   "16460": {
    "desc": "Relíquias Antigas, contém energia selada.",
+   "drops": [
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 15.1528,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 15.1503,
+     "sala": "22"
+    },
+    {
+     "nome": "Espectro da Voz",
+     "pct": 15.1376,
+     "sala": "22"
+    },
+    {
+     "nome": "Criança Fantasma",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 13.1579,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 12.5,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    }
+   ],
    "id": 16460,
    "nivel": null,
    "nivel_req": null,
@@ -12610,6 +15923,73 @@
   },
   "16461": {
    "desc": "Relíquias Antigas, contém energia selada.",
+   "drops": [
+    {
+     "nome": "Espectro da Voz",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 15.1528,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 15.1503,
+     "sala": "22"
+    },
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 15.1364,
+     "sala": "22"
+    },
+    {
+     "nome": "Criança Fantasma",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 13.1579,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 12.5,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    }
+   ],
    "id": 16461,
    "nivel": null,
    "nivel_req": null,
@@ -12624,6 +16004,73 @@
   },
   "16462": {
    "desc": "Relíquias Antigas, contém energia selada.",
+   "drops": [
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 15.1528,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 15.1503,
+     "sala": "22"
+    },
+    {
+     "nome": "Espectro da Voz",
+     "pct": 15.1376,
+     "sala": "22"
+    },
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 15.1364,
+     "sala": "22"
+    },
+    {
+     "nome": "Criança Fantasma",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 13.1579,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 12.5,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    }
+   ],
    "id": 16462,
    "nivel": null,
    "nivel_req": null,
@@ -12638,6 +16085,73 @@
   },
   "16463": {
    "desc": "Relíquias Antigas, contém energia selada.",
+   "drops": [
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 15.1528,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 15.1503,
+     "sala": "22"
+    },
+    {
+     "nome": "Espectro da Voz",
+     "pct": 15.1376,
+     "sala": "22"
+    },
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 15.1364,
+     "sala": "22"
+    },
+    {
+     "nome": "Criança Fantasma",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 13.1579,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 12.5,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    }
+   ],
    "id": 16463,
    "nivel": null,
    "nivel_req": null,
@@ -12652,6 +16166,73 @@
   },
   "16464": {
    "desc": "Relíquias Antigas, contém energia selada.",
+   "drops": [
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 15.1528,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 15.1503,
+     "sala": "22"
+    },
+    {
+     "nome": "Espectro da Voz",
+     "pct": 15.1376,
+     "sala": "22"
+    },
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 15.1364,
+     "sala": "22"
+    },
+    {
+     "nome": "Criança Fantasma",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 13.1579,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 12.5,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    }
+   ],
    "id": 16464,
    "nivel": null,
    "nivel_req": null,
@@ -12666,6 +16247,73 @@
   },
   "16465": {
    "desc": "Relíquias Antigas, contém energia selada.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Dali",
+     "pct": 16.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 15.1503,
+     "sala": "22"
+    },
+    {
+     "nome": "Espectro da Voz",
+     "pct": 15.1376,
+     "sala": "22"
+    },
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 15.1364,
+     "sala": "22"
+    },
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 13.8889,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 13.1579,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 12.5,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 12.5,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 4.6296,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 4.6296,
+     "sala": "22"
+    }
+   ],
    "id": 16465,
    "nivel": null,
    "nivel_req": null,
@@ -12680,6 +16328,33 @@
   },
   "16466": {
    "desc": "Elas são curiosas a nosso respeito.",
+   "drops": [
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 16.6668,
+     "sala": "22"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 8.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 6.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 6.6667,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 3.3333,
+     "sala": "21"
+    }
+   ],
    "id": 16466,
    "nivel": null,
    "nivel_req": null,
@@ -12710,6 +16385,28 @@
   },
   "16467": {
    "desc": "Elas são curiosas a nosso respeito.",
+   "drops": [
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 8.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 5.0,
+     "sala": "21"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 5.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 5.0,
+     "sala": "22"
+    }
+   ],
    "id": 16467,
    "nivel": null,
    "nivel_req": null,
@@ -12740,6 +16437,23 @@
   },
   "16468": {
    "desc": "Elas são curiosas a nosso respeito.",
+   "drops": [
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 8.3333,
+     "sala": "21"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 5.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 5.0,
+     "sala": "22"
+    }
+   ],
    "id": 16468,
    "nivel": null,
    "nivel_req": null,
@@ -12770,6 +16484,13 @@
   },
   "16469": {
    "desc": "Amostra de líquido não identificado.",
+   "drops": [
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 0.1,
+     "sala": "22"
+    }
+   ],
    "id": 16469,
    "nivel": null,
    "nivel_req": null,
@@ -12784,6 +16505,13 @@
   },
   "16470": {
    "desc": "Pode comer, mas cuidado para não queimar a língua.",
+   "drops": [
+    {
+     "nome": "Espectro da Voz",
+     "pct": 0.1,
+     "sala": "22"
+    }
+   ],
    "id": 16470,
    "nivel": null,
    "nivel_req": null,
@@ -12798,6 +16526,13 @@
   },
   "16471": {
    "desc": "A maioria dos venenos é verde, não é?",
+   "drops": [
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 0.0333,
+     "sala": "22"
+    }
+   ],
    "id": 16471,
    "nivel": null,
    "nivel_req": null,
@@ -12812,6 +16547,13 @@
   },
   "16472": {
    "desc": "Não há diferença entre a morte e a vida. Ambas são duras como o aço.",
+   "drops": [
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 0.0333,
+     "sala": "22"
+    }
+   ],
    "id": 16472,
    "nivel": null,
    "nivel_req": null,
@@ -12826,6 +16568,13 @@
   },
   "16473": {
    "desc": "Nunca olhe nos olhos dele. Entregue rapidamente para quem precisa.",
+   "drops": [
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 0.0333,
+     "sala": "22"
+    }
+   ],
    "id": 16473,
    "nivel": null,
    "nivel_req": null,
@@ -12840,6 +16589,7 @@
   },
   "16545": {
    "desc": null,
+   "drops": [],
    "id": 16545,
    "nivel": null,
    "nivel_req": null,
@@ -12903,6 +16653,38 @@
   },
   "16546": {
    "desc": "Alma do Vale da Lua congelada em forma de Fragmento. Pode ser usada na criação de equipamentos do Vale da Lua.",
+   "drops": [
+    {
+     "nome": "Besta de Rugido do Céu",
+     "pct": 20.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Lunar Chilong",
+     "pct": 20.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Emissário das Sete Tristezas",
+     "pct": 20.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Fantasma de Olho de Hades",
+     "pct": 20.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Guarda de Demônio do Céu",
+     "pct": 20.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Sino de Sombra Sanguinária",
+     "pct": 20.0,
+     "sala": "22"
+    }
+   ],
    "id": 16546,
    "nivel": null,
    "nivel_req": null,
@@ -13023,6 +16805,38 @@
   },
   "16547": {
    "desc": "Alma do Vale da Lua congelada em forma de Cristal. Pode ser usada na criação de equipamentos do Vale da Lua.",
+   "drops": [
+    {
+     "nome": "Besta de Rugido do Céu",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Lunar Chilong",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Emissário das Sete Tristezas",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Fantasma de Olho de Hades",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Guarda de Demônio do Céu",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Sino de Sombra Sanguinária",
+     "pct": 10.0,
+     "sala": "22"
+    }
+   ],
    "id": 16547,
    "nivel": null,
    "nivel_req": null,
@@ -13143,6 +16957,38 @@
   },
   "16548": {
    "desc": "Alma do Vale da Lua congelada em forma de Essência. Pode ser usada na criação de equipamentos do Vale da Lua.",
+   "drops": [
+    {
+     "nome": "Besta de Rugido do Céu",
+     "pct": 1.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Lunar Chilong",
+     "pct": 1.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Emissário das Sete Tristezas",
+     "pct": 1.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Fantasma de Olho de Hades",
+     "pct": 1.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Guarda de Demônio do Céu",
+     "pct": 1.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Sino de Sombra Sanguinária",
+     "pct": 1.0,
+     "sala": "22"
+    }
+   ],
    "id": 16548,
    "nivel": null,
    "nivel_req": null,
@@ -13263,6 +17109,7 @@
   },
   "16651": {
    "desc": null,
+   "drops": [],
    "id": 16651,
    "nivel": null,
    "nivel_req": null,
@@ -13277,6 +17124,7 @@
   },
   "16652": {
    "desc": null,
+   "drops": [],
    "id": 16652,
    "nivel": null,
    "nivel_req": null,
@@ -13291,6 +17139,7 @@
   },
   "16653": {
    "desc": null,
+   "drops": [],
    "id": 16653,
    "nivel": null,
    "nivel_req": null,
@@ -13305,6 +17154,7 @@
   },
   "16654": {
    "desc": null,
+   "drops": [],
    "id": 16654,
    "nivel": null,
    "nivel_req": null,
@@ -13319,6 +17169,7 @@
   },
   "16655": {
    "desc": null,
+   "drops": [],
    "id": 16655,
    "nivel": null,
    "nivel_req": null,
@@ -13333,6 +17184,7 @@
   },
   "16656": {
    "desc": null,
+   "drops": [],
    "id": 16656,
    "nivel": null,
    "nivel_req": null,
@@ -13347,6 +17199,7 @@
   },
   "16657": {
    "desc": null,
+   "drops": [],
    "id": 16657,
    "nivel": null,
    "nivel_req": null,
@@ -13361,6 +17214,7 @@
   },
   "16658": {
    "desc": null,
+   "drops": [],
    "id": 16658,
    "nivel": null,
    "nivel_req": null,
@@ -13375,6 +17229,7 @@
   },
   "16659": {
    "desc": null,
+   "drops": [],
    "id": 16659,
    "nivel": null,
    "nivel_req": null,
@@ -13389,6 +17244,7 @@
   },
   "16701": {
    "desc": null,
+   "drops": [],
    "id": 16701,
    "nivel": null,
    "nivel_req": null,
@@ -13403,6 +17259,7 @@
   },
   "16702": {
    "desc": null,
+   "drops": [],
    "id": 16702,
    "nivel": null,
    "nivel_req": null,
@@ -13417,6 +17274,7 @@
   },
   "16703": {
    "desc": null,
+   "drops": [],
    "id": 16703,
    "nivel": null,
    "nivel_req": null,
@@ -13431,6 +17289,7 @@
   },
   "16704": {
    "desc": null,
+   "drops": [],
    "id": 16704,
    "nivel": null,
    "nivel_req": null,
@@ -13445,6 +17304,7 @@
   },
   "16705": {
    "desc": null,
+   "drops": [],
    "id": 16705,
    "nivel": null,
    "nivel_req": null,
@@ -13459,6 +17319,7 @@
   },
   "16706": {
    "desc": null,
+   "drops": [],
    "id": 16706,
    "nivel": null,
    "nivel_req": null,
@@ -13473,6 +17334,7 @@
   },
   "16707": {
    "desc": null,
+   "drops": [],
    "id": 16707,
    "nivel": null,
    "nivel_req": null,
@@ -13487,6 +17349,7 @@
   },
   "16708": {
    "desc": null,
+   "drops": [],
    "id": 16708,
    "nivel": null,
    "nivel_req": null,
@@ -13501,6 +17364,7 @@
   },
   "16709": {
    "desc": null,
+   "drops": [],
    "id": 16709,
    "nivel": null,
    "nivel_req": null,
@@ -13515,6 +17379,7 @@
   },
   "16710": {
    "desc": null,
+   "drops": [],
    "id": 16710,
    "nivel": null,
    "nivel_req": null,
@@ -13529,6 +17394,7 @@
   },
   "16711": {
    "desc": null,
+   "drops": [],
    "id": 16711,
    "nivel": null,
    "nivel_req": null,
@@ -13543,6 +17409,7 @@
   },
   "16712": {
    "desc": null,
+   "drops": [],
    "id": 16712,
    "nivel": null,
    "nivel_req": null,
@@ -13557,6 +17424,7 @@
   },
   "16713": {
    "desc": null,
+   "drops": [],
    "id": 16713,
    "nivel": null,
    "nivel_req": null,
@@ -13571,6 +17439,7 @@
   },
   "16714": {
    "desc": null,
+   "drops": [],
    "id": 16714,
    "nivel": null,
    "nivel_req": null,
@@ -13585,6 +17454,7 @@
   },
   "16715": {
    "desc": null,
+   "drops": [],
    "id": 16715,
    "nivel": null,
    "nivel_req": null,
@@ -13599,6 +17469,7 @@
   },
   "16716": {
    "desc": null,
+   "drops": [],
    "id": 16716,
    "nivel": null,
    "nivel_req": null,
@@ -13613,6 +17484,7 @@
   },
   "16717": {
    "desc": null,
+   "drops": [],
    "id": 16717,
    "nivel": null,
    "nivel_req": null,
@@ -13627,6 +17499,7 @@
   },
   "16718": {
    "desc": null,
+   "drops": [],
    "id": 16718,
    "nivel": null,
    "nivel_req": null,
@@ -13641,6 +17514,7 @@
   },
   "16719": {
    "desc": null,
+   "drops": [],
    "id": 16719,
    "nivel": null,
    "nivel_req": null,
@@ -13655,6 +17529,7 @@
   },
   "16720": {
    "desc": null,
+   "drops": [],
    "id": 16720,
    "nivel": null,
    "nivel_req": null,
@@ -13669,6 +17544,7 @@
   },
   "16721": {
    "desc": null,
+   "drops": [],
    "id": 16721,
    "nivel": null,
    "nivel_req": null,
@@ -13683,6 +17559,7 @@
   },
   "16722": {
    "desc": null,
+   "drops": [],
    "id": 16722,
    "nivel": null,
    "nivel_req": null,
@@ -13697,6 +17574,7 @@
   },
   "16723": {
    "desc": null,
+   "drops": [],
    "id": 16723,
    "nivel": null,
    "nivel_req": null,
@@ -13711,6 +17589,7 @@
   },
   "16724": {
    "desc": null,
+   "drops": [],
    "id": 16724,
    "nivel": null,
    "nivel_req": null,
@@ -13725,6 +17604,7 @@
   },
   "16725": {
    "desc": null,
+   "drops": [],
    "id": 16725,
    "nivel": null,
    "nivel_req": null,
@@ -13739,6 +17619,7 @@
   },
   "16726": {
    "desc": null,
+   "drops": [],
    "id": 16726,
    "nivel": null,
    "nivel_req": null,
@@ -13753,6 +17634,7 @@
   },
   "16727": {
    "desc": null,
+   "drops": [],
    "id": 16727,
    "nivel": null,
    "nivel_req": null,
@@ -13767,6 +17649,7 @@
   },
   "19277": {
    "desc": "Troque por vários itens raros no Místico da Lua.",
+   "drops": [],
    "id": 19277,
    "nivel": null,
    "nivel_req": null,
@@ -13781,6 +17664,7 @@
   },
   "23250": {
    "desc": "Tesouro raro do Vale da Lua, usado para trocar por armas da instância. Troque em qualquer Administradora de Trocas.",
+   "drops": [],
    "id": 23250,
    "nivel": null,
    "nivel_req": null,
@@ -14089,6 +17973,13 @@
   },
   "23562": {
    "desc": "Material vital para fabricar o Amuleto do Valor.",
+   "drops": [
+    {
+     "nome": "Bruxa Aquática",
+     "pct": 9.0817,
+     "sala": "22"
+    }
+   ],
    "id": 23562,
    "nivel": null,
    "nivel_req": null,
@@ -14103,6 +17994,13 @@
   },
   "23563": {
    "desc": "Material vital para fabricar o Amuleto do Valor.",
+   "drops": [
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 23563,
    "nivel": null,
    "nivel_req": null,
@@ -14117,6 +18015,13 @@
   },
   "23564": {
    "desc": "Material vital para fabricar o Coração de Chamas.",
+   "drops": [
+    {
+     "nome": "Espectro da Voz",
+     "pct": 9.0817,
+     "sala": "22"
+    }
+   ],
    "id": 23564,
    "nivel": null,
    "nivel_req": null,
@@ -14131,6 +18036,18 @@
   },
   "23565": {
    "desc": "Material vital para fabricar o Amuleto do Valor, o Coração de Chamas e o Olho da Melancolia.",
+   "drops": [
+    {
+     "nome": "Emissário das Sete Tristezas",
+     "pct": 3.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Fantasma de Olho de Hades",
+     "pct": 3.0,
+     "sala": "22"
+    }
+   ],
    "id": 23565,
    "nivel": null,
    "nivel_req": null,
@@ -14145,6 +18062,13 @@
   },
   "23566": {
    "desc": "Material vital para fabricar o Coração de Chamas.",
+   "drops": [
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 2.6316,
+     "sala": "22"
+    }
+   ],
    "id": 23566,
    "nivel": null,
    "nivel_req": null,
@@ -14159,6 +18083,13 @@
   },
   "23567": {
    "desc": "Material vital para fabricar o Olho da Melancolia.",
+   "drops": [
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 23567,
    "nivel": null,
    "nivel_req": null,
@@ -14173,6 +18104,13 @@
   },
   "23568": {
    "desc": "Material vital para fabricar o Olho da Melancolia.",
+   "drops": [
+    {
+     "nome": "Criança Fantasma",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 23568,
    "nivel": null,
    "nivel_req": null,
@@ -14187,6 +18125,18 @@
   },
   "23569": {
    "desc": "Material vital para fabricar o Anel Precioso de Wang.",
+   "drops": [
+    {
+     "nome": "Wang Dali",
+     "pct": 9.0834,
+     "sala": "22"
+    },
+    {
+     "nome": "Wang Erli",
+     "pct": 4.5491,
+     "sala": "22"
+    }
+   ],
    "id": 23569,
    "nivel": null,
    "nivel_req": null,
@@ -14201,6 +18151,13 @@
   },
   "23570": {
    "desc": "Material vital para fabricar o Anel Precioso de Wang.",
+   "drops": [
+    {
+     "nome": "Wang Erli",
+     "pct": 4.5491,
+     "sala": "22"
+    }
+   ],
    "id": 23570,
    "nivel": null,
    "nivel_req": null,
@@ -14215,6 +18172,13 @@
   },
   "23571": {
    "desc": "Material vital para fabricar o Anel do Ardor.",
+   "drops": [
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 2.5,
+     "sala": "21"
+    }
+   ],
    "id": 23571,
    "nivel": null,
    "nivel_req": null,
@@ -14229,6 +18193,13 @@
   },
   "23572": {
    "desc": "Material vital para fabricar o Anel do Ardor.",
+   "drops": [
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 23572,
    "nivel": null,
    "nivel_req": null,
@@ -14243,6 +18214,18 @@
   },
   "23573": {
    "desc": "Material vital para fabricar o Anel Precioso de Wang e o Anel do Ardor.",
+   "drops": [
+    {
+     "nome": "Demônio Lunar Chilong",
+     "pct": 3.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Guarda de Demônio do Céu",
+     "pct": 3.0,
+     "sala": "22"
+    }
+   ],
    "id": 23573,
    "nivel": null,
    "nivel_req": null,
@@ -14257,6 +18240,13 @@
   },
   "23574": {
    "desc": "Material vital para fabricar o Elmo da Galantaria.",
+   "drops": [
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 23574,
    "nivel": null,
    "nivel_req": null,
@@ -14271,6 +18261,13 @@
   },
   "23575": {
    "desc": "Material vital para fabricar o Elmo da Galantaria.",
+   "drops": [
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 3.3333,
+     "sala": "22"
+    }
+   ],
    "id": 23575,
    "nivel": null,
    "nivel_req": null,
@@ -14285,6 +18282,18 @@
   },
   "23576": {
    "desc": "Material vital para fabricar o Elmo da Galantaria e o Chapéu de Safira.",
+   "drops": [
+    {
+     "nome": "Besta de Rugido do Céu",
+     "pct": 3.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Sino de Sombra Sanguinária",
+     "pct": 3.0,
+     "sala": "22"
+    }
+   ],
    "id": 23576,
    "nivel": null,
    "nivel_req": null,
@@ -14299,6 +18308,13 @@
   },
   "23577": {
    "desc": "Material vital para fabricar o Chapéu de Safira.",
+   "drops": [
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 2.6316,
+     "sala": "22"
+    }
+   ],
    "id": 23577,
    "nivel": null,
    "nivel_req": null,
@@ -14313,6 +18329,13 @@
   },
   "23578": {
    "desc": "Material vital para fabricar o Chapéu de Safira.",
+   "drops": [
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 2.5,
+     "sala": "21"
+    }
+   ],
    "id": 23578,
    "nivel": null,
    "nivel_req": null,
@@ -14327,6 +18350,7 @@
   },
   "24721": {
    "desc": "Troque junto à Administradora de Trocas por prêmios!",
+   "drops": [],
    "id": 24721,
    "nivel": null,
    "nivel_req": null,
@@ -14449,6 +18473,7 @@
   },
   "27827": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27827,
    "nivel": null,
    "nivel_req": null,
@@ -14463,6 +18488,7 @@
   },
   "27828": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27828,
    "nivel": null,
    "nivel_req": null,
@@ -14477,6 +18503,7 @@
   },
   "27829": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27829,
    "nivel": null,
    "nivel_req": null,
@@ -14491,6 +18518,7 @@
   },
   "27830": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27830,
    "nivel": null,
    "nivel_req": null,
@@ -14505,6 +18533,7 @@
   },
   "27842": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27842,
    "nivel": null,
    "nivel_req": null,
@@ -14519,6 +18548,7 @@
   },
   "27843": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27843,
    "nivel": null,
    "nivel_req": null,
@@ -14533,6 +18563,7 @@
   },
   "27844": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27844,
    "nivel": null,
    "nivel_req": null,
@@ -14547,6 +18578,7 @@
   },
   "27845": {
    "desc": "Imbuída com almas poderosas.",
+   "drops": [],
    "id": 27845,
    "nivel": null,
    "nivel_req": null,
@@ -14711,6 +18743,7 @@
   },
   "799": {
    "desc": "Madeira do nível especial para a produção de equipamento.",
+   "drops": [],
    "id": 799,
    "nivel": null,
    "nivel_req": null,
@@ -14725,6 +18758,7 @@
   },
   "804": {
    "desc": "Metal do nível especial para a produção de equipamento.",
+   "drops": [],
    "id": 804,
    "nivel": null,
    "nivel_req": null,
@@ -14739,6 +18773,7 @@
   },
   "809": {
    "desc": "Polidor do nível especial para a produção de equipamento.",
+   "drops": [],
    "id": 809,
    "nivel": null,
    "nivel_req": null,
@@ -14753,6 +18788,7 @@
   },
   "819": {
    "desc": "Energia do nível especial para a produção de equipamento.",
+   "drops": [],
    "id": 819,
    "nivel": null,
    "nivel_req": null,
@@ -14766,5 +18802,41 @@
    "tipo": "Materiais"
   }
  },
- "versao": 1
+ "salas": {
+  "10": "Dusk 1-3",
+  "11": "Dusk 1-1",
+  "12": "Dusk 1-1",
+  "13": "Dusk 1-3",
+  "16": "Dusk 1-1",
+  "21": "Vale da Lua",
+  "22": "Vale da Lua",
+  "26": "Dusk 2-2",
+  "27": "Dusk 2-1",
+  "3": "Dusk 3-2",
+  "4": "Dusk 3-1",
+  "5": "Dusk 3-3",
+  "6": "Dusk 1-2",
+  "7": "Dusk 1-2",
+  "8": "Dusk 1-2",
+  "9": "Dusk 2-3"
+ },
+ "versao": 1,
+ "zonas": {
+  "10": "Palácio do Crepúsculo",
+  "11": "Palácio do Crepúsculo",
+  "12": "Palácio do Crepúsculo",
+  "13": "Palácio do Crepúsculo",
+  "16": "Palácio do Crepúsculo",
+  "21": "Vale da Lua",
+  "22": "Vale da Lua",
+  "26": "Palácio do Crepúsculo",
+  "27": "Palácio do Crepúsculo",
+  "3": "Palácio do Crepúsculo",
+  "4": "Palácio do Crepúsculo",
+  "5": "Palácio do Crepúsculo",
+  "6": "Palácio do Crepúsculo",
+  "7": "Palácio do Crepúsculo",
+  "8": "Palácio do Crepúsculo",
+  "9": "Palácio do Crepúsculo"
+ }
 }

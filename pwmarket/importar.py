@@ -24,6 +24,7 @@ import argparse
 import json
 import re
 import sys
+from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -52,6 +53,11 @@ IGNORAR_RECEITA_COM = ("Alma da Batalha",)
 # consegue equipar, então na busca só atrapalhariam.
 IGNORAR_SUBTIPO = ("Adagas", "Orbe")
 
+# De onde vale a pena guardar drop. A tabela do pwdatabase traz o mundo
+# inteiro — a União da Alma cai de 26 mobs de campo aberto, e isso não ajuda
+# ninguém a planejar. Só as duas zonas que o painel cobre entram.
+ZONAS_DROP = ("Crepúsculo", "Vale da Lua")
+
 
 # --------------------------------------------------------------------------
 # catálogo
@@ -63,6 +69,34 @@ def carregar() -> dict:
         with CATALOGO.open(encoding="utf-8") as f:
             return json.load(f)
     return {"versao": 1, "atualizado": None, "itens": {}}
+
+
+def filtrar_drops(drops: list[dict], zonas: dict | None = None) -> list[dict]:
+    """Reduz a tabela de drop ao que serve para planejar farm.
+
+    Duas podas. A primeira é de zona: fora do Palácio do Crepúsculo e do Vale
+    da Lua o painel não cobre o conteúdo. A segunda é do mesmo chefe repetido —
+    o pwdatabase lista uma linha por *mob*, e o "Deus Tambor" tem três ids com
+    vidas diferentes na mesma sala. Para quem vai farmar é um chefe só, então
+    fica a linha de maior chance.
+
+    Sobram três campos por linha. `mob` e `nivel` ninguém usa, e `zona` sai do
+    número da sala — guardá-la em toda linha custaria 18 KB no catalog.js para
+    repetir 16 valores. O de-para vai em `zonas`, preenchido aqui.
+    """
+    melhor: dict[tuple[str, str | None], dict] = {}
+    for d in drops:
+        zona = d.get("zona") or ""
+        if not any(z in zona for z in ZONAS_DROP):
+            continue
+        if zonas is not None and d.get("sala"):
+            zonas[str(d["sala"])] = zona
+        chave = (d.get("nome") or "", d.get("sala"))
+        if chave not in melhor or d.get("pct", 0) > melhor[chave].get("pct", 0):
+            melhor[chave] = d
+    ordenado = sorted(melhor.values(), key=lambda d: (-d.get("pct", 0), d.get("nome") or ""))
+    return [{"nome": d.get("nome"), "sala": d.get("sala"), "pct": d.get("pct")}
+            for d in ordenado]
 
 
 def aplicar_ajustes(cat: dict) -> int:
@@ -84,6 +118,13 @@ def aplicar_ajustes(cat: dict) -> int:
 
     nomes = cfg.get("nomes") or {}
     sem_receitas = set(cfg.get("sem_receitas") or {})
+
+    # Os rótulos de sala viajam junto com o catálogo em vez de ficarem no
+    # app.js: assim renomear "Dusk 3-3" é editar um JSON e rodar --ajustes,
+    # sem mexer em código nem reimportar item nenhum.
+    salas = {str(k): v for k, v in (cfg.get("salas") or {}).items()}
+    if cat.get("salas") != salas:
+        cat["salas"] = salas
 
     trocas = 0
     for iid, novo in nomes.items():
@@ -187,12 +228,15 @@ def importar_item(cat: dict, item_id: int, com_ingredientes: bool = True) -> int
     todas = registro["receitas"]
     registro["receitas"] = [r for r in todas if not receita_ignorada(r)]
     descartadas = len(todas) - len(registro["receitas"])
+    registro["drops"] = filtrar_drops(registro.get("drops") or [], cat.setdefault("zonas", {}))
 
     cat["itens"][chave] = registro
     baixar_icone(item_id)
     marca = f" [{len(registro['receitas'])} receita(s)]" if registro["receitas"] else ""
     if descartadas:
         marca += f" (-{descartadas} fora do Crepúsculo)"
+    if registro["drops"]:
+        marca += f" [{len(registro['drops'])} chefe(s)]"
     print(f"  + {item.id} {item.nome} — {item.subtipo or item.tipo or '?'}{marca}")
 
     # daqui pra frente só as receitas que sobraram, já em forma de dict
@@ -380,6 +424,11 @@ def main(argv: list[str] | None = None) -> int:
     alvo.add_argument("--remover", type=int, metavar="N", help="remove um item do catálogo")
     alvo.add_argument("--reicones", action="store_true", help="rebaixa os ícones que faltam")
     alvo.add_argument(
+        "--redrops",
+        action="store_true",
+        help="rebusca a tabela de drop dos itens já no catálogo (1 requisição por item)",
+    )
+    alvo.add_argument(
         "--faxina",
         action="store_true",
         help="remove do catálogo as receitas fora do Crepúsculo (veja IGNORAR_RECEITA_COM)",
@@ -439,6 +488,34 @@ def main(argv: list[str] | None = None) -> int:
         for iid in faltando:
             if baixar_icone(iid):
                 print(f"  + icons/{iid}.png")
+        return 0
+
+    if args.redrops:
+        # A tabela de drop está na mesma página do item, então importações
+        # novas já vêm com ela. Isto aqui é só para o que entrou antes.
+        # Equipamento não interessa: ninguém farma o item pronto, farma o
+        # material. Uma requisição por item, com o crawl-delay de 1s.
+        alvos = sorted(
+            int(k) for k, i in cat["itens"].items()
+            if i.get("tipo") not in ("Armas", "Armaduras", "Acessórios")
+        )
+        print(f"rebuscando drop de {len(alvos)} materiais (~{len(alvos)}s)")
+        com = linhas = 0
+        for n, iid in enumerate(alvos, 1):
+            try:
+                drops = filtrar_drops([asdict(d) for d in pwdb.get_item(iid).drops],
+                                      cat.setdefault("zonas", {}))
+            except pwdb.PwdbError as e:
+                print(f"  ! {iid}: {e}")
+                continue
+            cat["itens"][str(iid)]["drops"] = drops
+            if drops:
+                com += 1
+                linhas += len(drops)
+            if n % 40 == 0:
+                print(f"  {n}/{len(alvos)}")
+        salvar(cat)
+        print(f"\n{com} materiais com origem, {linhas} linhas de chefe.")
         return 0
 
     if args.nome:

@@ -14,5 +14,25 @@
   "15309": "Máscara Dourada — só saía de 'Muita Sorte - Perfect World', que o servidor não tem",
   "15310": "Cetro do Crepúsculo — idem",
   "15311": "Espírito do Céu e da Terra — idem"
+ },
+
+ "_salas": "Rótulo de cada sala da tabela de drop. O pwdatabase só dá o número entre parênteses da coordenada; ele separa os modos da dusk (o mesmo chefe aparece em salas diferentes, com vida maior no modo mais difícil), mas não os nomeia. O tier saiu do nível dos equipamentos que os materiais de cada sala servem (1-x = 60/70/80, 2-x = 70/80/90, 3-x = 90/99), e a ordem dentro do tier, de quanto item alto cada sala larga. A sala 5 é a que mais dropa material de 99 e é onde fica o Rei Cang Li — bate com o 3-3. Corrija qualquer linha aqui e rode 'py importar.py --ajustes': nada disso está no código.",
+ "salas": {
+  "5": "Dusk 3-3",
+  "3": "Dusk 3-2",
+  "4": "Dusk 3-1",
+  "9": "Dusk 2-3",
+  "26": "Dusk 2-2",
+  "27": "Dusk 2-1",
+  "10": "Dusk 1-3",
+  "13": "Dusk 1-3",
+  "7": "Dusk 1-2",
+  "6": "Dusk 1-2",
+  "8": "Dusk 1-2",
+  "11": "Dusk 1-1",
+  "12": "Dusk 1-1",
+  "16": "Dusk 1-1",
+  "21": "Vale da Lua",
+  "22": "Vale da Lua"
  }
 }

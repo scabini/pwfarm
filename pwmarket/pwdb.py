@@ -124,6 +124,23 @@ class Receita:
 
 
 @dataclass
+class Drop:
+    """Uma linha de 'Drop from': quem larga o item, onde e com que chance.
+
+    `sala` é o número entre parênteses da coordenada. O pwdatabase não nomeia
+    esse mapa, mas ele separa os modos da dusk — o mesmo chefe aparece em salas
+    diferentes com vida diferente, que é o modo mais difícil. O rótulo humano
+    ("Dusk 3-3") sai do ajustes.json.
+    """
+    mob: int
+    nome: str
+    nivel: int | None
+    zona: str | None
+    sala: str | None
+    pct: float
+
+
+@dataclass
 class Item:
     id: int
     nome: str
@@ -137,6 +154,7 @@ class Item:
     npc_compra: int | None = None
     desc: str | None = None
     receitas: list[Receita] = field(default_factory=list)
+    drops: list[Drop] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -212,6 +230,48 @@ def _parse_receitas(page: str) -> list[Receita]:
     return receitas
 
 
+# Uma linha da tabela "Drop from":
+#   <td>1</td><td><a href="mob/14715">Nome</a></td><td>150</td>
+#   <td>Palácio do Crepúsculo<br />397 519 (9)</td><td>elemento</td><td>vida</td>
+#   <td>43.3333</td>
+_DROP = re.compile(
+    r"<tr>\s*<td>\d+</td>\s*"
+    r"<td><a href=['\"]mob/(\d+)['\"]>([^<]*)</a></td>\s*"
+    r"<td>(\d*)</td>\s*"
+    r"<td>(.*?)</td>\s*"
+    r"<td>.*?</td>\s*"          # elemento
+    r"<td>.*?</td>\s*"          # vida
+    r"<td>([\d.]+)</td>",
+    re.S,
+)
+
+
+def _parse_drops(page: str) -> list[Drop]:
+    """Extrai a tabela 'Drop from'. Ausente na maioria dos itens craftados."""
+    i = page.find('id="mobs_drop"')
+    if i < 0:
+        return []
+    bloco = page[i:]
+    fim = bloco.find("</table>")
+    if fim > 0:
+        bloco = bloco[:fim]
+
+    saida = []
+    for mob, nome, nivel, onde, pct in _DROP.findall(bloco):
+        # "Palácio do Crepúsculo<br />397 519 (9)" — zona e coordenada
+        partes = re.split(r"<br\s*/?>", onde, maxsplit=1)
+        zona = _clean(partes[0]) or None
+        coord = _clean(partes[1]) if len(partes) > 1 else ""
+        sala = _search1(r"\((\d+)\)", coord)
+        if zona == "-":
+            zona = None
+        saida.append(Drop(
+            mob=int(mob), nome=_clean(nome), nivel=_num(nivel) if nivel else None,
+            zona=zona, sala=sala, pct=float(pct),
+        ))
+    return saida
+
+
 def parse_item(page: str, item_id: int | None = None) -> Item:
     """Parseia uma página /br/items/<id> (ou o resultado de busca exata)."""
     m = re.search(r'<th class="itemHeader"[^>]*>(.*?)</th>', page, re.S)
@@ -254,6 +314,7 @@ def parse_item(page: str, item_id: int | None = None) -> Item:
         npc_compra=_num(price.group(2)) if price else None,
         desc=_clean(_search1(r"<span style='color:#ffcb4a'>(.*?)</span>", page) or "") or None,
         receitas=_parse_receitas(page),
+        drops=_parse_drops(page),
     )
 
 

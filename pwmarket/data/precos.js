@@ -1,5 +1,5 @@
-// pwmarket — preços e favoritos sugeridos.
-// Gravado pelo servidor local (servidor.py). Commite este arquivo para publicar.
+// pwmarket — preços observados. Gravado pelo servidor local (servidor.py).
+// Commite este arquivo para publicar os preços.
 window.PW_PRECOS = {
  "obs": {
   "15236": [
@@ -10,6 +10,16 @@ window.PW_PRECOS = {
     "d": "2026-08-08",
     "t": "venda",
     "n": "loja CDO (Lojas100)"
+   }
+  ],
+  "15238": [
+   {
+    "id": "llajy06l",
+    "v": 200000,
+    "q": 1,
+    "d": "2026-08-09",
+    "t": "venda",
+    "n": "loja CDO (Lanes)"
    }
   ],
   "15249": [
@@ -172,6 +182,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": ""
+   },
+   {
+    "id": "3k4g08gk",
+    "v": 19000000,
+    "q": 1,
+    "d": "2026-08-09",
+    "t": "venda",
+    "n": "CDO EsculoMONGE"
    }
   ],
   "15279": [
@@ -430,59 +448,5 @@ window.PW_PRECOS = {
     "n": "loja CDO (MOISES)"
    }
   ]
- },
- "projetos": [
-  {
-   "chave": "14994:1980",
-   "itemId": "14994",
-   "receitaId": "1980",
-   "qtd": 1,
-   "tenho": {
-    "15299": 2,
-    "15308": 0
-   }
-  },
-  {
-   "chave": "14830:1829",
-   "itemId": "14830",
-   "receitaId": "1829",
-   "qtd": 1,
-   "tenho": {}
-  },
-  {
-   "chave": "15006:1993",
-   "itemId": "15006",
-   "receitaId": "1993",
-   "qtd": 1,
-   "tenho": {
-    "15275": 0
-   }
-  },
-  {
-   "chave": "14992:1968",
-   "itemId": "14992",
-   "receitaId": "1968",
-   "qtd": 1,
-   "tenho": {
-    "15258": 5,
-    "15259": 1,
-    "15279": 10,
-    "15461": 12
-   }
-  },
-  {
-   "chave": "14825:1814",
-   "itemId": "14825",
-   "receitaId": "1814",
-   "qtd": 1,
-   "tenho": {}
-  },
-  {
-   "chave": "14821:1787",
-   "itemId": "14821",
-   "receitaId": "1787",
-   "qtd": 1,
-   "tenho": {}
-  }
- ]
+ }
 };

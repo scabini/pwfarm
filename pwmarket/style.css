@@ -417,6 +417,70 @@ tr.historico.oculto { display: none; }
 .pill.p-laranja, .chip-tag.p-laranja:not(.on) { color: var(--r4); }
 .pill.p-dusk, .pill.p-lua { color: var(--texto-fraco); border-color: #3d1a22; }
 
+/* aba Drops */
+
+.grade-drops {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 11px;
+  align-items: start;
+}
+
+.drop-card {
+  background: var(--surface);
+  border: 1px solid var(--linha);
+  border-left: 2px solid var(--linha);
+  border-radius: 4px;
+  padding: 11px 12px;
+  transition: 0.15s;
+}
+
+.drop-card:hover { border-color: #3d1a22; border-left-color: var(--borda); }
+
+.drop-topo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 9px;
+}
+
+.drop-topo .icone { width: 32px; height: 32px; }
+.drop-id { min-width: 0; flex: 1; }
+.drop-id .titulo { font-weight: 500; }
+.drop-meta { font-size: 11px; color: var(--texto-apagado); margin-top: 2px; }
+
+.drop-tabela { font-size: 12px; }
+.drop-tabela th { font-size: 10px; }
+.drop-tabela td { padding: 4px 8px; }
+.drop-tabela tr:hover td { background: var(--surface-alt); }
+
+.modo {
+  font: 600 10px/1.5 var(--mono);
+  color: var(--vermelho-claro);
+  background: var(--vermelho-fundo);
+  border: 1px solid var(--linha);
+  border-radius: 2px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+.nota-drops {
+  margin: 26px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--linha);
+  font-size: 11.5px;
+  color: var(--texto-apagado);
+  max-width: 62ch;
+}
+
+/* origem do material, na tabela de ingredientes */
+
+.item-sub .origem {
+  color: var(--texto-fraco);
+  border-bottom: 1px dotted var(--linha);
+  cursor: help;
+}
+
 .secao {
   display: flex;
   align-items: center;
