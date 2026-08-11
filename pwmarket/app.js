@@ -49,6 +49,15 @@ const esc = (s) =>
 const uid = () => Math.random().toString(36).slice(2, 10);
 const hoje = () => new Date().toISOString().slice(0, 10);
 
+/* Chave de busca: minúsculas e sem acento.
+ *
+ * Todo nome de item aqui é em português e cheio de acento — "Essência da
+ * Natureza", "Jóia", "Símbolo do Crepúsculo". Ninguém digita acento numa caixa
+ * de busca, e comparação crua faz "essencia" não achar nada. Passar as duas
+ * pontas por aqui resolve, e o "ç" vira "c" de graça (NFD separa a cedilha). */
+const chaveBusca = (s) => String(s ?? '')
+  .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
 /** '1.5kk' -> 1500000 · '500k' -> 500000 · '1.500' -> 1500 · '75' -> 75 */
 function parseMedas(entrada) {
   const s = String(entrada ?? '').trim().toLowerCase().replace(/\s+/g, '');
@@ -572,7 +581,7 @@ function montarReceitas() {
         // para "dusk 99" funcionar digitado — a palavra "dusk" não aparece em
         // campo nenhum do pwdatabase. E buscar "cang li" lista tudo que
         // depende de material que ele solta.
-        busca: [
+        busca: chaveBusca([
           it.nome, it.tipo, it.subtipo, r.nome, r.npc, r.local,
           ...tags.map((x) => ROTULO_TAG.get(x)),
           ...r.ingredientes.flatMap((g) => {
@@ -580,7 +589,7 @@ function montarReceitas() {
             if (!ing?.drops?.length) return [g.nome];
             return [g.nome, ...ing.drops.map((d) => d.nome), ...modosDoItem(ing)];
           }),
-        ].join(' ').toLowerCase(),
+        ].join(' ')),
       });
     }
   }
@@ -616,7 +625,7 @@ function alternarFavorito(chave) {
 
 function renderPrecos() {
   const alvo = $('#conteudoPrecos');
-  const termo = $('#filtroPrecos').value.trim().toLowerCase();
+  const termo = chaveBusca($('#filtroPrecos').value.trim());
   const ordem = $('#ordemPrecos').value;
 
   let ids = Object.keys(DADOS.obs).filter((id) => (DADOS.obs[id] || []).length);
@@ -633,14 +642,14 @@ function renderPrecos() {
   if (termo) {
     ids = ids.filter((id) => {
       const it = item(id);
-      return it && [it.nome, it.tipo, it.subtipo].join(' ').toLowerCase().includes(termo);
+      return it && chaveBusca([it.nome, it.tipo, it.subtipo].join(' ')).includes(termo);
     });
   }
 
   const st = {};
   ids.forEach((id) => (st[id] = stats(id)));
 
-  const nomeDe = (id) => (item(id)?.nome || '').toLowerCase();
+  const nomeDe = (id) => chaveBusca(item(id)?.nome);
   ids.sort((a, b) => {
     switch (ordem) {
       case 'ref-desc': return (st[b].ref || 0) - (st[a].ref || 0);
@@ -727,7 +736,7 @@ function casaTags(x, ativas) {
 
 /** Receitas que passam pela busca e pela seção — a base das contagens. */
 function receitasFiltradas(comTags = true) {
-  const termo = $('#filtroReceitas').value.trim().toLowerCase();
+  const termo = chaveBusca($('#filtroReceitas').value.trim());
   const secao = $('#secaoReceitas').value;
 
   let lista = todasReceitas();
@@ -780,7 +789,7 @@ function alternarTag(tag) {
 
 function renderReceitas() {
   const alvo = $('#conteudoReceitas');
-  const termo = $('#filtroReceitas').value.trim().toLowerCase();
+  const termo = chaveBusca($('#filtroReceitas').value.trim());
   const secao = $('#secaoReceitas').value;
   const ordem = $('#ordemReceitas').value;
 
@@ -946,7 +955,7 @@ function todosBlocos() {
   for (const b of mapa.values()) {
     b.itens.sort((a, c) => (c.pct ?? -1) - (a.pct ?? -1)
       || a.it.nome.localeCompare(c.it.nome, 'pt-BR'));
-    b.busca = [b.chefe, b.modo, ...b.itens.map((l) => l.it.nome)].join(' ').toLowerCase();
+    b.busca = chaveBusca([b.chefe, b.modo, ...b.itens.map((l) => l.it.nome)].join(' '));
   }
   CACHE_BLOCOS = [...mapa.values()];
   return CACHE_BLOCOS;
@@ -976,7 +985,7 @@ function coresConhecidas() {
  * o 3-3 mostra os chefes do 3-3 com só o que eles largam de dourado. Bloco que
  * fica sem item nenhum sai da lista. */
 function blocosFiltrados() {
-  const termo = $('#filtroDrops').value.trim().toLowerCase();
+  const termo = chaveBusca($('#filtroDrops').value.trim());
   const palavras = termo ? termo.split(/\s+/) : [];
 
   const saida = [];
@@ -984,11 +993,11 @@ function blocosFiltrados() {
     if (filtroModos.size && !filtroModos.has(b.modo)) continue;
 
     // o termo casa o bloco inteiro (nome do chefe) ou item a item
-    const cabecalho = `${b.chefe} ${b.modo}`.toLowerCase();
+    const cabecalho = chaveBusca(`${b.chefe} ${b.modo}`);
     const blocoCasa = palavras.length && palavras.every((p) => cabecalho.includes(p));
     let itens = b.itens;
     if (palavras.length && !blocoCasa) {
-      itens = itens.filter((l) => palavras.every((p) => l.it.nome.toLowerCase().includes(p)));
+      itens = itens.filter((l) => palavras.every((p) => chaveBusca(l.it.nome).includes(p)));
     }
     if (filtroCores.size) itens = itens.filter((l) => l.cor && filtroCores.has(l.cor));
     if (!itens.length) continue;
@@ -1304,7 +1313,7 @@ function calcular(fav) {
 
 function renderFav() {
   const alvo = $('#conteudoFav');
-  const termo = $('#filtroFav').value.trim().toLowerCase();
+  const termo = chaveBusca($('#filtroFav').value.trim());
 
   atualizarBadge();
 
@@ -1320,7 +1329,7 @@ function renderFav() {
   const lista = LOCAL.favoritos.filter((f) => {
     if (!termo) return true;
     const it = item(f.itemId);
-    return [it?.nome, it?.tipo, it?.subtipo].join(' ').toLowerCase().includes(termo);
+    return chaveBusca([it?.nome, it?.tipo, it?.subtipo].join(' ')).includes(termo);
   });
 
   if (!lista.length) {
@@ -1413,9 +1422,9 @@ function atualizarBadge() {
 /* ============================================== busca de item no modal */
 
 function buscarCatalogo(termo) {
-  const t = termo.trim().toLowerCase();
+  const t = chaveBusca(termo.trim());
   let lista = Object.values(CATALOGO);
-  if (t) lista = lista.filter((i) => [i.nome, i.tipo, i.subtipo].join(' ').toLowerCase().includes(t));
+  if (t) lista = lista.filter((i) => chaveBusca([i.nome, i.tipo, i.subtipo].join(' ')).includes(t));
   return lista.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).slice(0, 60);
 }
 

@@ -155,6 +155,11 @@ No **modo servidor** o problema não existe — o `servidor.py` responde tudo co
 
 **+ Registrar preço** → escolhe o item → valor e quantidade.
 
+A busca do item **ignora acento e caixa**: `essencia da natureza` acha a
+*Essência da Natureza*, `joia` acha as *Jóias*, `coracao` acha o *Coração*.
+Nome de item em português é cheio de acento e ninguém digita acento numa caixa
+de busca — vale para todas as abas, não só aqui.
+
 O campo de valor aceita atalhos: `1.5kk`, `1,5kk`, `500k`, `750`, `12.345`.
 Sem sufixo, o ponto é separador de milhar (`1.500` = mil e quinhentos).
 

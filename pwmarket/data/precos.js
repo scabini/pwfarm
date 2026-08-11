@@ -10,6 +10,14 @@ window.PW_PRECOS = {
     "d": "2026-08-08",
     "t": "venda",
     "n": "loja CDO (Lojas100)"
+   },
+   {
+    "id": "9v3i1hyf",
+    "v": 800000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "loja cdo"
    }
   ],
   "15238": [
@@ -86,6 +94,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja forjas dusk (EsculoMONGE)"
+   },
+   {
+    "id": "s4tbz2fg",
+    "v": 685000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "loja cdo"
    }
   ],
   "15262": [
