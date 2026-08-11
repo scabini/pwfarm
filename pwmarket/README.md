@@ -324,14 +324,23 @@ no código.
 
 ## Minha lista
 
-As receitas que você adicionou, cada uma com a tabela de planejamento: preencha
-**Tenho** e ele calcula o que falta e quanto custa comprar o restante, pelo
-preço de referência de cada ingrediente.
+As receitas que você adicionou, **duas por linha**, cada uma com a tabela de
+planejamento: preencha **Tenho** e ele calcula o que falta e quanto custa
+comprar o restante, pelo preço de referência de cada ingrediente.
+
+A grade existe porque comparar "quanto falta em cada" era justamente o que
+exigia rolar a página. Abaixo de ~1000px de largura ela volta a uma coluna
+sozinha. Um cartão de receita de 5 materiais fica em torno de **275px** de
+altura, então numa tela de 1080p dá para ver duas linhas inteiras e boa parte da
+terceira; conforme você registra preços o aviso de total parcial some dos
+cartões e as três linhas passam a caber.
 
 Quando algum ingrediente ainda não tem preço registrado, o total aparece
-marcado como **parcial**, com a lista de quem está faltando. Um total
-incompleto apresentado como final levaria a decisão errada, então ele nunca é
-mostrado sem esse aviso.
+marcado como **parcial**. O aviso põe a **contagem antes dos nomes** e mostra
+três — numa receita de 25 materiais a lista inteira esticava o cartão em várias
+linhas, o suficiente para empurrar outra receita fora da tela. A lista completa
+fica no tooltip. Um total incompleto apresentado como final levaria a decisão
+errada, então ele nunca é mostrado sem esse aviso.
 
 Ingredientes que também têm receita aparecem marcados como **craftável** —
 às vezes vale produzir em vez de comprar.

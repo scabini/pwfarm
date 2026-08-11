@@ -1197,11 +1197,19 @@ function tabelaIngredientes(c, favChave = null) {
   </table></div>`;
 }
 
+/* Lista os ingredientes sem preço, mas corta em três nomes: numa receita de 25
+ * materiais quase nenhum tem preço ainda, e o aviso inteiro esticava o cartão
+ * em várias linhas — o suficiente para tirar uma receita da tela na grade. Os
+ * nomes que sobraram ficam no title. */
 function avisoParcial(c) {
   if (!c.semPreco.length) return '';
-  return `<div class="aviso-preco">${SINAL} Total parcial: ${c.semPreco.length} ingrediente(s)
-    sem preço registrado — ${c.semPreco.map((i) => esc(item(i.id)?.nome || i.nome)).join(', ')}.
-    Registre o preço deles para o custo ficar completo.</div>`;
+  // A contagem vem antes dos nomes de propósito: a linha corta com "…" quando
+  // não cabe, e o número é o que não pode ser cortado. Os nomes são amostra; a
+  // lista inteira está no title.
+  const nomes = c.semPreco.map((i) => item(i.id)?.nome || i.nome);
+  return `<div class="aviso-preco" title="Sem preço registrado: ${esc(nomes.join(', '))}
+ — o total é o mínimo, não o valor final">${SINAL} Total parcial · ${nomes.length} sem preço:
+    ${esc(nomes.slice(0, 3).join(', '))}</div>`;
 }
 
 let previewChave = null;
@@ -1360,7 +1368,7 @@ function renderFav() {
 
   // o mesmo somatório em cima e embaixo: em cima para saber o tamanho do
   // investimento antes de rolar, embaixo para fechar a conta depois de ver tudo
-  alvo.innerHTML = resumo + cards + resumo;
+  alvo.innerHTML = `${resumo}<div class="grade-lista">${cards}</div>${resumo}`;
 }
 
 /** Soma o que falta comprar em todas as receitas da lista. */

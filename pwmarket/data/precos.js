@@ -348,6 +348,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (Makulu)"
+   },
+   {
+    "id": "h7cfphrw",
+    "v": 25000000,
+    "q": 1,
+    "d": "2026-08-10",
+    "t": "venda",
+    "n": "loja forjas dusk"
    }
   ],
   "15303": [
@@ -386,6 +394,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (DUSKDORED)"
+   },
+   {
+    "id": "2l25ybws",
+    "v": 17000000,
+    "q": 1,
+    "d": "2026-08-10",
+    "t": "venda",
+    "n": "loja forjas dusk"
    }
   ],
   "15308": [
@@ -412,6 +428,14 @@ window.PW_PRECOS = {
     "d": "2026-08-08",
     "t": "venda",
     "n": "loja CDO (LOJA _ON)"
+   },
+   {
+    "id": "24mao03s",
+    "v": 8000,
+    "q": 1,
+    "d": "2026-08-10",
+    "t": "venda",
+    "n": "loja forjas dusk"
    }
   ],
   "15461": [
