@@ -160,6 +160,13 @@ A busca do item **ignora acento e caixa**: `essencia da natureza` acha a
 Nome de item em português é cheio de acento e ninguém digita acento numa caixa
 de busca — vale para todas as abas, não só aqui.
 
+Item do catálogo que ainda não tem preço **também aparece na tabela**, numa
+segunda lista *Sem preço registrado*, com o `+ obs` do lado. Digitar `silex`
+mostra os três sílex — o que já tem preço em cima, os outros dois embaixo. O
+botão **Sem preço** abre a lista inteira de quem falta anotar; sem busca e com
+ele desligado, a tabela é só o que tem preço (senão 400 linhas vazias enterram
+as que interessam).
+
 O campo de valor aceita atalhos: `1.5kk`, `1,5kk`, `500k`, `750`, `12.345`.
 Sem sufixo, o ponto é separador de milhar (`1.500` = mil e quinhentos).
 

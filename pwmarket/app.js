@@ -623,14 +623,39 @@ function alternarFavorito(chave) {
 
 /* ================================================================ PREÇOS */
 
+/* A tabela mostrava só o que já tem observação, e isso fazia item existente
+ * parecer ausente do painel: "o Sílex Antigo não está na lista de preços".
+ * Está no catálogo — só não tem preço anotado ainda. Quem digita um nome agora
+ * vê também os pendentes (com o "+ obs" do lado, que é o que a pessoa queria
+ * fazer), e este botão abre a lista inteira de quem falta anotar. */
+let verSemPreco = false;
+
 function renderPrecos() {
   const alvo = $('#conteudoPrecos');
   const termo = chaveBusca($('#filtroPrecos').value.trim());
   const ordem = $('#ordemPrecos').value;
+  const temPreco = (id) => (DADOS.obs[id] || []).length > 0;
+  const casa = (it) => !termo
+    || chaveBusca([it.nome, it.tipo, it.subtipo].join(' ')).includes(termo);
 
-  let ids = Object.keys(DADOS.obs).filter((id) => (DADOS.obs[id] || []).length);
+  let ids = Object.keys(DADOS.obs).filter(temPreco);
+  const nSemPreco = Object.keys(CATALOGO).filter((id) => !temPreco(id)).length;
 
-  if (!ids.length) {
+  const botao = $('#btnSemPreco');
+  botao.textContent = verSemPreco ? '✕ sem preço' : `Sem preço (${nSemPreco})`;
+  botao.setAttribute('aria-pressed', String(verSemPreco));
+  botao.title = verSemPreco
+    ? 'Voltar a mostrar só os itens com preço anotado'
+    : `Listar os ${nSemPreco} itens do catálogo que ainda não têm preço`;
+
+  // Sem busca e sem o botão ligado, a tabela continua sendo só o que tem preço:
+  // 400 linhas vazias enterrariam as 35 que interessam.
+  const pendentes = (termo || verSemPreco)
+    ? Object.values(CATALOGO).filter((it) => !temPreco(it.id) && casa(it))
+      .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
+    : [];
+
+  if (!ids.length && !pendentes.length && !termo) {
     alvo.innerHTML = `<div class="vazio"><strong>Nenhum preço registrado ainda</strong>
       ${CONSULTA ? 'O dono do painel ainda não publicou preços.' :
         'Use <em>+ Registrar preço</em> para anotar o que você viu nas lojas e no chat.'}
@@ -639,12 +664,7 @@ function renderPrecos() {
     return;
   }
 
-  if (termo) {
-    ids = ids.filter((id) => {
-      const it = item(id);
-      return it && chaveBusca([it.nome, it.tipo, it.subtipo].join(' ')).includes(termo);
-    });
-  }
+  if (termo) ids = ids.filter((id) => item(id) && casa(item(id)));
 
   const st = {};
   ids.forEach((id) => (st[id] = stats(id)));
@@ -660,9 +680,11 @@ function renderPrecos() {
     }
   });
 
-  if (!ids.length) {
+  if (!ids.length && !pendentes.length) {
     alvo.innerHTML = `<div class="vazio"><strong>Nada com esse filtro</strong>
-      Nenhum item registrado casa com “${esc(termo)}”.</div>`;
+      Nenhum item do catálogo casa com “${esc(termo)}”.
+      <div style="margin-top:14px">Se o item existe no jogo mas não aqui, traga com
+      <code>py importar.py --nome "${esc(termo)}"</code></div></div>`;
     return;
   }
 
@@ -687,15 +709,7 @@ function renderPrecos() {
     }).join('');
 
     return `<tr data-id="${id}">
-      <td>
-        <div class="item-cel">
-          <img class="icone" src="${iconeDe(id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
-          <div>
-            ${nomeHTML(it)}
-            <div class="item-sub">${esc(it?.subtipo || it?.tipo || '—')}</div>
-          </div>
-        </div>
-      </td>
+      <td>${celulaItem(id, it)}</td>
       <td class="num"><span class="medas ref" title="${fmtCheio(s.ref)}">${fmtMedas(s.ref)}</span></td>
       <td class="num"><span class="faixa" title="mínimo e máximo observados">${fmtMedas(s.min)} – ${fmtMedas(s.max)}</span></td>
       <td class="meio"><span class="contagem" title="observações registradas">${s.n}</span></td>
@@ -710,13 +724,56 @@ function renderPrecos() {
     </tr>`;
   }).join('');
 
-  alvo.innerHTML = `<div class="tabela-wrap"><table>
-    <thead><tr>
-      <th>Item</th><th class="num">Preço ref.</th><th class="num">Faixa</th>
-      <th class="meio">Obs.</th><th class="num">Última</th><th></th>
-    </tr></thead>
-    <tbody>${linhas}</tbody>
-  </table></div>`;
+  const comPreco = ids.length ? `
+    ${pendentes.length ? `<div class="secao">Com preço <span class="qtd">${ids.length}</span></div>` : ''}
+    <div class="tabela-wrap"><table>
+      <thead><tr>
+        <th>Item</th><th class="num">Preço ref.</th><th class="num">Faixa</th>
+        <th class="meio">Obs.</th><th class="num">Última</th><th></th>
+      </tr></thead>
+      <tbody>${linhas}</tbody>
+    </table></div>` : '';
+
+  alvo.innerHTML = comPreco + tabelaPendentes(pendentes);
+}
+
+/** A célula do item: ícone, nome com a cor da raridade e o subtipo embaixo. */
+function celulaItem(id, it) {
+  return `<div class="item-cel">
+    <img class="icone" src="${iconeDe(id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
+    <div>
+      ${nomeHTML(it)}
+      <div class="item-sub">${esc(it?.subtipo || it?.tipo || '—')}</div>
+    </div>
+  </div>`;
+}
+
+/** Itens do catálogo que ainda não têm observação nenhuma.
+ *
+ * Mesmas colunas da tabela de cima para as duas alinharem, com travessão onde
+ * não há dado. O que importa aqui é o "+ obs": achou o item, anota na hora. */
+function tabelaPendentes(pendentes) {
+  if (!pendentes.length) return '';
+  const linhas = pendentes.map((it) => `<tr class="pendente" data-id="${it.id}">
+    <td>${celulaItem(it.id, it)}</td>
+    <td class="num"><span class="preco sem" title="Sem preço registrado${
+      CONSULTA ? '' : ' — clique em + obs para anotar'}"
+      ><span class="falta-preco">!</span> sem preço</span></td>
+    <td class="num"><span class="faixa">—</span></td>
+    <td class="meio"><span class="contagem">0</span></td>
+    <td class="num"><span class="faixa">—</span></td>
+    <td class="acoes">${CONSULTA ? ''
+      : `<button class="mini so-edicao" data-add-obs="${it.id}">+ obs</button>`}</td>
+  </tr>`).join('');
+
+  return `<div class="secao">Sem preço registrado <span class="qtd">${pendentes.length}</span></div>
+    <div class="tabela-wrap"><table>
+      <thead><tr>
+        <th>Item</th><th class="num">Preço ref.</th><th class="num">Faixa</th>
+        <th class="meio">Obs.</th><th class="num">Última</th><th></th>
+      </tr></thead>
+      <tbody>${linhas}</tbody>
+    </table></div>`;
 }
 
 /* ============================================================== RECEITAS */
@@ -1097,7 +1154,7 @@ function linhaDrop(l, chaveBloco) {
   const id = `${chaveBloco}|${l.it.id}`;
   const aberto = fontesAbertas.has(id);
   const extra = l.outras.length
-    ? `<button class="mais-fontes${aberto ? ' on' : ''}" data-expandir="${esc(id)}"
+    ? `<button class="mais-fontes${aberto ? ' on' : ''}" data-fontes="${esc(id)}"
          title="${aberto ? 'Fechar' : 'Ver os outros lugares onde cai'}"
          >+${l.outras.length}</button>` : '';
 
@@ -1645,6 +1702,10 @@ function ligar() {
 
   $('#filtroPrecos').addEventListener('input', renderPrecos);
   $('#ordemPrecos').addEventListener('change', renderPrecos);
+  $('#btnSemPreco').addEventListener('click', () => {
+    verSemPreco = !verSemPreco;
+    renderPrecos();
+  });
   $('#btnRegistrar').addEventListener('click', () => abrirModalPreco());
 
   $('#filtroReceitas').addEventListener('input', renderReceitas);
@@ -1734,8 +1795,10 @@ function ligar() {
       renderDrops();
       return;
     }
-    if (b.dataset.expandir) {
-      const id = b.dataset.expandir;
+    // atributo próprio: dividir "expandir" com o histórico da aba Preços fazia
+    // este ramo atender pelos dois e o histórico nunca abrir
+    if (b.dataset.fontes) {
+      const id = b.dataset.fontes;
       if (fontesAbertas.has(id)) fontesAbertas.delete(id);
       else fontesAbertas.add(id);
       renderDrops();

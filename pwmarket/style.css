@@ -181,6 +181,14 @@ button.acao.fantasma {
 
 button.acao.fantasma:hover { color: var(--texto); border-color: var(--borda); box-shadow: none; }
 
+/* ligado: o botão vira o estado, não a ação — dá para ver de longe que a lista
+   está mostrando também quem não tem preço */
+button.acao.fantasma[aria-pressed="true"] {
+  background: var(--vermelho-fundo);
+  border-color: var(--borda);
+  color: var(--vermelho-claro);
+}
+
 /* --------------------------------------------------------------- tabelas */
 
 table {
@@ -286,6 +294,25 @@ tbody td { padding: 9px 11px; vertical-align: middle; }
 
 td.acoes { white-space: nowrap; text-align: right; }
 td.acoes .mini + .mini { margin-left: 4px; }
+
+/* itens do catálogo ainda sem preço
+
+   Vão na mesma tabela para as colunas alinharem, mas em segundo plano: são
+   quase 400 contra as 35 com preço, e o "!" vermelho com brilho das receitas
+   viraria uma parede. Acende no hover, junto com o "+ obs" da linha. */
+tr.pendente td { color: var(--texto-apagado); }
+
+tr.pendente .preco.sem {
+  font-size: 11.5px;
+  color: var(--texto-apagado);
+  white-space: nowrap;
+  cursor: help;
+}
+
+tr.pendente .preco.sem .falta-preco { color: inherit; text-shadow: none; }
+
+tr.pendente:hover .preco.sem,
+tr.pendente:hover .preco.sem .falta-preco { color: var(--vermelho-claro); }
 
 /* histórico expandido */
 
