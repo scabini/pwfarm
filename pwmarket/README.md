@@ -89,7 +89,22 @@ cupons e chaves de GM, que nunca entrariam no catálogo. Os três itens laranja
 aí pelo mesmo motivo: só saíam de "Muita Sorte - Perfect World", que este
 servidor não tem.
 
-O `importar.py` aplica os dois toda vez que salva o catálogo, então os ajustes
+E tem `receitas`, para quando o servidor mudou a **quantidade** de material. O
+Machado do Arauto pede 2 *Elmos do Tenente Primordial* aqui e 5 no pwdatabase:
+
+```json
+{ "receitas": { "1787": { "qtd": { "15236": 2, "15238": 5 } } } }
+```
+
+A chave de fora é o id da receita (o mesmo de `catalog.json`), a de dentro é o
+id do ingrediente. Só o que está listado é sobreposto — o resto da receita
+continua vindo do pwdatabase, e uma reimportação não desfaz nada. Quantidade `0`
+tira o ingrediente da receita; o item continua no catálogo, porque costuma
+servir a outras. Id de ingrediente que a receita não tem vira aviso na tela, não
+silêncio: quase sempre é engano de digitação, e um ajuste que nunca acontece é
+pior que um erro.
+
+O `importar.py` aplica tudo isso toda vez que salva o catálogo, então os ajustes
 sobrevivem a reimportações. O nome é trocado no item **e** em todas as receitas
 que o usam como ingrediente — se ficassem diferentes, a busca por ingrediente na
 aba Receitas encontraria o nome antigo.
@@ -423,7 +438,7 @@ abrir.bat         sobe o servidor e abre o navegador
 data/
   catalog.json    catálogo (fonte legível, versionada)
   catalog.js      mesmo conteúdo para carregar via file://
-  ajustes.json    nomes, receitas removidas e rótulo das salas do The PW Clássico
+  ajustes.json    nomes, receitas removidas, quantidades e guia do The PW Clássico
   icons/<id>.png  ícones baixados
   precos.js       preços — este é o arquivo que você commita
   lista.js        sua lista de receitas — fica fora do git

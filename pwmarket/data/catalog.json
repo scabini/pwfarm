@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-09T14:19:33+00:00",
+ "atualizado": "2026-08-12T01:01:14+00:00",
  "guia": {
   "15227": [
    [
@@ -947,13 +947,13 @@
       {
        "id": 15236,
        "nome": "Elmo do Tenente Primordial",
-       "qtd": 5,
+       "qtd": 2,
        "raridade": 7
       },
       {
        "id": 15238,
        "nome": "Caveira das Charadas",
-       "qtd": 10,
+       "qtd": 5,
        "raridade": 1
       },
       {
@@ -995,19 +995,19 @@
       {
        "id": 15249,
        "nome": "Estandarte de Feng Wushen",
-       "qtd": 8,
+       "qtd": 5,
        "raridade": 7
       },
       {
        "id": 15240,
        "nome": "Grande Tambor Tenaz",
-       "qtd": 8,
+       "qtd": 5,
        "raridade": 7
       },
       {
        "id": 15256,
        "nome": "Antiga Espada Ornamental",
-       "qtd": 16,
+       "qtd": 10,
        "raridade": 1
       },
       {

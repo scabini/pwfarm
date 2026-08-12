@@ -31,6 +31,11 @@ from pathlib import Path
 
 import pwdb
 
+# O console do Windows abre em cp1252 e nome de equipamento do Crepúsculo vem
+# com "☆". Sem isto, um print no meio da importação derruba o script.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 RAIZ = Path(__file__).parent
 CATALOGO = RAIZ / "data" / "catalog.json"
 CATALOGO_JS = RAIZ / "data" / "catalog.js"
@@ -125,6 +130,57 @@ def filtrar_drops(drops: list[dict], zonas: dict | None = None) -> list[dict]:
             for d in ordenado]
 
 
+def ajustar_receitas(cat: dict, cfg: dict) -> int:
+    """Quantidades de material que o The PW Clássico mudou, por receita.
+
+    O pwdatabase traz a receita oficial, e este servidor barateou parte da
+    forja do Crepúsculo — o Machado do Arauto pede 2 Elmos e não 5. É a
+    quantidade que muda, então a regra é por (receita, ingrediente): o resto
+    da receita continua vindo do pwdatabase e uma reimportação não desfaz nada.
+
+    Quantidade 0 tira o ingrediente da receita, para o caso de material que o
+    servidor não usa. O item continua no catálogo — ele costuma servir a outras
+    receitas, e some sozinho da lista de compras de quem não precisa dele.
+    """
+    regras = {str(k): v for k, v in (cfg.get("receitas") or {}).items()}
+    if not regras:
+        return 0
+
+    vistas: set[str] = set()
+    trocas = 0
+    for item in cat["itens"].values():
+        for r in item.get("receitas") or []:
+            regra = regras.get(str(r.get("id")))
+            if not regra:
+                continue
+            vistas.add(str(r["id"]))
+            qtds = {str(k): v for k, v in (regra.get("qtd") or {}).items()}
+            ficam = []
+            for ing in r.get("ingredientes") or []:
+                nova = qtds.pop(str(ing["id"]), None)
+                if nova is None:
+                    ficam.append(ing)
+                elif nova <= 0:
+                    print(f"  ~ {item['nome']}: {ing['nome']} sai da receita")
+                    trocas += 1
+                else:
+                    if ing.get("qtd") != nova:
+                        print(f"  ~ {item['nome']}: {ing['nome']} {ing.get('qtd')}x -> {nova}x")
+                        ing["qtd"] = nova
+                        trocas += 1
+                    ficam.append(ing)
+            r["ingredientes"] = ficam
+            # id de ingrediente que a receita não tem quase sempre é engano de
+            # digitação — em silêncio, viraria um ajuste que nunca acontece
+            for sobra in qtds:
+                print(f"  ! receita {r['id']}: {sobra} não é ingrediente dela, regra ignorada")
+
+    for rid in regras:
+        if rid not in vistas:
+            print(f"  ! receita {rid} do ajustes.json não está no catálogo")
+    return trocas
+
+
 def aplicar_ajustes(cat: dict) -> int:
     """Sobrepõe as diferenças do The PW Clássico em cima do que veio do pwdatabase.
 
@@ -173,7 +229,8 @@ def aplicar_ajustes(cat: dict) -> int:
                 if novo and ing.get("nome") != novo:
                     ing["nome"] = novo
                     trocas += 1
-    return trocas
+
+    return trocas + ajustar_receitas(cat, cfg)
 
 
 def salvar(cat: dict) -> None:
@@ -542,7 +599,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.ajustes:
         n = aplicar_ajustes(cat)
         salvar(cat)
-        print(f"{n} nome(s) ajustado(s) a partir de {AJUSTES.name}.")
+        print(f"{n} ajuste(s) aplicado(s) a partir de {AJUSTES.name}.")
         return 0
 
     if args.remover:
