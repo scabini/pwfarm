@@ -1493,14 +1493,31 @@ function renderResultados(caixa, lista, aoEscolher) {
       <code>py importar.py --nome "…"</code></div></div></div>`;
     return;
   }
-  caixa.innerHTML = lista.map((i) => `
+  // Dois materiais podem ter o mesmo nome — o "Casco da Grande Besta" é dois
+  // itens diferentes, um verde do 3-3 e um dourado do 3-1. Quando isso
+  // acontece, subtipo e receitas não separam nada (os dois são "Itens
+  // Básicos"), e dá para anotar o preço no item errado. A origem separa.
+  const repetido = new Set();
+  const vistos = new Set();
+  for (const i of lista) {
+    if (vistos.has(i.nome)) repetido.add(i.nome);
+    vistos.add(i.nome);
+  }
+
+  caixa.innerHTML = lista.map((i) => {
+    const o = repetido.has(i.nome) ? origemDe(i.id) : null;
+    const sub = [i.subtipo || i.tipo || '—',
+      i.receitas?.length ? `${i.receitas.length} receita(s)` : null,
+      o?.curto].filter(Boolean).join(' · ');
+    return `
     <div class="resultado" data-escolher="${i.id}">
       <img class="icone pequeno" src="${iconeDe(i.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">
       <div class="info">
         ${nomeHTML(i)}
-        <div class="sub">${esc(i.subtipo || i.tipo || '—')}${i.receitas?.length ? ` · ${i.receitas.length} receita(s)` : ''}</div>
+        <div class="sub">${esc(sub)}</div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   $$('[data-escolher]', caixa).forEach((el) =>
     el.addEventListener('click', () => aoEscolher(el.dataset.escolher)));

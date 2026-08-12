@@ -134,17 +134,22 @@ def ajustar_receitas(cat: dict, cfg: dict) -> int:
     """O que o The PW Clássico mudou nas receitas, por receita.
 
     O pwdatabase traz a receita oficial, e este servidor mexeu em parte da
-    forja do Crepúsculo — o Machado do Arauto pede 2 Elmos e não 5, e os três
-    peitos dourados de nível 99 pedem Casco da Grande Besta onde o pwdatabase
-    lista Máscara Fantasma. A regra é sempre por (receita, ingrediente): o
-    resto da receita continua vindo do pwdatabase e uma reimportação não
-    desfaz nada.
+    forja do Crepúsculo — o Machado do Arauto pede 2 Elmos e não 5. A regra é
+    sempre por (receita, ingrediente): o resto da receita continua vindo do
+    pwdatabase e uma reimportação não desfaz nada.
 
     Duas coisas dá para dizer. `qtd` muda a quantidade; 0 tira o ingrediente,
     para material que o servidor não usa (o item continua no catálogo, porque
     costuma servir a outras receitas). `troca` põe outro material no lugar,
     mantendo a quantidade — nome e raridade vêm do catálogo, senão a busca por
     ingrediente na aba Receitas acharia o nome do material antigo.
+
+    Cuidado com `troca`: diferente das outras, ela não se desfaz sozinha. As
+    outras sobrescrevem um valor que a reimportação repõe; esta apaga o id
+    original, então tirar a regra do JSON não traz o material de volta — é
+    preciso reimportar o item (`--remover N` e depois `--id N`). Antes de
+    escrever uma troca, confira se não é só o servidor ter renomeado o
+    material: aí o lugar é `nomes`, que arruma todas as receitas de uma vez.
     """
     regras = {str(k): v for k, v in (cfg.get("receitas") or {}).items()}
     if not regras:

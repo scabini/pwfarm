@@ -78,8 +78,19 @@ O servidor é uma versão clássica customizada, então alguns itens têm outro 
 em relação ao pwdatabase. Essas diferenças ficam em **`data/ajustes.json`**:
 
 ```json
-{ "nomes": { "15307": "Pedra da Terra do Sonho" } }
+{ "nomes": {
+  "15294": "Casco da Grande Besta",
+  "15307": "Pedra da Terra do Sonho"
+} }
 ```
+
+Confira pelo **ícone e pela cor**, não pelo nome. O `15294` chama-se *Casco da
+Grande Besta* neste servidor e *Máscara Fantasma* no pwdatabase — só que o
+pwdatabase já tem um *Casco da Grande Besta*, o `15276`, que é outro item
+(dourado, ícone de carapaça, cai no 3-1 e no 3-2). O daqui é verde, ícone de
+cristal azul, cai do Ministro Zi Cun no 3-3. Os dois convivem no catálogo com o
+mesmo nome; na busca do modal de preço, item de nome repetido ganha a origem no
+subtítulo justamente para não anotar preço no errado.
 
 O mesmo arquivo tem `sem_receitas`: itens que continuam no catálogo, porque são
 ingredientes que você quer precificar, mas cujas receitas somem. São as caixas de
@@ -90,14 +101,12 @@ aí pelo mesmo motivo: só saíam de "Muita Sorte - Perfect World", que este
 servidor não tem.
 
 E tem `receitas`, para quando o servidor mudou a receita em si. O Machado do
-Arauto pede 2 *Elmos do Tenente Primordial* aqui e 5 no pwdatabase; os três
-peitos dourados de nível 99 pedem *Casco da Grande Besta* onde o pwdatabase
-lista *Máscara Fantasma*:
+Arauto pede 2 *Elmos do Tenente Primordial* aqui e 5 no pwdatabase:
 
 ```json
 { "receitas": {
   "1787": { "qtd":   { "15236": 2, "15238": 5 } },
-  "1969": { "troca": { "15294": "15276" } }
+  "9999": { "troca": { "15294": "15276" } }
 } }
 ```
 
@@ -113,6 +122,13 @@ ingrediente; o item continua no catálogo, porque costuma servir a outras
 receitas. Id que a receita não tem vira aviso na tela, não silêncio: quase
 sempre é engano de digitação, e um ajuste que nunca acontece é pior que um erro.
 Troca já aplicada não avisa nada — o script sabe diferenciar as duas coisas.
+
+> **`troca` não se desfaz sozinha.** As outras regras sobrescrevem um valor que
+> a reimportação repõe; esta apaga o id original, então tirar a regra do JSON
+> não traz o material de volta — é preciso `--remover N` e depois `--id N`.
+> E antes de escrever uma troca, confira se não é só renomeação: se o servidor
+> mudou o nome do material, o lugar é `nomes`, que arruma todas as receitas de
+> uma vez em vez de uma regra por receita.
 
 O `importar.py` aplica tudo isso toda vez que salva o catálogo, então os ajustes
 sobrevivem a reimportações. O nome é trocado no item **e** em todas as receitas

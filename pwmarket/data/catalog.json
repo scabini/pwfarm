@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-12T23:42:03+00:00",
+ "atualizado": "2026-08-12T23:50:28+00:00",
  "guia": {
   "15227": [
    [
@@ -2020,7 +2020,7 @@
      "ingredientes": [
       {
        "id": 15294,
-       "nome": "Máscara Fantasma",
+       "nome": "Casco da Grande Besta",
        "qtd": 8,
        "raridade": 7
       },
@@ -2799,6 +2799,7 @@
   },
   "14928": {
    "desc": null,
+   "drops": [],
    "id": 14928,
    "nivel": 12,
    "nivel_req": 99,
@@ -2817,10 +2818,10 @@
        "raridade": 2
       },
       {
-       "id": 15276,
+       "id": 15294,
        "nome": "Casco da Grande Besta",
        "qtd": 8,
-       "raridade": 2
+       "raridade": 7
       },
       {
        "id": 15308,
@@ -3423,6 +3424,7 @@
   },
   "14952": {
    "desc": null,
+   "drops": [],
    "id": 14952,
    "nivel": 12,
    "nivel_req": 99,
@@ -3441,10 +3443,10 @@
        "raridade": 2
       },
       {
-       "id": 15276,
+       "id": 15294,
        "nome": "Casco da Grande Besta",
        "qtd": 8,
-       "raridade": 2
+       "raridade": 7
       },
       {
        "id": 15308,
@@ -4047,6 +4049,7 @@
   },
   "14976": {
    "desc": null,
+   "drops": [],
    "id": 14976,
    "nivel": 12,
    "nivel_req": 99,
@@ -4065,10 +4068,10 @@
        "raridade": 2
       },
       {
-       "id": 15276,
+       "id": 15294,
        "nome": "Casco da Grande Besta",
        "qtd": 8,
-       "raridade": 2
+       "raridade": 7
       },
       {
        "id": 15308,
@@ -7253,7 +7256,7 @@
    "id": 15294,
    "nivel": null,
    "nivel_req": null,
-   "nome": "Máscara Fantasma",
+   "nome": "Casco da Grande Besta",
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 7,
