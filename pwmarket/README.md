@@ -89,20 +89,30 @@ cupons e chaves de GM, que nunca entrariam no catálogo. Os três itens laranja
 aí pelo mesmo motivo: só saíam de "Muita Sorte - Perfect World", que este
 servidor não tem.
 
-E tem `receitas`, para quando o servidor mudou a **quantidade** de material. O
-Machado do Arauto pede 2 *Elmos do Tenente Primordial* aqui e 5 no pwdatabase:
+E tem `receitas`, para quando o servidor mudou a receita em si. O Machado do
+Arauto pede 2 *Elmos do Tenente Primordial* aqui e 5 no pwdatabase; os três
+peitos dourados de nível 99 pedem *Casco da Grande Besta* onde o pwdatabase
+lista *Máscara Fantasma*:
 
 ```json
-{ "receitas": { "1787": { "qtd": { "15236": 2, "15238": 5 } } } }
+{ "receitas": {
+  "1787": { "qtd":   { "15236": 2, "15238": 5 } },
+  "1969": { "troca": { "15294": "15276" } }
+} }
 ```
 
-A chave de fora é o id da receita (o mesmo de `catalog.json`), a de dentro é o
-id do ingrediente. Só o que está listado é sobreposto — o resto da receita
-continua vindo do pwdatabase, e uma reimportação não desfaz nada. Quantidade `0`
-tira o ingrediente da receita; o item continua no catálogo, porque costuma
-servir a outras. Id de ingrediente que a receita não tem vira aviso na tela, não
-silêncio: quase sempre é engano de digitação, e um ajuste que nunca acontece é
-pior que um erro.
+A chave de fora é o id da receita (o mesmo de `catalog.json`). `qtd` muda a
+quantidade de um ingrediente; `troca` põe outro material no lugar, mantendo a
+quantidade — nome e raridade vêm do catálogo, senão a busca por ingrediente na
+aba Receitas acharia o nome do material antigo. As duas podem aparecer juntas
+na mesma receita: troca primeiro, quantidade depois.
+
+Só o que está listado é sobreposto — o resto da receita continua vindo do
+pwdatabase, e uma reimportação não desfaz nada. Quantidade `0` tira o
+ingrediente; o item continua no catálogo, porque costuma servir a outras
+receitas. Id que a receita não tem vira aviso na tela, não silêncio: quase
+sempre é engano de digitação, e um ajuste que nunca acontece é pior que um erro.
+Troca já aplicada não avisa nada — o script sabe diferenciar as duas coisas.
 
 O `importar.py` aplica tudo isso toda vez que salva o catálogo, então os ajustes
 sobrevivem a reimportações. O nome é trocado no item **e** em todas as receitas

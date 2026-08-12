@@ -131,16 +131,20 @@ def filtrar_drops(drops: list[dict], zonas: dict | None = None) -> list[dict]:
 
 
 def ajustar_receitas(cat: dict, cfg: dict) -> int:
-    """Quantidades de material que o The PW Clássico mudou, por receita.
+    """O que o The PW Clássico mudou nas receitas, por receita.
 
-    O pwdatabase traz a receita oficial, e este servidor barateou parte da
-    forja do Crepúsculo — o Machado do Arauto pede 2 Elmos e não 5. É a
-    quantidade que muda, então a regra é por (receita, ingrediente): o resto
-    da receita continua vindo do pwdatabase e uma reimportação não desfaz nada.
+    O pwdatabase traz a receita oficial, e este servidor mexeu em parte da
+    forja do Crepúsculo — o Machado do Arauto pede 2 Elmos e não 5, e os três
+    peitos dourados de nível 99 pedem Casco da Grande Besta onde o pwdatabase
+    lista Máscara Fantasma. A regra é sempre por (receita, ingrediente): o
+    resto da receita continua vindo do pwdatabase e uma reimportação não
+    desfaz nada.
 
-    Quantidade 0 tira o ingrediente da receita, para o caso de material que o
-    servidor não usa. O item continua no catálogo — ele costuma servir a outras
-    receitas, e some sozinho da lista de compras de quem não precisa dele.
+    Duas coisas dá para dizer. `qtd` muda a quantidade; 0 tira o ingrediente,
+    para material que o servidor não usa (o item continua no catálogo, porque
+    costuma servir a outras receitas). `troca` põe outro material no lugar,
+    mantendo a quantidade — nome e raridade vêm do catálogo, senão a busca por
+    ingrediente na aba Receitas acharia o nome do material antigo.
     """
     regras = {str(k): v for k, v in (cfg.get("receitas") or {}).items()}
     if not regras:
@@ -155,8 +159,22 @@ def ajustar_receitas(cat: dict, cfg: dict) -> int:
                 continue
             vistas.add(str(r["id"]))
             qtds = {str(k): v for k, v in (regra.get("qtd") or {}).items()}
+            subs = {str(k): str(v) for k, v in (regra.get("troca") or {}).items()}
             ficam = []
             for ing in r.get("ingredientes") or []:
+                novo_id = subs.pop(str(ing["id"]), None)
+                if novo_id is not None:
+                    outro = cat["itens"].get(novo_id)
+                    if outro is None:
+                        print(f"  ! receita {r['id']}: {novo_id} não está no catálogo, "
+                              f"troca ignorada (importe com --id {novo_id})")
+                    else:
+                        print(f"  ~ {item['nome']}: {ing['nome']} -> {outro['nome']}")
+                        ing["id"] = int(novo_id)
+                        ing["nome"] = outro["nome"]
+                        ing["raridade"] = outro.get("raridade")
+                        trocas += 1
+
                 nova = qtds.pop(str(ing["id"]), None)
                 if nova is None:
                     ficam.append(ing)
@@ -171,7 +189,13 @@ def ajustar_receitas(cat: dict, cfg: dict) -> int:
                     ficam.append(ing)
             r["ingredientes"] = ficam
             # id de ingrediente que a receita não tem quase sempre é engano de
-            # digitação — em silêncio, viraria um ajuste que nunca acontece
+            # digitação — em silêncio, viraria um ajuste que nunca acontece.
+            # Troca já aplicada não conta: o material antigo saiu, é o esperado.
+            presentes = {str(g["id"]) for g in ficam}
+            for velho, novo in subs.items():
+                if novo in presentes:
+                    continue      # troca já aplicada numa passada anterior
+                print(f"  ! receita {r['id']}: {velho} não é ingrediente dela, troca ignorada")
             for sobra in qtds:
                 print(f"  ! receita {r['id']}: {sobra} não é ingrediente dela, regra ignorada")
 

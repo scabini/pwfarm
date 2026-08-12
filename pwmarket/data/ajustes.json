@@ -13,7 +13,7 @@
   "15310": "Cetro do Crepúsculo — idem",
   "15311": "Espírito do Céu e da Terra — idem"
  },
- "_receitas": "Receitas em que o The PW Clássico mudou a quantidade de material. O pwdatabase traz a receita oficial e este servidor barateou parte da forja do Crepúsculo, então a regra é por (receita, ingrediente): só a quantidade listada aqui é sobreposta, o resto continua vindo do pwdatabase e uma reimportação não desfaz nada. A chave de fora é o id da receita (o mesmo que aparece em catalog.json), a de dentro é o id do ingrediente. Quantidade 0 tira o ingrediente da receita — o item continua no catálogo. Conferido no jogo pelo dono do painel. Editou? 'py importar.py --ajustes'.",
+ "_receitas": "O que o The PW Clássico mudou nas receitas. O pwdatabase traz a receita oficial e este servidor mexeu em parte da forja do Crepúsculo, então a regra é por (receita, ingrediente): só o que está listado aqui é sobreposto, o resto continua vindo do pwdatabase e uma reimportação não desfaz nada. A chave de fora é o id da receita (o mesmo que aparece em catalog.json). 'qtd' muda a quantidade — 0 tira o ingrediente da receita, e o item continua no catálogo. 'troca' põe outro material no lugar, mantendo a quantidade. Conferido no jogo pelo dono do painel. Editou? 'py importar.py --ajustes'.",
  "receitas": {
   "1787": {
    "_item": "☆Machado do Arauto (14821) — Novo FB Machado DuploNível 70 2",
@@ -28,6 +28,24 @@
     "15249": 5,
     "15240": 5,
     "15256": 10
+   }
+  },
+  "1969": {
+   "_item": "☆Armadura Pesada do Rei Leão (14928) — Armadura Pesada Nv. 90 Novo DG",
+   "troca": {
+    "15294": "15276"
+   }
+  },
+  "1973": {
+   "_item": "☆Manto do Sábio (14952) — Armadura Mágica Nv. 90 Novo DG",
+   "troca": {
+    "15294": "15276"
+   }
+  },
+  "1977": {
+   "_item": "☆Armadura do Asura (14976) — Armadura Leve Nv. 90 Novo DG",
+   "troca": {
+    "15294": "15276"
    }
   }
  },
