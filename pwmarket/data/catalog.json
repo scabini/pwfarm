@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-12T23:50:28+00:00",
+ "atualizado": "2026-08-19T12:31:49+00:00",
  "guia": {
   "15227": [
    [
@@ -1409,6 +1409,208 @@
    ],
    "stack": 1,
    "subtipo": "Machado/Martelo / Marreta",
+   "tipo": "Armas"
+  },
+  "14839": {
+   "desc": null,
+   "drops": [],
+   "id": 14839,
+   "nivel": 8,
+   "nivel_req": 60,
+   "nome": "☆Lança dos Ossos",
+   "npc_compra": 64880,
+   "npc_venda": 32440,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1780,
+     "ingredientes": [
+      {
+       "id": 15227,
+       "nome": "Lâmina de Qin Tian",
+       "qtd": 5,
+       "raridade": 7
+      },
+      {
+       "id": 15229,
+       "nome": "Fragmento de Esqueleto",
+       "qtd": 10,
+       "raridade": 1
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lança Nível 60",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado de haste longa / Lança",
+   "tipo": "Armas"
+  },
+  "14841": {
+   "desc": null,
+   "drops": [],
+   "id": 14841,
+   "nivel": 9,
+   "nivel_req": 70,
+   "nome": "☆Lança Quebra-Armaduras",
+   "npc_compra": 79600,
+   "npc_venda": 39800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1789,
+     "ingredientes": [
+      {
+       "id": 15233,
+       "nome": "Carapaça do Leão Insano",
+       "qtd": 5,
+       "raridade": 7
+      },
+      {
+       "id": 15238,
+       "nome": "Caveira das Charadas",
+       "qtd": 10,
+       "raridade": 1
+      },
+      {
+       "id": 15352,
+       "nome": "Alma: Lança dos Ossos",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 2,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lança Nível 70 2",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado de haste longa / Lança",
+   "tipo": "Armas"
+  },
+  "14845": {
+   "desc": null,
+   "drops": [],
+   "id": 14845,
+   "nivel": 10,
+   "nivel_req": 80,
+   "nome": "☆Lança do Dragão",
+   "npc_compra": 100000,
+   "npc_venda": 50000,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1817,
+     "ingredientes": [
+      {
+       "id": 15243,
+       "nome": "Espinho do Tenente Primordial",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15245,
+       "nome": "Pedaço da Armadura Dourada",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15256,
+       "nome": "Antiga Espada Ornamental",
+       "qtd": 16,
+       "raridade": 1
+      },
+      {
+       "id": 15354,
+       "nome": "Alma: Lança Quebra-Armaduras",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 9,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lança Nível 80 4",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado de haste longa / Lança",
+   "tipo": "Armas"
+  },
+  "14850": {
+   "desc": null,
+   "drops": [],
+   "id": 14850,
+   "nivel": 11,
+   "nivel_req": 90,
+   "nome": "☆Lança Esmaga-Meteoros",
+   "npc_compra": 118240,
+   "npc_venda": 59120,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1851,
+     "ingredientes": [
+      {
+       "id": 15265,
+       "nome": "Pó Estelar",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15268,
+       "nome": "Carapaça da Grande Besta",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15279,
+       "nome": "Pedra do Lar",
+       "qtd": 16,
+       "raridade": 1
+      },
+      {
+       "id": 15357,
+       "nome": "Alma: Lança do Dragão",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 12,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lança Nível 90 5",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Machado de haste longa / Lança",
    "tipo": "Armas"
   },
   "14851": {
@@ -8063,6 +8265,51 @@
    "nivel": null,
    "nivel_req": null,
    "nome": "Alma: Martelo do Caos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15352": {
+   "desc": "Imbuída com almas poderosas.",
+   "drops": [],
+   "id": 15352,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Lança dos Ossos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15354": {
+   "desc": "Imbuída com almas poderosas.",
+   "drops": [],
+   "id": 15354,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Lança Quebra-Armaduras",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15357": {
+   "desc": "Imbuída com almas poderosas.",
+   "drops": [],
+   "id": 15357,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Lança do Dragão",
    "npc_compra": 500,
    "npc_venda": 100,
    "raridade": 7,

@@ -520,6 +520,41 @@ function textoOrigem(d, comPct = true) {
   return [d.nome, comPct ? fmtPct(d.pct) : null].filter(Boolean).join(' · ');
 }
 
+/* "Alma: Lança do Dragão" não cai de mob nenhum e não tem receita própria:
+ * você a consegue levando a ☆Lança do Dragão ao NPC. É isso que amarra a
+ * cadeia das armas verdes do Crepúsculo — a lança de 99 pede a Alma da de 90,
+ * que pede a Alma da de 80, e assim até a de 60. Sem esta linha o material
+ * aparece como um beco sem saída: sem preço, sem drop, sem receita.
+ *
+ * O de-para sai do próprio nome ("Alma: X" -> "☆X"), então não há tabela para
+ * manter à mão — importar a arma já liga as duas pontas. */
+const CACHE_ALMA = new Map();
+
+function armaDaAlma(id) {
+  const chave = String(id);
+  if (CACHE_ALMA.has(chave)) return CACHE_ALMA.get(chave);
+  const nome = item(id)?.nome || '';
+  let saida = null;
+  if (/^Alma:/.test(nome)) {
+    const limpo = (s) => chaveBusca(s.replace(/^(Alma:|[☆★]+)/, '').trim());
+    const alvo = limpo(nome);
+    saida = Object.values(CATALOGO)
+      .find((i) => i.receitas?.length && limpo(i.nome) === alvo) || null;
+  }
+  CACHE_ALMA.set(chave, saida);
+  return saida;
+}
+
+/** "vem de: Lança do Dragão (nv 80)" — o degrau anterior da cadeia.
+ *  Sem artigo de propósito: "da" lança, "do" machado, e o nome do item não diz
+ *  o gênero — dois pontos resolvem sem errar. */
+function textoAlma(id) {
+  const a = armaDaAlma(id);
+  if (!a) return null;
+  return `vem de: ${a.nome.replace(/^[☆★]+/, '')}`
+    + (a.nivel_req ? ` (nv ${a.nivel_req})` : '');
+}
+
 /* O catálogo não muda em tempo de execução, e a grade de receitas remonta a
  * cada tecla digitada na busca — 1059 fichas de ingrediente por render. Montar
  * os mesmos textos toda vez é desperdício puro, então guarda. */
@@ -900,7 +935,10 @@ function cardReceita(x) {
     const preco = semPreco ? 'sem preço registrado'
       : `${fmtMedas(s.ref)} un · subtotal ${fmtMedas(s.ref * g.qtd)}`;
     const o = origemDe(g.id);
-    const dica = `${esc(nome)} — ${g.qtd}× · ${preco}${o ? '\n\n' + esc(o.longo) : ''}`;
+    const alma = textoAlma(g.id);
+    const dica = `${esc(nome)} — ${g.qtd}× · ${preco}`
+      + (alma ? `\n${esc(alma)}` : '')
+      + (o ? '\n\n' + esc(o.longo) : '');
     return `<span class="ing-chip${semPreco ? ' sem-preco' : ''}" title="${dica}">
       <img src="${iconeDe(g.id)}" alt="" loading="lazy" onerror="${ICONE_FALHA}">${g.qtd}${semPreco ? SINAL : ''}</span>`;
   }).join('');
@@ -1223,9 +1261,12 @@ function tabelaIngredientes(c, favChave = null) {
     // No lugar do "craftável": de onde o material sai. Um material craftável
     // que também dropa mostra os dois — são dois caminhos de verdade.
     const o = origemDe(l.ing.id);
+    const alma = textoAlma(l.ing.id);
     const sub = [
       l.temReceita ? 'craftável' : null,
       o ? `<span class="origem" title="${esc(o.longo)}">${esc(o.curto)}</span>` : null,
+      // a Alma é o degrau anterior da cadeia: sem isto, um beco sem saída
+      alma ? `<span class="origem alma">${esc(alma)}</span>` : null,
     ].filter(Boolean).join(' · ');
 
     return `

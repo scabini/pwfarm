@@ -621,6 +621,14 @@ tr.historico.oculto { display: none; }
   cursor: help;
 }
 
+/* a Alma aponta para o degrau anterior da cadeia, não para um chefe: não tem
+   tooltip, então nada de pontilhado nem cursor de ajuda */
+.item-sub .origem.alma {
+  border-bottom: none;
+  cursor: default;
+  color: var(--r7);
+}
+
 .secao {
   display: flex;
   align-items: center;
