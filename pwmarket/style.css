@@ -1209,3 +1209,29 @@ body.com-servidor .so-servidor { display: inline; }
   .campo-duplo { grid-template-columns: 1fr; }
   .grade-receitas { grid-template-columns: 1fr; }
 }
+
+/* ------------------------------------------------------------------ refino */
+
+.ref-resumo { margin-bottom: 22px; }
+
+.ref-resumo .drop-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ref-numero {
+  font-family: var(--mono);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--texto);
+}
+
+#painel-refino .secao { margin-top: 26px; }
+#painel-refino .secao:first-child { margin-top: 0; }
+
+#painel-refino .nota-drops { margin: -6px 0 12px; max-width: 74ch; }
+
+#painel-refino .drop-card.sorte .ref-numero { color: var(--ok); }
+#painel-refino .drop-card.azar .ref-numero { color: var(--vermelho-claro); }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>pwmarket — preços do The PW Clássico</title>
-<link rel="stylesheet" href="style.css?v=e8e3cebd84">
+<link rel="stylesheet" href="style.css?v=60bd87f37c">
 </head>
 <body>
 
@@ -15,6 +15,7 @@
       <button data-painel="precos" class="ativo">Preços</button>
       <button data-painel="receitas">Receitas</button>
       <button data-painel="drops">Drops</button>
+      <button data-painel="refino">Refino</button>
       <button data-painel="favoritos">Minha lista <span class="badge" id="badgeFav"></span></button>
     </nav>
   </div>
@@ -82,6 +83,18 @@
     </div>
     <div class="chips-tags" id="chipsDrops"></div>
     <div id="conteudoDrops"></div>
+  </section>
+
+  <!-- ------------------------------------------------------------- REFINO -->
+  <section class="painel" id="painel-refino">
+    <div class="barra">
+      <select id="refTipo">
+        <option value="armadura">Armadura &middot; 1 Pedra Imortal por tentativa</option>
+        <option value="arma">Arma &middot; 2 Pedras Imortais por tentativa</option>
+      </select>
+      <select id="refAlvo"></select>
+    </div>
+    <div id="conteudoRefino"></div>
   </section>
 
   <!-- --------------------------------------------------------- FAVORITOS -->
@@ -189,13 +202,13 @@
 
 <!-- catálogo gerado por importar.py. É <script> e não fetch() de propósito:
      assim a página funciona com duplo-clique (file://), sem servidor. -->
-<script src="data/catalog.js?v=addc871e21"></script>
+<script src="data/catalog.js?v=fa06de36fb"></script>
 <!-- preços publicados (opcional) -->
 <script src="data/precos.js" onerror="void 0"></script>
 <!-- sua lista pessoal. Fica fora do git, então no site publicado não existe
      e cada visitante começa com a lista vazia. -->
 <script src="data/lista.js" onerror="void 0"></script>
-<script src="app.js?v=b7fb0048bb"></script>
+<script src="app.js?v=2f4392a505"></script>
 
 </body>
 </html>

@@ -402,6 +402,63 @@ nome que vale é o do pwdatabase, que é o que aparece no jogo). Cobertura: 84 d
 Corrigiu algo? Edite a linha e rode `py importar.py --ajustes`. Nada disso está
 no código.
 
+## Refino
+
+Calculadora de quanto custa levar um equipamento até um dado nível de refino,
+usando os preços da aba Preços. Escolha **armadura** (1 Pedra Imortal por
+tentativa) ou **arma** (2) e o alvo.
+
+Os números da mecânica não vieram de wiki: saíram do próprio servidor — a
+tabela `refine_table` do binário `gs`, confirmada pela função
+`LUA_REFINE_TABLE()` do `script.lua`, e o array `REFINE_TICKET_ESSENCE` do
+`elements.data`. Em resumo:
+
+| pedra | efeito | se falhar |
+|---|---|---|
+| Pedra Imortal (11208) | material base, chance nua | zera |
+| Pedra do Céu (12750) | +15 pontos de chance | zera |
+| Pedra Maligna (12751) | +3,5 pontos | cai 1 nível |
+| Pedra do Céu e da Terra (12980) | chance própria: 100% no +0, 0,25% no +7 | não muda |
+
+A chance nua é 50% no +0 e 30% do +1 ao +7, caindo para 25/20/12/5% nos quatro
+últimos. Só cabe **uma** pedra auxiliar por tentativa.
+
+### Por que não é só "usar a pedra com mais chance"
+
+Refinar é um passeio aleatório: cada pedra muda tanto a chance de subir quanto
+para onde o item cai ao errar. Zerar no +2 é barato e zerar no +7 é ruína, então
+a escolha certa muda de nível para nível. A aba resolve isso como uma cadeia de
+Markov e escolhe, para cada degrau, a pedra de menor custo esperado — por
+iteração de política, conferida contra força bruta em `testes.mjs`.
+
+Pedra sem preço registrado fica de fora da conta em vez de virar chute.
+
+### Sorte, mediana e azar — não só a média
+
+O processo se regenera no +0, então a distribuição do custo é bem torta: a
+mediana fica ~30% abaixo da média, uma em cada dez tentativas de projeto sai
+por uma fração dela (**sorte**, p10) e uma em cada dez custa mais que o dobro
+(**azar**, p90). Só a média esconde os dois extremos, que é justamente o que se
+quer saber antes de começar.
+
+Os três saem de simulação. O que a torna barata: num nível onde o item **não
+cai** ao falhar, a espera é geométrica pura, então dá para sortear de uma vez
+quantas tentativas foram em vez de rodar o laço. Isso vale sempre no +0 (não
+existe cair abaixo de zero) e em todo nível de Pedra do Céu e da Terra — que
+são justamente os que acumulam mais tentativas. No alvo +12 a simulação cai de
+~11.000 passos por amostra para ~1.800.
+
+Quando nem assim cabe no orçamento de tempo, entra a forma fechada:
+`piso + (média − piso) · ln(1/(1−q))`, onde o piso é a corrida perfeita, um
+acerto por nível. Os dois regimes se encaixam — a simulação só fica cara quando
+não há nível de Céu e da Terra para colapsar, e é aí que o processo é puro
+reset, que é quando a cauda exponencial acerta (conferido contra simulação
+longa: erro abaixo de 6%). Nesse caso o painel marca os números como aproximados.
+
+O resultado fica em cache por (alvo, tipo, preços), porque `renderRefino()` roda
+dentro de `renderTudo()` — que é chamado a cada preço registrado, e aí nada
+mudou para a conta de refino.
+
 ## Minha lista
 
 As receitas que você adicionou, **duas por linha**, cada uma com a tabela de
@@ -483,7 +540,8 @@ preços, e vice-versa.
 ```
 index.html        estrutura da página
 style.css         tema preto + vermelho, cores de raridade do jogo
-app.js            preços, estatísticas e cálculo de crafting
+app.js            preços, estatísticas, crafting e cálculo de refino
+testes.mjs        teste de fumaça: `node testes.mjs`
 importar.py       CLI de importação
 pwdb.py           cliente e parser do pwdatabase
 servidor.py       servidor local que grava os preços em disco
@@ -499,6 +557,21 @@ data/
 
 As cores dos nomes de item seguem as classes `item_colorN` do próprio
 pwdatabase, então a raridade aparece igual ao jogo.
+
+## Testes
+
+```
+node testes.mjs             # roda tudo
+node testes.mjs --refino 8  # despeja o painel de refino em texto
+```
+
+Não há navegador: o `app.js` é carregado num DOM mínimo de mentira, com os
+dados reais de `data/`. É pouco, mas cobre o que mais dói aqui — uma exceção no
+meio de `renderTudo()` derruba **em silêncio** todos os painéis desenhados
+depois dela, e no navegador isso aparece só como uma aba em branco. O teste
+confere que os cinco painéis produziram HTML, que o rodapé foi escrito (ele é a
+última coisa que `renderTudo()` faz), que todo botão de nav tem `<section>`
+correspondente, e que nenhum render passa do teto de tempo.
 
 ## Limites conhecidos
 

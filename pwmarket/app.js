@@ -1744,6 +1744,7 @@ function renderTudo() {
   renderPrecos();
   renderReceitas();
   renderDrops();
+  renderRefino();
   renderFav();
   atualizarRodape();
 }
@@ -1757,6 +1758,20 @@ function ligar() {
   }
 
   $$('nav button').forEach((b) => b.addEventListener('click', () => irPara(b.dataset.painel)));
+
+  // aba Refino: o alvo vai de +1 a +12 (o servidor recusa acima disso)
+  const selAlvo = $('#refAlvo');
+  if (selAlvo && !selAlvo.options.length) {
+    for (let k = 1; k <= 12; k++) {
+      const o = document.createElement('option');
+      o.value = String(k);
+      o.textContent = `Alvo: +${k}`;
+      if (k === 8) o.selected = true;
+      selAlvo.appendChild(o);
+    }
+  }
+  $('#refTipo')?.addEventListener('change', renderRefino);
+  selAlvo?.addEventListener('change', renderRefino);
 
   $('#filtroPrecos').addEventListener('input', renderPrecos);
   $('#ordemPrecos').addEventListener('change', renderPrecos);
@@ -1911,6 +1926,458 @@ function ligar() {
       }
     }
   });
+}
+
+/* =========================================================== REFINO
+ *
+ * Calculadora de custo de refino. Os números da mecânica saíram de engenharia
+ * reversa do servidor (símbolo `refine_table` do binário gs, confirmado pela
+ * função LUA_REFINE_TABLE() do script.lua, e o array REFINE_TICKET_ESSENCE do
+ * elements.data). Os preços vêm da aba Preços: registrar uma observação nova
+ * de qualquer pedra recalcula tudo aqui.
+ *
+ * O modelo é uma cadeia de Markov: refinar é um passeio no nível de refino, e
+ * cada pedra muda tanto a chance de subir quanto para onde você cai ao errar.
+ * Por isso "a pedra com mais chance" não é a resposta — no nível alto vale
+ * trocar chance por não perder tudo.
+ */
+
+const REF_ITENS = { imortal: 11208, ceu: 12750, maligna: 12751, cet: 12980 };
+const REF_PEROLAS = { 1: 15038, 2: 15039, 3: 15040, 4: 15041, 5: 15042, 6: 15043,
+                      7: 15044, 8: 15045, 9: 15046, 10: 15047, 11: 15048, 12: 15049 };
+
+// chance de sucesso indo de +L para +L+1, usando só a Pedra Imortal
+const REF_BASE = [0.50, 0.30, 0.30, 0.30, 0.30, 0.30, 0.30, 0.30, 0.25, 0.20, 0.12, 0.05];
+// tabela própria da Pedra do Céu e da Terra (ela ignora a chance base)
+const REF_CET = [1.0, 0.25, 0.10, 0.04, 0.0166667, 0.0076923,
+                 0.0046512, 0.0024691, 0.0013333, 0.00073099, 0.0004, 0.00021];
+
+const REF_PEDRAS = {
+  I: { nome: 'só Pedra Imortal', chave: null,      falha: 'zera' },
+  C: { nome: 'Pedra do Céu',     chave: 'ceu',     falha: 'zera' },
+  M: { nome: 'Pedra Maligna',    chave: 'maligna', falha: 'cai 1 nível' },
+  T: { nome: 'Céu e da Terra',   chave: 'cet',     falha: 'não muda' },
+};
+
+/* Quantas Pedras Imortais cada tentativa consome. Vem do item no servidor
+ * (`itemdataman::get_item_refine_addon`); na prática é 1 para armadura e 2
+ * para arma. */
+const REF_IMORTAIS = { armadura: 1, arma: 2 };
+
+/** chance de sucesso e para onde o item cai se falhar */
+function refAcao(a, L) {
+  if (a === 'I') return { p: REF_BASE[L], d: 0 };
+  if (a === 'C') return { p: Math.min(REF_BASE[L] + 0.15, 1), d: 0 };
+  if (a === 'M') return { p: Math.min(REF_BASE[L] + 0.035, 1), d: Math.max(L - 1, 0) };
+  return { p: REF_CET[L], d: L };
+}
+
+const refPreco = (chaveItem) => {
+  const s = stats(REF_ITENS[chaveItem]);
+  return s ? s.ref : null;
+};
+
+/** Eliminação de Gauss em A·x = b, com A vindo como linhas [..coef, termo]. */
+function refResolver(A) {
+  const n = A.length;
+  for (let c = 0; c < n; c++) {
+    let piv = c;
+    for (let r = c; r < n; r++) if (Math.abs(A[r][c]) > Math.abs(A[piv][c])) piv = r;
+    if (!A[piv][c]) return null;
+    [A[c], A[piv]] = [A[piv], A[c]];
+    for (let r = 0; r < n; r++) {
+      if (r !== c && A[r][c]) {
+        const f = A[r][c] / A[c][c];
+        for (let k = c; k <= n; k++) A[r][k] -= f * A[c][k];
+      }
+    }
+  }
+  return A.map((r, i) => r[n] / A[i][i]);
+}
+
+/** Custo esperado de cada nível até o alvo, para uma política fixa.
+ *
+ * V[L] = custo + p·V[L+1] + (1-p)·V[destino], com V[alvo] = 0. Como o destino
+ * pode ser 0 (a Pedra do Céu zera o item), o sistema é acoplado e não dá para
+ * resolver de trás para frente — daí a eliminação. */
+function refAvaliar(pol, alvo, custoDe) {
+  const A = Array.from({ length: alvo }, (_, L) => {
+    const linha = new Array(alvo + 1).fill(0);
+    const { p, d } = refAcao(pol[L], L);
+    linha[L] += 1;
+    if (L + 1 < alvo) linha[L + 1] -= p;
+    if (d < alvo) linha[d] -= (1 - p);
+    linha[alvo] = custoDe(pol[L]);
+    return linha;
+  });
+  return refResolver(A);
+}
+
+/** Política de menor custo esperado, por iteração de política.
+ *
+ * Avalia a política atual de forma exata e depois troca, em cada nível, pela
+ * pedra que sai mais barata dado esse valor. Converge em meia dúzia de rodadas
+ * — a iteração de valor precisava de milhares, e no alvo +12 isso aparecia
+ * como segundos de tela travada. */
+function refPoliticaOtima(alvo, custoDe, permitidas) {
+  const viaveis = permitidas.filter((a) => isFinite(custoDe(a)));
+  if (!viaveis.length) return null;
+
+  // política inicial: em cada nível, a pedra com maior chance de subir
+  let pol = Array.from({ length: alvo }, (_, L) =>
+    viaveis.reduce((m, a) => (refAcao(a, L).p > refAcao(m, L).p ? a : m), viaveis[0]));
+  if (pol.some((a, L) => !(refAcao(a, L).p > 0))) return null;
+
+  let V = refAvaliar(pol, alvo, custoDe);
+  for (let it = 0; it < 60 && V; it++) {
+    const nova = pol.slice();
+    for (let L = 0; L < alvo; L++) {
+      let melhor = Infinity, melhorA = pol[L];
+      for (const a of viaveis) {
+        const { p, d } = refAcao(a, L);
+        if (!(p > 0)) continue;
+        const prox = L + 1 < alvo ? V[L + 1] : 0;
+        const v = (d === L) ? custoDe(a) / p + prox
+          : custoDe(a) + p * prox + (1 - p) * V[d];
+        if (v < melhor - 1e-9) { melhor = v; melhorA = a; }
+      }
+      nova[L] = melhorA;
+    }
+    if (nova.every((a, i) => a === pol[i])) break;
+    pol = nova;
+    V = refAvaliar(pol, alvo, custoDe);
+  }
+  return V ? { V, pol } : null;
+}
+
+/** Tentativas esperadas gastas em cada nível, saindo do +0. */
+function refVisitas(pol, alvo) {
+  const n = alvo;
+  const P = Array.from({ length: n }, () => new Array(n).fill(0));
+  for (let L = 0; L < n; L++) {
+    const { p, d } = refAcao(pol[L], L);
+    if (L + 1 < alvo) P[L][L + 1] += p;
+    if (d < alvo) P[L][d] += (1 - p);
+  }
+  // N = e0 + N·P  ->  (I - P)ᵀ Nᵀ = e0ᵀ
+  return refResolver(Array.from({ length: n }, (_, i) => {
+    const r = new Array(n + 1).fill(0);
+    for (let j = 0; j < n; j++) r[j] = (i === j ? 1 : 0) - P[j][i];
+    r[n] = (i === 0 ? 1 : 0);
+    return r;
+  }));
+}
+
+/* A média engana num processo com reset: metade das tentativas de projeto
+ * custa bem menos que ela, e uma em dez custa o dobro. Daí simular.
+ *
+ * O truque que deixa isso barato: num nível onde o item NÃO cai ao falhar, a
+ * espera é geométrica pura, então dá para sortear de uma vez quantas
+ * tentativas foram, em vez de rodar o laço. Isso vale sempre no +0 (não existe
+ * cair abaixo de zero) e em todo nível de Pedra do Céu e da Terra — que são
+ * justamente os que acumulam mais tentativas. No alvo +12 a simulação cai de
+ * ~11.000 passos por amostra para ~1.800, sem perder exatidão. */
+function refSimular(pol, alvo, custoDe, n) {
+  let s = 0x9e3779b9;
+  const rnd = () => {
+    s = (s + 0x6d2b79f5) | 0;
+    let t = Math.imul(s ^ (s >>> 15), 1 | s);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const saidas = new Array(n);
+  for (let i = 0; i < n; i++) {
+    let L = 0, gasto = 0;
+    while (L < alvo) {
+      const a = pol[L], { p, d } = refAcao(a, L), c = custoDe(a);
+      if (d === L) {
+        // fica no mesmo nível até acertar: sorteia a geométrica direto
+        gasto += c * (p >= 1 ? 1 : Math.ceil(Math.log(Math.max(rnd(), 1e-12)) / Math.log(1 - p)));
+        L++;
+      } else {
+        gasto += c;
+        L = rnd() <= p ? L + 1 : d;
+      }
+    }
+    saidas[i] = gasto;
+  }
+  saidas.sort((x, y) => x - y);
+  return saidas;
+}
+
+/* Teto de passos por render, para a aba não travar a página. */
+const REF_ORCAMENTO = 600000;
+const REF_MIN_AMOSTRAS = 150;
+
+/** Sorte (p10), mediana e azar (p90) do custo total.
+ *
+ * Uma corrida de sorte não é "a média menos um tanto": é uma em que os resets
+ * quase não aconteceram, e isso só aparece sorteando. Onde a simulação cabe no
+ * orçamento, ela manda.
+ *
+ * Quando não cabe, vale a forma fechada. O processo se regenera no +0, então a
+ * cauda é exponencial; somando o piso (a corrida perfeita, um acerto por
+ * nível) os quantis viram piso + (média-piso)·ln(1/(1-q)). Os dois regimes se
+ * encaixam: a simulação fica cara justamente quando não há nível de Pedra do
+ * Céu e da Terra para colapsar, e é aí que o processo é puro reset — que é
+ * quando a fórmula acerta (conferido contra simulação longa: erro abaixo de 6%
+ * do +5 ao +9). */
+/* renderRefino() roda dentro de renderTudo(), que é chamado a cada preço
+ * registrado — e a simulação é a parte cara da aba. Como ela só depende do
+ * alvo, do tipo e dos preços, guardar o último resultado faz o custo aparecer
+ * uma vez só, quando algo realmente muda. */
+const refCache = { chave: null, valor: null };
+
+function refDistribuicao(pol, alvo, custoDe, chave) {
+  if (chave && refCache.chave === chave) return refCache.valor;
+  const valor = refCalcularDistribuicao(pol, alvo, custoDe);
+  if (chave) { refCache.chave = chave; refCache.valor = valor; }
+  return valor;
+}
+
+function refCalcularDistribuicao(pol, alvo, custoDe) {
+  const N = refVisitas(pol, alvo);
+  // passos por amostra = quantas VEZES a simulação chega em cada nível. Onde o
+  // item não cai, o nível inteiro sai num sorteio só, então são as chegadas
+  // (tentativas × chance), não as tentativas.
+  const passos = N.reduce((s, v, L) => {
+    const { p, d } = refAcao(pol[L], L);
+    return s + (d === L ? v * p : v);
+  }, 0);
+  const n = Math.min(4000, Math.floor(REF_ORCAMENTO / Math.max(passos, 1)));
+
+  if (n >= REF_MIN_AMOSTRAS) {
+    const s = refSimular(pol, alvo, custoDe, n);
+    const q = (x) => s[Math.min(s.length - 1, Math.floor(x * s.length))];
+    return { p10: q(0.10), mediana: q(0.5), p90: q(0.9), amostras: n, exato: true };
+  }
+
+  const media = refAvaliar(pol, alvo, custoDe)[0];
+  const piso = pol.reduce((s, a) => s + custoDe(a), 0);
+  const F = (q) => piso + (media - piso) * Math.log(1 / (1 - q));
+  return { p10: F(0.10), mediana: F(0.5), p90: F(0.9), amostras: 0, exato: false };
+}
+
+/* Peso de cada pérola em unidades de pérola de 1 estrela, pela árvore de
+ * combinação do Alquimista (2★=4×1★, 3★=2×2★+2×1★, 5★=2×4★+1×3★,
+ * 6★=2×5★+1×3★, 7★=6★+5★+4★, 8★=7★+6★+5★). O 4★ é o único que o pwdatabase
+ * não lista quantidade; aqui ele segue o formato dos vizinhos (2×3★+1×2★). */
+const REF_PESO_PEROLA = { 1: 1, 2: 4, 3: 10, 4: 24, 5: 58, 6: 126, 7: 208, 8: 392 };
+
+function refLinhaPreco(chave, rotulo, usada) {
+  const id = REF_ITENS[chave];
+  const s = stats(id);
+  const it = item(id);
+  return `<tr class="${s ? '' : 'pendente'}">
+    <td>${celulaItem(id, it)}</td>
+    <td class="num">${s
+      ? `<span class="medas ref" title="${fmtCheio(s.ref)}">${fmtMedas(s.ref)}</span>`
+      : '<span class="preco sem"><span class="falta-preco">!</span> sem preço</span>'}</td>
+    <td class="meio"><span class="contagem">${s ? s.n : 0}</span></td>
+    <td class="num"><span class="faixa">${s ? fmtData(s.dataUltima) : '—'}</span></td>
+    <td><span class="faixa">${esc(rotulo)}</span></td>
+    <td class="meio">${usada
+      ? '<span class="pastilha barato">na conta</span>'
+      : '<span class="pastilha">fora</span>'}</td>
+  </tr>`;
+}
+
+function renderRefino() {
+  const alvoEl = $('#refAlvo');
+  const alvo = Number(alvoEl?.value) || 8;
+  const tipo = $('#refTipo')?.value || 'armadura';
+  const nImortal = REF_IMORTAIS[tipo];
+  const conteudo = $('#conteudoRefino');
+
+  const pImortal = refPreco('imortal');
+  const precoPedra = { I: 0, C: refPreco('ceu'), M: refPreco('maligna'), T: refPreco('cet') };
+
+  // pedras sem preço registrado não entram na conta — melhor deixar de fora do
+  // que fingir um número
+  const permitidas = ['I', 'C', 'M', 'T'].filter((a) => precoPedra[a] != null);
+
+  const blocoPrecos = `
+    <div class="secao">Preços usados <span class="qtd">da aba Preços</span></div>
+    <p class="nota-drops">Estes são os preços de referência (mediana das suas observações).
+      Registrar uma observação nova de qualquer uma delas recalcula esta aba.</p>
+    <div class="tabela-wrap"><table>
+      <thead><tr><th>Item</th><th class="num">Preço ref.</th><th class="meio">Obs.</th>
+        <th class="num">Última</th><th>Papel</th><th class="meio"></th></tr></thead>
+      <tbody>
+        ${refLinhaPreco('imortal', `material base · ${nImortal}× por tentativa`, pImortal != null)}
+        ${refLinhaPreco('ceu', '+15 pontos de chance · zera se falhar', permitidas.includes('C'))}
+        ${refLinhaPreco('maligna', '+3,5 pontos · cai só 1 nível', permitidas.includes('M'))}
+        ${refLinhaPreco('cet', 'chance própria e baixa · não perde nada', permitidas.includes('T'))}
+      </tbody>
+    </table></div>`;
+
+  if (pImortal == null) {
+    conteudo.innerHTML = blocoPrecos + `<div class="vazio">
+      <strong>Falta o preço da Pedra Imortal</strong>
+      Ela é consumida em toda tentativa, então sem ela não dá para estimar nada.
+      Registre uma observação na aba Preços.</div>`;
+    return;
+  }
+
+  const custoDe = (a) => nImortal * pImortal + (precoPedra[a] || 0);
+  // Cada alvo intermediário tem a sua própria política ótima — parar no +5 não
+  // é o mesmo que passar pelo +5 a caminho do +8, porque o risco de zerar muda.
+  // Daí um solve por alvo; a coluna "acumulado" e o valor de cada pérola saem
+  // todos daqui.
+  const acum = [];
+  for (let k = 1; k <= alvo; k++) {
+    const o = refPoliticaOtima(k, custoDe, permitidas);
+    acum.push(o ? o.V[0] : NaN);
+  }
+  const marginal = (k) => acum[k - 1] - (k >= 2 ? acum[k - 2] : 0);
+
+  const otima = refPoliticaOtima(alvo, custoDe, permitidas);
+  const { V, pol } = otima;
+  const N = refVisitas(pol, alvo);
+  const tentativas = N.reduce((a, b) => a + b, 0);
+  const dist = refDistribuicao(pol, alvo, custoDe, [
+    alvo, tipo, pImortal, precoPedra.C, precoPedra.M, precoPedra.T,
+  ].join('|'));
+
+  const resumo = `
+    <div class="secao">Custo estimado até o +${alvo} <span class="qtd">${tipo}</span></div>
+    <div class="grade-drops ref-resumo">
+      <div class="drop-card"><div class="item-sub">custo médio</div>
+        <div class="ref-numero">${fmtMedas(V[0])}</div>
+        <div class="faixa">${fmtCheio(V[0])}</div></div>
+      <div class="drop-card sorte"><div class="item-sub">sorte (p10)${dist.exato ? '' : ' (aprox.)'}</div>
+        <div class="ref-numero">${fmtMedas(dist.p10)}</div>
+        <div class="faixa">1 em 10 sai por menos</div></div>
+      <div class="drop-card"><div class="item-sub">mediana</div>
+        <div class="ref-numero">${fmtMedas(dist.mediana)}</div>
+        <div class="faixa">metade sai por menos</div></div>
+      <div class="drop-card azar"><div class="item-sub">azar (p90)</div>
+        <div class="ref-numero">${fmtMedas(dist.p90)}</div>
+        <div class="faixa">1 em 10 passa disso</div></div>
+      <div class="drop-card"><div class="item-sub">tentativas</div>
+        <div class="ref-numero">${Math.round(tentativas).toLocaleString('pt-BR')}</div>
+        <div class="faixa">${Math.round(nImortal * tentativas).toLocaleString('pt-BR')} Pedras Imortais</div></div>
+    </div>
+    <p class="nota-drops">${dist.exato
+      ? `Sorte e azar saem de ${dist.amostras.toLocaleString('pt-BR')} simulações da política
+         abaixo: numa corrida de sorte os resets quase não acontecem.`
+      : `Neste alvo simular travaria a página, então sorte, mediana e azar vêm da
+         forma fechada &mdash; a cauda do custo é exponencial porque tudo recomeça
+         no +0. Erra poucos por cento.`}
+      A distribuição é bem torta: a mediana fica bem abaixo da média, e a cauda de
+      cima é longa.</p>`;
+
+  const passos = pol.map((a, L) => {
+    const { p } = refAcao(a, L);
+    return `<tr>
+      <td><strong>+${L} &rarr; +${L + 1}</strong></td>
+      <td>${esc(REF_PEDRAS[a].nome)}</td>
+      <td class="num"><span class="medas">${(p * 100).toFixed(p < 0.1 ? 2 : 1)}%</span></td>
+      <td><span class="faixa">${esc(REF_PEDRAS[a].falha)}</span></td>
+      <td class="num"><span class="faixa">${N[L].toFixed(N[L] < 10 ? 1 : 0)}</span></td>
+      <td class="num"><span class="medas">${fmtMedas(acum[L])}</span></td>
+    </tr>`;
+  }).join('');
+
+  const consumo = ['C', 'M', 'T']
+    .map((a) => [a, N.reduce((s, v, L) => s + (pol[L] === a ? v : 0), 0)])
+    .filter(([, q]) => q > 0.05)
+    .map(([a, q]) => `${REF_PEDRAS[a].nome} &times;${Math.round(q).toLocaleString('pt-BR')}`)
+    .join(' &middot; ');
+
+  const blocoPassos = `
+    <div class="secao">Passo a passo <span class="qtd">a pedra certa em cada degrau</span></div>
+    <div class="tabela-wrap"><table>
+      <thead><tr><th>Degrau</th><th>Pedra</th><th class="num">Chance</th>
+        <th>Se falhar</th><th class="num">Tentativas</th><th class="num">Acumulado</th></tr></thead>
+      <tbody>${passos}</tbody>
+    </table></div>
+    <p class="nota-drops">Consumo esperado: Pedra Imortal &times;${
+      Math.round(nImortal * N.reduce((a, b) => a + b, 0)).toLocaleString('pt-BR')
+    }${consumo ? ' &middot; ' + consumo : ''}.</p>`;
+
+  // comparação: cada estratégia pura contra a ótima
+  const puras = permitidas.map((a) => {
+    const o = refPoliticaOtima(alvo, custoDe, [a]);
+    return { a, custo: o ? o.V[0] : Infinity };
+  }).sort((x, y) => x.custo - y.custo);
+
+  const blocoComp = `
+    <div class="secao">Por que essa mistura <span class="qtd">usar só uma pedra o tempo todo custa mais</span></div>
+    <div class="tabela-wrap"><table>
+      <thead><tr><th>Estratégia</th><th class="num">Custo até o +${alvo}</th><th class="num">Diferença</th></tr></thead>
+      <tbody>
+        <tr><td><strong>a mistura acima</strong></td>
+          <td class="num"><span class="medas ref">${fmtMedas(V[0])}</span></td>
+          <td class="num"><span class="pastilha barato">melhor</span></td></tr>
+        ${puras.map((x) => `<tr>
+          <td>sempre ${esc(REF_PEDRAS[x.a].nome)}</td>
+          <td class="num"><span class="medas">${isFinite(x.custo) ? fmtMedas(x.custo) : '—'}</span></td>
+          <td class="num"><span class="pastilha caro">+${isFinite(x.custo)
+            ? Math.round((x.custo / V[0] - 1) * 100) : '∞'}%</span></td></tr>`).join('')}
+      </tbody>
+    </table></div>`;
+
+  conteudo.innerHTML = blocoPrecos + resumo + blocoPassos + blocoComp + refBlocoPerolas(alvo, marginal);
+}
+
+/** Pérolas: cada uma garante 100% num degrau. Vale comprar se custar menos do
+ *  que aquele degrau custaria na mão — que é exatamente o custo marginal. */
+function refBlocoPerolas(alvo, marginal) {
+  // preço por unidade de peso, para estimar os tiers que ainda não têm preço
+  const amostras = [];
+  for (const k of Object.keys(REF_PESO_PEROLA)) {
+    const s = stats(REF_PEROLAS[k]);
+    if (s) amostras.push(s.ref / REF_PESO_PEROLA[k]);
+  }
+  amostras.sort((a, b) => a - b);
+  const porPeso = amostras.length
+    ? amostras[Math.floor((amostras.length - 1) / 2)] : null;
+
+  const linhas = [];
+  for (let k = 1; k <= alvo; k++) {
+    const id = REF_PEROLAS[k];
+    const it = item(id);
+    if (!it) continue;
+    const vale = marginal(k);
+    const s = stats(id);
+    const peso = REF_PESO_PEROLA[k];
+    const estimado = (!s && porPeso && peso) ? porPeso * peso : null;
+    const preco = s ? s.ref : estimado;
+
+    let veredito = '<span class="faixa">sem preço</span>';
+    if (preco != null) {
+      const razao = preco / vale;
+      veredito = razao <= 1
+        ? `<span class="pastilha barato">vale a pena</span>`
+        : `<span class="pastilha caro">${razao.toFixed(1)}× cara</span>`;
+    }
+    linhas.push(`<tr class="${s ? '' : 'pendente'}">
+      <td>${celulaItem(id, it)}</td>
+      <td><span class="faixa">+${k - 1} &rarr; +${k}</span></td>
+      <td class="num"><span class="medas ref" title="o que esse degrau custa na mão">${fmtMedas(vale)}</span></td>
+      <td class="num">${s
+        ? `<span class="medas">${fmtMedas(s.ref)}</span>`
+        : estimado != null
+          ? `<span class="faixa" title="estimado pela receita de combinação, não observado">~${fmtMedas(estimado)}</span>`
+          : '<span class="preco sem"><span class="falta-preco">!</span> —</span>'}</td>
+      <td class="meio">${veredito}</td>
+    </tr>`);
+  }
+  if (!linhas.length) return '';
+
+  return `
+    <div class="secao">Pérolas <span class="qtd">100% garantido num degrau</span></div>
+    <p class="nota-drops">Uma pérola vale exatamente o que aquele degrau custaria na mão.
+      Os degraus de cima valem muito mais que os de baixo &mdash; o custo praticamente
+      dobra a cada nível &mdash; então pérola de estrela baixa quase nunca compensa.
+      Onde não há observação, o preço é estimado pela receita de combinação do
+      Alquimista (2&times;1&#9733; &rarr; ... &rarr; 8&#9733; = 7&#9733;+6&#9733;+5&#9733;).</p>
+    <div class="tabela-wrap"><table>
+      <thead><tr><th>Pérola</th><th>Degrau</th><th class="num">Vale até</th>
+        <th class="num">Preço</th><th class="meio">Veredito</th></tr></thead>
+      <tbody>${linhas.join('')}</tbody>
+    </table></div>`;
 }
 
 /* ---------------------------------------------------------------- início */
