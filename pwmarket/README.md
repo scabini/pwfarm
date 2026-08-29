@@ -168,26 +168,33 @@ Arma verde do Crepúsculo não se faz do zero: a de nível 99 pede a **Alma** da
 90, que pede a Alma da de 80, e assim até a de 60, que é a base. A Alma não cai
 de mob nem tem receita própria — você a consegue levando a arma anterior ao NPC.
 
-A cadeia da *Lança Longa do Rei*, por exemplo:
+As duas cadeias que já estão no catálogo:
 
 ```
-nv60  ☆Lança dos Ossos          (base)
-nv70  ☆Lança Quebra-Armaduras   <- Alma: Lança dos Ossos
-nv80  ☆Lança do Dragão          <- Alma: Lança Quebra-Armaduras
-nv90  ☆Lança Esmaga-Meteoros    <- Alma: Lança do Dragão
-nv99  ☆Lança Longa do Rei       <- Alma: Lança Esmaga-Meteoros
+lanças                                    lâminas
+nv60  ☆Lança dos Ossos          (base)    nv60  ☆Faca de Ossos               (base)
+nv70  ☆Lança Quebra-Armaduras   <- Alma   nv70  ☆Lâmina do General Fantasma  <- Alma
+nv80  ☆Lança do Dragão          <- Alma   nv80  ☆Lâmina do Dragão            <- Alma
+nv90  ☆Lança Esmaga-Meteoros    <- Alma   nv90  ☆Dragão: Lótus Vermelha      <- Alma
+nv99  ☆Lança Longa do Rei       <- Alma
 ```
 
 Para trazer uma cadeia dessas, importe cada degrau com `--id`; as Almas entram
 como ingrediente sozinhas. Na tabela de ingredientes a Alma mostra **de onde
-vem** (`vem de: Lança do Dragão (nv 80)`) em vez de ficar um beco sem saída sem
+vem** (`vem de: Lâmina do Dragão (nv 80)`) em vez de ficar um beco sem saída sem
 preço, sem drop e sem receita. O de-para sai do nome (`Alma: X` → `☆X`), então
 não há nada para manter à mão: importar a arma já liga as duas pontas.
 
+O nome nem sempre bate letra por letra, porque o jogo abrevia quando não cabe:
+a Alma se chama *Lâmina do Gen. Fantasma* e a arma, *Lâmina do General
+Fantasma*. A comparação é palavra a palavra, e palavra terminada em ponto vale
+como prefixo da outra. É apertado o bastante para não juntar itens diferentes —
+o teste confere que nenhuma das 108 Almas do catálogo casa com duas armas.
+
 Duas consequências: o custo mostrado para o degrau de cima é sempre **parcial**,
-porque a Alma não tem preço de mercado — o custo de verdade é a soma dos cinco
-degraus, e para isso vale pôr todos em *Minha lista*. E os degraus de 60 a 80
-não aparecem nos chips de nível, que só vão de 90 a 99.
+porque a Alma não tem preço de mercado — o custo de verdade é a soma da cadeia
+inteira, e para isso vale pôr todos os degraus em *Minha lista*. E os degraus de
+60 a 80 não aparecem nos chips de nível, que só vão de 90 a 99.
 
 ### Sobre o scraping
 

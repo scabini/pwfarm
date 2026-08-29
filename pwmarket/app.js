@@ -530,16 +530,36 @@ function textoOrigem(d, comPct = true) {
  * manter à mão — importar a arma já liga as duas pontas. */
 const CACHE_ALMA = new Map();
 
+/** Tira "Alma:" e as estrelas, e normaliza para comparar. */
+const semTitulo = (s) => chaveBusca(s.replace(/^(Alma:|[☆★]+)/, '').trim());
+
+/* O jogo abrevia quando o nome não cabe: a Alma se chama "Lâmina do Gen.
+ * Fantasma" e a arma, "Lâmina do General Fantasma". Comparar as strings inteiras
+ * perderia esse elo. Então compara palavra a palavra, e palavra terminada em
+ * ponto vale como prefixo da outra — mesmo número de palavras, cada uma casando,
+ * o que é apertado o bastante para não juntar itens diferentes. */
+function mesmoNome(a, b) {
+  if (a === b) return true;
+  const pa = a.split(' ');
+  const pb = b.split(' ');
+  return pa.length === pb.length && pa.every((t, n) => {
+    const u = pb[n];
+    if (t === u) return true;
+    if (t.endsWith('.')) return u.startsWith(t.slice(0, -1));
+    if (u.endsWith('.')) return t.startsWith(u.slice(0, -1));
+    return false;
+  });
+}
+
 function armaDaAlma(id) {
   const chave = String(id);
   if (CACHE_ALMA.has(chave)) return CACHE_ALMA.get(chave);
   const nome = item(id)?.nome || '';
   let saida = null;
   if (/^Alma:/.test(nome)) {
-    const limpo = (s) => chaveBusca(s.replace(/^(Alma:|[☆★]+)/, '').trim());
-    const alvo = limpo(nome);
+    const alvo = semTitulo(nome);
     saida = Object.values(CATALOGO)
-      .find((i) => i.receitas?.length && limpo(i.nome) === alvo) || null;
+      .find((i) => i.receitas?.length && mesmoNome(semTitulo(i.nome), alvo)) || null;
   }
   CACHE_ALMA.set(chave, saida);
   return saida;

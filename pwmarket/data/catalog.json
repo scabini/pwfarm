@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-27T18:57:09+00:00",
+ "atualizado": "2026-08-29T19:13:32+00:00",
  "guia": {
   "15227": [
    [
@@ -913,6 +913,208 @@
    "stack": 9999,
    "subtipo": null,
    "tipo": null
+  },
+  "14797": {
+   "desc": null,
+   "drops": [],
+   "id": 14797,
+   "nivel": 8,
+   "nivel_req": 60,
+   "nome": "☆Faca de Ossos",
+   "npc_compra": 64880,
+   "npc_venda": 32440,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1778,
+     "ingredientes": [
+      {
+       "id": 15227,
+       "nome": "Lâmina de Qin Tian",
+       "qtd": 5,
+       "raridade": 7
+      },
+      {
+       "id": 15229,
+       "nome": "Fragmento de Esqueleto",
+       "qtd": 10,
+       "raridade": 1
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lâmina Nível 60",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Lâmina",
+   "tipo": "Armas"
+  },
+  "14798": {
+   "desc": null,
+   "drops": [],
+   "id": 14798,
+   "nivel": 9,
+   "nivel_req": 70,
+   "nome": "☆Lâmina do General Fantasma",
+   "npc_compra": 79600,
+   "npc_venda": 39800,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1784,
+     "ingredientes": [
+      {
+       "id": 15230,
+       "nome": "Fragmento da Armadura Qin Tian",
+       "qtd": 5,
+       "raridade": 7
+      },
+      {
+       "id": 15238,
+       "nome": "Caveira das Charadas",
+       "qtd": 10,
+       "raridade": 1
+      },
+      {
+       "id": 15321,
+       "nome": "Alma: Faca de Ossos",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 2,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lâmina Nível 70 1",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Lâmina",
+   "tipo": "Armas"
+  },
+  "14800": {
+   "desc": null,
+   "drops": [],
+   "id": 14800,
+   "nivel": 10,
+   "nivel_req": 80,
+   "nome": "☆Lâmina do Dragão",
+   "npc_compra": 100000,
+   "npc_venda": 50000,
+   "raridade": 7,
+   "receitas": [
+    {
+     "id": 1808,
+     "ingredientes": [
+      {
+       "id": 15248,
+       "nome": "Garra do Devorador",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15241,
+       "nome": "Garras do Leão Insano",
+       "qtd": 8,
+       "raridade": 7
+      },
+      {
+       "id": 15256,
+       "nome": "Antiga Espada Ornamental",
+       "qtd": 16,
+       "raridade": 1
+      },
+      {
+       "id": 15322,
+       "nome": "Alma: Lâmina do Gen. Fantasma",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 9,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lâmina Nível 80 1",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Lâmina",
+   "tipo": "Armas"
+  },
+  "14804": {
+   "desc": null,
+   "drops": [],
+   "id": 14804,
+   "nivel": 11,
+   "nivel_req": 90,
+   "nome": "☆Dragão: Lótus Vermelha",
+   "npc_compra": 118240,
+   "npc_venda": 59120,
+   "raridade": 2,
+   "receitas": [
+    {
+     "id": 1828,
+     "ingredientes": [
+      {
+       "id": 15274,
+       "nome": "Diadema da Sagrada Mãe",
+       "qtd": 2,
+       "raridade": 2
+      },
+      {
+       "id": 15271,
+       "nome": "Chifre de Demônio Ancestral",
+       "qtd": 10,
+       "raridade": 7
+      },
+      {
+       "id": 15279,
+       "nome": "Pedra do Lar",
+       "qtd": 20,
+       "raridade": 1
+      },
+      {
+       "id": 15324,
+       "nome": "Alma: Lâmina do Dragão",
+       "qtd": 1,
+       "raridade": 7
+      },
+      {
+       "id": 15461,
+       "nome": "Essência do Crepúsculo",
+       "qtd": 24,
+       "raridade": 0
+      }
+     ],
+     "local": "Palácio do Crepúsculo: 351 597 (13)",
+     "nome": "Novo FB Lâmina Nível 90 1",
+     "npc": "Armas do Crepúsculo",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1,
+   "subtipo": "Espada / Lâmina",
+   "tipo": "Armas"
   },
   "14809": {
    "desc": null,
@@ -8798,6 +9000,51 @@
    "raridade": 4,
    "receitas": [],
    "stack": 9999,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15321": {
+   "desc": "Imbuída com almas poderosas.",
+   "drops": [],
+   "id": 15321,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Faca de Ossos",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15322": {
+   "desc": "Imbuída com almas poderosas.",
+   "drops": [],
+   "id": 15322,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Lâmina do Gen. Fantasma",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
+   "subtipo": null,
+   "tipo": "Itens Básicos"
+  },
+  "15324": {
+   "desc": "Imbuída com almas poderosas.",
+   "drops": [],
+   "id": 15324,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Alma: Lâmina do Dragão",
+   "npc_compra": 500,
+   "npc_venda": 100,
+   "raridade": 7,
+   "receitas": [],
+   "stack": 1,
    "subtipo": null,
    "tipo": "Itens Básicos"
   },

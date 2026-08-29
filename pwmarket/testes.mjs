@@ -276,6 +276,94 @@ if (typeof refPoliticaOtima === 'function') {
   console.log('\npolítica ótima vs força bruta: ' + checados + ' combinações conferidas');
 }
 
+// 8. as cadeias de arma verde: a Alma liga cada degrau ao anterior
+//    Arma do Crepúsculo não se faz do zero — a de 90 pede a Alma da de 80, e
+//    assim por diante. A Alma não cai de mob e não tem receita própria, então
+//    sem esse elo ela é um beco sem saída na tabela de ingredientes.
+const { armaDaAlma, textoAlma, mesmoNome } = ctx;
+const CAT = ctx.PW_CATALOGO?.itens || {};
+const chave = (s) => String(s).replace(/^(Alma:|[☆★]+)/, '').trim()
+  .toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+if (typeof armaDaAlma === 'function') {
+  const CADEIAS = {
+    'lanças (Lança Longa do Rei)': [
+      ['14839', '☆Lança dos Ossos', 60, null],
+      ['14841', '☆Lança Quebra-Armaduras', 70, '15352'],
+      ['14845', '☆Lança do Dragão', 80, '15354'],
+      ['14850', '☆Lança Esmaga-Meteoros', 90, '15357'],
+      ['14855', '☆Lança Longa do Rei', 99, '15361'],
+    ],
+    'lâminas (Dragão: Lótus Vermelha)': [
+      ['14797', '☆Faca de Ossos', 60, null],
+      ['14798', '☆Lâmina do General Fantasma', 70, '15321'],
+      ['14800', '☆Lâmina do Dragão', 80, '15322'],
+      ['14804', '☆Dragão: Lótus Vermelha', 90, '15324'],
+    ],
+  };
+
+  console.log('\ncadeias de arma:');
+  for (const [rot, degraus] of Object.entries(CADEIAS)) {
+    for (let n = 0; n < degraus.length; n++) {
+      const [id, nome, nivel, alma] = degraus[n];
+      const it = CAT[id];
+      ok(it && it.nome === nome && it.nivel_req === nivel,
+        rot + ': ' + nome + ' (' + id + ') não está no catálogo como esperado');
+      ok(it && it.receitas && it.receitas.length >= 1, rot + ': ' + nome + ' sem receita');
+
+      const consumida = it && it.receitas[0].ingredientes
+        .map((g) => String(g.id)).find((x) => /^Alma:/.test(CAT[x]?.nome || ''));
+      ok((consumida ?? null) === alma,
+        rot + ': ' + nome + ' devia consumir a Alma ' + alma + ', consome ' + consumida);
+
+      // o elo: a Alma que este degrau pede aponta para a arma do degrau abaixo
+      if (alma) {
+        const ant = degraus[n - 1];
+        ok(String(armaDaAlma(alma)?.id) === ant[0],
+          rot + ': a Alma ' + alma + ' devia apontar para ' + ant[1]);
+        ok(textoAlma(alma) === 'vem de: ' + ant[1].replace('☆', '') + ' (nv ' + ant[2] + ')',
+          rot + ': texto errado para a Alma ' + alma + ' — ' + textoAlma(alma));
+      }
+    }
+    console.log('  ok  ' + rot.padEnd(34) + degraus.map((d) => 'nv' + d[2]).join(' -> '));
+  }
+
+  // o jogo abrevia quando o nome não cabe: "Alma: Lâmina do Gen. Fantasma"
+  // contra "☆Lâmina do General Fantasma". Comparar as strings inteiras perdia
+  // esse elo, e era o único degrau quebrado das duas cadeias.
+  ok(CAT['15322']?.nome === 'Alma: Lâmina do Gen. Fantasma',
+    'a Alma 15322 mudou de nome — o teste da abreviação perdeu o sentido');
+  ok(String(armaDaAlma('15322')?.id) === '14798',
+    'o nome abreviado ("Gen.") não casou com "General"');
+  ok(mesmoNome('lamina do gen. fantasma', 'lamina do general fantasma'),
+    'mesmoNome não aceita abreviação terminada em ponto');
+  ok(!mesmoNome('lamina do gen. fantasma', 'lamina do guerreiro fantasma'),
+    'mesmoNome casou abreviação com palavra que não começa igual');
+  ok(!mesmoNome('faca de ossos', 'faca de ossos grande'),
+    'mesmoNome casou nomes de tamanhos diferentes');
+
+  // a folga da abreviação não pode juntar itens distintos: cada Alma tem que
+  // achar no máximo uma arma
+  const almas = Object.values(CAT).filter((i) => /^Alma:/.test(i.nome));
+  const ambiguas = [];
+  let ligadas = 0;
+  for (const a of almas) {
+    const alvo = chave(a.nome);
+    const casam = Object.values(CAT)
+      .filter((i) => i.receitas?.length && mesmoNome(chave(i.nome), alvo));
+    if (casam.length > 1) ambiguas.push(a.nome + ' -> ' + casam.map((i) => i.nome).join(' / '));
+    if (casam.length === 1) ligadas++;
+  }
+  ok(ambiguas.length === 0, 'Alma com mais de uma arma possível: ' + ambiguas.join('; '));
+  console.log('  ok  ' + (ligadas + '/' + almas.length).padEnd(34)
+    + 'Almas ligadas à arma anterior, 0 ambíguas');
+
+  // item que não é Alma não inventa elo
+  for (const id of ['15308', '14804', '999999']) {
+    ok(textoAlma(id) === null, 'textoAlma(' + id + ') devia ser null');
+  }
+}
+
 // 7. `node testes.mjs --refino [alvo]` despeja o painel em texto, para
 //    conferir os números sem abrir o navegador
 if (process.argv.includes('--refino')) {
