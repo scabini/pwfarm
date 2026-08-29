@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-08-19T12:31:49+00:00",
+ "atualizado": "2026-08-27T18:57:09+00:00",
  "guia": {
   "15227": [
    [
@@ -559,6 +559,361 @@
   ]
  },
  "itens": {
+  "11208": {
+   "desc": "O carregador com o mais forte poder celestial da Terra Perfeita. A Pedra Imortal resume todo o valor do espírito das pedras por todos os seres celestiais e absorveu a essência do sol e da lua.",
+   "drops": [
+    {
+     "nome": "Besta de Rugido do Céu",
+     "pct": 62.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Lunar Chilong",
+     "pct": 62.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Emissário das Sete Tristezas",
+     "pct": 62.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Fantasma de Olho de Hades",
+     "pct": 62.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Guarda de Demônio do Céu",
+     "pct": 62.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Sino de Sombra Sanguinária",
+     "pct": 62.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Demônio Destruidor Budista",
+     "pct": 13.75,
+     "sala": "21"
+    },
+    {
+     "nome": "Dragão dos Nove Céus",
+     "pct": 13.75,
+     "sala": "22"
+    },
+    {
+     "nome": "Criança Fantasma",
+     "pct": 13.3333,
+     "sala": "22"
+    },
+    {
+     "nome": "Destruidor Ancestral",
+     "pct": 13.3,
+     "sala": "22"
+    },
+    {
+     "nome": "Pojun das Sete Mortes",
+     "pct": 13.3,
+     "sala": "22"
+    },
+    {
+     "nome": "Receptáculo Negro",
+     "pct": 13.3,
+     "sala": "22"
+    },
+    {
+     "nome": "Espectro da Voz",
+     "pct": 11.0111,
+     "sala": "22"
+    },
+    {
+     "nome": "Rato Devorador do Coração",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Tigre Dem. Ancestral",
+     "pct": 10.0,
+     "sala": "22"
+    },
+    {
+     "nome": "Esqueleto do Vento Flamejante",
+     "pct": 2.6316,
+     "sala": "22"
+    }
+   ],
+   "id": 11208,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pedra Imortal",
+   "npc_compra": 20000,
+   "npc_venda": 0,
+   "raridade": 3,
+   "receitas": [
+    {
+     "id": 9876,
+     "ingredientes": [
+      {
+       "id": 3368,
+       "nome": "Pedra do Céu Celestial",
+       "qtd": 3,
+       "raridade": 0
+      },
+      {
+       "id": 3369,
+       "nome": "Pedra da Terra Celestial",
+       "qtd": 3,
+       "raridade": 0
+      },
+      {
+       "id": 3370,
+       "nome": "Pedra Celestial Comum",
+       "qtd": 3,
+       "raridade": 0
+      }
+     ],
+     "local": null,
+     "nome": "n/aGM北美_幻仙石",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 5262,
+     "ingredientes": [
+      {
+       "id": 34550,
+       "nome": "Pergaminho com Letras Apagadas",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "N/A凡客1",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 5263,
+     "ingredientes": [
+      {
+       "id": 34548,
+       "nome": "Pergaminho Pobremente Escrito",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "N/A凡客2",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 5264,
+     "ingredientes": [
+      {
+       "id": 34549,
+       "nome": "Pergaminho com Mensagem Oculta",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "N/A凡客3",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 6145,
+     "ingredientes": [
+      {
+       "id": 38420,
+       "nome": "☆Prova do Purgatório Celeste",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": "Reino das Trevas: 428 597 (28)",
+     "nome": "N/A戒指回收1",
+     "npc": "Caçador Imortal",
+     "prob": 100.0
+    },
+    {
+     "id": 6146,
+     "ingredientes": [
+      {
+       "id": 38421,
+       "nome": "☆Prova da Arcádia Infernal",
+       "qtd": 1,
+       "raridade": 2
+      }
+     ],
+     "local": null,
+     "nome": "N/A戒指回收2",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 11041,
+     "ingredientes": [
+      {
+       "id": 59663,
+       "nome": "Pedra Celestial de Miragem",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": null,
+     "nome": "Normal Pedra Celestial Miragem",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 2808,
+     "ingredientes": [
+      {
+       "id": 19123,
+       "nome": "Papel Vermelho Rasgado",
+       "qtd": 2,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 552 678 (22)",
+     "nome": "Pedra Imortal",
+     "npc": "Shadou You",
+     "prob": 100.0
+    },
+    {
+     "id": 5265,
+     "ingredientes": [
+      {
+       "id": 3368,
+       "nome": "Pedra do Céu Celestial",
+       "qtd": 3,
+       "raridade": 0
+      },
+      {
+       "id": 3369,
+       "nome": "Pedra da Terra Celestial",
+       "qtd": 3,
+       "raridade": 0
+      },
+      {
+       "id": 3370,
+       "nome": "Pedra Celestial Comum",
+       "qtd": 3,
+       "raridade": 0
+      }
+     ],
+     "local": null,
+     "nome": "Pedra Imortal",
+     "npc": "Joalheiro",
+     "prob": 100.0
+    },
+    {
+     "id": 4188,
+     "ingredientes": [
+      {
+       "id": 25385,
+       "nome": "Prova da Cobra Gigante",
+       "qtd": 113,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 117 862 (38)",
+     "nome": "Pedra Imortal Japonesa",
+     "npc": "Adm. de Evento Diário",
+     "prob": 100.0
+    },
+    {
+     "id": 2727,
+     "ingredientes": [],
+     "local": null,
+     "nome": "Pérola de Dragão Pedra Imortal",
+     "npc": null,
+     "prob": 100.0
+    },
+    {
+     "id": 4768,
+     "ingredientes": [
+      {
+       "id": 28061,
+       "nome": "Insígnia Celestial",
+       "qtd": 1,
+       "raridade": 3
+      }
+     ],
+     "local": "Paraiso: 342 595 (20)",
+     "nome": "Receita de Pedra Imortal",
+     "npc": "Caixa de Correio",
+     "prob": 100.0
+    }
+   ],
+   "stack": 50000,
+   "subtipo": null,
+   "tipo": "Gems"
+  },
+  "12750": {
+   "desc": "Usada em refinamento.",
+   "drops": [],
+   "id": 12750,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pedra do Céu",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "12751": {
+   "desc": "Usada em refinamento.",
+   "drops": [],
+   "id": 12751,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pedra Maligna",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "12980": {
+   "desc": "Usado para equipamento de refino e Transferências de Refino.",
+   "drops": [],
+   "id": 12980,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pedra do Céu e da Terra",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 4184,
+     "ingredientes": [
+      {
+       "id": 25385,
+       "nome": "Prova da Cobra Gigante",
+       "qtd": 80,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 117 862 (38)",
+     "nome": "Pedra do Céu e da Terra",
+     "npc": "Adm. de Evento Diário",
+     "prob": 100.0
+    }
+   ],
+   "stack": 9999,
+   "subtipo": null,
+   "tipo": null
+  },
   "14809": {
    "desc": null,
    "id": 14809,
@@ -5299,6 +5654,374 @@
    "stack": 1,
    "subtipo": "Ornamento / Pingente",
    "tipo": "Acessórios"
+  },
+  "15038": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15038,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (1 Estrela)",
+   "npc_compra": 952380,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1765,
+     "ingredientes": [],
+     "local": null,
+     "nome": "Pedra da Sorte 1",
+     "npc": null,
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15039": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15039,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (2 Estrelas)",
+   "npc_compra": 3809523,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1766,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 2",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15040": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15040,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (3 Estrelas)",
+   "npc_compra": 9523809,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1767,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 3",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15041": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15041,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (4 Estrelas)",
+   "npc_compra": 23809523,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1768,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 4",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15042": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15042,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (5 Estrelas)",
+   "npc_compra": 57142857,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1769,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 5",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15043": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15043,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (6 Estrelas)",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1770,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 6",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15044": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15044,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (7 Estrelas)",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1771,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 7",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15045": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15045,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (8 Estrelas)",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1772,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 8",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15046": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15046,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão (9 Estrelas)",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 1773,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 9",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    },
+    {
+     "id": 5881,
+     "ingredientes": [
+      {
+       "id": 12980,
+       "nome": "Pedra do Céu e da Terra",
+       "qtd": 30,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 559 684 (22)",
+     "nome": "5星合9星",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15047": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15047,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola Oceânica",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 5882,
+     "ingredientes": [
+      {
+       "id": 12980,
+       "nome": "Pedra do Céu e da Terra",
+       "qtd": 50,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 559 684 (22)",
+     "nome": "5星合10星",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    },
+    {
+     "id": 1774,
+     "ingredientes": [],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 10",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15048": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento. Pode ser transformada em uma Pérola do Dragão de nível maior no Alquimista",
+   "drops": [],
+   "id": 15048,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola da Miragem",
+   "npc_compra": 1000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 5883,
+     "ingredientes": [
+      {
+       "id": 12980,
+       "nome": "Pedra do Céu e da Terra",
+       "qtd": 5,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 559 684 (22)",
+     "nome": "5星合11星",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    },
+    {
+     "id": 1775,
+     "ingredientes": [
+      {
+       "id": 15047,
+       "nome": "Pérola Oceânica",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 11",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
+  },
+  "15049": {
+   "desc": "100% de chance em aumentar um nível do refino de um equipamento.",
+   "drops": [],
+   "id": 15049,
+   "nivel": null,
+   "nivel_req": null,
+   "nome": "Pérola do Dragão Flamejante",
+   "npc_compra": 10000000,
+   "npc_venda": 100,
+   "raridade": 0,
+   "receitas": [
+    {
+     "id": 5884,
+     "ingredientes": [
+      {
+       "id": 12980,
+       "nome": "Pedra do Céu e da Terra",
+       "qtd": 25,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 559 684 (22)",
+     "nome": "5星合12星",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    },
+    {
+     "id": 1776,
+     "ingredientes": [
+      {
+       "id": 15048,
+       "nome": "Pérola da Miragem",
+       "qtd": 1,
+       "raridade": 0
+      },
+      {
+       "id": 15047,
+       "nome": "Pérola Oceânica",
+       "qtd": 1,
+       "raridade": 0
+      }
+     ],
+     "local": "World: 559 684 (22)",
+     "nome": "Pedra da Sorte 12",
+     "npc": "Alquimista Hermes Tnar",
+     "prob": 100.0
+    }
+   ],
+   "stack": 1000,
+   "subtipo": null,
+   "tipo": null
   },
   "15227": {
    "desc": "Tesouros do Crepúsculo. Pode ser usado para criar itens do Crepúsculo.",

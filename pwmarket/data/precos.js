@@ -2,6 +2,36 @@
 // Commite este arquivo para publicar os preços.
 window.PW_PRECOS = {
  "obs": {
+  "11208": [
+   {
+    "id": "j4132ddb",
+    "v": 40000,
+    "q": 1,
+    "d": "2026-08-28",
+    "t": "venda",
+    "n": ""
+   }
+  ],
+  "12750": [
+   {
+    "id": "ytz3b3zd",
+    "v": 100000,
+    "q": 1,
+    "d": "2026-08-28",
+    "t": "venda",
+    "n": ""
+   }
+  ],
+  "12751": [
+   {
+    "id": "8gud95k6",
+    "v": 100000,
+    "q": 1,
+    "d": "2026-08-28",
+    "t": "venda",
+    "n": ""
+   }
+  ],
   "15236": [
    {
     "id": "5cvu4k65",
@@ -30,6 +60,16 @@ window.PW_PRECOS = {
     "n": "loja CDO (Lanes)"
    }
   ],
+  "15245": [
+   {
+    "id": "e0tlsb4o",
+    "v": 800000,
+    "q": 1,
+    "d": "2026-08-23",
+    "t": "venda",
+    "n": "cdo"
+   }
+  ],
   "15249": [
    {
     "id": "rqatj8zs",
@@ -48,6 +88,14 @@ window.PW_PRECOS = {
     "d": "2026-08-08",
     "t": "venda",
     "n": "loja CDO (Lojinha01)"
+   },
+   {
+    "id": "ke2esmd2",
+    "v": 25000,
+    "q": 1,
+    "d": "2026-08-23",
+    "t": "venda",
+    "n": ""
    }
   ],
   "15258": [
@@ -102,6 +150,14 @@ window.PW_PRECOS = {
     "d": "2026-08-11",
     "t": "venda",
     "n": "loja cdo"
+   },
+   {
+    "id": "me1olwqs",
+    "v": 650000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
    }
   ],
   "15262": [
@@ -112,6 +168,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja forjas dusk (Capitulo03)"
+   },
+   {
+    "id": "3xmc6u1u",
+    "v": 200000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "loja cdo"
    }
   ],
   "15264": [
@@ -168,6 +232,16 @@ window.PW_PRECOS = {
     "d": "2026-08-08",
     "t": "venda",
     "n": "loja CDO (Vendor1)"
+   }
+  ],
+  "15273": [
+   {
+    "id": "kogpmk5n",
+    "v": 3000000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
    }
   ],
   "15275": [
@@ -232,6 +306,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (mats)"
+   },
+   {
+    "id": "6jz76xkr",
+    "v": 25000,
+    "q": 1,
+    "d": "2026-08-23",
+    "t": "venda",
+    "n": ""
    }
   ],
   "15280": [
@@ -250,6 +332,24 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja forjas dusk (DUSK AKI)"
+   }
+  ],
+  "15284": [
+   {
+    "id": "28ovu3yd",
+    "v": 800000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "loja cdo"
+   },
+   {
+    "id": "3tsb4lpm",
+    "v": 500000,
+    "q": 1,
+    "d": "2026-08-23",
+    "t": "venda",
+    "n": ""
    }
   ],
   "15286": [
@@ -298,6 +398,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (MBAPPESO)"
+   },
+   {
+    "id": "ll2rmqsm",
+    "v": 150000,
+    "q": 1,
+    "d": "2026-08-13",
+    "t": "venda",
+    "n": "cdo"
    }
   ],
   "15293": [
@@ -326,6 +434,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO (MBAPPESO)"
+   },
+   {
+    "id": "uwi7nv3w",
+    "v": 100000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
    }
   ],
   "15299": [
@@ -344,6 +460,24 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja CDO"
+   },
+   {
+    "id": "b86xorvt",
+    "v": 5000000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "global"
+   }
+  ],
+  "15300": [
+   {
+    "id": "78p5t56c",
+    "v": 35000000,
+    "q": 1,
+    "d": "2026-08-14",
+    "t": "venda",
+    "n": ""
    }
   ],
   "15301": [
@@ -382,6 +516,14 @@ window.PW_PRECOS = {
     "d": "2026-08-07",
     "t": "venda",
     "n": "loja forjas dusk (LOJINHA300K)"
+   },
+   {
+    "id": "vjh9p1iq",
+    "v": 15000000,
+    "q": 1,
+    "d": "2026-08-22",
+    "t": "venda",
+    "n": ""
    }
   ],
   "15306": [
@@ -486,6 +628,114 @@ window.PW_PRECOS = {
     "d": "2026-08-08",
     "t": "venda",
     "n": "loja CDO (MOISES)"
+   },
+   {
+    "id": "9omk1h2k",
+    "v": 185000,
+    "q": 1,
+    "d": "2026-08-12",
+    "t": "venda",
+    "n": "forjas dusk cdd"
+   }
+  ],
+  "16466": [
+   {
+    "id": "lo6pbuic",
+    "v": 4000000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
+   },
+   {
+    "id": "lwa74phn",
+    "v": 6500000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
+   },
+   {
+    "id": "on9uzhxz",
+    "v": 2000000,
+    "q": 1,
+    "d": "2026-08-12",
+    "t": "venda",
+    "n": "cdo"
+   },
+   {
+    "id": "51xdps71",
+    "v": 4000000,
+    "q": 1,
+    "d": "2026-08-22",
+    "t": "venda",
+    "n": ""
+   }
+  ],
+  "16467": [
+   {
+    "id": "0pn99udf",
+    "v": 10000000,
+    "q": 1,
+    "d": "2026-08-16",
+    "t": "venda",
+    "n": "comprando global"
+   },
+   {
+    "id": "c1h95v60",
+    "v": 19000000,
+    "q": 1,
+    "d": "2026-08-22",
+    "t": "venda",
+    "n": ""
+   }
+  ],
+  "16468": [
+   {
+    "id": "5zqr7htw",
+    "v": 5000000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
+   },
+   {
+    "id": "pqd1hg7g",
+    "v": 9000000,
+    "q": 1,
+    "d": "2026-08-22",
+    "t": "venda",
+    "n": ""
+   }
+  ],
+  "16545": [
+   {
+    "id": "0eyjxhp6",
+    "v": 50000,
+    "q": 1,
+    "d": "2026-08-11",
+    "t": "venda",
+    "n": "cdo"
+   }
+  ],
+  "12980": [
+   {
+    "id": "pzq4m8vd",
+    "v": 120000,
+    "q": 1,
+    "d": "2026-08-27",
+    "t": "venda",
+    "n": "valor de referencia aproximado do servidor"
+   }
+  ],
+  "15042": [
+   {
+    "id": "h3wk91tb",
+    "v": 20000000,
+    "q": 1,
+    "d": "2026-08-27",
+    "t": "venda",
+    "n": "valor de referencia aproximado do servidor"
    }
   ]
  }
